@@ -1,4 +1,5 @@
 REQUISITOS INICIALES DEL SISTEMA
+Link NotebookLM: https://notebooklm.google.com/notebook/0a9dc1a3-2622-4341-a97a-c1e387c05d93
 
 Requisitos Funcionales (RF)
 RF1 Gestión de turnos: 
