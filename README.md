@@ -6,10 +6,10 @@
 
 ## Integrantes:
 
-* Nombre Estudiante 1 - Matrícula: 114797 - Usuario GitHub: @FacundoGuirales
-* Nombre Estudiante 2 - Matrícula: 158686 - Usuario GitHub: @carolabenvenuto
-* Nombre Estudiante 3 - Matrícula: 159237 - Usuario GitHub: @caterinacerdan
-* Nombre Estudiante 4 - Matrícula: 156612 - Usuario GitHub: @ValeriaMSilva
+* Facundo Guirales - Matrícula: 114794 - Usuario GitHub: @FacundoGuirales
+* Carola Benvenuto - Matrícula: 158686 - Usuario GitHub: @carolabenvenuto
+* Caterina Cerdan - Matrícula: 159237 - Usuario GitHub: @caterinacerdan
+* Valeria Silva - Matrícula: 156612 - Usuario GitHub: @ValeriaMSilva
 
 ## Introducción
 
