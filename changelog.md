@@ -1,8 +1,8 @@
-**Fecha:** 18/03/2026
+* **Fecha:** 18/03/2026
 
-* **Integrante:** Valeria SilvA
+* **Integrante:** Valeria Silva
 * **Rol:** Documentador y Coordinador de Repositorio
 * **Aporte:** Creación de estructura de carpetas, redacción de README, índice de anexos y teoría sobre fundamentos de POO.
-* **Issue:** \[Pegar el link de tu Issue aquí]
+* **Issue:** (https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/9)
 * **Pull Request:** https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/7
 
