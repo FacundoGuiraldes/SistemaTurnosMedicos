@@ -7,6 +7,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ## [Unreleased]
 
 ### Added
+- [issues/modelador-casos-uso] Se indican los pasos realizados de cada tarea. 
+Issue: [#3] (https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/3) - @caterinacerdan 
+
 - [feature/modelador-casos-uso] Modelado de casos de uso del sistema y documentación en introduccion.md.  
   PR: [#4](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/4) - @caterinacerdan (Modelador de Casos de Uso)
 
