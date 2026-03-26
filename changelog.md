@@ -1,4 +1,4 @@
-# Changelog
+
 
 Este archivo se actualiza con cada Pull Request para registrar avances y correcciones.
 
@@ -7,43 +7,27 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ## [Unreleased]
 
 ### Added
-- [feature/estructura-base] Estructura inicial del proyecto.  
-  PR: [#1](link) - @usuario1 (Coordinador / DevOps)
 
-- [feature/ia-prompts] Documentación de 5 prompts de IA.  
-  PR: [#4](link) - @usuario4 (Especialista en IA)
+- [feature/doc-coord-repo-update-readme-md] Creación de estructura de carpetas, redacción de README, índice de anexos y teoría sobre fundamentos de POO.
+  Issue: [#9](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/9) - PR: [#7](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/7) - @ValeriaSilva (Documentador y Coordinador de Repositorio)
 
-- [feature/analista-requerimentos-add-introduccion-md] Análisis de fuentes: revisión de mails, audios de WhatsApp, fotos de cuadernos y transcripciones de Meet para entender requerimientos.
-  PR: [#1](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos./pull/1) - @FacundoGuiraldes (Analista de Requerimientos)
+- [issues/modelador-casos-uso] Se indican los pasos realizados de cada tarea.
+  Issue: [#3](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/3) - @caterinacerdan
 
-- [feature/analista-requerimentos-add-introduccion-md] Uso de NotebookLM para resumir y organizar información dispersa.
-  PR: [#1](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos./pull/1) - @FacundoGuiraldes (Analista de Requerimientos)
+- [feature/modelador-casos-uso] Modelado de casos de uso del sistema y documentación en introduccion.md.
+  PR: #4 - @caterinacerdan (Modelador de Casos de Uso)
 
-- [feature/analista-requerimentos-add-introduccion-md] Identificación de requisitos: al menos 5 RF y 5 RNF completos.
-  PR: [#1](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos./pull/1) - @FacundoGuiraldes (Analista de Requerimientos)
+- [feature/doc-coord-add-pr-template] Implementación de template de Pull Request en .github/PULL_REQUEST_TEMPLATE.
+  PR: #8 - @caterinacerdan (Aporte adicional)
 
-- [feature/analista-requerimentos-add-introduccion-md] Creación de rama de trabajo y documentación en `anexos/introduccion.md` con sección “Requisitos iniciales del sistema” y enlace a cuaderno grupal de NotebookLM.
-  PR: [#1](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos./pull/1) - @FacundoGuiraldes (Analista de Requerimientos)
-
-- [feature/analista-requerimentos-add-introduccion-md] Actualización de `anexos/introduccion.md` incluyendo link al NotebookLM: https://notebooklm.google.com/notebook/0a9dc1a3-2622-4341-a97a-c1e387c05d93
-  PR: [#1](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos./pull/1) - @FacundoGuiraldes (Analista de Requerimientos)
-
-### Changed
-- [feature/readme-y-mockup] Actualización README.md con mockup.  
-  PR: [#3](link) - @usuario3 (Documentador / Diseñador UX)
-
-- [feature/index-html] Estructura HTML5 básica.  
-  PR: [#2](link) - @usuario2 (Desarrollador Frontend)
-
-### Fixed
-- [feature/fix-rutas] Corrección de rutas en README.md.  
-  PR: [#5](link) - @usuario3 (Documentador / Diseñador UX)
+- [feature/analista-requerimentos-add-introduccion-md] Análisis de fuentes y extracción de 5 RF y 5 RNF. Inclusión de enlace a NotebookLM en introduccion.md.
+  Issue: [#X](Reemplazar_con_el_link_de_la_Issue_de_Facu) - PR: [#1](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/1) - @FacundoGuiraldes (Analista de Requerimientos)
 
 ---
 
 ## [Release Actividad Obligatoria N°1] - 2025-08-10
 
-Aquí se listarán todas las Pull Requests que entraron en esta release.  
+Aquí se listarán todas las Pull Requests que entraron en esta release.
 Actualmente están en la sección [Unreleased] porque sólo están en la rama `develop`.
 
 ---
