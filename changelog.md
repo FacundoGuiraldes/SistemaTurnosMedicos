@@ -1,8 +1,33 @@
-* **Fecha:** 18/03/2026
+Changelog
 
-* **Integrante:** Valeria Silva
-* **Rol:** Documentador y Coordinador de Repositorio
-* **Aporte:** Creación de estructura de carpetas, redacción de README, índice de anexos y teoría sobre fundamentos de POO.
-* **Issue:** (https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/9)
-* **Pull Request:** https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/7
+Este archivo se actualiza con cada Pull Request para registrar avances y correcciones.
+
+[Unreleased]
+
+Added
+
+Fecha: 18/03/2026
+Integrante: Valeria Silva
+Rol: Documentador y Coordinador de Repositorio
+Aporte: Creación de estructura de carpetas, redacción de README, índice de anexos y teoría sobre fundamentos de POO.
+Issue: https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/9
+Pull Request: https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/7
+
+
+[issues/modelador-casos-uso] Se indican los pasos realizados de cada tarea.
+Issue: [#3] (https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/3) - @caterinacerdan
+
+[feature/modelador-casos-uso] Modelado de casos de uso del sistema y documentación en introduccion.md.
+PR: #4 - @caterinacerdan (Modelador de Casos de Uso)
+
+(aporte adicional)
+
+[feature/doc-coord-add-pr-template] Implementación de template de Pull Request en .github/PULL_REQUEST_TEMPLATE.
+PR: #8 - @caterinacerdan (Aporte adicional)
+
+[Release Actividad Obligatoria N°1] - 2025-08-10
+
+Aquí se listarán todas las Pull Requests que entraron en esta release.
+Actualmente están en la sección [Unreleased] porque sólo están en la rama develop.
+
 
