@@ -1,33 +1,40 @@
-Changelog
+
 
 Este archivo se actualiza con cada Pull Request para registrar avances y correcciones.
 
-[Unreleased]
+---
 
-Added
+## [Unreleased]
 
-Fecha: 18/03/2026
-Integrante: Valeria Silva
-Rol: Documentador y Coordinador de Repositorio
-Aporte: Creación de estructura de carpetas, redacción de README, índice de anexos y teoría sobre fundamentos de POO.
-Issue: https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/9
-Pull Request: https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/7
+### Added
 
+- [feature/doc-coord-repo-update-readme-md] Creación de estructura de carpetas, redacción de README, índice de anexos y teoría sobre fundamentos de POO.
+  Issue: [#9](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/9) - PR: [#7](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/7) - @ValeriaSilva (Documentador y Coordinador de Repositorio)
 
-[issues/modelador-casos-uso] Se indican los pasos realizados de cada tarea.
-Issue: [#3] (https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/3) - @caterinacerdan
+- [issues/modelador-casos-uso] Se indican los pasos realizados de cada tarea.
+  Issue: [#3](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/3) - @caterinacerdan
 
-[feature/modelador-casos-uso] Modelado de casos de uso del sistema y documentación en introduccion.md.
-PR: #4 - @caterinacerdan (Modelador de Casos de Uso)
+- [feature/modelador-casos-uso] Modelado de casos de uso del sistema y documentación en introduccion.md.
+  PR: #4 - @caterinacerdan (Modelador de Casos de Uso)
 
-(aporte adicional)
+- [feature/doc-coord-add-pr-template] Implementación de template de Pull Request en .github/PULL_REQUEST_TEMPLATE.
+  PR: #8 - @caterinacerdan (Aporte adicional)
 
-[feature/doc-coord-add-pr-template] Implementación de template de Pull Request en .github/PULL_REQUEST_TEMPLATE.
-PR: #8 - @caterinacerdan (Aporte adicional)
+- [feature/analista-requerimentos-add-introduccion-md] Análisis de fuentes y extracción de 5 RF y 5 RNF. Inclusión de enlace a NotebookLM en introduccion.md.
+  Issue: [#X](Reemplazar_con_el_link_de_la_Issue_de_Facu) - PR: [#1](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/1) - @FacundoGuiraldes (Analista de Requerimientos)
 
-[Release Actividad Obligatoria N°1] - 2025-08-10
+---
+
+## [Release Actividad Obligatoria N°1] - 2025-08-10
 
 Aquí se listarán todas las Pull Requests que entraron en esta release.
-Actualmente están en la sección [Unreleased] porque sólo están en la rama develop.
+Actualmente están en la sección [Unreleased] porque sólo están en la rama `develop`.
 
+---
 
+## Cómo usar este archivo
+
+- Para cada PR, simplemente agregar una línea breve en la sección correspondiente a su cambio (Added, Changed, Fixed).  
+- No es necesario escribir párrafos, sólo una frase corta + link a PR y responsable con rol.  
+- Al hacer la entrega final, copiar todo lo que está en **[Unreleased]** a una nueva sección con la fecha y nombre de la entrega (release).  
+- Mantener el orden y formato para facilitar el seguimiento.
