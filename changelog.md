@@ -21,10 +21,10 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#8](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/8) - @caterinacerdan (Aporte adicional)
 
 - [feature/analista-requerimentos-add-introduccion-md] Análisis de fuentes, extracción de 5 RF y 5 RNF, e inclusión de enlace a NotebookLM.
-  Issue: [#2](Reemplazar_con_el_link_de_la_Issue_de_Facu) - PR: [#1](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/1) - @FacundoGuiraldes (Analista de Requerimientos)
+  Issue: [#1](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/1) - PR: [#1](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/1) - @FacundoGuiraldes (Analista de Requerimientos)
 
-- [feature/diseño-clases-diagrama] Creación de carpeta de diagramas, subida de boceto inicial en .excalidraw y .png, y definición de clases y relaciones.
-  Issue: [#5](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/5) - PR: [#6](Reemplazar_con_el_numero_de_PR_del_Diseñador) - @NombreDelDiseñador (Diseñador de Clases Iniciales)
+- [feature/diseño-clases-diagrama] Creación de carpeta de diagramas, subida de boceto inicial en 01-boceto-inicial.excalidraw y .png, y definición de clases y relaciones.
+  Issue: [#5](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/5) - PR: [#6](Reemplazar_con_el_numero_de_PR_de_Caro) - @caro (Diseñador de Clases Iniciales)
 
 ---
 
@@ -40,4 +40,4 @@ Actualmente están en la sección [Unreleased] porque sólo están en la rama `d
 - Para cada PR, simplemente agregar una línea breve en la sección correspondiente a su cambio (Added, Changed, Fixed).  
 - No es necesario escribir párrafos, sólo una frase corta + link a PR y responsable con rol.  
 - Al hacer la entrega final, copiar todo lo que está en **[Unreleased]** a una nueva sección con la fecha y nombre de la entrega (release).  
-- Mantener el orden y formato para facilitar el seguimiento.
+- Mantener el orden y formato para facilitar el seguimiento
