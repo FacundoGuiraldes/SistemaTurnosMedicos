@@ -6,7 +6,7 @@ Como Documentadora y Coordinadora del Repositorio, en esta rama completé las si
 - Configuré las plantillas de Pull Request (`feature-template.md` y `release-template.md`) dentro de la carpeta `.github/PULL_REQUEST_TEMPLATE/` para solucionar el error de formato detectado en la corrección.
 
 ## 🔗 Issue vinculada
-Closes 9 
+Closes #9 
 
 ## 👤 Rol del Integrante
 - [ ] Analista de Requerimientos
