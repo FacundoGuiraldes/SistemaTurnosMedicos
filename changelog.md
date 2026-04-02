@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+- [feature/doc-coord-repo-update-readme-md] Se agregó el archivo feature-template.md en la ruta correcta (.github/PULL_REQUEST_TEMPLATE/).
+  PR: [#16](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/16) - @ValeriaMSilva (Documentador y Coordinador de Repositorio)
+
+
 ### Fixed
 - [fix/casos-de-uso-flujos] Corrección de flujos de casos de uso en introduccion.md, ampliando a 5 pasos y mejorando la claridad.  
   PR: [#https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/15](link) - @caterinacerdan (Modelador de Casos de Uso)
