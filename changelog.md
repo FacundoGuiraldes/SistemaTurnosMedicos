@@ -6,8 +6,6 @@
 - [fix/casos-de-uso-flujos] Corrección de flujos de casos de uso en introduccion.md, ampliando a 5 pasos y mejorando la claridad.  
   PR: [#https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/15](link) - @caterinacerdan (Modelador de Casos de Uso)
 
-### Added
-
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
 - [feature/analista-...] Análisis de requerimientos: RFs, RNFs y NotebookLM.
