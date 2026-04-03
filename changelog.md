@@ -12,6 +12,9 @@
   PR: [#13] (https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/13) - @ValeriaMSilva (Documentador y Coordinador)
 - [fix/casos-de-uso-flujos] Corrección de flujos de casos de uso en introduccion.md, ampliando a 5 pasos y mejorando la claridad.  
   PR: [#https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/15](link) - @caterinacerdan (Modelador de Casos de Uso)
+- [fix/boceto-diagrama-png] Corrección del nombre del archivo PNG del boceto del diagrama de clases.
+PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/17](link) - @carolabenvenuto-uces (Diseñador de Clases)
+
 
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
