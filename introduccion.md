@@ -14,13 +14,13 @@ Pacientes (*piden el turno, cancelan o consulta sus turnos*).
 
 *Actor*: Paciente y secretaria
 
-*Descripción:* Permite al paciente solicitar un turno médico en una fecha disponible mediante la recepcionista. 
+*Descripción:* Permite al paciente solicitar un turno médico en una fecha disponible mediante la secretaria. 
 
 *Precondición*: El paciente debe estar registrado en el sistema.
 
 *Flujo principal:* 
 - El paciente se comunica a la recepción o llama por teléfono. 
-- La recepcionista ingresa al sistema.
+- La secretaria ingresa al sistema.
 - El sistema muestra los horarios y fechas disponibles.
 - El paciente elige una fecha y horario.
 - El sistema registra el turno.
@@ -45,7 +45,7 @@ Precondición: El paciente debe tener un turno asignado.
 
 **Casos de uso 3: Registrar llegada del paciente**
 
-*Actor:* Paciente, recepcionista y doctor.
+*Actor:* Paciente, secretaria y doctor.
 
 *Descripción:* Permite que quede registrado en el sistema quién llegó al lugar y desde qué horario está esperando. 
 
