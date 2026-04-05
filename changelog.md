@@ -2,19 +2,6 @@
 
 ## [Unreleased]
 
-### Added
-- [feature/doc-coord-repo-update-readme-md] Se agregó el archivo feature-template.md en la ruta correcta (.github/PULL_REQUEST_TEMPLATE/).
-  PR: [#16](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/16) - @ValeriaMSilva (Documentador y Coordinador de Repositorio)
-
-
-### Fixed
-- [fix/doc-coord-...]  Correcciones de formato, changelog y estructura.
-  PR: [#13] (https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/13) - @ValeriaMSilva (Documentador y Coordinador)
-- [fix/casos-de-uso-flujos] Corrección de flujos de casos de uso en introduccion.md, ampliando a 5 pasos y mejorando la claridad. PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/18] - @caterinacerdan (Modelador de Casos de Uso)
-- [fix/boceto-diagrama-png] Corrección del nombre del archivo PNG del boceto del diagrama de clases.
-PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/17] - @carolabenvenuto-uces (Diseñador de Clases)
-- [fix/templates-pr] Correción de rutas y templates de feature y realease. PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/20] - @caterinacerdan (Modelador de casos de uso)
-
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
@@ -26,3 +13,13 @@ PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/17] - @carola
   PR: [#6](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/6) - @carolabenvenuto-uces (Diseñador de Clases Iniciales)
 - [feature/doc-coord-...] README, anexos, introduccion.md, templates y coordinación.
   PR: [#7](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/7) - @ValeriaMSilva (Documentador y Coordinador)
+- [feature/doc-coord-repo-update-readme-md] Se agregó el archivo feature-template.md en la ruta correcta (.github/PULL_REQUEST_TEMPLATE/).
+  PR: [#16](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/16) - @ValeriaMSilva (Documentador y Coordinador de Repositorio)
+
+### Fixed
+- [fix/doc-coord-...]  Correcciones de formato, changelog y estructura.
+  PR: [#13] (https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/13) - @ValeriaMSilva (Documentador y Coordinador)
+- [fix/casos-de-uso-flujos] Corrección de flujos de casos de uso en introduccion.md, ampliando a 5 pasos y mejorando la claridad. PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/18] - @caterinacerdan (Modelador de Casos de Uso)
+- [fix/boceto-diagrama-png] Corrección del nombre del archivo PNG del boceto del diagrama de clases.
+PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/17] - @carolabenvenuto-uces (Diseñador de Clases)
+- [fix/templates-pr] Correción de rutas y templates de feature y realease. PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/20] - @caterinacerdan (Modelador de casos de uso)
