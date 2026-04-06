@@ -18,8 +18,12 @@
 
 ### Fixed
 - [fix/doc-coord-...]  Correcciones de formato, changelog y estructura.
-  PR: [#13] (https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/13) - @ValeriaMSilva (Documentador y Coordinador)
-- [fix/casos-de-uso-flujos] Corrección de flujos de casos de uso en introduccion.md, ampliando a 5 pasos y mejorando la claridad. PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/18] - @caterinacerdan (Modelador de Casos de Uso)
+  PR: [#13](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/13) - @ValeriaMSilva (Documentador y Coordinador)
+- [fix/casos-de-uso-flujos] Corrección de flujos de casos de uso en introduccion.md, ampliando a 5 pasos y mejorando la claridad. PR: [#18](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/18) - @caterinacerdan (Modelador de Casos de Uso)
 - [fix/boceto-diagrama-png] Corrección del nombre del archivo PNG del boceto del diagrama de clases.
-PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/17] - @carolabenvenuto-uces (Diseñador de Clases)
-- [fix/templates-pr] Correción de rutas y templates de feature y realease. PR: [https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/20] - @caterinacerdan (Modelador de casos de uso)
+PR: [#17](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/17) - @carolabenvenuto-uces (Diseñador de Clases)
+- [fix/templates-pr] Correción de rutas y templates de feature y realease. PR: [#20](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/20) - @caterinacerdan (Modelador de casos de uso)
+- [fix] Reubicación de introduccion.md en anexos y eliminación de duplicado.
+Commit: [55fc7ce](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/commit/55fc7ce2f6b20820bacb90f7f1f97f91bda00aab) - @caterinacerdan (Modelador de casos de uso)
+- [fix] Corrección de estructura del changelog según release.
+Commit: [4c2fe83](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/commit/4c2fe832221b125bccc1b2577b382999d0fe0041) - @caterinacerdan (Modelador de casos de uso)
