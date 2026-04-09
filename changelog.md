@@ -3,10 +3,15 @@
 ## [Unreleased]
 ### Added
 - [feature/diseniador-tarjetas-crc...] Diseño y organización de Tarjetas CRC: 
-  - Estructura de 5 clases núcleo con jerarquía de herencia.
-  - Creación de carpeta `herramientas-agile/`, índice y formato de tablas.
-  - Documentación de prompts y proceso de IA en `ia/a2/`.
+  - Estructura final de **8 clases** detalladas con diseño orientado a objetos.
+  - Creación de carpeta `herramientas-agile/tarjetas-crc/` con archivos individuales.
+  - Índice general en `herramientas_agile.md` con enlaces funcionales.
+  - Documentación detallada del proceso de refinamiento de IA en `ia/a2/`.
   PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+
+### Modified
+- Refactorización de la arquitectura inicial para aplicar principios **SOLID**, desacoplamiento de la clase Sistema y mejora de la lógica de estados en Sala de Espera.
+- **Corregida la lógica del boceto inicial (Excalidraw)** mediante el refinamiento de las tarjetas CRC para garantizar la coherencia del modelo.
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
