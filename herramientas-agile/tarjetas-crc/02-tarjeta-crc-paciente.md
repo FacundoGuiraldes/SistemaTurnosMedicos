@@ -4,7 +4,7 @@
 | **Superclase:** | Usuario | | |
 | **Subclase:** | — | | |
 | **Responsabilidades** | **Colaboradores** | **Pensamiento del objeto** | **Propiedad** |
-| Solicitar un turno | Sistema, Turno, Agenda | Conozco mi historial médico y necesito una cita | numeroHistorial: String |
-| Cancelar un turno | Sistema, Turno, Agenda | Puedo cambiar mis planes y liberar mi cupo | dni: String |
-| Consultar mis turnos | Sistema, Agenda | Verifico cuándo tengo mis próximas citas | dirección: String |
-| Registrar llegada | Sistema, Agenda | Aviso cuando llego para estar en la fila de espera | alergias: List |
+| Proveer datos para la solicitud de turno | Sistema | Soy la entidad que contiene mis antecedentes y datos personales; proveo mi información al Sistema para gestionar mis citas | numeroHistorial: String |
+| Notificar intención de cancelación | Sistema | Represento al sujeto de la atención médica y mis datos son consultados para el historial | dni: String |
+| Consultar mis turnos programados | Sistema | Puedo visualizar mi agenda personal de salud | dirección: String |
+| Registrar mi llegada al consultorio | Sistema, Secretaria | Notifico mi presencia física para que se inicie el flujo de atención | alergias: List<String> |
