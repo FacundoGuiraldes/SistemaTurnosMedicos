@@ -1,22 +1,30 @@
-## 📝 Descripción del aporte
-Como Documentadora y Coordinadora del Repositorio, en esta rama completé las siguientes tareas obligatorias:
-- Creé la estructura de carpetas y archivos siguiendo el formato definido en la consigna.
-- Redacté el archivo `README.md` (incluyendo la carátula y los integrantes) y el archivo `anexos.md`.
-- Completé la "Descripción del paradigma orientado a objetos" y "Los cuatro fundamentos de POO" en el archivo `introduccion.md`.
-- Configuré las plantillas de Pull Request (`feature-template.md` y `release-template.md`) dentro de la carpeta `.github/PULL_REQUEST_TEMPLATE/` para solucionar el error de formato detectado en la corrección.
+# 📌 Pull Request - Actividad Obligatoria N°1
 
-## 🔗 Issue vinculada
-Closes #9 
+## Descripción
+Explicá qué se hizo en esta PR.
 
-## 👤 Rol del Integrante
+## Tipo de cambio
+- [ ] Feature
+- [ ] Fix
+- [ ] Documentación
+- [ ] Corrección de formato
+
+## Archivo/s modificado/s
+- `archivo1`
+- `archivo2`
+
+## Rol responsable
 - [ ] Analista de Requerimientos
 - [ ] Modelador de Casos de Uso
 - [ ] Diseñador de Clases Iniciales
-- [x] Documentador y Coordinador de Repositorio
+- [ ] Documentador y Coordinador
 
-## ✅ Checklist de la Feature (Revisión antes de enviar)
-- [x] La rama se creó a partir de `develop` y se llama `feature/<tu-rol>-<descripción>`.
-- [x] Cumplí con los requerimientos específicos de mi rol detallados en la consigna.
-- [x] Actualicé el archivo `changelog.md` registrando mi aporte y el link a esta PR.
-- [x] Esta PR cuenta con la revisión técnica de código asistida por IA (Code Review con IA).
-- [x] Solicité la revisión y aprobación final de la Coordinadora de Repositorio (Valeria) para que habilite el merge.
+## Checklist
+- [ ] Se creó la rama correspondiente
+- [ ] Se vinculó la Issue asociada
+- [ ] Se actualizó `changelog.md`
+- [ ] Se respetó el formato solicitado
+- [ ] La PR apunta a la rama correcta
+
+## Issue relacionada
+Closes #N
