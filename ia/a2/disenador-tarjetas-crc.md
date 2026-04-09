@@ -8,9 +8,10 @@
 - `diagramas/01-diagrama-clases/01-boceto-inicial.excalidraw`: Estructura visual preliminar de las clases.
 
 ## Ajustes Realizados
-- **Normalización de Estructura:** Se transformaron los campos sugeridos inicialmente por la IA al formato de tabla de 4 columnas exigido, para garantizar la uniformidad.
-- **Jerarquía de Usuarios:** Se refinó la clase **Usuario** como superclase para manejar la autenticación, derivando en **Paciente**, **Doctor** y **Secretaria** como subclases.
-- **Redistribución de Responsabilidades:**
-    - Se movió la lógica de disponibilidad y gestión de filas de espera a la clase **Agenda**.
-    - Se definió a la clase **Sistema** como el orquestador principal (Singleton) para centralizar la base de datos y la auditoría.
-- **Organización Documental:** Se separó cada tarjeta en un archivo `.md` individual dentro de la subcarpeta `tarjetas-crc/` y se creó el índice (`herramientas_agile.md`) para facilitar la navegación y lectura del diseño.
+- **Normalización de Formato:** Se transformó el formato de lista simple de Copilot al formato de tabla de 4 columnas (Responsabilidades, Colaboradores, Pensamiento del Objeto, Propiedades) exigido por el estándar del proyecto.
+- **Evolución del Rol del Sistema:** Se eliminó la concepción del Sistema como un gestor directo de base de datos y mensajes. Ahora actúa como un **Orquestador de Servicios**, mejorando la mantenibilidad y el desacoplamiento.
+- **Refinamiento de la Clase Paciente:** Se corrigió la lógica donde el paciente "ejecutaba" acciones. Ahora el Paciente **provee datos y notifica intenciones**, respetando mejor la inversión de control.
+- **Optimización del Flujo de Asistencia:** Se eliminó la redundancia de la responsabilidad `registrarLlegada` que aparecía en casi todas las clases iniciales. Se centralizó en la **Secretaria** como ejecutora operativa.
+- **Enriquecimiento de Atributos:** - Se agregó `especialidad` a la clase **Turno** para permitir búsquedas y filtros precisos.
+    - Se incorporó el manejo de **Estados Dinámicos** (Esperando, En consulta, Finalizado) en la **Sala de Espera**, permitiendo una trazabilidad real del flujo de atención que el informe inicial no contemplaba detalladamente.
+- **Claridad en la Lógica de Agenda:** Se separó la "configuración de reglas" (responsabilidad de Agenda) de la "validación de colisiones" (responsabilidad de Sistema), logrando un diseño más robusto ante cambios en las reglas de negocio.
