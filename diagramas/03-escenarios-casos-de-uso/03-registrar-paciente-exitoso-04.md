@@ -34,7 +34,7 @@
 - **Precondiciones:** El paciente debe otorgar sus datos personales.
 - **Poscondiciones:** El paciente puede solicitar turnos en el sistema.
 - **Suposiciones:** El paciente tiene sus datos completos y la secretaria dispone de acceso al sistema.
-- **Reunir requerimentos:** RF1 Gestión de turnos
+- **Reunir requerimentos:** RF1 Gestión de turnos (como precondición), RNF2 Simplicidad.
 - **Aspectos sobresalientes:** ¿Se valida la duplicidad del paciente? ¿Se guarda historial médico básico? ¿Se requiere consentimiento para datos sensibles?
 - **Prioridad:** Alta
 - **Riesgo:** Medio

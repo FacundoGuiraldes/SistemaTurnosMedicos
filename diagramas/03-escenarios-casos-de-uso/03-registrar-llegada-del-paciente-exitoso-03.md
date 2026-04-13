@@ -31,10 +31,10 @@
 
 ## Condiciones, suposiciones y preguntas
 
-- **Precondiciones:** El paciente debe haber llegado al consultorio.
+- **Precondiciones:** El paciente debe tener un turno asignado para el día actual en el sistema y llegar al lugar del consultorio.
 - **Poscondiciones:** El doctor puede ver quién está esperando y desde cuándo.
 - **Suposiciones:** El paciente tiene un turno asignado y la secretaria está disponible.
-- **Reunir requerimentos:** RF5 Check de asistencia
+- **Reunir requerimentos:** RF5 Check de asistencia, RNF4 Historial de modificaciones.
 - **Aspectos sobresalientes:** ¿Cómo manejar pacientes sin turno? ¿Se registra el motivo de la demora? ¿El paciente puede avisar llegada por WhatsApp?
-- **Prioridad:** Media
-- **Riesgo:** Bajo
+- **Prioridad:** Alta
+- **Riesgo:** Medio

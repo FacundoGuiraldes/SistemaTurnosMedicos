@@ -31,10 +31,10 @@
 
 ## Condiciones, suposiciones y preguntas
 
-- **Precondiciones:** El paciente debe estar registrado en el sistema.
+- **Precondiciones:** El paciente debe estar registrado en el sistema. Deben existir fechas y horarios disponibles en la agenda del médico.
 - **Poscondiciones:** El turno queda guardado en la agenda del sistema y bloquea la disponibilidad en esa franja horaria.
 - **Suposiciones:** El paciente puede comunicarse por teléfono o presencial. Hay disponibilidad de turnos.
-- **Reunir requerimentos:** RF1 Gestión de turnos
+- **Reunir requerimentos:** RF1 Gestión de turnos, RF3 Notificación automática al paciente, RNF1 Evitar superposición de turnos.
 - **Aspectos sobresalientes:** ¿Se notifica automáticamente al paciente por WhatsApp? ¿Qué ocurre si no hay disponibilidad? ¿Se permite sobreturno manual?
 - **Prioridad:** Alta
 - **Riesgo:** Medio

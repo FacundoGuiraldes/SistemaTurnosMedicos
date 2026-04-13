@@ -34,7 +34,7 @@
 - **Precondiciones:** Deben existir turnos asignados en la agenda.
 - **Poscondiciones:** El doctor puede visualizar los turnos programados.
 - **Suposiciones:** El doctor tiene credenciales válidas y la agenda está actualizada.
-- **Reunir requerimentos:** RF2 Visualizar agenda
+- **Reunir requerimentos:** RF2 Visualizar agenda, RF4 Gestión de disponibilidad y bloqueo.
 - **Aspectos sobresalientes:** ¿Se puede filtrar por semana o mes? ¿Se exporta o imprime la agenda? ¿El doctor puede ver solo sus turnos?
-- **Prioridad:** Media
+- **Prioridad:** Alta
 - **Riesgo:** Bajo
