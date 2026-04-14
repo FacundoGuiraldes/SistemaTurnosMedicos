@@ -139,9 +139,9 @@ Todos los comentarios generados por Copilot fueron revisados y considerados pert
 
 ---
 
-## Code Review 2 — PR #25 de ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
+## Code Review 2 — PR #31 de ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 
-**PR revisada:** `#25 - Agrego diagramas de casos de uso, imagenes, indices y doc de IA`
+**PR revisada:** `#31 - A2 Modelador de diagramas de casos de uso y docs IA`
 **Autora:** ValeriaMSilva
 **Rol:** Modelador de Diagramas de Casos de Uso
 
@@ -193,7 +193,7 @@ Copilot analizó los 5 archivos `.puml` y sus correspondientes `.png` contra los
 
 **Cobertura de los 5 casos de uso:** completa — todos tienen `.puml` y `.png`. ✅
 
-**Actores por diagrama:** todos coinciden con `introduccion.md`. ✅
+**Sintaxis `<<include>>` / `<<extend>>`:** en inglés en todos los archivos. ✅
 
 **Cobertura de requisitos funcionales:**
 
@@ -201,40 +201,43 @@ Copilot analizó los 5 archivos `.puml` y sus correspondientes `.png` contra los
 |---|---|
 | RF1 — Gestión de turnos | ✅ Cubierto por CU1 y CU2 |
 | RF2 — Visualizar agenda | ✅ Cubierto por CU5 |
-| RF3 — Notificación automática (WhatsApp) | ⚠️ No modelada en ningún diagrama |
-| RF4 — Disponibilidad y bloqueo | ⚠️ No modelada en ningún diagrama |
+| RF3 — Notificación automática (WhatsApp) | ⚠️ Solo modelada en CU2; ausente en CU1 |
+| RF4 — Disponibilidad y bloqueo | ⚠️ No modelada en CU5 |
 | RF5 — Check de asistencia | ✅ Cubierto por CU3 |
 
 **Problemas detectados:**
 
-1. **Todos los `.puml` — L12–13 aprox.** — El keyword `<<incluir>>` no es reconocido por PlantUML. Debe usarse `<<include>>` en inglés. Afecta a los 5 archivos.
-2. **`02-caso-uso-registrar-llegada-03.puml` L14** — La dirección de la relación `<<extender>>` está invertida: `UC4 ..> UC1` es semánticamente incorrecto en UML. Además el keyword debe ser `<<extend>>`. "Ver lista de espera" no es una extensión de CU3 sino una funcionalidad independiente del Doctor.
-3. **RF3 y RF4 sin cobertura:** ningún diagrama modela las notificaciones automáticas ni el bloqueo de disponibilidad.
-4. **Ausencia de diagrama consolidado:** no existe un único `.puml` que muestre todos los casos de uso del sistema.
+1. **`02-caso-uso-cancelar-turno-02.puml` L6** — El actor `Paciente` está declarado pero no tiene asociación con `UC1 "Cancelar turno"`. Según `introduccion.md`, CU2 tiene actores Paciente y Secretaria. Falta `Paciente -- UC1`.
+2. **`02-caso-uso-registrar-llegada-03.puml` L4–5** — El actor `Paciente` no está declarado en el diagrama. CU3 requiere actores Paciente, Secretaria y Doctor según `introduccion.md`. El flujo principal comienza con la llegada del paciente.
+3. **`02-caso-uso-registrar-llegada-03.puml` L8–10** — `UC4 "Ver lista de espera"` está conectado al `Doctor` pero no tiene ninguna relación con `UC1 "Registrar llegada del paciente"`. El caso de uso queda aislado sin vínculo al flujo central.
+4. **`02-caso-uso-registrar-paciente-04.puml` L12** — `UC5 "Solicitar turno"` está declarado sin ninguna relación en el diagrama (usecase fantasma). El comentario en L11 lo asocia incorrectamente a RF5 (Check de asistencia), cuando "Solicitar turno" corresponde a CU1 y RF5 es check de asistencia.
+5. **`02-caso-uso-registrar-paciente-04.puml` L20** — El archivo no tiene la directiva de cierre `@enduml`.
 
 ### Ajustes realizados al output de la IA
 
 Todos los comentarios generados por Copilot fueron revisados y considerados pertinentes. Se publicaron íntegramente en la PR sin modificaciones.
 
-- ✅ Corrección de `<<incluir>>` → `<<include>>` en todos los archivos — aceptada, es un error técnico de sintaxis PlantUML.
-- ✅ Dirección invertida de `<<extender>>` en CU3 — aceptada, la dirección de `<<extend>>` en UML va del caso extendido al base, no al revés.
-- ✅ "Ver lista de espera" como CU independiente — aceptada, semánticamente no es una extensión de CU3.
-- ✅ RF3 y RF4 sin cobertura — aceptada, son requisitos funcionales explícitos sin representación en ningún diagrama.
-- ✅ Ausencia de diagrama consolidado — aceptada como observación menor, buena práctica de documentación.
+- ✅ Actor `Paciente` no asociado en CU2 — aceptada, discrepancia directa con los actores definidos en `introduccion.md`.
+- ✅ Actor `Paciente` ausente en CU3 — aceptada, CU3 define 3 actores y el flujo comienza con la llegada del paciente.
+- ✅ `UC4 "Ver lista de espera"` aislada en CU3 — aceptada, un caso de uso sin relación al flujo central es un error de modelado.
+- ✅ UC5 fantasma con RF incorrecto en CU4 — aceptada, el usecase está desconectado y el comentario referencia un RF equivocado.
+- ✅ `@enduml` faltante en CU4 — aceptada, el archivo queda sintácticamente incompleto.
+- ✅ RF3 sin cobertura en CU1 — aceptada, RF3 es un requisito explícito de la solicitud de turno.
+- ✅ RF4 sin cobertura en CU5 — aceptada, RF4 se vincula directamente con la gestión de la agenda del doctor.
 
 ### Request Changes cargados en el diff de la PR
 
 | Archivo | Cambio sugerido |
 |---|---|
-| `diagramas/02-casos-de-uso/02-caso-uso-solicitar-turno-01.puml` L12–13 | Cambiar `<<incluir>>` por `<<include>>` |
-| `diagramas/02-casos-de-uso/02-caso-uso-cancelar-turno-02.puml` L12–13 | Cambiar `<<incluir>>` por `<<include>>` |
-| `diagramas/02-casos-de-uso/02-caso-uso-registrar-llegada-03.puml` L10–12 | Cambiar `<<incluir>>` por `<<include>>` |
-| `diagramas/02-casos-de-uso/02-caso-uso-registrar-llegada-03.puml` L14 | Corregir dirección y keyword de `<<extender>>`; separar "Ver lista de espera" como CU independiente del Doctor |
-| `diagramas/02-casos-de-uso/02-caso-uso-registrar-paciente-04.puml` L13–15 | Cambiar `<<incluir>>` por `<<include>>` |
-| `diagramas/02-casos-de-uso/02-caso-uso-ver-agenda-05.puml` L11–12 | Cambiar `<<incluir>>` por `<<include>>`; considerar agregar extensión para bloqueo de horarios (RF4) |
-| General | Agregar cobertura de RF3 (notificación automática) en al menos un diagrama |
+| `diagramas/02-casos-de-uso/02-caso-uso-cancelar-turno-02.puml` L6 | Agregar `Paciente -- UC1` (actor Paciente no está asociado al caso de uso) |
+| `diagramas/02-casos-de-uso/02-caso-uso-registrar-llegada-03.puml` L4–5 | Agregar `actor Paciente` y `Paciente -- UC1` (actor ausente; CU3 requiere Paciente, Secretaria y Doctor) |
+| `diagramas/02-casos-de-uso/02-caso-uso-registrar-llegada-03.puml` L8–10 | Vincular `UC4 "Ver lista de espera"` al flujo central con `<<extend>>`, o retirarlo a un diagrama propio |
+| `diagramas/02-casos-de-uso/02-caso-uso-registrar-paciente-04.puml` L12 | Eliminar `UC5 "Solicitar turno"` (usecase sin relación y comentario con RF incorrecto) |
+| `diagramas/02-casos-de-uso/02-caso-uso-registrar-paciente-04.puml` L20 | Agregar `@enduml` como cierre del archivo |
+| `diagramas/02-casos-de-uso/02-caso-uso-solicitar-turno-01.puml` | Considerar agregar `<<extend>>` para notificación automática (RF3) |
+| `diagramas/02-casos-de-uso/02-caso-uso-ver-agenda-05.puml` | Considerar agregar `<<extend>>` para bloqueo de horarios (RF4) |
 
-**Review publicada:** https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/25#pullrequestreview-4095856789
+**Review publicada:** https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31#pullrequestreview-4103233925
 
 ---
 
@@ -332,64 +335,12 @@ Todos los comentarios generados por Copilot fueron revisados y considerados pert
 
 ---
 
-## Code Review 4 — Segunda revisión (PR a definir)
-
-**PR revisada:** `#[NUMERO_PR]`
-**Autora:** [Nombre]
-**Rol:** [Rol]
-
-> Este cuarto review puede ser una segunda pasada sobre cualquiera de las PRs anteriores luego de que la compañera aplique correcciones, o bien la revisión de una PR adicional si alguna compañera abrió más de una.
-
-### Prompt utilizado en Copilot Agent Mode
-
-```
-Lee el archivo anexos/introduccion.md de este repositorio como contexto del proyecto.
-
-Revisá los cambios introducidos en esta PR en respuesta a los Request Changes previos 
-sobre [describir qué corregía esta PR].
-
-El sistema es un gestor de turnos para un consultorio médico con los actores 
-Paciente, Secretaria y Doctor, y las clases: Usuario, Paciente, Secretaria, 
-Doctor, Turno, Agenda, SalaEspera y Sistema.
-
-Validá que las correcciones aplicadas sean suficientes y coherentes con los 
-requisitos funcionales RF1 a RF5 y los casos de uso de introduccion.md.
-
-Indicame:
-1. ¿Los cambios resuelven correctamente los Request Changes anteriores?
-2. ¿Se introdujo algún nuevo problema o inconsistencia con los requisitos?
-3. ¿El entregable está listo para ser mergeado a develop?
-```
-
-### Archivos de contexto referenciados
-
-- `anexos/introduccion.md`
-- [Archivos modificados en la PR]
-
-### Output de Copilot (resumen)
-
-[Completar con el resumen de los comentarios que generó Copilot]
-
-### Ajustes realizados al output de la IA
-
-[Indicar qué comentarios de Copilot se consideraron pertinentes y cuáles no, y por qué]
-
-- ✅ [Comentario aceptado]
-- ❌ [Comentario descartado — motivo]
-
-### Request Changes cargados en el diff de la PR
-
-| Archivo | Línea | Comentario cargado |
-|--------|-------|-------------------|
-| [ruta del archivo] | [L#] | [Comentario] |
-
----
 
 ## Resumen de reviews realizados
 
 | # | PR | Autora | Rol | Estado |
 |---|-----|--------|-----|--------|
 | 1 | #26 | carolabenvenuto-uces | Diseñador de Tarjetas CRC | 🔄 Request Changes |
-| 2 | #25 | ValeriaMSilva | Modelador de Diagramas de Casos de Uso | 🔄 Request Changes |
+| 2 | #31 | ValeriaMSilva | Modelador de Diagramas de Casos de Uso | 🔄 Request Changes |
 | 3 | #28 | caterinacerdan | Especialista en Escenarios | 🔄 Request Changes |
 | 4 | #[N] | [Nombre] | [Rol] | [✅ Aprobada / 🔄 Request Changes] |
