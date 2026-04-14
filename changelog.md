@@ -10,8 +10,10 @@
   PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
 ### Modified
-- Refactorización de la arquitectura inicial para aplicar principios **SOLID**, desacoplamiento de la clase Sistema y mejora de la lógica de estados en Sala de Espera.
-- **Corregida la lógica del boceto inicial (Excalidraw)** mediante el refinamiento de las tarjetas CRC para garantizar la coherencia del modelo.
+- **Refactorización técnica integral:** Se ajustaron las responsabilidades a formato activo y se sincronizaron los atributos (como `departamento` en Secretaria y colecciones en `Sistema`) con el boceto inicial de Excalidraw.
+- **Optimización de Arquitectura:** Mejora en el desacoplamiento de la clase Sistema y aplicación de principios **SOLID** (Responsabilidad Única) en la jerarquía de `Usuario`.
+- **Cumplimiento de Requisitos:** Inclusión explícita de la lógica para el **RF3 (Notificaciones)** y validación de flujos de llegada en `Sala de Espera`.
+- **Consistencia del Modelo:** Definición de la clase `Usuario` como **abstracta** para garantizar la integridad y coherencia del diseño orientado a objetos.
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
