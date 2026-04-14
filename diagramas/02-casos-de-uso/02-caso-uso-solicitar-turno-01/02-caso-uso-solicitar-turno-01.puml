@@ -12,4 +12,6 @@ Secretaria -- UC1
 
 UC1 ..> UC2 : <<include>>
 UC1 ..> UC3 : <<include>>
+usecase "Notificar asignación al paciente" as UC4
+UC4 ..> UC1 : <<extend>>
 @enduml
