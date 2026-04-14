@@ -15,3 +15,11 @@
 - **Enriquecimiento de Atributos:** - Se agregó `especialidad` a la clase **Turno** para permitir búsquedas y filtros precisos.
     - Se incorporó el manejo de **Estados Dinámicos** (Esperando, En consulta, Finalizado) en la **Sala de Espera**, permitiendo una trazabilidad real del flujo de atención que el informe inicial no contemplaba detalladamente.
 - **Claridad en la Lógica de Agenda:** Se separó la "configuración de reglas" (responsabilidad de Agenda) de la "validación de colisiones" (responsabilidad de Sistema), logrando un diseño más robusto ante cambios en las reglas de negocio.
+
+## Iteración Final: Refactorización por Feedback Técnico
+Tras una revisión por pares (Peer Review) del equipo, se realizó una última fase de ajustes manuales y asistidos para garantizar la máxima coherencia técnica:
+
+- **Sincronización de Atributos:** Se restauraron atributos clave del boceto original que se habían omitido (ej. `departamento` en Secretaria y colecciones de `usuarios`, `turnos` y `agendas` en Sistema).
+- **Activación de Responsabilidades:** Se revirtió la lógica pasiva en los actores principales. El Paciente y el Doctor ahora poseen **responsabilidades activas** (ej. "Solicitar turno" en lugar de "Proveer datos"), alineando el diseño con el comportamiento real de los objetos en un sistema orientado a eventos.
+- **Definición de Abstracción:** Se marcó explícitamente a la clase `Usuario` como **Abstracta**, impidiendo instancias genéricas y fortaleciendo la jerarquía de herencia.
+- **Cumplimiento de RF Específicos:** Se integró formalmente la responsabilidad de notificaciones para cubrir el **RF3** y se refinó la interacción de la **Sala de Espera** para la gestión de colas de asistencia.
