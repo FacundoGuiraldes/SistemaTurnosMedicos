@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ### Added
-- [feature/documentador-coordinador-a2] Documentacion y coordinacion del repositorio para la AO2: code reviews asistidos con Copilot Agent Mode (PR #25, #26 y #28), documentacion de prompts/ajustes en `ia/a2/documentador-coordinador.md` y actualizacion del README/changelog.
+- [feature/documentador-coordinador-a2] Documentacion y coordinacion del repositorio para la AO2: code reviews asistidos con Copilot Agent Mode (PR #26, #31 y #28), documentacion de prompts/ajustes en `ia/a2/documentador-coordinador.md` y actualizacion del README/changelog.
   PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador de Repositorio)
 
 
