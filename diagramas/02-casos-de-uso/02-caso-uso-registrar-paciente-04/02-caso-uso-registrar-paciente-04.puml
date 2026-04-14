@@ -8,10 +8,12 @@ usecase "Ingresar datos" as UC2
 usecase "Validar datos" as UC3
 usecase "Almacenar paciente" as UC4
 
+' Nuevo caso de uso agregado para cumplir con el RF5
+usecase "Solicitar turno" as UC5
+
 Paciente -- UC1
 Secretaria -- UC1
 
 UC1 ..> UC2 : <<include>>
 UC1 ..> UC3 : <<include>>
 UC1 ..> UC4 : <<include>>
-@enduml
