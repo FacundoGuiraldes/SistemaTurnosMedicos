@@ -8,6 +8,7 @@ usecase "Buscar turno" as UC2
 usecase "Liberar disponibilidad" as UC3
 usecase "Notificar cancelación al paciente" as UC4
 
+Paciente -- UC1
 Secretaria -- UC1
 
 UC1 ..> UC2 : <<include>>
