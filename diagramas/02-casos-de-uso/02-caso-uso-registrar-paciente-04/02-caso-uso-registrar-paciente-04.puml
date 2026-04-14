@@ -11,7 +11,7 @@ usecase "Almacenar paciente" as UC4
 Paciente -- UC1
 Secretaria -- UC1
 
-UC1 ..> UC2 : <<incluir>>
-UC1 ..> UC3 : <<incluir>>
-UC1 ..> UC4 : <<incluir>>
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 ..> UC4 : <<include>>
 @enduml

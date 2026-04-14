@@ -10,6 +10,6 @@ usecase "Liberar disponibilidad" as UC3
 Paciente -- UC1
 Secretaria -- UC1
 
-UC1 ..> UC2 : <<incluir>>
-UC1 ..> UC3 : <<incluir>>
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
 @enduml

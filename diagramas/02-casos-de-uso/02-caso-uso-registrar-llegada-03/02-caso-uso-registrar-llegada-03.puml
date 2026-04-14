@@ -13,7 +13,7 @@ Paciente -- UC1
 Secretaria -- UC1
 Doctor -- UC1
 
-UC1 ..> UC2 : <<incluir>>
-UC1 ..> UC3 : <<incluir>>
-UC4 ..> UC1 : <<extender>>
+UC1 ..> UC2 : <<include
+UC1 ..> UC3 : <<include
+UC4 ..> UC1 : <<extend>
 @enduml
