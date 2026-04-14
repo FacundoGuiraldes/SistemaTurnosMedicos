@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+actor Paciente
+actor Secretaria
+
+usecase "Solicitar turno" as UC1
+usecase "Verificar disponibilidad" as UC2
+usecase "Registrar turno" as UC3
+
+Paciente -- UC1
+Secretaria -- UC1
+
+UC1 ..> UC2 : <<incluir>>
+UC1 ..> UC3 : <<incluir>>
+@enduml

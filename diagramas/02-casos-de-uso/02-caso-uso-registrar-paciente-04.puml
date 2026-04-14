@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+actor Paciente
+actor Secretaria
+
+usecase "Registrar paciente" as UC1
+usecase "Ingresar datos" as UC2
+usecase "Validar datos" as UC3
+usecase "Almacenar paciente" as UC4
+
+Paciente -- UC1
+Secretaria -- UC1
+
+UC1 ..> UC2 : <<incluir>>
+UC1 ..> UC3 : <<incluir>>
+UC1 ..> UC4 : <<incluir>>
+@enduml
