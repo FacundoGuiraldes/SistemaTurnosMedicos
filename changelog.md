@@ -1,7 +1,19 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- [feature/diseniador-tarjetas-crc...] Diseño y organización de Tarjetas CRC: 
+  - Estructura final de **8 clases** detalladas con diseño orientado a objetos.
+  - Creación de carpeta `herramientas-agile/tarjetas-crc/` con archivos individuales.
+  - Índice general en `herramientas_agile.md` con enlaces funcionales.
+  - Documentación detallada del proceso de refinamiento de IA en `ia/a2/`.
+  PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
+### Modified
+- **Refactorización técnica integral:** Se ajustaron las responsabilidades a formato activo y se sincronizaron los atributos (como `departamento` en Secretaria y colecciones en `Sistema`) con el boceto inicial de Excalidraw.
+- **Optimización de Arquitectura:** Mejora en el desacoplamiento de la clase Sistema y aplicación de principios **SOLID** (Responsabilidad Única) en la jerarquía de `Usuario`.
+- **Cumplimiento de Requisitos:** Inclusión explícita de la lógica para el **RF3 (Notificaciones)** y validación de flujos de llegada en `Sala de Espera`.
+- **Consistencia del Modelo:** Definición de la clase `Usuario` como **abstracta** para garantizar la integridad y coherencia del diseño orientado a objetos.
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
