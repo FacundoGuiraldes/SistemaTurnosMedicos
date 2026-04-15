@@ -34,7 +34,7 @@
 - **Precondiciones:** El paciente debe tener un turno asignado.
 - **Poscondiciones:** El turno queda disponible nuevamente para otra persona.
 - **Suposiciones:** El paciente recuerda el turno y la cancelación se realiza con la debida antelación.
-- **Reunir requerimentos:** RF1 Gestión de turnos
+- **Reunir requerimentos:** RF1 Gestión de turnos, RF3 Notificación automática al paciente, RNF4 Historial de modificaciones.
 - **Aspectos sobresalientes:** ¿Se notifica al paciente y al médico? ¿Se permite cancelación tardía? ¿Se registra el motivo de la cancelación?
 - **Prioridad:** Alta
 - **Riesgo:** Medio
