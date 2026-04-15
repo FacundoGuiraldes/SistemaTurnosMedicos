@@ -1,25 +1,24 @@
-# SistemaTurnosMedicos - Diseño Orientado a Objetos
+# SistemaTurnosMedicos - Diseno Orientado a Objetos
 
-* **Materia:** Diseño Orientado a Objetos
-* **Carrera:** Tecnicatura Universitaria en Programación de Sistemas
-* **Grupo:** Grupo N° 1
+- Materia: Diseno Orientado a Objetos.
+- Carrera: Tecnicatura en Programacion de Sistemas.
+- Grupo: Grupo N° 1.
 
-## Introducción
+## Introduccion
 
-Este proyecto tiene como objetivo desarrollar el diseño orientado a objetos de un sistema realista para un pequeño consultorio médico. La solución busca digitalizar la gestión de sus turnos a partir de los requerimientos.
+Este proyecto tiene el objetivo de desarrollar el diseno orientado a objetos de un sistema de turnos medicos.
 
-## Integrantes:
+## Integrantes
 
-| Nombre y Apellido | Matrícula | Usuario de GitHub |
+| Nombre y Apellido | Matricula | Usuario de GitHub |
 | --- | --- | --- |
 | Facundo Guiraldes | 114794 | @FacundoGuiraldes |
 | Carola Benvenuto | 158686 | @carolabenvenuto-uces |
 | Caterina Cerdan | 159237 | @caterinacerdan |
 | Valeria Silva | 156612 | @ValeriaMSilva |
 
-## Diagramas y Diseños
+## Diagramas y Disenos
 
-* [Anexos](anexos/anexos.md)
-* [Diagramas UML] diagramas/diagramasUML.md
-* [Herramientas Agile] herramientas-agile/herramientas_agile.md
-
+- [Anexos](anexos/anexos.md)
+- [Diagramas UML](diagramas/diagramasUML.md)
+- [Herramientas Agile](herramientas-agile/herramientas_agile.md)
