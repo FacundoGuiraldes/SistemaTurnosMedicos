@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 ### Added
+- [feature/espec-escenarios-casos-uso-add-escenario-1] Especialista en 5 escenarios de casos de uso. 
+PR: [#28](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/28) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
 - [feature/diseniador-tarjetas-crc...] Diseño y organización de Tarjetas CRC: 
   - Estructura final de **8 clases** detalladas con diseño orientado a objetos.
   - Creación de carpeta `herramientas-agile/tarjetas-crc/` con archivos individuales.
