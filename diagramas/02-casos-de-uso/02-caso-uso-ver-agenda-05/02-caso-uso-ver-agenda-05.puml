@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+actor Doctor
+
+usecase "Ver agenda" as UC1
+usecase "Seleccionar día" as UC2
+usecase "Visualizar turnos" as UC3
+
+Doctor -- UC1
+
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+usecase "Bloquear horario" as UC4
+UC4 ..> UC1 : <<extend>>
+@enduml
