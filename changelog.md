@@ -4,6 +4,8 @@
 ### Added
 - [feature/documentador-coordinador-a2] Documentacion y coordinacion del repositorio para la AO2: code reviews asistidos con Copilot Agent Mode (PR #26, #31 y #28), documentacion de prompts/ajustes en `ia/a2/documentador-coordinador.md` y actualizacion del README/changelog.
   PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador de Repositorio)
+- [feature/modelador-diag-casos-uso-crear-diagramas-v2] Modelado de 5 diagramas de casos de uso en PlantUML con sus exportaciones PNG e indice de diagramas UML.
+PR: [#31](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 - [feature/espec-escenarios-casos-uso-add-escenario-1] Especialista en 5 escenarios de casos de uso. 
 PR: [#28](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/28) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
 - [feature/diseniador-tarjetas-crc...] Diseño y organización de Tarjetas CRC: 
