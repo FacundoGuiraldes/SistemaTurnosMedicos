@@ -11,7 +11,7 @@ PR: [#28](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/28) - @c
 - [feature/diseniador-tarjetas-crc-add-tarjeta-clase-1-v2] Diseño y documentación de 9 tarjetas CRC en archivos individuales con índice funcional y bitácora de IA. PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
 ### Fixed
-- [fix/diseniador-tarjetas-crc-ajustes-feedback] Corrección de Alerta Crítica en formato de índice, ajuste de lógica en clase Doctor (autorización de sobreturnos), creación de tarjeta LlegadaPaciente y limpieza de sintaxis en bitácora de IA. PR: [#40](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/40) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+- [fix/diseniador-tarjetas-crc-ajustes-feedback] Corrección de Alerta Crítica en formato de índice, ajuste de lógica en clase Doctor, creación de tarjeta LlegadaPaciente y limpieza de bitácora de IA. PR: [#35](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/35) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
