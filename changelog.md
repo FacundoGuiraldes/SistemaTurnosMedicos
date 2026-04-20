@@ -1,25 +1,16 @@
 # Changelog
 
-## [Unreleased]
+## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
-- [feature/documentador-coordinador-a2] Documentacion y coordinacion del repositorio para la AO2: code reviews asistidos con Copilot Agent Mode (PR #26, #31 y #28), documentacion de prompts/ajustes en `ia/a2/documentador-coordinador.md` y actualizacion del README/changelog.
-  PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador de Repositorio)
-- [feature/modelador-diag-casos-uso-crear-diagramas-v2] Modelado de 5 diagramas de casos de uso en PlantUML con sus exportaciones PNG e indice de diagramas UML.
-PR: [#31](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
-- [feature/espec-escenarios-casos-uso-add-escenario-1] Especialista en 5 escenarios de casos de uso. 
-PR: [#28](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/28) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
-- [feature/diseniador-tarjetas-crc...] Diseño y organización de Tarjetas CRC: 
-  - Estructura final de **8 clases** detalladas con diseño orientado a objetos.
-  - Creación de carpeta `herramientas-agile/tarjetas-crc/` con archivos individuales.
-  - Índice general en `herramientas_agile.md` con enlaces funcionales.
-  - Documentación detallada del proceso de refinamiento de IA en `ia/a2/`.
-  PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+- [feature/documentador-coordinador-a2] Documentacion y coordinacion del repositorio para la AO2: code reviews asistidos con Copilot Agent Mode (PR #26, #31 y #28), documentacion de prompts en `ia/a2/documentador-coordinador.md` y actualizacion del README/changelog. PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador)
+- [feature/modelador-diag-casos-uso-crear-diagramas-v2] Modelado de 5 diagramas de casos de uso en PlantUML con sus exportaciones PNG e indice de diagramas UML. PR: [#31](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
+- [feature/espec-escenarios-casos-uso-add-escenario-1] Especialista en 5 escenarios de casos de uso con índice de escenarios detallado. PR: [#28](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/28) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
+- [feature/diseniador-tarjetas-crc-add-tarjeta-clase-1-v2] Diseño y documentación de 9 tarjetas CRC en archivos individuales con índice funcional y bitácora de IA. PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
-### Modified
-- **Refactorización técnica integral:** Se ajustaron las responsabilidades a formato activo y se sincronizaron los atributos (como `departamento` en Secretaria y colecciones en `Sistema`) con el boceto inicial de Excalidraw.
-- **Optimización de Arquitectura:** Mejora en el desacoplamiento de la clase Sistema y aplicación de principios **SOLID** (Responsabilidad Única) en la jerarquía de `Usuario`.
-- **Cumplimiento de Requisitos:** Inclusión explícita de la lógica para el **RF3 (Notificaciones)** y validación de flujos de llegada en `Sala de Espera`.
-- **Consistencia del Modelo:** Definición de la clase `Usuario` como **abstracta** para garantizar la integridad y coherencia del diseño orientado a objetos.
+### Fixed
+- [fix/rc2-indice-herramientas] Reestructuración de índice de herramientas como categoría para cumplir con estándar de navegación (RC2). PR: [#36](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/36) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+- [fix/rc3-rc4-logica-crc] Ajuste de responsabilidades activas en Doctor y creación de tarjeta de asistencia (RC3, RC4). PR: [#NUM_PR_2](URL_PR_2) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+- [fix/rc1-formato-changelog] Normalización de entradas a una sola línea y corrección de encabezados versionados (RC1). PR: [#ESTA_PR](ESTA_URL) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
