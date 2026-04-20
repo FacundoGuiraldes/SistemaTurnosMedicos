@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
 - [feature/documentador-coordinador-a2] Documentacion y coordinacion del repositorio para la AO2: code reviews asistidos con Copilot Agent Mode (PR #26, #31 y #28), documentacion de prompts/ajustes en `ia/a2/documentador-coordinador.md` y actualizacion del README/changelog.
   PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador de Repositorio)
@@ -8,18 +8,10 @@
 PR: [#31](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 - [feature/espec-escenarios-casos-uso-add-escenario-1] Especialista en 5 escenarios de casos de uso. 
 PR: [#28](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/28) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
-- [feature/diseniador-tarjetas-crc...] Diseño y organización de Tarjetas CRC: 
-  - Estructura final de **8 clases** detalladas con diseño orientado a objetos.
-  - Creación de carpeta `herramientas-agile/tarjetas-crc/` con archivos individuales.
-  - Índice general en `herramientas_agile.md` con enlaces funcionales.
-  - Documentación detallada del proceso de refinamiento de IA en `ia/a2/`.
-  PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+- [feature/diseniador-tarjetas-crc-add-tarjeta-clase-1-v2] Diseño y documentación de 9 tarjetas CRC en archivos individuales con índice funcional y bitácora de IA. PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
-### Modified
-- **Refactorización técnica integral:** Se ajustaron las responsabilidades a formato activo y se sincronizaron los atributos (como `departamento` en Secretaria y colecciones en `Sistema`) con el boceto inicial de Excalidraw.
-- **Optimización de Arquitectura:** Mejora en el desacoplamiento de la clase Sistema y aplicación de principios **SOLID** (Responsabilidad Única) en la jerarquía de `Usuario`.
-- **Cumplimiento de Requisitos:** Inclusión explícita de la lógica para el **RF3 (Notificaciones)** y validación de flujos de llegada en `Sala de Espera`.
-- **Consistencia del Modelo:** Definición de la clase `Usuario` como **abstracta** para garantizar la integridad y coherencia del diseño orientado a objetos.
+### Fixed
+- [fix/diseniador-tarjetas-crc-ajustes-feedback] Corrección de Alerta Crítica en formato de índice, ajuste de lógica en clase Doctor (autorización de sobreturnos), creación de tarjeta LlegadaPaciente y limpieza de sintaxis en bitácora de IA. PR: [#40](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/40) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
