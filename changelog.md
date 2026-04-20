@@ -12,7 +12,8 @@
 - [feature/diseniador-tarjetas-crc-add-tarjeta-clase-1-v2] Inclusión explícita de lógica RF3 (Notificaciones) y definición de Usuario como abstracta. PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
 ### Fixed
-- [fix/changelog-md-a2] Corrección de estructura del changelog según release. PR: [#33](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/33) - @FacundoGuiraldes (Documentador y Coordinador)
+- [fix/changelog-md-a2] Corrección de estructura del changelog según release. PR: [#37](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/37) - @FacundoGuiraldes (Documentador y Coordinador)
+- [fix/fix/adición-PR31-changelog.md] Corrección de estructura del changelog PR: [#33](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/33) - @caterinacerdan (Modelador de casos de uso)
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
