@@ -21,6 +21,9 @@ PR: [#28](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/28) - @c
 - **Cumplimiento de Requisitos:** Inclusión explícita de la lógica para el **RF3 (Notificaciones)** y validación de flujos de llegada en `Sala de Espera`.
 - **Consistencia del Modelo:** Definición de la clase `Usuario` como **abstracta** para garantizar la integridad y coherencia del diseño orientado a objetos.
 
+### Fixed
+- [fix/rc2-indice-herramientas] Reestructurar índice de herramientas como categoría. PR: [#36](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/36) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
 - [feature/analista-...] Análisis de requerimientos: RFs, RNFs y NotebookLM.
