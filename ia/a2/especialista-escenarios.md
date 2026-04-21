@@ -8,7 +8,7 @@ Se desarrollaron escenarios de casos de uso para el sistema de gestión de turno
 ## Prompt Utilizado
 
 ```text
-"Quiero que leas anexos/introducción.md y tengo una plantilla de escenarios para que me puedas completar en cada campo de escenarios con los 5 casos de uso más relevantes (se copió y pegó la plantilla).
+Quiero que leas anexos/introducción.md y tengo una plantilla de escenarios para que me puedas completar en cada campo de escenarios con los 5 casos de uso más relevantes (se copió y pegó la plantilla).
 ```
 ---
 
@@ -56,28 +56,31 @@ Se desarrollaron los siguientes escenarios:
 
 ## Ajustes Realizados al Output
 
-Ajustes Realizados al Output
-1. Solicitar turno
-Se agregaron los requisitos funcionales: RF1 Gestión de turnos, RF3 Notificación automática al paciente, RNF1 Evitar superposición de turnos. 
-Se agregaron precondiciones importantes que faltaban.
-2. Cancelar turno
-Se agregaron los requisitos funcionales:RF1 Gestión de turnos, RF3 Notificación automática al paciente, RNF4 Historial de modificaciones.
-3. Registrar llegada del paciente
-Se ajustó la prioridad a alta y se modificó el riesgo a medio.
-Se agregaron los requisitos funcionales: RF5 Check de asistencia, RNF4 Historial de modificaciones.
-Se ajustó mejor la precondicion.
-4. Registrar paciente
-Se agregaron los requisiros funcionales: RF1 Gestión de turnos (como precondición), RNF2 Simplicidad
-5. Ver agenda
-Se ajustó la prioridad a alta.
-Se agregaron los requisitos funcionales: RF2 Visualizar agenda, RF4 Gestión de disponibilidad y bloqueo.
+### 1. Solicitar turno
+- Se agregaron los requisitos funcionales: RF1 Gestión de turnos, RF3 Notificación automática al paciente, RNF1 Evitar superposición de turnos.
+- Se agregaron precondiciones faltantes.
+
+### 2. Cancelar turno
+- Se agregaron los requisitos funcionales: RF1 Gestión de turnos, RF3 Notificación automática al paciente, RNF4 Historial de modificaciones.
+
+### 3. Registrar llegada del paciente
+- Se ajustó la prioridad a alta y el riesgo a medio.
+- Se agregaron los requisitos funcionales: RF5 Check de asistencia, RNF4 Historial de modificaciones.
+- Se corrigió la precondición.
+
+### 4. Registrar paciente
+- Se agregaron los requisitos: RF1 Gestión de turnos (como precondición), RNF2 Simplicidad.
+
+### 5. Ver agenda
+- Se ajustó la prioridad a alta.
+- Se agregaron los requisitos: RF2 Visualizar agenda, RF4 Gestión de disponibilidad y bloqueo.
 ---
 ## Iteraciones realizadas
 
 Se realizaron 2 iteraciones:
 
-Generación inicial de escenarios utilizando IA.
-Revisión y corrección manual para ajustar precondiciones, flujo principal, requerimientos y prioridades según la consigna.
+- Generación inicial de escenarios utilizando IA.
+- Revisión y corrección manual para ajustar precondiciones, flujo principal, requerimientos y prioridades según la consigna.
 
 ## Conclusión
 
