@@ -5,18 +5,14 @@
 - [feature/documentador-coordinador-a2] Documentación y coordinación del repositorio para AO2. PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador de Repositorio)
 - [feature/espec-escenarios-casos-uso-add-escenario-1] Especialista en 5 escenarios de casos de uso. PR: [#28](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/28) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
 - [feature/modelador-diag-casos-uso-crear-diagramas-v2] Modelador de 5 diagramas de casos de uso en PlantUML. PR: [#31](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
-- [feature/diseniador-tarjetas-crc-add-tarjeta-clase-1-v2] Diseño y organización de 8 Tarjetas CRC. PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
-
-### Modified
-- [feature/documentador-coordinador-a2] Refactorización técnica integral del modelo: responsabilidades en formato activo, sincronización de atributos y principios SOLID. PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador)
-- [feature/diseniador-tarjetas-crc-add-tarjeta-clase-1-v2] Inclusión explícita de lógica RF3 (Notificaciones) y definición de Usuario como abstracta. PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+- [feature/diseniador-tarjetas-crc-add-tarjeta-clase-1-v2] Diseño inicial de Tarjetas CRC y definición de Usuario como clase abstracta. PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
 ### Fixed
+- [fix/rc6-tarjetas-crc-ajustes] Ajustes de lógica en Doctor (sobreturnos), restauración de Tarjeta 09 (LlegadaPaciente) y cumplimiento de RF3. PR: [#41](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/41) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+- [fix/rc5-prompt-ia-disenador] Corrección de formato en Prompt de IA para reproducibilidad (uso de triple backticks). PR: [#39](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/39) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+- [fix/rc2-indice-herramientas] Reestructuración del índice de herramientas y validación de rutas de archivos. PR: [#36](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/36) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 - [fix/changelog-md-a2] Corrección de estructura del changelog según release. PR: [#37](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/37) - @FacundoGuiraldes (Documentador y Coordinador)
-- [fix/fix/adición-PR31-changelog.md] Corrección de estructura del changelog PR: [#33](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/33) - @caterinacerdan (Modelador de casos de uso)
-
-### Fixed
-- [fix/rc2-indice-herramientas] Reestructurar índice de herramientas como categoría. PR: [#36](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/36) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
+- [fix/fix/adición-PR31-changelog.md] Corrección de estructura del changelog. PR: [#33](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/33) - @caterinacerdan (Modelador de casos de uso)
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
