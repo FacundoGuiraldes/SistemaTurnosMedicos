@@ -1,4 +1,4 @@
-|  |  |  |  |
+| | | | |
 |---|---|---|---|
 | **Nombre de la Clase:** | Doctor | | |
 | **Superclase:** | Usuario | | |
