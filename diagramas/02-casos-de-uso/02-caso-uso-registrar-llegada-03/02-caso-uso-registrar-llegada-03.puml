@@ -5,10 +5,12 @@ actor Paciente
 actor Secretaria
 actor Doctor
 
-usecase "Registrar llegada del paciente" as UC1
-usecase "Verificar turno" as UC2
-usecase "Marcar en espera" as UC3
-usecase "Ver lista de espera" as UC4
+rectangle "Sistema de Turnos Médicos" {
+    usecase "Registrar llegada del paciente" as UC1
+    usecase "Verificar turno" as UC2
+    usecase "Marcar en espera" as UC3
+    usecase "Ver lista de espera" as UC4
+}
 
 Paciente -- UC1
 Secretaria -- UC1

@@ -7,16 +7,13 @@
 - [feature/modelador-diag-casos-uso-crear-diagramas-v2] Modelador de 5 diagramas de casos de uso en PlantUML. PR: [#31](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 - [feature/diseniador-tarjetas-crc-add-tarjeta-clase-1-v2] Diseño y organización de 8 Tarjetas CRC. PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
-### Modified
-- [feature/documentador-coordinador-a2] Refactorización técnica integral del modelo: responsabilidades en formato activo, sincronización de atributos y principios SOLID. PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador)
-- [feature/diseniador-tarjetas-crc-add-tarjeta-clase-1-v2] Inclusión explícita de lógica RF3 (Notificaciones) y definición de Usuario como abstracta. PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
-
 ### Fixed
-- [fix/formato-changelog-pr31] Corrección de salto de línea y reubicación de PR 31 en changelog. PR: [#31]https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31 - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
+- [fix/formato-changelog-pr31] Corrección de salto de línea y reubicación de PR 31 en changelog. PR: [#31](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 - [fix/changelog-md-a2] Corrección de estructura del changelog según release. PR: [#37](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/37) - @FacundoGuiraldes (Documentador y Coordinador)
 - [fix/fix/adición-PR31-changelog.md] Corrección de estructura del changelog PR: [#33](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/33) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
 - [fix/rc2-indice-herramientas] Reestructurar índice de herramientas como categoría. PR: [#36](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/36) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 - [fix/escenarios-formato-a2] Corrección de formato de escenarios. PR: [#42](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/42) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
+- [fix/correccion-diagramas-cu] Ajustes técnicos y semánticos en diagramas de Casos de Uso: límites del sistema (rectangle "Sistema de Turnos Médicos"), relaciones obligatorias (extend→include para notificaciones), reintegración del actor Doctor en CU03, y reestructuración de rutas de archivos (.puml y .png a raíz de diagramas/02-casos-de-uso/). Documentación IA ampliada con prompt literal, output detallado por diagrama e iteraciones. PR: [#43](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/43) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
@@ -39,4 +36,3 @@
 PR: [#17](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/17) - @carolabenvenuto-uces (Diseñador de Clases)
 - [fix/templates-pr] Correción de rutas y templates de feature y realease. PR: [#20](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/20) - @caterinacerdan (Modelador de casos de uso)
 - [fix] Reubicación de introduccion.md en anexos y eliminación de duplicado.
-Commit: [55fc7ce](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/commit/55fc7ce2f6b20820bacb90f7f1f97f91bda00aab) - @caterinacerdan (Modelador de casos de uso)
