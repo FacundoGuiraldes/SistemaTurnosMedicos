@@ -1,9 +1,7 @@
 # Documentación del Diseñador: Tarjetas CRC
 
 ## Prompt Utilizado
-```
-Hola, por favor, necesito que leas los archivos anexos/introduccion.md y diagramas/01-diagrama-clases/01-boceto-inicial.excalidraw como contexto. Y que identifiques las clases principales del sistema y propongas los campos de cada tarjeta CRC (nombre, superclase/subclase, pensamiento del objeto, responsabilidades, colaboraciones, propiedades) siguiendo la plantilla proporcionada.
-```
+```Hola, por favor, necesito que leas los archivos anexos/introduccion.md y diagramas/01-diagrama-clases/01-boceto-inicial.excalidraw como contexto. Y que identifiques las clases principales del sistema y propongas los campos de cada tarjeta CRC (nombre, superclase/subclase, pensamiento del objeto, responsabilidades, colaboraciones, propiedades) siguiendo la plantilla proporcionada.```
 
 ## Archivos de Contexto
 - `anexos/introduccion.md`: Narrativa con las reglas de negocio y flujos del sistema.
