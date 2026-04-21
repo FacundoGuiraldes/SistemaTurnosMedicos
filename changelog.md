@@ -14,6 +14,7 @@
 - [fix/rc2-indice-herramientas] Reestructurar índice de herramientas como categoría. PR: [#36](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/36) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 - [fix/escenarios-formato-a2] Corrección de formato de escenarios. PR: [#42](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/42) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
 - [fix/correccion-diagramas-cu] Ajustes técnicos y semánticos en diagramas de Casos de Uso: límites del sistema (rectangle "Sistema de Turnos Médicos"), relaciones obligatorias (extend→include para notificaciones), reintegración del actor Doctor en CU03, y reestructuración de rutas de archivos (.puml y .png a raíz de diagramas/02-casos-de-uso/). Documentación IA ampliada con prompt literal, output detallado por diagrama e iteraciones. PR: [#43](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/43) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
+- [fix/rc5-prompt-ia-disenador] Corrección de formato del prompt en la documentación de IA (`ia/a2/disenador-tarjetas-crc.md`): se reemplazaron las comillas simples por bloques de código triple-backtick para asegurar la reproducibilidad según la rúbrica de evaluación. PR: [#39](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/39) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
