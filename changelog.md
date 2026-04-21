@@ -12,8 +12,12 @@ PR: [#28](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/28) - @c
   - Índice general en `herramientas_agile.md` con enlaces funcionales.
   - Documentación detallada del proceso de refinamiento de IA en `ia/a2/`.
   PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
-  - [feature/modelador-diag-casos-uso-crear-diagramas-v2] Creación y corrección de diagramas de casos de uso.
-  PR: [#31](link) - @ValeriaMSilva (Modelador de Casos de Uso)
+- [feature/modelador-diag-casos-uso-crear-diagramas-v2] Creación y corrección de diagramas de casos de uso. PR: [#31] (@ValeriaSilva)
+``
+
+
+### Fixed
+- [fix/correccion-diagramas-cu] Correcciones en límites de sistema, relaciones de dominio y doc IA. PR: [#43](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/43) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 
 ### Modified
 - **Refactorización técnica integral:** Se ajustaron las responsabilidades a formato activo y se sincronizaron los atributos (como `departamento` en Secretaria y colecciones en `Sistema`) con el boceto inicial de Excalidraw.
