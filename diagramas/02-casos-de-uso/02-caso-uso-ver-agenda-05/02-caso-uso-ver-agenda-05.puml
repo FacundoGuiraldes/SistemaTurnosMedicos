@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor Doctor
+actor Secretaria
+
+rectangle "Sistema de Turnos Médicos" {
+    usecase "Ver agenda" as UC1
+    usecase "Consultar turnos del día" as UC2
+    usecase "Bloquear horario" as UC3
+}
+
+Doctor -- UC1
+Secretaria -- UC1
+
+UC1 ..> UC2 : <<include>>
+UC3 ..> UC1 : <<extend>>
+@enduml
