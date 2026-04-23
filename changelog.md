@@ -2,7 +2,7 @@
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
-- [feature/especialista-dip-analisis-solid] Análisis técnico del principio DIP, marco teórico y diseño de diagrama UML (puml/png) para desacoplamiento de servicios. PR: [#] - @carolabenvenuto-uces (Especialista en Inversión de Dependencias)
+- [feature/especialista-dip-analisis-solid] Análisis técnico del principio DIP, marco teórico y diseño de diagrama UML (puml/png) para desacoplamiento de servicios. PR: [#51](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/51) - @carolabenvenuto-uces (Especialista en Inversión de Dependencias)
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
