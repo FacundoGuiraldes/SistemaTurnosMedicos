@@ -7,6 +7,7 @@
 - [feature/esp-isp-add-anexo-isp] Análisis técnico del principio ISP, marco teórico y diseño de diagrama UML (puml/png) para segregación de interfaces. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) | Issue: [#54](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/54) - @ValeriaMSilva (Especialista en ISP)
 - [feature/esp-extension-ocp-add-anexo-ocp] Aplicación del principio Abierto/Cerrado (OCP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: [#61](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/61) | Issue: [#57](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/57) - @FacundoGuiraldes (Especialista en OCP)
 - [feature/esp-extension-lsp-add-anexo-lsp] Aplicación del principio de Sustitución de Liskov (LSP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: [#62](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/62) | Issue: [#58](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/58) - @FacundoGuiraldes (Especialista en LSP)
+- [feature/documentador-coordinador-repo-update-readme.md] Documentación y coordinación del repositorio. PR:
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
