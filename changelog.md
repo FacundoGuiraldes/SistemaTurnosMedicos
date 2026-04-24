@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [Primer Parcial] - 2026-04-02
+## [Release Primer Parcial] - 2026-04-02
 ### Added
 - [feature/especialista-isp-analisis] Added: diseño, diagrama y documentación del principio ISP. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 
