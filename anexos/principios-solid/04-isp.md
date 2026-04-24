@@ -1,4 +1,4 @@
- Principio de Segregación de Interfaces (ISP)
+Principio de Segregación de Interfaces (ISP)
 
 ### Propósito y Tipo del Principio SOLID
 El Principio de Segregación de Interfaces (Interface Segregation Principle) pertenece a los principios de diseño de software SOLID. Su propósito principal es evitar que una clase se vea obligada a depender de interfaces que no utiliza, promoviendo la creación de interfaces pequeñas, cohesivas y altamente especializadas en lugar de interfaces únicas y "gordas" [1].
@@ -15,5 +15,10 @@ A continuación se presenta el diagrama de clases modelado con PlantUML que refl
 ![Diagrama UML - ISP](../../diagramas/01-diagrama-clases/01-solid-04-isp.png)
 
 ### Justificación Técnica
-Como se observa en el diagrama UML, en lugar de tener interfaces monolíticas, hemos segregado el comportamiento en interfaces del dominio médico altamente específicas: `IAgendaMedica`, `IGestorTurnos`, e `IGestorSalaEspera`. 
-De esta manera, la clase `Doctor` implementa únicamente `IAgendaMedica` y `IGestorSalaEspera`, lo cual tiene sentido técnico ya que solo necesita leer la disponibilidad y visualizar quién está esperando. Por otro lado, la clase `Secretaria` implementa `IGestorTurnos`, ya que es quien posee la responsabilidad de las operaciones CRUD (Crear, Modificar, Cancelar). Esta solución técnica garantiza una alta cohesión (cada interfaz tiene un propósito único) y un bajo acoplamiento, permitiendo que el sistema sea fácilmente extensible en el futuro sin romper código existente [3].
+Como se observa en el diagrama UML, en lugar de tener interfaces monolíticas, hemos segregado el comportamiento en interfaces del dominio médico altamente específicas: `IAgendaMedica`, `IGestorTurnos`, `IRegistroSalaEspera`, `IConsultaSalaEspera` e `IHistorialClinico`.
+
+De esta manera, la clase `Doctor` implementa únicamente `IConsultaSalaEspera` e `IHistorialClinico`, lo cual tiene sentido técnico ya que solo necesita visualizar quién está esperando en la sala de espera y registrar diagnósticos en el historial clínico. El Doctor NO implementa `IRegistroSalaEspera` porque no es su responsabilidad registrar la llegada de pacientes.
+
+Por otro lado, la clase `Secretaria` implementa `IGestorTurnos`, `IRegistroSalaEspera` e `IConsultaSalaEspera`, ya que es quien posee la responsabilidad de las operaciones CRUD de turnos (Crear, Modificar, Cancelar) y también gestiona tanto el registro como la consulta de pacientes en la sala de espera.
+
+Esta solución técnica garantiza una alta cohesión (cada interfaz tiene un propósito único) y un bajo acoplamiento, permitiendo que el sistema sea fácilmente extensible en el futuro sin romper código existente [3].

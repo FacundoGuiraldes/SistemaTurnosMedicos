@@ -1,43 +1,42 @@
-@startuml 01-solid-04-isp
-skinparam classAttributeIconSize 0
-
-interface IAgendaMedica {
-    + obtenerTurnosPorFecha(fecha: Date): List<Turno>
-    + tieneTurnosDisponibles(fecha: Date): boolean
-}
-
-interface IGestorTurnos {
-    + crearTurno(pacienteId: String, fecha: Date): Turno
-    + cancelarTurno(turnoId: String): void
-}
-
-interface IGestorSalaEspera {
-    + registrarLlegada(pacienteId: String): void
-    + obtenerPacientesEnEspera(): List<Paciente>
-}
-
-interface IHistorialClinico {
-    + registrarDiagnostico(pacienteId: String, texto: String): void
-}
-
-class Secretaria implements IGestorTurnos, IGestorSalaEspera {
-    + crearTurno(pacienteId: String, fecha: Date): Turno
-    + cancelarTurno(turnoId: String): void
-    + registrarLlegada(pacienteId: String): void
-    + obtenerPacientesEnEspera(): List<Paciente>
-}
-
-class Doctor implements IAgendaMedica, IGestorSalaEspera, IHistorialClinico {
-    + obtenerTurnosPorFecha(fecha: Date): List<Turno>
-    + tieneTurnosDisponibles(fecha: Date): boolean
-    + registrarLlegada(pacienteId: String): void
-    + obtenerPacientesEnEspera(): List<Paciente>
-    + registrarDiagnostico(pacienteId: String, texto: String): void
-}
-
-class Paciente implements IAgendaMedica {
-    + obtenerTurnosPorFecha(fecha: Date): List<Turno>
-    + tieneTurnosDisponibles(fecha: Date): boolean
-}
-
-@enduml
+@startuml 01-solid-04-isp 
+ 
+interface IAgendaMedica { 
+    + obtenerTurnosPorFecha(fecha: Date): List<Turno> 
+    + tieneTurnosDisponibles(fecha: Date): boolean 
+} 
+ 
+interface IGestorTurnos { 
+    + crearTurno(pacienteId: String, fecha: Date): Turno 
+    + cancelarTurno(turnoId: String): void 
+} 
+ 
+interface IRegistroSalaEspera { 
+    + registrarLlegada(pacienteId: String): void 
+} 
+ 
+interface IConsultaSalaEspera { 
+    + obtenerPacientesEnEspera(): List<Paciente> 
+} 
+ 
+interface IHistorialClinico { 
+    + registrarDiagnostico(pacienteId: String, texto: String): void 
+} 
+ 
+class Secretaria implements IGestorTurnos, IRegistroSalaEspera, IConsultaSalaEspera { 
+    + crearTurno(pacienteId: String, fecha: Date): Turno 
+    + cancelarTurno(turnoId: String): void 
+    + registrarLlegada(pacienteId: String): void 
+    + obtenerPacientesEnEspera(): List<Paciente> 
+} 
+ 
+class Doctor implements IConsultaSalaEspera, IHistorialClinico { 
+    + obtenerPacientesEnEspera(): List<Paciente> 
+    + registrarDiagnostico(pacienteId: String, texto: String): void 
+} 
+ 
+class Paciente implements IAgendaMedica { 
+    + obtenerTurnosPorFecha(fecha: Date): List<Turno> 
+    + tieneTurnosDisponibles(fecha: Date): boolean 
+} 
+ 
+@enduml 
