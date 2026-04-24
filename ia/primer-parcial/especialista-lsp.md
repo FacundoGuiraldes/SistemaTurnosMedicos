@@ -1,6 +1,6 @@
 # Auditoría de IA - Especialista en LSP
 
-* **Prompt utilizado:** "Analiza las jerarquías de herencia propuestas y verifica si se cumple el Principio de Sustitución de Liskov (LSP) para la clase Doctor."
-* **Archivos de contexto:** `diagramas/01-diagrama-clases/01-boceto-inicial.excalidraw`.
-* **Output obtenido:** Diagrama PlantUML mostrando la jerarquía Doctor -> Cardiologo e implementación del patrón Strategy para la gestión de disponibilidad.
-* **Ajustes críticos realizados:** Se corrigió un error técnico de la IA donde el autocompletado de rutas de VS Code interfería con la sintaxis `@enduml` del diagrama, forzando la escritura limpia del archivo .puml.
+* **Prompt utilizado:** "Analiza las jerarquías de herencia propuestas para el Sistema de Turnos Médicos y verifica si se cumple el Principio de Sustitución de Liskov (LSP) para la clase Doctor. Propón una jerarquía simple y coherente con el dominio, indicando por qué una subclase puede sustituir a su superclase sin alterar el comportamiento esperado."
+* **Archivos de contexto:** `anexos/introduccion.md`, `diagramas/01-diagrama-clases/01-boceto-inicial.excalidraw`, `herramientas-agile/tarjetas-crc/04-tarjeta-crc-doctor.md`, `herramientas-agile/tarjetas-crc/06-tarjeta-crc-agenda.md`, `herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md`.
+* **Output obtenido:** Propuesta de una jerarquía con `Doctor` como clase abstracta y `Cardiologo` como subtipo concreto, acompañada por una explicación sobre contrato de comportamiento, uso polimórfico de `verAgenda()` y condiciones para que futuras especialidades médicas puedan reutilizar la misma interfaz pública sin romper clientes existentes.
+* **Ajustes críticos realizados:** Se descartaron generalizaciones excesivas y se mantuvo una jerarquía mínima alineada con el dominio real del proyecto. También se corrigió la descripción del resultado para que refleje el diagrama final publicado, eliminando referencias a Strategy que pertenecen al análisis de OCP y reforzando que el contexto usado incluye introducción, boceto inicial y tarjetas CRC relevantes.
