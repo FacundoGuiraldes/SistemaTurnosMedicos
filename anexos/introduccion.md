@@ -70,7 +70,7 @@ Precondición: El paciente debe tener un turno asignado.
 *Flujo principal:* 
 - El paciente se comunica con la secretaria.
 - El paciente solicita cancelar su turno.
-- El sistema muestra los turnos del paciente. 
+- El sistema muestra los turnos activos del paciente. 
 - El paciente indica el turno que desea cancelar.
 - El sistema elimina el turno. 
 
@@ -105,7 +105,7 @@ Precondición: El paciente debe tener un turno asignado.
 - El paciente se presenta en el consultorio o se comunica telefónicamente.
 - La secretaria solicita los datos personales del paciente.
 - El paciente proporciona la información requerida.
-- La secretaria ingresa los datos en el sistema.
+- El sistema verifica si el paciente ya existe y en caso contrario, la secretaria ingresa los datos en el sistema.
 - El sistema registra y almacena los datos del paciente.
 
 *Postcondición:* El paciente ya puede solicitar turnos. 
