@@ -18,6 +18,20 @@ class Doctor {
   + consultarDisponibilidad(fecha: Date): List<Time>
 }
 
+class Agenda {
+  - turnos: List<Turno>
+  + validarDisponibilidad(fecha: Date): bool
+  + sugerirFranjas(fecha: Date): List<Time>
+}
+
+class Turno {
+  + crear()
+  + cancelar()
+}
+
 Doctor "1" --> "1" EstrategiaDisponibilidad : usa >
+Doctor "1" --> "1" Agenda : administra >
+Agenda "1" --> "*" Turno : organiza >
+Agenda ..> EstrategiaDisponibilidad : consulta >
 
 @enduml
