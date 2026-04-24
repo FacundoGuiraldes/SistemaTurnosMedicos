@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased]
+
+## [Primer Parcial] - 2026-04-02
+### Added
+- [feature/especialista-isp-analisis] Added: diseño, diagrama y documentación del principio ISP. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
+
+### Fixed
+- [feature/especialista-isp-analisis] fix: resolución de code review aplicando ISP en diagrama y documentación. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
+
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
 - [feature/documentador-coordinador-a2] Documentación y coordinación del repositorio para AO2. PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador de Repositorio)
@@ -20,14 +29,6 @@
 - [fix/escenarios-indice-formato-links] Corrección de formato de índice de escenarios: se eliminaron los guiones y se ajustaron los enlaces para mejorar la legibilidad y navegación. PR: [#46](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/46) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
 - [fix/rc1-documentacion-ia-cu] fix: reemplazo descripcion de PR por documentacion real de IA con prompt y analisis. PR: [#47](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/47) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 - [fix/reestructuracion-indices] Reestructuración de índice de herramientas y creación de índice de tarjetas CRC. PR: [#48](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/48) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
-
-
-## [Primer Parcial] - 2026-04-02
-### Added
-- [feature/especialista-isp-analisis] Added: diseño, diagrama y documentación del principio ISP. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
-
-### Fixed
-- [feature/especialista-isp-analisis] fix: resolución de code review aplicando ISP en diagrama y documentación. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
