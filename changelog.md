@@ -2,7 +2,7 @@
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
-- [feature/esp-extension-lsp-add-anexo-lsp] Aplicación del principio de Sustitución de Liskov (LSP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: pendiente - @FacundoGuiraldes (Especialista en LSP)
+- [feature/esp-extension-lsp-add-anexo-lsp] Aplicación del principio de Sustitución de Liskov (LSP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: [#62](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/62) - @FacundoGuiraldes (Especialista en LSP)
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
