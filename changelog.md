@@ -2,7 +2,7 @@
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
-- [cursor/esp-extension-ocp-add-anexo-ocp-b591] Aplicación del principio Abierto/Cerrado (OCP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: [#59](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/59) - @FacundoGuiraldes (Especialista en OCP)
+- [feature/esp-extension-ocp-add-anexo-ocp] Aplicación del principio Abierto/Cerrado (OCP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: pendiente - @FacundoGuiraldes (Especialista en OCP)
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
