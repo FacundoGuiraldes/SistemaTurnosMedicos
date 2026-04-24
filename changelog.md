@@ -2,7 +2,7 @@
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
-- [feature/esp-extension-solid-ocp-lsp] Aplicación de los principios SOLID de extensibilidad (OCP y LSP) sobre el diseño del Sistema de Turnos Médicos. Se generaron diagramas de clases específicos en PlantUML, justificaciones técnicas en anexos y documentación de Auditoría de IA con validación de prompts y ajustes técnicos de sintaxis. PR: [#56](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/56) - @FacundoGuiraldes (Especialista en Principios de Extensión)
+- [cursor/esp-extension-lsp-add-anexo-lsp-b591] Aplicación del principio de Sustitución de Liskov (LSP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: pendiente - @FacundoGuiraldes (Especialista en LSP)
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
