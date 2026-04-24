@@ -1,0 +1,8 @@
+@startuml
+
+abstract class Doctor {
+  + verAgenda()
+}
+class Cardiologo extends Doctor
+
+@enduml
