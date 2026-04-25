@@ -1,5 +1,4 @@
 # Changelog
-## [Unreleased]
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
