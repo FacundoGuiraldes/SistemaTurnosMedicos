@@ -1,4 +1,7 @@
 # Changelog
+## [Release Primer Parcial] - 2026-04-25
+### Added
+- [feature/esp-srp-add-anexo-srp] Especialista en Principio de Responsabilidad Única: Anexo detallado sobre SRP con ejemplos y análisis. PR: [#53](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/53) - @caterinacerdan (Documentador y coordinador + SRP) | Issue: [#52](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/52)
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
