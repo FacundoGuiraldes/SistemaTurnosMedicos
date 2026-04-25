@@ -1,23 +1,13 @@
 # Changelog
-## [Release Primer Parcial] - 2026-04-25
-### Added
-- [feature/esp-srp-add-anexo-srp] Especialista en Principio de Responsabilidad Única: Anexo detallado sobre SRP con ejemplos y análisis. PR: [#53](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/53) - @caterinacerdan (Documentador y coordinador + SRP) | Issue: [#52](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/52)
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
-- [feature/especialista-dip-analisis-solid] Análisis técnico del principio DIP, marco teórico y diseño de diagrama UML (puml/png) para desacoplamiento de servicios. PR: [#51](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/51) - @carolabenvenuto-uces (Especialista en Inversión de Dependencias)
-## [Unreleased]
-
-## [Release Primer Parcial] - 2026-04-02
-### Added
-- [feature/especialista-isp-analisis] Added: diseño, diagrama y documentación del principio ISP. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
-
-### Fixed
-- [feature/especialista-isp-analisis] fix: resolución de code review aplicando ISP en diagrama y documentación. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
-
-## [Release Primer Parcial] - 2026-04-25
-### Added
+- [feature/esp-extension-lsp-add-anexo-lsp] Aplicación del principio de Sustitución de Liskov (LSP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: [#62](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/62) | Issue: [#58](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/58) - @FacundoGuiraldes (Especialista en LSP)
 - [feature/esp-extension-ocp-add-anexo-ocp] Aplicación del principio Abierto/Cerrado (OCP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: [#61](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/61) | Issue: [#57](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/57) - @FacundoGuiraldes (Especialista en OCP)
+- [feature/esp-srp-add-anexo-srp] Especialista en Principio de Responsabilidad Única: Anexo detallado sobre SRP con ejemplos y análisis. PR: [#53](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/53) - @caterinacerdan (Documentador y coordinador + SRP) | Issue: [#52](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/52)
+- [feature/especialista-dip-analisis-solid] Análisis técnico del principio DIP, marco teórico y diseño de diagrama UML (puml/png) para desacoplamiento de servicios. PR: [#51](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/51) - @carolabenvenuto-uces (Especialista en Inversión de Dependencias)
+- [feature/especialista-isp-analisis] diseño, diagrama y documentación del principio ISP. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
+
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
@@ -55,7 +45,7 @@
   PR: [#16](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/16) - @ValeriaMSilva (Documentador y Coordinador de Repositorio)
 
 ### Fixed
-- [fix/doc-coord-...]  Correcciones de formato, changelog y estructura.
+- [fix/doc-coord-...]  Correcciones de formato, changelog and estructura.
   PR: [#13](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/13) - @ValeriaMSilva (Documentador y Coordinador)
 - [fix/casos-de-uso-flujos] Corrección de flujos de casos de uso en introduccion.md, ampliando a 5 pasos y mejorando la claridad. PR: [#18](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/18) - @caterinacerdan (Modelador de Casos de Uso)
 - [fix/boceto-diagrama-png] Corrección del nombre del archivo PNG del boceto del diagrama de clases.
