@@ -22,3 +22,5 @@ Este proyecto tiene el objetivo de desarrollar el diseno orientado a objetos de 
 - [Anexos](anexos/anexos.md)
 - [Diagramas UML](diagramas/diagramasUML.md)
 - [Herramientas Agile](herramientas-agile/herramientas_agile.md)
+- [Principios SOLID](principios-solid/principios_solid.md)
+- [Documentacion IA](ia/primer-parcial)
