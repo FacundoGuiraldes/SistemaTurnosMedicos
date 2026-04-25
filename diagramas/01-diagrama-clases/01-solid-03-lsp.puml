@@ -1,8 +1,19 @@
 @startuml
 
 abstract class Doctor {
-  + verAgenda()
+  + verAgenda(): void
 }
-class Cardiologo extends Doctor
+
+class Cardiologo extends Doctor {
+  + verAgenda(): void
+}
+
+class Pediatra extends Doctor {
+  + verAgenda(): void
+}
+
+class Traumatologo extends Doctor {
+  + verAgenda(): void
+}
 
 @enduml

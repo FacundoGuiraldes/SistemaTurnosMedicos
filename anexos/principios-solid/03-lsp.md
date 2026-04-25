@@ -16,7 +16,7 @@ Por ejemplo, el caso de uso "Ver agenda" necesita funcionar tanto para un `Docto
 
 En programación orientada a objetos, una relación de herencia expresa una especialización: una subclase reutiliza estado o comportamiento de una superclase y, además, debe seguir siendo compatible con el contrato que esta define. No alcanza con que exista una relación sintáctica `extends`; también debe mantenerse la sustituibilidad semántica.
 
-En esta propuesta, `Doctor` actúa como superclase abstracta con la operación `verAgenda()`, mientras que `Cardiologo` representa una especialización válida. La subclase hereda el contrato sin fortalecer precondiciones ni debilitar el comportamiento esperado. De ese modo, cualquier componente que trabaje con la abstracción `Doctor` puede interactuar indistintamente con un `Cardiologo` sin requerir lógica adicional ni bifurcaciones especiales.
+En esta propuesta, `Doctor` actúa como superclase abstracta con la operación `verAgenda(): void`, mientras que `Cardiologo`, `Pediatra` y `Traumatologo` representan especializaciones válidas. Cada subclase hereda el contrato sin fortalecer precondiciones ni debilitar el comportamiento esperado. De ese modo, cualquier componente que trabaje con la abstracción `Doctor` puede interactuar indistintamente con una especialidad concreta sin requerir lógica adicional ni bifurcaciones especiales.
 
 ## Estructura de Clases
 
@@ -29,11 +29,22 @@ El siguiente diagrama resume la jerarquía propuesta:
 La estructura es deliberadamente simple para destacar el punto central del principio:
 
 - `Doctor` define el contrato general del profesional.
-- `Cardiologo` extiende a `Doctor` sin alterar la expectativa de uso de la superclase.
+- `Cardiologo`, `Pediatra` y `Traumatologo` extienden a `Doctor` sin alterar la expectativa de uso de la superclase.
+
+## Contrato de `verAgenda()`
+
+El método `verAgenda(): void` representa la capacidad común de todo profesional médico para consultar o mostrar su agenda de turnos. El cliente que invoca esta operación solo necesita saber que está trabajando con un `Doctor`; no debe conocer la especialidad concreta ni preparar condiciones distintas para cada subtipo.
+
+Para respetar LSP, las especialidades deben cumplir este contrato:
+
+- Mantener la misma operación pública `verAgenda(): void`.
+- No exigir datos o permisos adicionales que no sean requeridos por `Doctor`.
+- No cambiar el significado de la operación; consultar la agenda debe seguir representando la misma responsabilidad del profesional.
+- No obligar al cliente a preguntar si el objeto es `Cardiologo`, `Pediatra` o `Traumatologo` antes de usarlo.
 
 ## Justificación Técnica
 
-La jerarquía cumple con LSP porque `Cardiologo` preserva el contrato de `Doctor`: puede responder a `verAgenda()` del mismo modo que se espera de cualquier profesional médico del sistema. Desde el punto de vista del cliente, no importa si la instancia concreta es un `Doctor` o un `Cardiologo`; la operación sigue siendo válida y coherente con el dominio.
+La jerarquía cumple con LSP porque `Cardiologo`, `Pediatra` y `Traumatologo` preservan el contrato de `Doctor`: todos pueden responder a `verAgenda(): void` del mismo modo que se espera de cualquier profesional médico del sistema. Desde el punto de vista del cliente, no importa si la instancia concreta pertenece a una especialidad u otra; la operación sigue siendo válida y coherente con el dominio.
 
 Técnicamente, esto evita tres problemas frecuentes:
 
