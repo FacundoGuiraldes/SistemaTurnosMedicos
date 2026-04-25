@@ -15,6 +15,10 @@
 ### Fixed
 - [feature/especialista-isp-analisis] fix: resolución de code review aplicando ISP en diagrama y documentación. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 
+## [Release Primer Parcial] - 2026-04-25
+### Added
+- [feature/esp-extension-ocp-add-anexo-ocp] Aplicación del principio Abierto/Cerrado (OCP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: [#61](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/61) | Issue: [#57](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/57) - @FacundoGuiraldes (Especialista en OCP)
+
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
 - [feature/documentador-coordinador-a2] Documentación y coordinación del repositorio para AO2. PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador de Repositorio)

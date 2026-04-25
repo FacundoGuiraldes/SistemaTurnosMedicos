@@ -1,0 +1,39 @@
+@startuml
+
+interface EstrategiaDisponibilidad {
+  + obtenerFranjasDisponibles(fecha: Date): List<Time>
+}
+
+class DisponibilidadMedicoGeneral implements EstrategiaDisponibilidad {
+  + obtenerFranjasDisponibles(fecha: Date): List<Time>
+}
+
+class DisponibilidadQuirofano implements EstrategiaDisponibilidad {
+  + obtenerFranjasDisponibles(fecha: Date): List<Time>
+}
+
+class Doctor {
+  - estrategia: EstrategiaDisponibilidad
+  + setEstrategia(estrategia: EstrategiaDisponibilidad)
+  + consultarDisponibilidad(fecha: Date): List<Time>
+}
+
+class Agenda {
+  - turnos: List<Turno>
+  - estrategia: EstrategiaDisponibilidad
+  + setEstrategia(estrategia: EstrategiaDisponibilidad)
+  + validarDisponibilidad(fecha: Date): bool
+  + sugerirFranjas(fecha: Date): List<Time>
+}
+
+class Turno {
+  + crear()
+  + cancelar()
+}
+
+Doctor "1" --> "1" EstrategiaDisponibilidad : usa >
+Doctor "1" --> "1" Agenda : administra >
+Agenda "1" --> "*" Turno : organiza >
+Agenda "1" --> "1" EstrategiaDisponibilidad : consulta >
+
+@enduml
