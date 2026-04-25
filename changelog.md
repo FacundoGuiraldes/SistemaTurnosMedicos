@@ -14,7 +14,7 @@
 - [feature/especialista-isp-analisis] Added: diseño, diagrama y documentación del principio ISP. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 
 ### Fixed
-- [feature/especialista-isp-analisis] fix: resolución de code review aplicando ISP en diagrama y documentación. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
+- [feature/especialista-isp-analisis] fix: resolución de code review applying ISP en diagrama y documentación. PR: [#55](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/55) - Issue: #54 - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
@@ -56,7 +56,7 @@
   PR: [#16](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/16) - @ValeriaMSilva (Documentador y Coordinador de Repositorio)
 
 ### Fixed
-- [fix/doc-coord-...]  Correcciones de formato, changelog y estructura.
+- [fix/doc-coord-...]  Correcciones de formato, changelog and estructura.
   PR: [#13](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/13) - @ValeriaMSilva (Documentador y Coordinador)
 - [fix/casos-de-uso-flujos] Corrección de flujos de casos de uso en introduccion.md, ampliando a 5 pasos y mejorando la claridad. PR: [#18](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/18) - @caterinacerdan (Modelador de Casos de Uso)
 - [fix/boceto-diagrama-png] Corrección del nombre del archivo PNG del boceto del diagrama de clases.
