@@ -20,6 +20,8 @@ class Doctor {
 
 class Agenda {
   - turnos: List<Turno>
+  - estrategia: EstrategiaDisponibilidad
+  + setEstrategia(estrategia: EstrategiaDisponibilidad)
   + validarDisponibilidad(fecha: Date): bool
   + sugerirFranjas(fecha: Date): List<Time>
 }
@@ -32,6 +34,6 @@ class Turno {
 Doctor "1" --> "1" EstrategiaDisponibilidad : usa >
 Doctor "1" --> "1" Agenda : administra >
 Agenda "1" --> "*" Turno : organiza >
-Agenda ..> EstrategiaDisponibilidad : consulta >
+Agenda "1" --> "1" EstrategiaDisponibilidad : consulta >
 
 @enduml
