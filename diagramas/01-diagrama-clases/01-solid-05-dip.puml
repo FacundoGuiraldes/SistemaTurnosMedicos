@@ -1,0 +1,52 @@
+@startuml 01-solid-05-dip
+
+title Diagrama de Clases - Principio de Inversión de Dependencias (DIP)
+
+' Estilo del diagrama
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+
+package "Capa de Dominio (Alto Nivel)" {
+    class Sistema {
+        - _comunicador: IServicioComunicacion
+        + Sistema(comunicador: IServicioComunicacion)
+        + ConfirmarTurno(): void
+    }
+
+    interface IServicioComunicacion <<interface>> {
+        + Enviar(mensaje: string): void
+    }
+}
+
+package "Capa de Infraestructura (Bajo Nivel)" {
+    class WhatsAppService {
+        + Enviar(mensaje: string): void
+    }
+
+    class EmailService {
+        + Enviar(mensaje: string): void
+    }
+}
+
+' Relaciones
+' El Sistema DEPENDE de la abstracción (DIP aplicado)
+Sistema .right.> IServicioComunicacion : "usa e inyecta"
+
+' Las implementaciones REALIZAN la interfaz (Inversión)
+WhatsAppService -up-|> IServicioComunicacion : "implementa"
+EmailService -up-|> IServicioComunicacion : "implementa"
+
+note top of Sistema
+  **Alto Nivel**: Ya no conoce 
+  clases concretas, solo 
+  la abstracción.
+end note
+
+note bottom of WhatsAppService
+  **Bajo Nivel**: Son detalles 
+  intercambiables que 
+  siguen el contrato.
+end note
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml srp
+
+class Sistema
+class ValidadorTurnos
+class ServicioAutenticacion
+class ServicioNotificaciones
+
+class DatosPaciente
+class GestorSolicitudTurnos
+class GestorCancelacionTurnos
+
+class DatosTurno
+class GestorEstadoTurno
+
+Sistema --> ValidadorTurnos
+Sistema --> ServicioAutenticacion
+Sistema --> ServicioNotificaciones
+Sistema --> GestorSolicitudTurnos
+Sistema --> GestorCancelacionTurnos
+Sistema --> GestorEstadoTurno
+
+GestorSolicitudTurnos --> DatosPaciente
+GestorSolicitudTurnos --> DatosTurno
+
+GestorCancelacionTurnos --> DatosPaciente
+GestorCancelacionTurnos --> DatosTurno
+
+GestorEstadoTurno --> DatosTurno
+
+@enduml
