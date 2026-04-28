@@ -10,17 +10,16 @@ Este proyecto tiene el objetivo de desarrollar el diseno orientado a objetos de 
 
 ## Integrantes
 
-| Nombre y Apellido | Matricula | Usuario de GitHub |
+| Nombre y Apellido | Matricula | Usuario de GitHub | Rol Primer Parcial
 | --- | --- | --- |
-| Facundo Guiraldes | 114794 | @FacundoGuiraldes |
-| Carola Benvenuto | 158686 | @carolabenvenuto-uces |
-| Caterina Cerdan | 159237 | @caterinacerdan |
-| Valeria Silva | 156612 | @ValeriaMSilva |
+| Facundo Guiraldes | 114794 | @FacundoGuiraldes | Especialista LSP y OCP
+| Carola Benvenuto | 158686 | @carolabenvenuto-uces | Especialista DIP
+| Caterina Cerdan | 159237 | @caterinacerdan | Documentador y Coordinador + SRP
+| Valeria Silva | 156612 | @ValeriaMSilva | Especialista ISP
 
 ## Diagramas y Disenos
 
 - [Anexos](anexos/anexos.md)
 - [Diagramas UML](diagramas/diagramasUML.md)
 - [Herramientas Agile](herramientas-agile/herramientas_agile.md)
-- [Principios SOLID](principios-solid/principios_solid.md)
 - [Documentacion IA](ia/primer-parcial)
