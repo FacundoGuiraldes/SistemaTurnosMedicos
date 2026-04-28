@@ -18,7 +18,7 @@
 
 ### Fixed
 - [fix/rc1-documentacion-ia-cu] fix: reemplazo descripcion de PR por documentacion real de IA con prompt y analisis. PR: [#47](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/47) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
-- [fix/formato-changelog-pr31] Corrección de salto de línea y reubicación de PR 31 en changelog. PR: [#31](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
+- - [fix/formato-changelog-pr31] Corrección de salto de línea y reubicación de PR 31 en changelog. PR: [#45](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/45) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 - [fix/changelog-md-a2] Corrección de estructura del changelog según release. PR: [#37](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/37) - @FacundoGuiraldes (Documentador y Coordinador)
 - [fix/fix/adición-PR31-changelog.md] Corrección de estructura del changelog PR: [#33](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/33) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
 - [fix/rc2-indice-herramientas] Reestructurar índice de herramientas como categoría. PR: [#36](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/36) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
