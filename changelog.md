@@ -10,6 +10,7 @@
 - [feature/documentador-coordinador-repo-update-readme.md] Documentación y coordinación del repositorio. PR: [#64](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/64) - @caterinacerdan (Documentador y Coordinador de Repositorio) | Issue: [#63](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/63)
 
 ### Fixed
+- [fix/correcciones-documentador] Correcciones de formato, estructura y redacción en la documentación del repositorio. PR: [#67](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/67) - @caterinacerdan (Documentador y Coordinador de Repositorio + SRP)
 - [fix/rc8-formato-prompt-isp] fix: cambiar blockquote a bloque de código triple-backtick en prompt de IA (RC 8). PR: [#66](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/66) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
@@ -20,8 +21,7 @@
 - [feature/diseniador-tarjetas-crc-add-tarjeta-clase-1-v2] Diseño y organización de 8 Tarjetas CRC. PR: [#26](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/26) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
 ### Fixed
-- [fix/rc1-documentacion-ia-cu] fix: reemplazo descripcion de PR por documentacion real de IA con prompt y analisis. PR: [#47](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/47) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
-- - [fix/formato-changelog-pr31] Corrección de salto de línea y reubicación de PR 31 en changelog. PR: [#45](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/45) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
+- [fix/formato-changelog-pr31] Corrección de salto de línea y reubicación de PR 31 en changelog. PR: [#31](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 - [fix/changelog-md-a2] Corrección de estructura del changelog según release. PR: [#37](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/37) - @FacundoGuiraldes (Documentador y Coordinador)
 - [fix/fix/adición-PR31-changelog.md] Corrección de estructura del changelog PR: [#33](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/33) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
 - [fix/rc2-indice-herramientas] Reestructurar índice de herramientas como categoría. PR: [#36](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/36) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
@@ -54,4 +54,5 @@
 - [fix/boceto-diagrama-png] Corrección del nombre del archivo PNG del boceto del diagrama de clases.
 PR: [#17](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/17) - @carolabenvenuto-uces (Diseñador de Clases)
 - [fix/templates-pr] Correción de rutas y templates de feature y realease. PR: [#20](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/20) - @caterinacerdan (Modelador de casos de uso)
-- [fix] Reubicación de introduccion.md en anexos y eliminación de duplicado.
+- [fix] Reubicación de introduccion.md en anexos y eliminación de duplicado. Commit: [55fc7ce](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/commit/55fc7ce2f6b20820bacb90f7f1f97f91bda00aab) - @caterinacerdan (Modelador de casos de uso)
+- [fix] Corrección de estructura del changelog según release. Commit: [4c2fe83](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/commit/4c2fe832221b125bccc1b2577b382999d0fe0041) - @caterinacerdan (Modelador de casos de uso)
