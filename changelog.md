@@ -9,6 +9,9 @@
 - [feature/esp-extension-lsp-add-anexo-lsp] Aplicación del principio de Sustitución de Liskov (LSP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: [#62](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/62) | Issue: [#58](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/58) - @FacundoGuiraldes (Especialista en LSP)
 - [feature/documentador-coordinador-repo-update-readme.md] Documentación y coordinación del repositorio. PR: [#64](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/64) - @caterinacerdan (Documentador y Coordinador de Repositorio) | Issue: [#63](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/63)
 
+### Fixed
+- [fix/correcciones-documentador] Correcciones de formato, estructura y redacción en la documentación del repositorio. PR: [#67](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/67) - @caterinacerdan (Documentador y Coordinador de Repositorio + SRP)
+
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
 - [feature/documentador-coordinador-a2] Documentación y coordinación del repositorio para AO2. PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador de Repositorio)
