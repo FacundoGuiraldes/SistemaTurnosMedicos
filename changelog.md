@@ -11,6 +11,7 @@
 
 ### Fixed
 - [fix/correcciones-documentador] Correcciones de formato, estructura y redacción en la documentación del repositorio. PR: [#67](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/67) - @caterinacerdan (Documentador y Coordinador de Repositorio + SRP)
+- [fix/rc8-formato-prompt-isp] fix: cambiar blockquote a bloque de código triple-backtick en prompt de IA (RC 8). PR: [#66](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/66) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
