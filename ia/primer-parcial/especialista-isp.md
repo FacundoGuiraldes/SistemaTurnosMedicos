@@ -1,11 +1,10 @@
 # Registro de uso de IA - Especialista ISP
 
 **Prompt utilizado:**
-> "Por favor, lee los siguientes archivos de mi espacio de trabajo como contexto: `anexos/introduccion.md`, el diagrama `diagramas/01-diagrama-clases/01-boceto-inicial.excalidraw` y las tarjetas CRC que están dentro de la carpeta `herramientas-agile/tarjetas-crc/`. 
-> Analiza el diseño de clases actual del Sistema de Turnos Médicos y realiza lo siguiente:
-> 1. Identifica las responsabilidades en las clases actuales que podrían abstraerse en interfaces cohesivas y especializadas.
-> 2. Detecta si existen posibles "interfaces gordas" en el diseño actual que obligarían a las clases a implementar métodos que no van a utilizar.
-> 3. Propón una refactorización aplicando el Principio de Segregación de Interfaces (ISP), asegurándote de que cada interfaz propuesta sea específica al dominio médico."
+
+```texto
+Leé anexos/introduccion.md, diagramas/01-diagrama-clases/01-boceto-inicial.excalidraw y las tarjetas CRC de herramientas-agile/tarjetas-crc/ como contexto. Identificá responsabilidades en las clases actuales que podrían abstraerse en interfaces cohesivas, detectando posibles 'interfaces gordas' que obligarían a implementar métodos no utilizados.
+```
 
 **Archivos de contexto referenciados:**
 - `anexos/introduccion.md`
