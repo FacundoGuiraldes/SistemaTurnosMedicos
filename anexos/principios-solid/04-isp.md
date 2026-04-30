@@ -1,4 +1,4 @@
-Principio de Segregación de Interfaces (ISP)
+# Principio de Segregación de Interfaces (ISP)
 
 ### Propósito y Tipo del Principio SOLID
 El Principio de Segregación de Interfaces (Interface Segregation Principle) pertenece a los principios de diseño de software SOLID. Su propósito principal es evitar que una clase se vea obligada a depender de interfaces que no utiliza, promoviendo la creación de interfaces pequeñas, cohesivas y altamente especializadas en lugar de interfaces únicas y "gordas" [2].
