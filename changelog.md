@@ -10,6 +10,7 @@
 - [feature/documentador-coordinador-repo-update-readme.md] Documentación y coordinación del repositorio. PR: [#64](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/64) - @caterinacerdan (Documentador y Coordinador de Repositorio) | Issue: [#63](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/63)
 
 ### Fixed
+- [Fix/RC_9_Esp_OCP-LSP] fix: cambiar prompts de OCP y LSP a bloques de código triple-backtick (RC 9). PR: [#70](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/70) - @FacundoGuiraldes (Especialista en Principios de Extensión - OCP + LSP)
 - [fix/correcciones-documentador] Correcciones de formato, estructura y redacción en la documentación del repositorio. PR: [#67](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/67) - @caterinacerdan (Documentador y Coordinador de Repositorio + SRP)
 - [fix/rc8-formato-prompt-isp] fix: cambiar blockquote a bloque de código triple-backtick en prompt de IA (RC 8). PR: [#66](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/66) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 
