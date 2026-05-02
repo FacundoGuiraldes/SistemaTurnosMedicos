@@ -1,6 +1,15 @@
 # Principio de Segregación de Interfaces (ISP)
 
 ### Propósito y Tipo del Principio SOLID
+El Principio de Segregación de Interfaces (Interface Segregation Principle) pertenece a los principios de diseño de software SOLID. Su propósito principal es evitar que una clase se vea obligada a depender de interfaces que no utiliza, promoviendo la creación de interfaces pequeñas, cohesivas y altamente especializadas en lugar de interfaces únicas y "gordas".
+
+### Motivación
+Al analizar el diseño inicial del Sistema de Turnos Médicos, identificamos clases con responsabilidades muy amplias. Por ejemplo, la clase `Secretaria` mezcla la gestión administrativa de pacientes, la creación de turnos, y la modificación de la agenda. Si creáramos una interfaz genérica `IGestionSecretaria` o `IGestionTurnosMedicos` con todos esos métodos, y obligáramos al `Doctor` o al `Paciente` a implementarla para interactuar con los turnos, estaríamos violando el ISP, ya que el Doctor no necesita crear turnos nuevos, solo verlos o marcarlos como atendidos. Este acoplamiento innecesario haría el sistema frágil ante cambios y obligaría a implementar métodos no utilizados.
+### Explicación de Interfaces
+En la Programación Orientada a Objetos, una interfaz es un contrato abstracto que define un conjunto de comportamientos (métodos) que una clase concreta se compromete a implementar. Aplicar el ISP significa que estas interfaces deben estar diseñadas desde la perspectiva del cliente que las va a usar; deben ser "contratos" específicos para un dominio acotado para asegurar que las clases que las implementan usen el 100% de los métodos definidos.
+
+### Estructura de Clases
+A continuación se presenta el diagrama de clases modelado con PlantUML que refleja la refactorización aplicando ISP:
 El Principio de Segregación de Interfaces (Interface Segregation Principle) pertenece a los principios de diseño de software SOLID. Su propósito principal es evitar que una clase se vea obligada a depender de interfaces que no utiliza, promoviendo la creación de interfaces pequeñas, cohesivas y altamente especializadas en lugar de interfaces únicas y "gordas"
 
 ### Motivación
@@ -21,4 +30,4 @@ De esta manera, la clase `Doctor` implementa únicamente `IConsultaSalaEspera` e
 
 Por otro lado, la clase `Secretaria` implementa `IGestorTurnos`, `IRegistroSalaEspera` e `IConsultaSalaEspera`, ya que es quien posee la responsabilidad de las operaciones CRUD de turnos (Crear, Modificar, Cancelar) y también gestiona tanto el registro como la consulta de pacientes en la sala de espera.
 
-Esta solución técnica garantiza una alta cohesión (cada interfaz tiene un propósito único) y un bajo acoplamiento, permitiendo que el sistema sea fácilmente extensible en el futuro sin romper código existente.
+
