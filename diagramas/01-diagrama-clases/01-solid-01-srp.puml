@@ -1,30 +1,131 @@
-@startuml srp
+@startuml
+title Principio de Responsabilidad Única (SRP)
 
-class Sistema
-class ValidadorTurnos
-class ServicioAutenticacion
-class ServicioNotificaciones
+left to right direction
+skinparam packageStyle rectangle
 
-class DatosPaciente
-class GestorSolicitudTurnos
-class GestorCancelacionTurnos
+package "ANTES - Clases con múltiples responsabilidades" {
 
-class DatosTurno
-class GestorEstadoTurno
+    class Sistema {
+        +coordinarFlujo()
+        +validarTurno()
+        +autenticarUsuario()
+        +enviarNotificacion()
+    }
 
-Sistema --> ValidadorTurnos
-Sistema --> ServicioAutenticacion
-Sistema --> ServicioNotificaciones
-Sistema --> GestorSolicitudTurnos
-Sistema --> GestorCancelacionTurnos
-Sistema --> GestorEstadoTurno
+    class Turno {
+        +fecha
+        +hora
+        +estado
+        +confirmarTurno()
+        +cancelarTurno()
+        +cambiarEstado()
+    }
 
-GestorSolicitudTurnos --> DatosPaciente
-GestorSolicitudTurnos --> DatosTurno
+    class Paciente {
+        +nombre
+        +dni
+        +telefono
+        +solicitarTurno()
+        +cancelarTurno()
+        +registrarLlegada()
+    }
 
-GestorCancelacionTurnos --> DatosPaciente
-GestorCancelacionTurnos --> DatosTurno
+    Sistema --> Turno
+    Sistema --> Paciente
+}
 
-GestorEstadoTurno --> DatosTurno
+package "DESPUÉS - Aplicación de SRP" {
+
+    class SistemaRefactorizado {
+        +coordinarFlujo()
+    }
+
+    class ValidadorTurnos {
+        +validarTurno()
+    }
+
+    class ServicioAutenticacion {
+        +autenticarUsuario()
+    }
+
+    class ServicioNotificaciones {
+        +enviarNotificacion()
+    }
+
+    class DatosTurno {
+        +fecha
+        +hora
+        +estado
+    }
+
+    class GestorEstadoTurno {
+        +confirmarTurno()
+        +cancelarTurno()
+        +cambiarEstado()
+    }
+
+    class DatosPaciente {
+        +nombre
+        +dni
+        +telefono
+    }
+
+    class GestorSolicitudTurnos {
+        +solicitarTurno()
+    }
+
+    class GestorCancelacionTurnos {
+        +cancelarTurno()
+    }
+
+    SistemaRefactorizado --> ValidadorTurnos
+    SistemaRefactorizado --> ServicioAutenticacion
+    SistemaRefactorizado --> ServicioNotificaciones
+    SistemaRefactorizado --> GestorSolicitudTurnos
+    SistemaRefactorizado --> GestorCancelacionTurnos
+    SistemaRefactorizado --> GestorEstadoTurno
+
+    GestorEstadoTurno --> DatosTurno
+    GestorSolicitudTurnos --> DatosPaciente
+    GestorSolicitudTurnos --> DatosTurno
+    GestorCancelacionTurnos --> DatosPaciente
+    GestorCancelacionTurnos --> DatosTurno
+}
+
+note bottom of Sistema
+ANTES:
+Sistema era un "God Object".
+Concentraba coordinación, validación,
+autenticación y notificaciones.
+end note
+
+note bottom of Turno
+ANTES:
+Turno mezclaba datos del turno
+con lógica de estados.
+end note
+
+note bottom of Paciente
+ANTES:
+Paciente mezclaba datos personales
+con acciones de negocio.
+end note
+
+note bottom of SistemaRefactorizado
+DESPUÉS:
+Sistema solo coordina el flujo principal.
+Las responsabilidades se delegan.
+end note
+
+note bottom of DatosTurno
+DESPUÉS:
+DatosTurno solo almacena información del turno.
+end note
+
+note bottom of DatosPaciente
+DESPUÉS:
+DatosPaciente solo almacena información del paciente.
+end note
 
 @enduml

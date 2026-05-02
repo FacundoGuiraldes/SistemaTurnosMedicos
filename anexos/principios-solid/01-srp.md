@@ -35,7 +35,7 @@ Para aplicar SRP, se propone separar estas responsabilidades en una clase DatosP
 ## Estructura de Clases
 
 A continuación se presenta el diagrama UML que muestra la refactorización propuesta aplicando el principio SRP.
-* [Diagrama de Clases SRP](../../diagramas/01-diagrama-clases/01-solid-01-srp.png)
+![Diagrama de Clases SRP](../../diagramas/01-diagrama-clases/01-solid-01-srp.png)
 
 ## Justificación Técnica
 
