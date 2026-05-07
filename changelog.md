@@ -10,6 +10,7 @@
 - [feature/documentador-coordinador-repo-update-readme.md] Documentación y coordinación del repositorio. PR: [#64](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/64) - @caterinacerdan (Documentador y Coordinador de Repositorio) | Issue: [#63](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/63)
 
 ### Fixed
+- [fix/eliminar-referencia-isp] Eliminación de referencia inexistente en documento ISP.PR: [#72](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/72) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 - [fix/correcciones-formato-isp] Corrección de jerarquía de subtítulos en 04-isp.md y eliminación de archivos residuales. PR: [#70](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/70) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 - [fix/rc8-formato-prompt-isp] fix: cambiar blockquote a bloque de código triple-backtick en prompt de IA (RC 8). PR: [#66](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/66) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
 - [fix/rc10-diagrama-isp] fix: eliminar dependencia de Paciente con IAgendaMedica en diagrama y docs (RC 10). PR: [#69](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/69) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
