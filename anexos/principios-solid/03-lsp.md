@@ -31,7 +31,7 @@ La estructura es deliberadamente simple para destacar el punto central del princ
 - `Doctor` define el contrato general del profesional.
 - `Cardiologo`, `Pediatra` y `Traumatologo` extienden a `Doctor` sin alterar la expectativa de uso de la superclase.
 
-## Contrato de `verAgenda()`
+### Contrato de `verAgenda()`
 
 El método `verAgenda(): void` representa la capacidad común de todo profesional médico para consultar o mostrar su agenda de turnos. El cliente que invoca esta operación solo necesita saber que está trabajando con un `Doctor`; no debe conocer la especialidad concreta ni preparar condiciones distintas para cada subtipo.
 
