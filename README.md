@@ -2,7 +2,7 @@
 
 - Materia: Diseno Orientado a Objetos.
 - Carrera: Tecnicatura en Programacion de Sistemas.
-- Grupo: Grupo N° 1.
+- Grupo: Grupo N° 1. 
 
 ## Introduccion
 
