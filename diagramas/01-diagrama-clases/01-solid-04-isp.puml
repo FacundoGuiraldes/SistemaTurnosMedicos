@@ -34,9 +34,7 @@ class Doctor implements IConsultaSalaEspera, IHistorialClinico {
     + registrarDiagnostico(pacienteId: String, texto: String): void 
 } 
  
-class Paciente implements IAgendaMedica { 
-    + obtenerTurnosPorFecha(fecha: Date): List<Turno> 
-    + tieneTurnosDisponibles(fecha: Date): boolean 
+class Paciente { 
 } 
  
-@enduml 
+@enduml

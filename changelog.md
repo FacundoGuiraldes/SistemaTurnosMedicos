@@ -9,6 +9,12 @@
 - [feature/esp-extension-lsp-add-anexo-lsp] Aplicación del principio de Sustitución de Liskov (LSP) sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico, el diagrama de clases en PlantUML/PNG y la auditoría de IA asociada. PR: [#62](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/62) | Issue: [#58](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/58) - @FacundoGuiraldes (Especialista en LSP)
 - [feature/documentador-coordinador-repo-update-readme.md] Documentación y coordinación del repositorio. PR: [#64](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/64) - @caterinacerdan (Documentador y Coordinador de Repositorio) | Issue: [#63](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/63)
 
+### Fixed
+- [fix/eliminar-referencia-isp] Eliminación de referencia inexistente en documento ISP.PR: [#72](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/72) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
+- [fix/correcciones-formato-isp] Corrección de jerarquía de subtítulos en 04-isp.md y eliminación de archivos residuales. PR: [#70](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/70) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
+- [fix/rc8-formato-prompt-isp] fix: cambiar blockquote a bloque de código triple-backtick en prompt de IA (RC 8). PR: [#66](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/66) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
+- [fix/rc10-diagrama-isp] fix: eliminar dependencia de Paciente con IAgendaMedica en diagrama y docs (RC 10). PR: [#69](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/69) - @ValeriaMSilva (Especialista en Segregación de Interfaces - ISP)
+
 ## [Release Actividad Obligatoria N°2] - 2026-04-16
 ### Added
 - [feature/documentador-coordinador-a2] Documentación y coordinación del repositorio para AO2. PR: [#30](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/30) - @FacundoGuiraldes (Documentador y Coordinador de Repositorio)
@@ -18,7 +24,7 @@
 
 ### Fixed
 - [fix/rc1-documentacion-ia-cu] fix: reemplazo descripcion de PR por documentacion real de IA con prompt y analisis. PR: [#47](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/47) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
-- [fix/formato-changelog-pr31] Corrección de salto de línea y reubicación de PR 31 en changelog. PR: [#31](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/31) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
+- - [fix/formato-changelog-pr31] Corrección de salto de línea y reubicación de PR 31 en changelog. PR: [#45](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/45) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 - [fix/changelog-md-a2] Corrección de estructura del changelog según release. PR: [#37](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/37) - @FacundoGuiraldes (Documentador y Coordinador)
 - [fix/fix/adición-PR31-changelog.md] Corrección de estructura del changelog PR: [#33](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/33) - @caterinacerdan (Especialista en Escenarios de Casos de Uso)
 - [fix/rc2-indice-herramientas] Reestructurar índice de herramientas como categoría. PR: [#36](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/36) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
