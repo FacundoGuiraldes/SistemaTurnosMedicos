@@ -1,7 +1,9 @@
 # Changelog
 
-## [Unreleased]
-
+## [Unreleased] - Actividad N3
+### Added
+PR: [#84](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/84) - @ValeriaMSilva (Especialista en Diagramas de Secuencia)
+- [feature/esp-secuencia-add-diagrama-secuencia-5] Diagramas de secuencia: 5 diagramas de secuencia de los escenarios
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
