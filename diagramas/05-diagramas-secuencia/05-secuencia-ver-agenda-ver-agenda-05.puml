@@ -1,0 +1,45 @@
+@startuml
+title Diagrama de Secuencia: Ver Agenda 
+
+actor Doctor
+participant ":Sistema" as sistema
+participant "agenda:Agenda" as agenda
+participant "turno:Turno" as turno
+
+Doctor -> sistema: accederAlSistema(numeroLicencia)
+activate sistema
+sistema --> Doctor: mostrarMenu()
+deactivate sistema
+
+Doctor -> sistema: seleccionarVerAgenda()
+activate sistema
+sistema -> agenda: crearAgendaDelDia(fecha)
+activate agenda
+agenda -> agenda: obtenerTurnosDelDia(fecha)
+activate agenda
+agenda -> turno: getDetalles()
+activate turno
+turno --> agenda: detallesTurno(paciente, hora, estado)
+deactivate turno
+agenda --> sistema: listaTurnosProgramados()
+deactivate agenda
+deactivate agenda
+sistema --> Doctor: mostrarAgenda(turnos, pacientes, horarios)
+deactivate sistema
+
+Doctor -> sistema: consultarPacienteEspecifico(idTurno)
+activate sistema
+sistema -> agenda: obtenerInfoTurno(idTurno)
+activate agenda
+agenda -> turno: getInfoPaciente()
+activate turno
+turno --> agenda: infoPaciente(nombre, dni, motivoConsulta)
+deactivate turno
+agenda --> sistema: retornarInfoPaciente()
+deactivate agenda
+sistema --> Doctor: mostrarDetallesPaciente(info)
+deactivate sistema
+
+destroy turno
+destroy agenda
+@enduml
