@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased] - Actividad N3
+### Added
+- [feature/doc-coord-repo-update-readme-md] Estructura base para la Actividad N3: creación de carpetas para Diagramas de Actividades y Secuencia con sus respectivos índices. - @carolabenvenuto-uces (Documentador y Coordinador)
+- [feature/doc-coord-repo-update-readme-md] Diseño de la plantilla de auditoría de IA en `ia/a3/documentador-coordinador.md` para supervisión de las 4 revisiones requeridas. - @carolabenvenuto-uces (Documentador y Coordinador)
+
+### Changed
+- [feature/doc-coord-repo-update-readme-md] Actualización integral del `README.md`: se reestructuró la navegación para cumplir con la auditoría de calidad de Copilot, integrando enlaces a todos los índices previos (A2, Parcial) y nuevos (A3). - @carolabenvenuto-uces (Documentador y Coordinador)
+- [feature/doc-coord-repo-update-readme-md] Actualización de la tabla de integrantes con los nuevos roles asignados para la Actividad N3. - @carolabenvenuto-uces (Documentador y Coordinador)
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
 - [feature/especialista-dip-analisis-solid] Análisis técnico del principio DIP, marco teórico y diseño de diagrama UML (puml/png) para desacoplamiento de servicios. PR: [#51](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/51) | Issue: [#50](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/50) - @carolabenvenuto-uces (Especialista en Inversión de Dependencias)
