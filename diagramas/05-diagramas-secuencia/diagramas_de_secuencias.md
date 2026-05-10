@@ -2,15 +2,11 @@
 
 Esta sección contiene las representaciones de las interacciones temporales entre los objetos del sistema para los distintos escenarios de uso.
 
-## Listado de Diagramas
-- **Escenario: Reserva de Turno Web**
-  - [Ver Diagrama de Secuencia](./reserva-turno-web-seq.png)
-- **Escenario: Cancelación por el Profesional**
-  - [Ver Diagrama de Secuencia](./cancelacion-profesional-seq.png)
-- **Escenario: Validación de Cobertura Médica**
-  - [Ver Diagrama de Secuencia](./validacion-cobertura-seq.png)
-- **Escenario: Notificación de Recordatorio**
-  - [Ver Diagrama de Secuencia](./notificacion-recordatorio-seq.png)
+# Diagramas de Secuencia
 
----
-[Volver al índice de diagramas](../diagramasUML.md)
+* [Diagrama de Secuencia - Solicitar Turno - Solicitar turno](05-secuencia-solicitar-turno-solicitar-turno-01.png)
+* [Diagrama de Secuencia - Cancelar Turno - Cancelar turno](05-secuencia-cancelar-turno-cancelar-turno-02.png)
+* [Diagrama de Secuencia - Registrar Llegada - Registrar llegada del paciente](05-secuencia-registrar-llegada-registrar-llegada-del-paciente-03.png)
+* [Diagrama de Secuencia - Registrar Paciente - Registrar paciente](05-secuencia-registrar-paciente-registrar-paciente-04.png)
+* [Diagrama de Secuencia - Ver Agenda - Ver agenda exitoso](05-secuencia-ver-agenda-ver-agenda-exitoso-05.png)
+¿Por qué este texto es el que va? Porque la consigna de la materia exige explícitamente que 
