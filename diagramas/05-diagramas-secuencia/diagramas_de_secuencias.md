@@ -1,7 +1,3 @@
-# Índice de Diagramas de Secuencia
-
-Esta sección contiene las representaciones de las interacciones temporales entre los objetos del sistema para los distintos escenarios de uso.
-
 # Diagramas de Secuencia
 
 * [Diagrama de Secuencia - Solicitar Turno - Solicitar turno](05-secuencia-solicitar-turno-solicitar-turno-01.png)
