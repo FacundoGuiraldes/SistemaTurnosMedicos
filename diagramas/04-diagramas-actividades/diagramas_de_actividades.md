@@ -4,9 +4,9 @@ En esta sección se presentan los diagramas de actividades que modelan los flujo
 
 ## Listado de Diagramas
 - **CU01: Solicitar Turno**
-  - [Ver Diagrama de Actividades](./CU01-solicitar-turno-act.png)
+  - [Ver Diagrama de Actividades](./04-actividad-solicitar-turno-01.png)
 - **CU02: Cancelar Turno**
-  - [Ver Diagrama de Actividades](./CU02-cancelar-turno-act.png)
+  - [Ver Diagrama de Actividades](./04-actividad-cancelar-turno-02.png)
 - **CU03: Registrar Asistencia**
   - [Ver Diagrama de Actividades](./CU03-registrar-asistencia-act.png)
 - **CU04: Cargar Historia Clínica**

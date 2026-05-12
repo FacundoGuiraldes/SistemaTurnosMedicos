@@ -1,0 +1,66 @@
+@startuml
+title Caso de Uso 2 - Cancelar turno exitoso
+
+|Paciente|
+start
+:Contactar a la secretaria;
+:Proveer identificación y solicitar cancelación;
+
+|Secretaria|
+:Iniciar sesión en SistemaTurnosMedicos;
+:Validar credenciales de la secretaria;
+
+if (¿Credenciales válidas?) then (sí)
+
+  :Consultar turnos activos del paciente;
+
+  |SistemaTurnosMedicos|
+  :Buscar turnos activos por paciente;
+  :Devolver listado de turnos activos;
+
+  |Secretaria|
+  if (¿Existe el turno que desea cancelar?) then (sí)
+
+    |Paciente|
+    :Confirmar el turno a cancelar;
+
+    |Secretaria|
+    :Confirmar solicitud de cancelación;
+
+    |SistemaTurnosMedicos|
+    :Cancelar turno en la agenda;
+    :Liberar disponibilidad de la franja horaria;
+    :Actualizar estado del turno como cancelado;
+    :Registrar cambio en historial de modificaciones;
+
+    fork
+      |Secretaria|
+      :Notificar cancelación al paciente;
+    fork again
+      |Médico|
+      :Notificar al médico sobre la cancelación del turno;
+    end fork
+
+    |Paciente|
+    :Recibir confirmación de cancelación;
+    stop
+
+  else (no)
+
+    |Secretaria|
+    :Informar que no hay un turno activo para ese paciente;
+    :Finalizar atención sin cancelar turno;
+    stop
+
+  endif
+
+else (no)
+
+  |Secretaria|
+  :Mostrar error de inicio de sesión;
+  :Reintentar con credenciales válidas o contactar soporte;
+  stop
+
+endif
+
+@enduml
