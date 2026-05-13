@@ -4,6 +4,7 @@
 ### Added
 - [feature/doc-coord-repo-update-readme-md] Estructura base para la Actividad N3: creación de carpetas para Diagramas de Actividades y Secuencia con sus respectivos índices. PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
 - [feature/doc-coord-repo-update-readme-md] Diseño de la plantilla de auditoría de IA en `ia/a3/documentador-coordinador.md` para supervisión de las 4 revisiones requeridas. PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
+- [feature/esp-actividades-1-2-add-diagrama-actividad-1] Generación del diagrama de actividades para el Caso de Uso 1 y 2(Solicitar Turno y Cancelar Turno) utilizando IA, con iteraciones de ajuste para reflejar fielmente el escenario principal. PR: [#87](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/87) | Issue: [#85](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/85) y [#86](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/86) - caterinacerdan (Especialista en Diagramas de Actividades caso de uso 1 y 2)
 
 ### Changed
 - [feature/doc-coord-repo-update-readme-md] Actualización integral del `README.md`: se reestructuró la navegación para cumplir con la auditoría de calidad de Copilot, integrando enlaces a todos los índices previos (A2, Parcial) y nuevos (A3). - @carolabenvenuto-uces (Documentador y Coordinador)
