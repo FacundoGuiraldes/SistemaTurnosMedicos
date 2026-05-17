@@ -10,9 +10,9 @@ start
 :Iniciar sesión en\nSistemaTurnosMedicos;
 
 |SistemaTurnosMedicos|
-:Validar credenciales\nde la secretaria;
+:Validar si el paciente existe en el sistema;
 
-if (¿Credenciales válidas?) then (sí)
+if (¿El paciente existe en el sistema?) then (sí)
 
   :Mostrar fechas y\nhorarios disponibles;
 
@@ -51,8 +51,7 @@ if (¿Credenciales válidas?) then (sí)
 else (no)
 
   |Secretaria|
-  :Mostrar error de\ninicio de sesión;
-  :Reintentar con credenciales válidas\no contactar soporte;
+  :Informar al paciente que no está registrado;
 
   stop
 
