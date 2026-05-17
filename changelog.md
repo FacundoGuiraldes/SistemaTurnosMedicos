@@ -4,10 +4,11 @@
 ### Added
 - [feature/doc-coord-repo-update-readme-md] Estructura base para la Actividad N3: creación de carpetas para Diagramas de Actividades y Secuencia con sus respectivos índices. PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
 - [feature/doc-coord-repo-update-readme-md] Diseño de la plantilla de auditoría de IA en `ia/a3/documentador-coordinador.md` para supervisión de las 4 revisiones requeridas. PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
-
-### Changed
-- [feature/doc-coord-repo-update-readme-md] Actualización integral del `README.md`: se reestructuró la navegación para cumplir con la auditoría de calidad de Copilot, integrando enlaces a todos los índices previos (A2, Parcial) y nuevos (A3). - @carolabenvenuto-uces (Documentador y Coordinador)
-- [feature/doc-coord-repo-update-readme-md] Actualización de la tabla de integrantes con los nuevos roles asignados para la Actividad N3. - @carolabenvenuto-uces (Documentador y Coordinador)
+- [feature/doc-coord-repo-update-readme-md] Actualización integral del `README.md`: reestructuración de la navegación e integración de enlaces a todos los índices previos (A2, Parcial) y nuevos (A3). PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
+- [feature/doc-coord-repo-update-readme-md] Actualización de la tabla de integrantes con los nuevos roles asignados para la Actividad N3. PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
+- [feature/doc-coord-repo-update-readme-md] Documentación en `ia/a3/documentador-coordinador.md` de las primeras auditorías técnicas de consistencia asistidas por IA (revisión de diagramas de actividades y secuencias). PR: [#XX] - @carolabenvenuto-uces (Documentador y Coordinador)
+- [feature/doc-coord-repo-update-readme-md] Actualización de la sección del modelo dinámico en el `README.md` general para detallar el alcance de los nuevos diagramas de la Actividad N3. PR: [#XX] - @carolabenvenuto-uces (Documentador y Coordinador)
+- [feature/doc-coord-repo-update-readme-md] Reestructuración integral del archivo `diagramas/diagramasUML.md` incorporando las definiciones conceptuales, objetivos de diseño y enlaces a los índices de Actividades y Secuencia. PR: [#XX] - @carolabenvenuto-uces (Documentador y Coordinador)
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
