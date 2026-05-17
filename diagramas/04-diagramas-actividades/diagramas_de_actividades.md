@@ -5,22 +5,15 @@ En esta sección se presentan los diagramas de actividades que modelan los flujo
 ## Listado de Diagramas
 
 - **CU01: Solicitar Turno**
-  - [Ver Diagrama de Actividades](./CU01-solicitar-turno-act.png)
-
+  - [Ver Diagrama de Actividades](./04-actividad-solicitar-turno-01.png)
 - **CU02: Cancelar Turno**
-  - [Ver Diagrama de Actividades](./CU02-cancelar-turno-act.png)
-
-- **CU03: Registrar llegada del paciente**
-  - [Ver Código PlantUML](./04-actividad-registrar-llegada-03.puml)
-  - [Ver Imagen del Diagrama](./04-actividad-registrar-llegada-03.png)
-
-- **CU04: Registrar paciente**
-  - [Ver Código PlantUML](./04-actividad-registrar-paciente-04.puml)
-  - [Ver Imagen del Diagrama](./04-actividad-registrar-paciente-04.png)
-
-- **CU05: Ver agenda**
-  - [Ver Código PlantUML](./04-actividad-ver-agenda-05.puml)
-  - [Ver Imagen del Diagrama](./04-actividad-ver-agenda-05.png)
+  - [Ver Diagrama de Actividades](./04-actividad-cancelar-turno-02.png)
+- **CU03: Registrar Asistencia**
+  - [Ver Diagrama de Actividades](./CU03-registrar-asistencia-act.png)
+- **CU04: Cargar Historia Clínica**
+  - [Ver Diagrama de Actividades](./CU04-cargar-historia-clinica-act.png)
+- **CU05: Generar Reporte de Consultas**
+  - [Ver Diagrama de Actividades](./CU05-generar-reporte-consultas-act.md)
 
 ---
 [Volver al índice de diagramas](../diagramasUML.md)
