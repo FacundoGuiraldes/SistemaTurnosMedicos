@@ -3,6 +3,7 @@
 En esta sección se presentan los diagramas de actividades que modelan los flujos de trabajo de los casos de uso definidos para el Sistema de Turnos Médicos.
 
 ## Listado de Diagramas
+
 - **CU01: Solicitar Turno**
   - [Ver Diagrama de Actividades](./04-actividad-solicitar-turno-01.png)
 - **CU02: Cancelar Turno**

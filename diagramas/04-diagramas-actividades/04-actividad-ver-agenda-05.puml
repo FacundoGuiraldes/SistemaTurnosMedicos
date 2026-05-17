@@ -1,0 +1,88 @@
+@startuml 04-actividad-ver-agenda-05
+!theme plain
+title CU05 - Ver Agenda\nSistema de Turnos Médicos
+
+skinparam swimlaneWidth 220
+skinparam ActivityBackgroundColor #EAF4FB
+skinparam ActivityBorderColor #2E86AB
+skinparam ArrowColor #2E86AB
+skinparam ActivityDiamondBackgroundColor #FFF3CD
+skinparam ActivityDiamondBorderColor #D4A017
+skinparam NoteBackgroundColor #F0F4F8
+skinparam NoteBorderColor #8BA0B4
+skinparam TitleFontSize 14
+skinparam TitleFontStyle bold
+
+|Doctor|
+start
+:Accede al sistema con\nsus credenciales válidas;
+note right
+  Precondición: el doctor tiene
+  credenciales válidas y deben
+  existir turnos en la agenda
+end note
+
+|Sistema|
+if (¿Autenticación\nexitosa?) then (Sí)
+  :Muestra el menú principal\ncon las opciones disponibles;
+else (No - credenciales inválidas)
+  :Muestra mensaje de error:\n"Credenciales incorrectas.\nIntente nuevamente.";
+  |Doctor|
+  :Reingresa sus credenciales;
+  note right
+    Caso alternativo:
+    error de autenticación
+  end note
+  stop
+endif
+
+|Doctor|
+:Selecciona la opción\n"Ver agenda" del menú;
+:Solicita el período a consultar\nmediante el selector de fecha;
+:Selecciona el día específico\nque desea visualizar;
+
+|Sistema|
+:Recibe la fecha seleccionada\npor el doctor;
+:Filtra los turnos\npor la fecha indicada;
+
+|Base de Datos|
+:Recibe la consulta de turnos\nfiltrada por fecha seleccionada;
+:Busca los registros de turnos\nprogramados para esa fecha;
+
+if (¿Existen turnos para\nla fecha seleccionada?) then (Sí)
+  :Recupera los datos de cada turno:\nnombre del paciente, hora\ny motivo de consulta;
+  :Devuelve el conjunto de datos\nde turnos al sistema;
+else (No - agenda vacía)
+  :Devuelve respuesta vacía\nal sistema;
+  |Sistema|
+  :Muestra mensaje informativo:\n"No hay turnos programados\npara el día seleccionado";
+  |Doctor|
+  :Puede seleccionar\notra fecha del calendario;
+  note right
+    Caso alternativo:
+    agenda sin turnos
+    (RF2 / RF4)
+  end note
+  stop
+endif
+
+|Sistema|
+:Consolida y organiza\nlos datos recibidos;
+:Construye la grilla de agenda\ncon los turnos del día;
+:Muestra la grilla de la agenda:\nturnos, pacientes y horarios;
+note right
+  RF2: Visualizar agenda
+  RF4: Gestión de disponibilidad
+end note
+
+|Doctor|
+:Visualiza la agenda completa\ndel día seleccionado;
+:Revisa los turnos programados:\npacientes, horarios y motivos;
+note right
+  Poscondición: el doctor puede
+  visualizar los turnos programados
+  y gestionar su disponibilidad
+end note
+
+stop
+@enduml
