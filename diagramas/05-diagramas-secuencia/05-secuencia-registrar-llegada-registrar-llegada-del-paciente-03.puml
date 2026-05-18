@@ -1,0 +1,40 @@
+@startuml registrarLlegada
+title Diagrama de Secuencia: Registrar Llegada del Paciente
+
+actor Paciente
+participant ":Secretaria" as secretaria
+participant ":Sistema" as sistema
+participant "salaEspera:SalaEspera" as salaEspera
+participant "turno:Turno" as turno
+
+Paciente -> secretaria: informarLlegada()
+activate secretaria
+secretaria -> sistema: accederSistema()
+activate sistema
+sistema --> secretaria: mostrarMenu()
+deactivate sistema
+secretaria -> sistema: seleccionarRegistrarLlegada()
+activate sistema
+sistema -> turno: buscarTurnoPaciente(pacienteId)
+activate turno
+turno --> sistema: turnoEncontrado()
+deactivate turno
+sistema --> secretaria: turnoVerificado()
+deactivate sistema
+secretaria -> sistema: registrarLlegadaPaciente(pacienteId)
+activate sistema
+sistema -> salaEspera: registrarLlegada(pacienteId, horaActual)
+activate salaEspera
+salaEspera --> sistema: llegadaRegistrada()
+deactivate salaEspera
+sistema -> turno: marcarEnEspera()
+activate turno
+turno --> sistema: estadoActualizado()
+deactivate turno
+sistema --> secretaria: llegadaConfirmada()
+deactivate sistema
+secretaria --> Paciente: llegadaRegistrada()
+deactivate secretaria
+
+destroy turno
+@enduml
