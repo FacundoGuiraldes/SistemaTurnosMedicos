@@ -28,10 +28,14 @@ sistema -> nuevoPaciente: crearPaciente(datosPersonales)
 activate nuevoPaciente
 nuevoPaciente --> sistema: pacienteCreado()
 deactivate nuevoPaciente
+destroy nuevoPaciente
+
 sistema -> usuario: asignarIdUsuario()
 activate usuario
 usuario --> sistema: idAsignado()
 deactivate usuario
+destroy usuario
+
 sistema --> secretaria: pacienteRegistrado()
 deactivate sistema
 secretaria --> Paciente: registroConfirmado()
