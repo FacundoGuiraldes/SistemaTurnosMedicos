@@ -1,5 +1,5 @@
 @startuml
-title Diagrama de Secuencia: Ver Agenda 
+title Diagrama de Secuencia: Ver Agenda Exitoso
 
 actor Doctor
 participant ":Sistema" as sistema
@@ -17,7 +17,7 @@ sistema -> agenda: crearAgendaDelDia(fecha)
 activate agenda
 agenda -> agenda: obtenerTurnosDelDia(fecha)
 activate agenda
-agenda -> turno: getDetalles()
+agenda -> turno: obtenerDetalles()
 activate turno
 turno --> agenda: detallesTurno(paciente, hora, estado)
 deactivate turno
@@ -31,7 +31,7 @@ Doctor -> sistema: consultarPacienteEspecifico(idTurno)
 activate sistema
 sistema -> agenda: obtenerInfoTurno(idTurno)
 activate agenda
-agenda -> turno: getInfoPaciente()
+agenda -> turno: obtenerInfoPaciente()
 activate turno
 turno --> agenda: infoPaciente(nombre, dni, motivoConsulta)
 deactivate turno
