@@ -2,10 +2,7 @@
 
 ## [Unreleased] - Actividad N3
 ### Added
-<<<<<<< HEAD
-PR: [#84](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/84) - @ValeriaMSilva (Especialista en Diagramas de Secuencia)
-- [feature/esp-secuencia-add-diagrama-secuencia-5] Diagramas de secuencia: 5 diagramas de secuencia de los escenarios
-=======
+- [feature/esp-secuencia-add-diagrama-secuencia-5] Diagramas de secuencia: 5 diagramas de secuencia de los escenarios. PR: [#84](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/84) - @ValeriaMSilva (Especialista en Diagramas de Secuencia)
 - [feature/doc-coord-repo-update-readme-md] Estructura base para la Actividad N3: creación de carpetas para Diagramas de Actividades y Secuencia con sus respectivos índices. PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
 - [feature/doc-coord-repo-update-readme-md] Diseño de la plantilla de auditoría de IA en `ia/a3/documentador-coordinador.md` para supervisión de las 4 revisiones requeridas. PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
 
@@ -49,7 +46,6 @@ PR: [#84](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/84) - @V
 - [fix/rc1-documentacion-ia-cu] fix: reemplazo descripcion de PR por documentacion real de IA con prompt y analisis. PR: [#47](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/47) - @ValeriaMSilva (Modelador de Diagramas de Casos de Uso)
 - [fix/reestructuracion-indices] Reestructuración de índice de herramientas y creación de índice de tarjetas CRC. PR: [#48](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/48) - @carolabenvenuto-uces (Diseñador de Tarjetas CRC)
 
->>>>>>> 7812bdbe7ed63e49ed67ca63cd6519f63699f3d1
 
 ## [Release Actividad Obligatoria N°1] - 2026-03-29
 ### Added
