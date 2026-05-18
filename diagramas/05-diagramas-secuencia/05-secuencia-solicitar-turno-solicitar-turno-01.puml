@@ -1,0 +1,45 @@
+@startuml solicitarTurno
+title Diagrama de Secuencia: Solicitar Turno
+
+actor Paciente
+participant ":Secretaria" as secretaria
+participant ":Sistema" as sistema
+participant "agenda:Agenda" as agenda
+participant "turno:Turno" as turno
+
+Paciente -> secretaria: solicitarTurno()
+activate secretaria
+secretaria -> sistema: accederSistema()
+activate sistema
+sistema --> secretaria: mostrarMenu()
+deactivate sistema
+secretaria -> sistema: seleccionarSolicitarTurno()
+activate sistema
+sistema -> agenda: verificarDisponibilidad(fecha)
+activate agenda
+agenda --> sistema: horariosDisponibles()
+deactivate agenda
+sistema --> secretaria: mostrarHorariosDisponibles()
+deactivate sistema
+secretaria --> Paciente: mostrarOpcionesHorarios()
+deactivate secretaria
+
+Paciente -> secretaria: elegirFechaHora(fecha, hora)
+activate secretaria
+secretaria -> sistema: registrarTurno(fecha, hora, pacienteId)
+activate sistema
+sistema -> turno: crearTurno(fecha, hora, pacienteId)
+activate turno
+turno --> sistema: turnoCreado()
+deactivate turno
+sistema -> agenda: agregarTurno(turno)
+activate agenda
+agenda --> sistema: turnoAgregado()
+deactivate agenda
+sistema --> secretaria: turnoRegistrado()
+deactivate sistema
+secretaria --> Paciente: turnoConfirmado()
+deactivate secretaria
+
+destroy turno
+@enduml

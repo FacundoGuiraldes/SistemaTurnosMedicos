@@ -1,0 +1,45 @@
+@startuml cancelarTurno
+title Diagrama de Secuencia: Cancelar Turno
+
+actor Paciente
+participant ":Secretaria" as secretaria
+participant ":Sistema" as sistema
+participant "agenda:Agenda" as agenda
+participant "turno:Turno" as turno
+
+Paciente -> secretaria: solicitarCancelarTurno()
+activate secretaria
+secretaria -> sistema: accederSistema()
+activate sistema
+sistema --> secretaria: mostrarMenu()
+deactivate sistema
+secretaria -> sistema: seleccionarCancelarTurno()
+activate sistema
+sistema -> agenda: obtenerTurnosPaciente(pacienteId)
+activate agenda
+agenda --> sistema: listaTurnosPaciente()
+deactivate agenda
+sistema --> secretaria: mostrarTurnosPaciente()
+deactivate sistema
+secretaria --> Paciente: mostrarListaTurnos()
+deactivate secretaria
+
+Paciente -> secretaria: indicarTurnoCancelar(idTurno)
+activate secretaria
+secretaria -> sistema: cancelarTurno(idTurno)
+activate sistema
+sistema -> turno: eliminarTurno()
+activate turno
+turno --> sistema: turnoEliminado()
+deactivate turno
+sistema -> agenda: removerTurno(idTurno)
+activate agenda
+agenda --> sistema: turnoRemovido()
+deactivate agenda
+sistema --> secretaria: turnoCancelado()
+deactivate sistema
+secretaria --> Paciente: turnoCanceladoConfirmado()
+deactivate secretaria
+
+destroy turno
+@enduml

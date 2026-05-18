@@ -2,6 +2,7 @@
 
 ## [Unreleased] - Actividad N3
 ### Added
+- [feature/esp-secuencia-add-diagrama-secuencia-5] Diagramas de secuencia: 5 diagramas de secuencia de los escenarios. PR: [#84](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/84) - @ValeriaMSilva (Especialista en Diagramas de Secuencia)
 - [feature/esp-actividades-3-4-5-add-diagramas] Diagramas de actividades y documentación de IA CU 3, 4 y 5. PR: [#88](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/88) | Issues: [#90],[#91],[#92](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/90),(https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/91), (https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/92) - @FacundoGuiraldes (Especialista en Diagramas de Actividades - Casos de Uso 3, 4 y 5)
 - [feature/doc-coord-repo-update-readme-md] Estructura base para la Actividad N3: creación de carpetas para Diagramas de Actividades y Secuencia con sus respectivos índices. PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
 - [feature/doc-coord-repo-update-readme-md] Diseño de la plantilla de auditoría de IA en `ia/a3/documentador-coordinador.md` para supervisión de las 4 revisiones requeridas. PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
