@@ -1,0 +1,60 @@
+@startuml 
+title Caso de Uso 1 - Solicitar turno exitoso
+
+|Paciente|
+start
+:Contactar recepción\no llamar por teléfono;
+:Proveer datos básicos\ny motivo de la solicitud;
+
+|Secretaria|
+:Iniciar sesión en\nSistemaTurnosMedicos;
+
+|SistemaTurnosMedicos|
+:Validar si el paciente existe en el sistema;
+
+if (¿El paciente existe en el sistema?) then (sí)
+
+  :Mostrar fechas y\nhorarios disponibles;
+
+  if (¿Hay disponibilidad en el\nhorario seleccionado?) then (sí)
+
+    :Reservar turno en la agenda;
+    :Actualizar estado de disponibilidad;
+    :Enviar notificación de asignación\nal paciente;
+
+  else (no)
+
+    |Secretaria|
+    :Informar que no hay disponibilidad\nen el horario seleccionado;
+    :Ofrecer al paciente otras opciones\nde fecha y horario disponibles;
+
+    |Paciente|
+    :Seleccionar fecha\ny horario disponible;
+    :Proporcionar datos para\nconfirmar la solicitud;
+
+    |SistemaTurnosMedicos|
+    :Reservar turno en la agenda;
+    :Actualizar estado de disponibilidad;
+    :Enviar notificación de asignación\nal paciente;
+
+  endif
+
+  |Secretaria|
+  :Confirmar datos del paciente\ny la solicitud;
+  :Confirmar solicitud exitosa\nen el sistema;
+
+  |Paciente|
+  :Recibir confirmación\nde la solicitud exitosa;
+
+  stop
+
+else (no)
+
+  |Secretaria|
+  :Informar al paciente que no está registrado;
+
+  stop
+
+endif
+
+@enduml

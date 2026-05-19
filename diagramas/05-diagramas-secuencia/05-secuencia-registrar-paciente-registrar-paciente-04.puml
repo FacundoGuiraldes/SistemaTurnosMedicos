@@ -1,0 +1,43 @@
+@startuml registrarPaciente
+title Diagrama de Secuencia: Registrar Paciente
+
+actor Paciente
+participant ":Secretaria" as secretaria
+participant ":Sistema" as sistema
+participant "nuevoPaciente:Paciente" as nuevoPaciente
+participant "usuario:Usuario" as usuario
+
+Paciente -> secretaria: presentarse()
+activate secretaria
+secretaria -> sistema: accederSistema()
+activate sistema
+sistema --> secretaria: mostrarMenu()
+deactivate sistema
+secretaria -> sistema: seleccionarRegistrarPaciente()
+activate sistema
+sistema --> secretaria: formularioPaciente()
+deactivate sistema
+secretaria --> Paciente: solicitarDatosPersonales()
+deactivate secretaria
+
+Paciente -> secretaria: proporcionarDatos(datosPersonales)
+activate secretaria
+secretaria -> sistema: registrarPaciente(datosPersonales)
+activate sistema
+sistema -> nuevoPaciente: crearPaciente(datosPersonales)
+activate nuevoPaciente
+nuevoPaciente --> sistema: pacienteCreado()
+deactivate nuevoPaciente
+destroy nuevoPaciente
+
+sistema -> usuario: asignarIdUsuario()
+activate usuario
+usuario --> sistema: idAsignado()
+deactivate usuario
+destroy usuario
+
+sistema --> secretaria: pacienteRegistrado()
+deactivate sistema
+secretaria --> Paciente: registroConfirmado()
+deactivate secretaria
+@enduml

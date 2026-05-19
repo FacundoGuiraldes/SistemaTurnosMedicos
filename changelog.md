@@ -1,5 +1,15 @@
 # Changelog
 
+## [Release Actividad N3] - 2026-05-21
+
+### Added
+- [feature/doc-coord-repo-update-readme-md] Estructuración inicial de carpetas, diseño de plantillas de IA e integración de enlaces de navegación en `README.md`. PR: [#78](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/78) - @carolabenvenuto-uces (Documentador y Coordinador)
+- [feature/esp-secuencia-add-diagrama-secuencia-5] Diseño y mapeo de los Diagramas de Secuencia de los escenarios para los 5 Casos de Uso. PR: [#84](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/84) - @ValeriaMSilva (Especialista en Diagramas de Secuencia)
+- [feature/esp-actividades-1-2-add-diagrama-actividad-1] Generación y documentación de los Diagramas de Actividades para los Casos de Uso 1 y 2. PR: [#87](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/87) | Issues: [#85](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/85), [#86](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/86) - @caterinacerdan (Especialista en Diagramas de Actividades - Casos de Uso 1 y 2)
+- [feature/esp-actividades-3-4-5-add-diagramas] Desarrollo de los Diagramas de Actividades y reportes de IA para los Casos de Uso 3, 4 y 5. PR: [#88](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/88) | Issues: [#90](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/90), [#91](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/91), [#92](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/92) - @FacundoGuiraldes (Especialista en Diagramas de Actividades - Casos de Uso 3, 4 y 5)
+- [feature/doc-coord-repo-update-readme-md] Consolidación final de portadas, unificación de índices planos y registro formal de las 4 auditorías técnicas de IA. PR: [#93](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/93) - @carolabenvenuto-uces (Documentador y Coordinador)
+
+
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
 - [feature/especialista-dip-analisis-solid] Análisis técnico del principio DIP, marco teórico y diseño de diagrama UML (puml/png) para desacoplamiento de servicios. PR: [#51](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/51) | Issue: [#50](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/50) - @carolabenvenuto-uces (Especialista en Inversión de Dependencias)
