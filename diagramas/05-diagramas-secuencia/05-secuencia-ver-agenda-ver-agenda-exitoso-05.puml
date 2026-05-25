@@ -8,7 +8,7 @@ participant "turno:Turno" as turno
 
 Doctor -> sistema: accederAlSistema(numeroLicencia)
 activate sistema
-sistema --> Doctor: mostrarMenu()
+sistema --> Doctor: menu
 deactivate sistema
 
 Doctor -> sistema: seleccionarVerAgenda()
@@ -19,12 +19,12 @@ agenda -> agenda: obtenerTurnosDelDia(fecha)
 activate agenda
 agenda -> turno: obtenerDetalles()
 activate turno
-turno --> agenda: detallesTurno(paciente, hora, estado)
+turno --> agenda: detallesTurno
 deactivate turno
-agenda --> sistema: listaTurnosProgramados()
+agenda --> sistema: listaTurnosProgramados
 deactivate agenda
 deactivate agenda
-sistema --> Doctor: mostrarAgenda(turnos, pacientes, horarios)
+sistema --> Doctor: agenda
 deactivate sistema
 
 Doctor -> sistema: consultarPacienteEspecifico(idTurno)
@@ -33,11 +33,11 @@ sistema -> agenda: obtenerInfoTurno(idTurno)
 activate agenda
 agenda -> turno: obtenerInfoPaciente()
 activate turno
-turno --> agenda: infoPaciente(nombre, dni, motivoConsulta)
+turno --> agenda: infoPaciente
 deactivate turno
-agenda --> sistema: retornarInfoPaciente()
+agenda --> sistema: infoPaciente
 deactivate agenda
-sistema --> Doctor: mostrarDetallesPaciente(info)
+sistema --> Doctor: detallesPaciente
 deactivate sistema
 
 destroy turno
