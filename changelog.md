@@ -9,6 +9,8 @@
 - [feature/esp-actividades-3-4-5-add-diagramas] Desarrollo de los Diagramas de Actividades y reportes de IA para los Casos de Uso 3, 4 y 5. PR: [#88](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/88) | Issues: [#90](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/90), [#91](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/91), [#92](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/92) - @FacundoGuiraldes (Especialista en Diagramas de Actividades - Casos de Uso 3, 4 y 5)
 - [feature/doc-coord-repo-update-readme-md] Consolidación final de portadas, unificación de índices planos y registro formal de las 4 auditorías técnicas de IA. PR: [#93](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/93) - @carolabenvenuto-uces (Documentador y Coordinador)
 
+### Fixed
+- [fix/correccion-indices-readme-coordinador] Corrección de formato del índice de diagramas de actividades, reestructuración del `README.md` para asegurar coherencia conceptual del modelo dinámico y actualización de `diagramas/diagramasUML.md` con la complementariedad de modelos. PR: [#95](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/95) - @carolabenvenuto-uces (Documentador y Coordinador) 
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
