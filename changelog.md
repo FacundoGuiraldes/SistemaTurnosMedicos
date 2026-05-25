@@ -14,7 +14,7 @@
 - [feature/esp-actividades-1-2-add-diagrama-actividad-1] Generación del diagrama de actividades para el Caso de Uso 1 y 2 (Solicitar Turno y Cancelar Turno) utilizando IA, con iteraciones de ajuste para reflejar fielmente el escenario principal. PR: [#87](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/87) | Issue: [#85](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/85) y [#86](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/86) - @caterinacerdan (Especialista en Diagramas de Actividades caso de uso 1 y 2)
 
 ### Fixed
-- [fix/correccion-indices-readme-coordinador] Corrección de formato del índice de diagramas de actividades, reestructuración del `README.md` para asegurar coherencia conceptual del modelo dinámico y actualización de `diagramas/diagramasUML.md` con la complementariedad de modelos. PR: [#PR_FIX](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/) - @carolabenvenuto-uces (Documentador y Coordinador) 
+- [fix/correccion-indices-readme-coordinador] Corrección de formato del índice de diagramas de actividades, reestructuración del `README.md` para asegurar coherencia conceptual del modelo dinámico y actualización de `diagramas/diagramasUML.md` con la complementariedad de modelos. PR: [#95](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/95) - @carolabenvenuto-uces (Documentador y Coordinador) 
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
