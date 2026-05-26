@@ -14,6 +14,7 @@
 - [feature/doc-coord-repo-update-readme-md] Actualización integral del `README.md`: se reestructuró la navegación para cumplir con la auditoría de calidad de Copilot, integrando enlaces a todos los índices previos (A2, Parcial) y nuevos (A3). - @carolabenvenuto-uces (Documentador y Coordinador)
 - [feature/doc-coord-repo-update-readme-md] Actualización de la tabla de integrantes con los nuevos roles asignados para la Actividad N3. - @carolabenvenuto-uces (Documentador y Coordinador)
 - [fix/correccion-indices-readme-coordinador] Corrección de formato del índice de diagramas de actividades, reestructuración del `README.md` para asegurar coherencia conceptual del modelo dinámico y actualización de `diagramas/diagramasUML.md` con la complementariedad de modelos. PR: [#95](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/95) - @carolabenvenuto-uces (Documentador y Coordinador) 
+- [fix/correccion-puml-caso-de-uso] correccion de la sintaxis de puml y restauración de actividad 2 caso de uso. PR: [#97](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/97) - @caterinacerdan (Especialista en diagramas de actividades caso de uso 1 y 2)
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
