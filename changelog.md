@@ -10,6 +10,9 @@
 - [feature/doc-coord-repo-update-readme-md] Consolidación final de portadas, unificación de índices planos y registro formal de las 4 auditorías técnicas de IA. PR: [#93](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/93) - @carolabenvenuto-uces (Documentador y Coordinador)
 
 ### Fixed
+- [fix/correcciones-secuencia] Corrección de formato en mensajes de retorno de Diagramas de Secuencia. PR: [#96](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/96) - @ValeriaMSilva (Especialista en Diagramas de Secuencia)
+- [feature/doc-coord-repo-update-readme-md] Actualización integral del `README.md`: se reestructuró la navegación para cumplir con la auditoría de calidad de Copilot, integrando enlaces a todos los índices previos (A2, Parcial) y nuevos (A3). - @carolabenvenuto-uces (Documentador y Coordinador)
+- [feature/doc-coord-repo-update-readme-md] Actualización de la tabla de integrantes con los nuevos roles asignados para la Actividad N3. - @carolabenvenuto-uces (Documentador y Coordinador)
 - [fix/correccion-indices-readme-coordinador] Corrección de formato del índice de diagramas de actividades, reestructuración del `README.md` para asegurar coherencia conceptual del modelo dinámico y actualización de `diagramas/diagramasUML.md` con la complementariedad de modelos. PR: [#95](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/95) - @carolabenvenuto-uces (Documentador y Coordinador) 
 
 ## [Release Primer Parcial] - 2026-04-25
