@@ -36,11 +36,8 @@ if (¿El paciente existe en el sistema?) then (sí)
     :Registrar cambio en historial de modificaciones;
     :Notificar al médico sobre la cancelación del turno;
 
-    fork
-      |Secretaria|
+    |Secretaria|
       :Notificar cancelación al paciente;
-  
-    end fork
 
     |Paciente|
     :Recibir confirmación de cancelación;
@@ -51,15 +48,15 @@ if (¿El paciente existe en el sistema?) then (sí)
     |Secretaria|
     :Informar que no hay un turno activo para ese paciente;
     :Finalizar atención sin cancelar turno;
-    stop
+    end
 
   endif
 
-else (no)
+  else (no)
 
   |Secretaria|
   :Informar al paciente que no está registrado;
-  stop
+  end
 
 endif
 
