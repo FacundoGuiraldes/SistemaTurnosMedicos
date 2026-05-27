@@ -19,8 +19,7 @@ Asegúrate de incluir:
 *   **Ajustes manuales:** Se agregó el bloque `rectangle "Sistema de Turnos Médicos" { }` para delimitar el sistema. Se modificó manualmente la relación de notificación a `<<include>>` (`UC1 ..> UC4 : <<include>>`) ya que es una regla obligatoria del dominio.
 
 **2. 02-caso-uso-cancelar-turno-02.puml**
-*   **Output generado:** Identificó correctamente las inclusiones de búsqueda y liberación de turno, pero falló en la obligatoriedad de la notificación y omitió el límite del sistema.
-*   **Ajustes manuales:** Se envolvió el diagrama en el bloque `rectangle`. Se corrigió la relación "Notificar cancelación" cambiándola de `<<extend>>` a `<<include>>` para cumplir con las reglas del negocio.
+<!-- Nota: Este caso de uso fue eliminado en la feature mergeada PR #87. Las observaciones históricas se mantienen en el historial del repositorio, pero el archivo ya no existe en la rama principal. -->
 
 **3. 02-caso-uso-registrar-llegada-03.puml**
 *   **Output generado:** Omitió por completo al actor "Doctor" en el código PlantUML e intentó aislar el caso de uso "Ver lista de espera". Omitió el `rectangle`.

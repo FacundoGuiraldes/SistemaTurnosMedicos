@@ -229,7 +229,7 @@ Todos los comentarios generados por Copilot fueron revisados y considerados pert
 
 | Archivo | Cambio sugerido |
 |---|---|
-| `diagramas/02-casos-de-uso/02-caso-uso-cancelar-turno-02.puml` L6 | Agregar `Paciente -- UC1` (actor Paciente no está asociado al caso de uso) |
+| `diagramas/02-casos-de-uso/02-caso-uso-cancelar-turno-02.puml` L6 | Archivo eliminado en PR #87; referencia histórica mantenida en revisión. |
 | `diagramas/02-casos-de-uso/02-caso-uso-registrar-llegada-03.puml` L4–5 | Agregar `actor Paciente` y `Paciente -- UC1` (actor ausente; CU3 requiere Paciente, Secretaria y Doctor) |
 | `diagramas/02-casos-de-uso/02-caso-uso-registrar-llegada-03.puml` L8–10 | Vincular `UC4 "Ver lista de espera"` al flujo central con `<<extend>>`, o retirarlo a un diagrama propio |
 | `diagramas/02-casos-de-uso/02-caso-uso-registrar-paciente-04.puml` L12 | Eliminar `UC5 "Solicitar turno"` (usecase sin relación y comentario con RF incorrecto) |
