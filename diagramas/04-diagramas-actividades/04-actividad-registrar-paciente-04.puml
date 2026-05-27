@@ -44,7 +44,7 @@ if (¿El paciente ya existe\nen la base de datos?) then (Sí - DNI duplicado)
     paciente preexistente,
     no se genera duplicado
   end note
-  stop
+  END
 else (No - DNI nuevo)
   :Continúa con la\nvalidación de datos;
 endif

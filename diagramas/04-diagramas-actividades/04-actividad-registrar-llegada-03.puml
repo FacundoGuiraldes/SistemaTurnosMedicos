@@ -42,7 +42,7 @@ else (No encontrado)
     paciente sin turno
     (RF5 / RNF4)
   end note
-  stop
+  END
 endif
 
 |Secretaria|

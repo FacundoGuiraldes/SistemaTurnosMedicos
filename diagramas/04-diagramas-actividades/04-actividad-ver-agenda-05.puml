@@ -33,7 +33,7 @@ else (No - credenciales inválidas)
     Caso alternativo:
     error de autenticación
   end note
-  stop
+  END
 endif
 
 |Doctor|
