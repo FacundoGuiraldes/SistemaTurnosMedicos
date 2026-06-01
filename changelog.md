@@ -1,5 +1,7 @@
 # Changelog
 
+## Unreleased
+
 ## [Release Actividad N3] - 2026-05-21
 
 ### Added
@@ -16,6 +18,7 @@
 - [fix/correccion-indices-readme-coordinador] Corrección de formato del índice de diagramas de actividades, reestructuración del `README.md` para asegurar coherencia conceptual del modelo dinámico y actualización de `diagramas/diagramasUML.md` con la complementariedad de modelos. PR: [#95](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/95) - @carolabenvenuto-uces (Documentador y Coordinador) 
 - [fix/correccion-puml-caso-de-uso] correccion de la sintaxis de puml y restauración de actividad 2 caso de uso. PR: [#97](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/97) - @caterinacerdan (Especialista en diagramas de actividades caso de uso 1 y 2)
 - [fix/esp-actividades-3-4-5-doc-ia] Corrección de cierres de flujo en diagramas de actividades (un único `stop`; `END` en alternativos) y actualización de documentación IA. PR: [#98](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/98) - @FacundoGuiraldes (Especialista en Diagramas de Actividades)
+- [fix/rc-1-18-19-20] Corrección adicional de los Diagramas de Actividades para los Casos de Uso 3, 4 y 5. PR: [#101](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/101) - @FacundoGuiraldes (Especialista en Diagramas de Actividades - Casos de Uso 3, 4 y 5)
 
 ## [Release Primer Parcial] - 2026-04-25
 ### Added
