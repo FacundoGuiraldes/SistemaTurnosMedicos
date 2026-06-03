@@ -7,7 +7,6 @@ Este documento registra la interacción con GitHub Copilot para la generación d
 ## Caso de Uso 3: Registrar llegada del paciente
 
 **Prompt utilizado:**
-**Prompt utilizado:**
 ```
 Actúa como un Especialista en UML y Analista Funcional. Debo generar el diagrama de actividades para el Caso de Uso 3: "Registrar llegada del paciente", siguiendo la estructura de la Actividad Obligatoria N°3.
 ```
@@ -66,7 +65,6 @@ Genera el código PlantUML completo para integrar en la PR #89. Esta PR luego se
 
 ## Caso de Uso 5: Ver agenda
 
-**Prompt utilizado:**
 **Prompt utilizado:**
 ```
 Actúa como un Especialista en UML y Analista Funcional Sr. Debo generar el diagrama de actividades para el Caso de Uso 5: "Ver agenda", siguiendo la estructura de la Actividad Obligatoria N°3 y consolidando el trabajo en la PR #89.
