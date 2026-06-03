@@ -29,7 +29,7 @@ deactivate sistema
 
 Doctor -> sistema: consultarPacienteEspecifico(turno)
 activate sistema
-sistema -> agenda: obtenerInfoTurno(idTurno)
+sistema -> agenda: obtenerInfoTurno(turno)
 activate agenda
 agenda -> turno: obtenerInfoPaciente()
 activate turno

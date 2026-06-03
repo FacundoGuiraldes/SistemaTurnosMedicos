@@ -21,9 +21,9 @@ turno --> sistema: turnoEncontrado
 deactivate turno
 sistema --> secretaria: turnoVerificado
 deactivate sistema
-secretaria -> sistema: registrarLlegadaPaciente(pacienteId)
+secretaria -> sistema: registrarLlegadaPaciente(paciente)
 activate sistema
-sistema -> salaEspera: registrarLlegada(pacienteId, horaActual)
+sistema -> salaEspera: registrarLlegada(paciente, horaActual)
 activate salaEspera
 salaEspera --> sistema: llegadaRegistrada
 deactivate salaEspera
