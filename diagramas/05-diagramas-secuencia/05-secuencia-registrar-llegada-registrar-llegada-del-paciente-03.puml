@@ -15,7 +15,7 @@ sistema --> secretaria: menu
 deactivate sistema
 secretaria -> sistema: seleccionarRegistrarLlegada()
 activate sistema
-sistema -> turno: buscarTurnoPaciente(pacienteId)
+sistema -> turno: buscarTurnoPaciente(paciente)
 activate turno
 turno --> sistema: turnoEncontrado
 deactivate turno
