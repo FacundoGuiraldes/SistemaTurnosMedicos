@@ -15,7 +15,7 @@ sistema --> secretaria: menu
 deactivate sistema
 secretaria -> sistema: seleccionarCancelarTurno()
 activate sistema
-sistema -> agenda: obtenerTurnosPaciente(pacienteId)
+sistema -> agenda: obtenerTurnosPaciente(paciente)
 activate agenda
 agenda --> sistema: listaTurnosPaciente
 deactivate agenda
