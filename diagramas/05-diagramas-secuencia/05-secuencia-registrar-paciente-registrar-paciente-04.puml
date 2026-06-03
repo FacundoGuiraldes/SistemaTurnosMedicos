@@ -30,9 +30,9 @@ nuevoPaciente --> sistema: pacienteCreado
 deactivate nuevoPaciente
 destroy nuevoPaciente
 
-sistema -> usuario: asignarIdUsuario()
+sistema -> usuario: crearCuentaUsuario(datosPersonales)
 activate usuario
-usuario --> sistema: idAsignado
+usuario --> sistema: cuentaUsuarioCreada
 deactivate usuario
 destroy usuario
 

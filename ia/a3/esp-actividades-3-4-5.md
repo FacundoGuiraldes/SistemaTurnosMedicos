@@ -7,7 +7,6 @@ Este documento registra la interacción con GitHub Copilot para la generación d
 ## Caso de Uso 3: Registrar llegada del paciente
 
 **Prompt utilizado:**
-**Prompt utilizado:**
 ```
 Actúa como un Especialista en UML y Analista Funcional. Debo generar el diagrama de actividades para el Caso de Uso 3: "Registrar llegada del paciente", siguiendo la estructura de la Actividad Obligatoria N°3.
 ```
@@ -44,7 +43,6 @@ Genera el código PlantUML completo y profesional.
 ## Caso de Uso 4: Registrar paciente
 
 **Prompt utilizado:**
-**Prompt utilizado:**
 ```
 Actúa como un Especialista en UML y Analista Funcional. Debo generar el diagrama de actividades para el Caso de Uso 4: "Registrar paciente", siguiendo la estructura de la Actividad Obligatoria N°3 y continuando el trabajo de la PR #89.
 ```
@@ -63,10 +61,22 @@ REQUISITOS TÉCNICOS DE SALIDA:
 
 Genera el código PlantUML completo para integrar en la PR #89. Esta PR luego se mergeará manualmente a la PR #88 para su review.
 
+### Archivos de contexto referenciados
+- `diagramas/02-casos-de-uso/`
+- `diagramas/03-escenarios-casos-de-uso/`
+
+### Ajustes al output de la IA
+- Definición clara de comportamiento ante pacientes preexistentes (caso alternativo termina en `END`).
+- Completitud de actividades hasta alcanzar el mínimo de 10 nodos.
+
+### Iteraciones
+- v1: Prompt inicial — diagrama base generado.
+- v2: Se pidió manejo de duplicados y flujo alternativo; IA actualizó el diagrama.
+- v3: Ajustes manuales para estandarizar cierres alternativos y garantizar un único `stop` final.
+
 
 ## Caso de Uso 5: Ver agenda
 
-**Prompt utilizado:**
 **Prompt utilizado:**
 ```
 Actúa como un Especialista en UML y Analista Funcional Sr. Debo generar el diagrama de actividades para el Caso de Uso 5: "Ver agenda", siguiendo la estructura de la Actividad Obligatoria N°3 y consolidando el trabajo en la PR #89.
@@ -98,16 +108,3 @@ Genera el código PlantUML completo para integrar en la PR #89. Esta PR luego se
 - v1: Prompt inicial — salida sin manejo exhaustivo de errores.
 - v2: Se solicitó manejo de autenticación y agenda vacía; IA incorporó alternativas.
 - v3: Ajustes manuales finales: sustitución de `stop` intermedios por `END` y revisión de swimlanes.
-
-### Archivos de contexto referenciados
-- `diagramas/02-casos-de-uso/`
-- `diagramas/03-escenarios-casos-de-uso/`
-
-### Ajustes al output de la IA
-- Definición clara de comportamiento ante pacientes preexistentes (caso alternativo termina en `END`).
-- Completitud de actividades hasta alcanzar el mínimo de 10 nodos.
-
-### Iteraciones
-- v1: Prompt inicial — diagrama base generado.
-- v2: Se pidió manejo de duplicados y flujo alternativo; IA actualizó el diagrama.
-- v3: Ajustes manuales para estandarizar cierres alternativos y garantizar un único `stop` final.
