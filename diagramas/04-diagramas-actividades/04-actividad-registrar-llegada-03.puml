@@ -1,0 +1,81 @@
+@startuml 04-actividad-registrar-llegada-03
+!theme plain
+title CU03 - Registrar Llegada del Paciente\nSistema de Turnos Médicos
+
+skinparam swimlaneWidth 220
+skinparam ActivityBackgroundColor #EAF4FB
+skinparam ActivityBorderColor #2E86AB
+skinparam ArrowColor #2E86AB
+skinparam ActivityDiamondBackgroundColor #FFF3CD
+skinparam ActivityDiamondBorderColor #D4A017
+skinparam NoteBackgroundColor #F0F4F8
+skinparam NoteBorderColor #8BA0B4
+skinparam TitleFontSize 14
+skinparam TitleFontStyle bold
+
+|Paciente|
+start
+:Llega al consultorio\nen el horario del turno;
+note right
+  Precondición: el paciente
+  tiene turno asignado para hoy
+end note
+:Notifica su llegada\na la secretaria;
+:Proporciona nombre\no número de DNI;
+
+|Secretaria|
+:Recibe la notificación\ndel paciente;
+:Accede a la agenda del día\nen el sistema;
+:Ingresa nombre o DNI del paciente\npara buscar el turno;
+
+|Sistema|
+:Consulta la base de datos\nde turnos del día actual;
+
+if (¿Existe turno registrado\npara el paciente hoy?) then (Sí)
+  :Muestra información del turno:\nnombre, hora y especialidad;
+else (No encontrado)
+  :Muestra alerta:\n"Turno no encontrado\npara el día de hoy";
+  |Secretaria|
+  :Informa al paciente que\nno tiene turno registrado hoy;
+  note right
+    Caso alternativo:
+    paciente sin turno
+    (RF5 / RNF4)
+  end note
+  END
+endif
+
+|Secretaria|
+if (¿Datos del paciente\ncorresponden al turno?) then (Sí)
+  :Confirma identidad del paciente\ny datos del turno;
+else (No coinciden)
+  :Solicita al paciente que\ncorrija sus datos;
+  :Reingresa los datos y\nvuelve a buscar el turno;
+endif
+
+:Selecciona el turno\ncorrespondiente al paciente;
+:Registra la llegada del paciente\nen el sistema;
+
+|Sistema|
+:Captura y almacena la hora\nreal de llegada del paciente;
+:Actualiza el estado del turno\na "En Espera";
+:Registra la acción en el\nhistorial de modificaciones;
+note right
+  RNF4: Historial de modificaciones
+  RF5: Check de asistencia
+end note
+:Genera confirmación visual\ndel registro exitoso;
+
+|Secretaria|
+:Informa al paciente que\nha sido registrado exitosamente;
+
+|Paciente|
+:Espera en la sala hasta\nser llamado por el doctor;
+note right
+  Poscondición: el doctor puede
+  ver quién está esperando
+  y desde cuándo
+end note
+
+stop
+@enduml
