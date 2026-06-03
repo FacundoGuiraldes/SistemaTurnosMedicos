@@ -26,7 +26,7 @@ deactivate secretaria
 
 Paciente -> secretaria: elegirFechaHora(fecha, hora)
 activate secretaria
-secretaria -> sistema: registrarTurno(fecha, hora, pacienteId)
+secretaria -> sistema: registrarTurno(fecha, hora, paciente)
 activate sistema
 sistema -> turno: crearTurno(fecha, hora, pacienteId)
 activate turno
