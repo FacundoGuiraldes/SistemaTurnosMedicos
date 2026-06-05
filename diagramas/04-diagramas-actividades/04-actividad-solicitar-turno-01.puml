@@ -46,15 +46,17 @@ if (¿El paciente existe en el sistema?) then (sí)
   |Paciente|
   :Recibir confirmación\nde la solicitud exitosa;
 
-  stop
+  END
 
 else (no)
 
   |Secretaria|
   :Informar al paciente que no está registrado;
 
-  stop
+  END
 
 endif
+
+stop
 
 @enduml

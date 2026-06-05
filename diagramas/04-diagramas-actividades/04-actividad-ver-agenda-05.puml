@@ -33,7 +33,7 @@ else (No - credenciales inválidas)
     Caso alternativo:
     error de autenticación
   end note
-  stop
+  END
 endif
 
 |Doctor|
@@ -63,7 +63,7 @@ else (No - agenda vacía)
     agenda sin turnos
     (RF2 / RF4)
   end note
-  stop
+  END
 endif
 
 |Sistema|
