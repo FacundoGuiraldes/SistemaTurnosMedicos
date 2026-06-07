@@ -1,93 +1,53 @@
 @startuml
-title Diagrama de Clases - Caso de Uso 1: Solicitar Turno
-
-abstract class Usuario {
-  - usuario: String
-  - clave: String
-  - nombre: String
-  - email: String
-  + autenticar(usuario: String, clave: String): boolean
-}
+' Diagrama de Clases - Solicitar Turno con correcciones SOLID
 
 class Paciente {
-  - numeroHistorial: String
   - dni: String
-  - direccion: String
-  - alergias: List<String>
-  + solicitarTurno(fecha: Date, hora: String): Turno
-  + cancelarTurno(turnoId: String): boolean
-  + consultarTurnos(): List<Turno>
+  - nombre: String
+  - telefono: String
 }
 
-class Secretaria {
-  - departamento: String
-  + iniciarSesion(usuario: String, clave: String): boolean
-  + seleccionarSolicitarTurno(): void
-  + confirmarSolicitud(turno: Turno): boolean
-  + registrarNuevoPaciente(paciente: Paciente): void
-}
-
-class Sistema {
-  - usuarioActual: Usuario
-  - usuarios: List<Usuario>
-  - turnos: List<Turno>
-  - agendas: List<Agenda>
-  - notificacionService: NotificacionService
-  - persistenciaService: PersistenciaService
-  + autenticarUsuario(usuario: String, clave: String): boolean
-  + mostrarHorariosDisponibles(fecha: Date): List<String>
-  + registrarTurno(fecha: Date, hora: String, paciente: Paciente): Turno
-  + verificarDisponibilidad(fecha: Date, hora: String): boolean
-  + enviarNotificacion(paciente: Paciente, mensaje: String): void
+class Doctor {
+  - matricula: String
+  - nombre: String
+  - especialidad: String
+  + obtenerAgenda(): Agenda
 }
 
 class Agenda {
-  - doctorId: String
-  - turnos: List<Turno>
-  - horariosBloqueados: List<String>
-  - horaApertura: String
-  - horaCierre: String
-  + verificarDisponibilidad(fecha: Date, hora: String): boolean
-  + agregarTurno(turno: Turno): boolean
-  + sugerirFranjaLibre(): List<String>
-  + validarReglasHorario(fecha: Date, hora: String): boolean
+  - horariosDisponibles: List<Date>
+  + estaDisponible(fecha: Date): Boolean
+  + reservar(fecha: Date)
 }
 
 class Turno {
-  - id: String
+  - idTurno: String
   - fecha: Date
-  - hora: String
-  - estado: String
-  - especialidad: String
-  - pacienteId: String
-  - doctorId: String
-  - duracion: int
-  - motivoConsulta: String
-  + crearTurno(fecha: Date, hora: String, paciente: Paciente): Turno
-  + actualizarEstado(estado: String): void
-  + getDetalles(): String
 }
 
-class NotificacionService {
-  + enviarNotificacion(paciente: Paciente, mensaje: String): void
+interface INotificacion <<interfaz>> {
+  + enviarNotificacion(mensaje: String)
 }
 
-class PersistenciaService {
-  + guardarTurno(turno: Turno): void
-  + cargarHorariosDisponibles(fecha: Date): List<String>
+interface IPersistencia <<interfaz>> {
+  + guardarTurno(turno: Turno)
 }
 
-Usuario <|-- Paciente
-Usuario <|-- Secretaria
+class Sistema {
+  - notificador: INotificacion
+  - baseDeDatos: IPersistencia
+  + buscarPaciente(dni: String): Paciente
+  + buscarDoctor(matricula: String): Doctor
+  + registrarTurno(paciente: Paciente, doctor: Doctor, fecha: Date): Turno
+}
 
-Paciente -- Secretaria : solicitaTurno
-Secretaria -- Sistema : accede
-Sistema -- Agenda : usa
-Sistema -- Turno : crea
-Agenda o-- Turno
-Sistema *-- NotificacionService
-Sistema *-- PersistenciaService
-Sistema ..> NotificacionService
-Sistema ..> PersistenciaService
-Turno -- Paciente : correspondeA
+' Relaciones UML
+Sistema ..> INotificacion : usa
+Sistema ..> IPersistencia : usa
+
+Doctor "1" --> "1" Agenda : administra
+Sistema "1" --> "*" Turno : registra
+Turno "*" --> "1" Paciente : pertenece a
+Turno "*" --> "1" Doctor : asignado a
+
 @enduml
