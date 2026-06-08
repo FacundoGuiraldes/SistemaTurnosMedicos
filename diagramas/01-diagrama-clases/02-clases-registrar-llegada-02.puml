@@ -1,0 +1,142 @@
+@startuml 02-clases-registrar-llegada-02
+title Diagrama de Clases: Registrar llegada del paciente
+
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+abstract class Usuario {
+    +id: String
+    +nombre: String
+    +apellido: String
+    +dni: String
+    +email: String
+    +validarCredenciales(): Boolean
+}
+
+class Paciente {
+    -numeroHistorial: String
+    -direccion: String
+    -alergias: List<String>
+    +registrarLlegada(): LlegadaPaciente
+}
+
+class Secretaria {
+    -departamento: String
+    +informarLlegada(): void
+    +registrarLlegadaPaciente(paciente: Paciente): Boolean
+}
+
+class Doctor {
+    -numeroLicencia: String
+    -especialidad: String
+    +consultarListaEspera(): List<Paciente>
+}
+
+enum EstadoTurno {
+    PENDIENTE
+    EN_ESPERA
+    ATENDIDO
+    CANCELADO
+}
+
+class Turno {
+    +id: String
+    +fecha: DateTime
+    +hora: String
+    +estado: EstadoTurno
+    +especialidad: String
+    +motivoConsulta: String
+    +marcarEnEspera(): void
+    +getDetalles(): String
+}
+
+class SalaEspera {
+    -pacientes: List<Paciente>
+    -estadoPaciente: Map<String, String>
+    -horaLlegada: Map<String, DateTime>
+    +registrarLlegada(paciente: Paciente, horaActual: DateTime): Boolean
+    +obtenerListaEspera(): List<Paciente>
+}
+
+class LlegadaPaciente {
+    +horaLlegada: DateTime
+    +estadoValidacion: Boolean
+    +idTurno: String
+    +prioridad: Boolean
+}
+
+interface ITurnoService {
+    +verificarTurno(pacienteId: String): Turno
+    +marcarTurnoEnEspera(turno: Turno): Boolean
+}
+
+interface ISalaEsperaService {
+    +registrarEnSala(paciente: Paciente, horaLlegada: DateTime): Boolean
+    +obtenerPacientesEnEspera(): List<Paciente>
+}
+
+interface IPersistenciaService {
+    +buscarTurnoPorPacienteId(pacienteId: String): Turno
+    +guardarTurno(turno: Turno): void
+    +guardarHistorial(evento: String): void
+}
+
+interface IAuditoriaService {
+    +registrarEvento(evento: String): void
+}
+
+class Sistema {
+    -turnoService: ITurnoService
+    -salaEsperaService: ISalaEsperaService
+    -persistenciaService: IPersistenciaService
+    -auditoriaService: IAuditoriaService
+    +accederSistema(usuario: Usuario): Boolean
+    +verificarTurno(pacienteId: String): Turno
+    +registrarLlegada(paciente: Paciente): Boolean
+    +marcarEnEspera(turno: Turno): Boolean
+}
+
+class TurnoService {
+    +verificarTurno(pacienteId: String): Turno
+    +marcarTurnoEnEspera(turno: Turno): Boolean
+}
+
+class SalaEsperaService {
+    +registrarEnSala(paciente: Paciente, horaLlegada: DateTime): Boolean
+    +obtenerPacientesEnEspera(): List<Paciente>
+}
+
+class PersistenciaService {
+    +buscarTurnoPorPacienteId(pacienteId: String): Turno
+    +guardarTurno(turno: Turno): void
+    +guardarHistorial(evento: String): void
+}
+
+class AuditoriaService {
+    +registrarEvento(evento: String): void
+}
+
+Paciente --|> Usuario
+Secretaria --|> Usuario
+Doctor --|> Usuario
+
+Sistema --> ITurnoService : usa (DIP)
+Sistema --> ISalaEsperaService : usa (DIP)
+Sistema --> IPersistenciaService : usa (DIP)
+Sistema --> IAuditoriaService : usa (DIP)
+
+TurnoService -up-|> ITurnoService
+SalaEsperaService -up-|> ISalaEsperaService
+PersistenciaService -up-|> IPersistenciaService
+AuditoriaService -up-|> IAuditoriaService
+
+Sistema --> Turno
+Sistema --> SalaEspera
+SalaEspera o-- "0..*" Paciente
+Turno --> Paciente : asigna
+LlegadaPaciente --> Turno
+Secretaria --> Sistema
+Secretaria --> Paciente
+
+@enduml
+
