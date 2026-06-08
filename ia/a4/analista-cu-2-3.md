@@ -5,8 +5,8 @@
 Actúa como un Analista Funcional y Arquitecto de Software Senior experto en principios SOLID. Estoy resolviendo la consigna 3.1.2 de la Actividad Obligatoria Nro 4 para los Casos de Uso 2 y 3.
 
 Necesito diseñar los diagramas de clases específicos en PlantUML para:
-- CU2: Registrar llegada del paciente (basado en image_b3cae9.png)
-- CU3: Registrar paciente (basado en image_b3cb0d.png)
+- CU2: Registrar llegada del paciente 
+- CU3: Registrar paciente 
 
 Para garantizar la coherencia absoluta con el trabajo previo del equipo, analiza detalladamente el contenido de los siguientes archivos de mi espacio de trabajo como fuentes de contexto obligatorias:
 1. "diagramas/01-diagrama-clases/01-boceto-inicial.excalidraw"
