@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## [Release Actividad N4] - 2026-06-18
+
+### Added
+
+- [feature/analista-cu-2-3-add-anexo-cu2-cu3] Diseño de diagramas de clases estructurales en PlantUML para CU2 y CU3 aplicando principios SOLID (SRP/DIP), redacción de anexos funcionales con pseudocódigo completo y documentación del proceso de IA en la bitácora. PR: [#112](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/112) - @carolabenvenuto-uces (Analista Funcional CU2 Y CU3)
 
 ## [Release Actividad N4] - 2026-06-06
 
