@@ -39,6 +39,14 @@ Describe también los ajustes realizados al output de la IA y las iteraciones re
 - `diagramas/05-diagramas-secuencia/`
 - `diagramas/01-diagrama-clases/`
 
+## Plantillas utilizadas
+
+Las plantillas obligatorias fueron proporcionadas por el solicitante (adjuntas) y se usaron como referencia para redactar los anexos finales. No se añadieron archivos de plantilla adicionales al repositorio; los documentos finales siguen la estructura y secciones definidas en:
+
+- `00-plantilla-diagrama-clases-final.md` (proporcionada)
+- `00-plantilla-pilares-poo.md` (proporcionada)
+- `00-plantilla-happy-path-global.md` (proporcionada)
+
 ## Ajustes realizados al output de la IA
 
 - Se corrigió el formato de las plantillas para que coincida con los encabezados y tablas exactas de los archivos de plantilla obligatorios.
@@ -60,3 +68,14 @@ Describe también los ajustes realizados al output de la IA y las iteraciones re
 
 - No se realizaron creaciones automáticas de issues en GitHub desde este entorno, ya que no se dispone de acceso directo al API o credenciales dentro del editor.
 - La creación de issues y la asociación a la PR `feature/arquitecto-dominio-add-diagrama-final → develop` debe hacerse manualmente en GitHub o mediante un flujo de CI/CD externo.
+
+## Notas sobre capturas-pilares
+
+Las imágenes en `diagramas/01-diagrama-clases/capturas-pilares/` fueron generadas como fragmentos que muestran únicamente las clases relevantes para cada ejemplo. Si el revisor exige "recortes pixel-perfect" extraídos literalmente de `diagramas/01-diagrama-clases/06-clases-diagrama-final.png`, incluyo a continuación un script recomendado para generar crops locales (ImageMagick):
+
+```powershell
+# Ejemplo: recortar una región y guardarla
+magick convert -crop 300x200+100+150 "diagramas/01-diagrama-clases/06-clases-diagrama-final.png" "diagramas/01-diagrama-clases/capturas-pilares/poo-encapsulamiento-ejemplo-1.png"
+```
+
+Ejecutá y ajustá las coordenadas según sea necesario; luego `git add` / `git commit` / `git push`.
