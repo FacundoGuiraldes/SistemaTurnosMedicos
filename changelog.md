@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [Release Actividad N4] - 2026-06-06
+
+### Added
+- [feature/coordinador-devops-add-anexo-cu1] Recuperación de boceto inicial, diseño de diagrama de clases, elaboración de anexo CU1 y actualización de roles en `README.md`. PR: [#105](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/105) - @ValeriaMSilva (Coordinador de Repositorio + Analista Funcional CU1)
+
 ## [Release Actividad N3] - 2026-05-21
 
 ### Added
