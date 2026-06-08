@@ -26,27 +26,27 @@
 ![Diagrama de Clases](../../diagramas/01-diagrama-clases/01-clases-solicitar-turno.png)
 
 ### 3.2 Pseudocódigo Orientado a Objetos
-```text
-// Instanciación principal e inyección de dependencias (DIP)
-INotificacion notificador = new NotificadorEmail()
-IPersistencia baseDeDatos = new PersistenciaBD()
-Sistema sistemaTurnos = new Sistema(notificador, baseDeDatos)
 
-// Identificación de los actores
-Paciente pacienteActual = sistemaTurnos.buscarPaciente("12345678")
-Doctor doctorSeleccionado = sistemaTurnos.buscarDoctor("MAT-9988")
-
-// Colaboración entre clases para verificar disponibilidad
-Agenda agendaDoctor = doctorSeleccionado.obtenerAgenda()
-Fecha fechaSolicitada = new Fecha("2026-06-15 10:00")
-
-if (agendaDoctor.estaDisponible(fechaSolicitada)) {
-    // SRP: La lógica de creación se centraliza en el Sistema
-    Turno nuevoTurno = sistemaTurnos.registrarTurno(pacienteActual, doctorSeleccionado, fechaSolicitada)
-    
-    // Persistencia y colaboración con la interfaz de notificación
-    baseDeDatos.guardarTurno(nuevoTurno)
-    notificador.enviarNotificacion("Su turno ha sido confirmado.")
-} else {
-    notificador.enviarNotificacion("El horario seleccionado no está disponible en la agenda.")
-}
+> // Instanciación principal e inyección de dependencias (DIP)
+> INotificacion notificador = new NotificadorEmail()
+> IPersistencia baseDeDatos = new PersistenciaBD()
+> Sistema sistemaTurnos = new Sistema(notificador, baseDeDatos)
+> 
+> // Identificación de los actores
+> Paciente pacienteActual = sistemaTurnos.buscarPaciente("12345678")
+> Doctor doctorSeleccionado = sistemaTurnos.buscarDoctor("MAT-9988")
+> 
+> // Colaboración entre clases para verificar disponibilidad
+> Agenda agendaDoctor = doctorSeleccionado.obtenerAgenda()
+> Fecha fechaSolicitada = new Fecha("2026-06-15 10:00")
+> 
+> if (agendaDoctor.estaDisponible(fechaSolicitada)) {
+>     // SRP: La lógica de creación se centraliza en el Sistema
+>     Turno nuevoTurno = sistemaTurnos.registrarTurno(pacienteActual, doctorSeleccionado, fechaSolicitada)
+>     
+>     // Persistencia y colaboración con la interfaz de notificación
+>     baseDeDatos.guardarTurno(nuevoTurno)
+>     notificador.enviarNotificacion("Su turno ha sido confirmado.")
+> } else {
+>     notificador.enviarNotificacion("El horario seleccionado no está disponible en la agenda.")
+> }
