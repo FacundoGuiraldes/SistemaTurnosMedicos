@@ -59,14 +59,13 @@
 **Participantes:**
 - `io : Secretaria` (Línea de vida de actor/interfaz)
 - `sys : Sistema` (Clase de control/orquestación principal)
-- `turnoService : ITurnoService` (Abstracción de interfaz de lógica de turnos)
-- `salaEsperaService : ISalaEsperaService` (Abstracción de interfaz de lista de espera)
-- `t : Turno` (Instancia de entidad del dominio)
+- `turno : Turno` (Instancia de entidad del dominio concreta mapeada por el servicio)
+- `salaEspera : SalaEspera` (Entidad donde se registra la cola de pacientes del día)
 
 **Mensajes clave:**
-- `verificarTurno(pacienteId)` → Enviado de Secretaria a Sistema para iniciar la búsqueda lógica.
-- `marcarTurnoEnEspera(turno)` → Invocación interna al servicio para actualizar el estado del objeto en la capa lógica.
-- `registrarEnSala(paciente, horaLlegada)` → Mensaje enviado al servicio de sala de espera para incorporar la entidad del paciente al listado dinámico del consultorio.
+- `registrarLlegadaPaciente(paciente)` o `verificarTurno(pacienteId)` → Mensajes de inicialización de búsqueda desde la interfaz al orquestador.
+- `buscarTurnoPaciente(paciente)` → Mensaje interno delegado al modelo para constatar el registro pendiente.
+- `marcarEnEspera()` → Mensaje de mutación de estado que altera el ciclo de vida de la entidad Turno.
 
 ---
 
@@ -78,7 +77,7 @@
 
 | Clase | Responsabilidad (según tarjeta CRC) | Tarjeta CRC |
 |-------|-------------------------------------|-------------|
-| Sistema | Orquestador principal del sistema clínico, encargado de delegar las operaciones de negocio a los servicios abstractos correspondientes. | [08-tarjeta-crc-sistema.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
+| Sistema | Orquestador principal del sistema clínico, encargado de delegar las operaciones de negocio a los servicios abstractos correspondientes. | [08-tarjeta-crc-sistema.md](../../herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md) |
 | Secretaria | Personal administrativo responsable de interactuar con la interfaz del sistema para notificar y registrar eventos de atención al paciente. | [03-tarjeta-crc-secretaria.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
 | Turno | Representar la cita médica pactada, controlando sus datos horarios, profesional asignado y sus transiciones de estado de negocio. | [05-tarjeta-crc-turno.md](../../herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md) |
 | SalaEspera | Gestionar el agrupamiento dinámico y orden cronológico de los pacientes que se encuentran físicamente listos para ser llamados por el médico. | [07-tarjeta-crc-sala-espera.md](../../herramientas-agile/tarjetas-crc/07-tarjeta-crc-sala-espera.md) |
@@ -98,24 +97,22 @@
 INICIO Registrar llegada del paciente
 
 // Contexto: El paciente se presenta físicamente en la recepción y la Secretaria inicia el registro.
-// Se asume que el objeto 'sys' (Sistema) se encuentra instanciado y configurado con sus servicios.
+// Se mapean los mensajes de secuencia mediante las operaciones inyectadas del dominio técnico.
 
 LEER pacienteId desde la interfaz
 
-// El sistema coordina la verificación del turno invocando de forma segura al servicio abstracto
-Turno turnoExistente = sys.verificarTurno(pacienteId)
+// Invocación coordinada mediante el servicio abstracto mapeado en la secuencia
+Turno turnoExistente = sys.turnoService.buscarTurnoPaciente(pacienteId)
 
 SI turnoExistente != NULL Y turnoExistente.estado == EstadoTurno.PENDIENTE
     
-    // Cambiar el estado del objeto de dominio a En Espera
-    sys.marcarEnEspera(turnoExistente)
+    // Mutación interna del estado de la entidad
+    turnoExistente.marcarEnEspera()
     
-    // Obtener la instancia del paciente vinculada al turno
     Paciente pacienteActual = turnoExistente.getPaciente()
-    DateTime horaActual = ObtenerHoraSistema()
     
-    // Delegar al servicio de sala de espera la inserción del paciente en la lista del día
-    sys.registrarLlegada(pacienteActual)
+    // Delegación estructural al servicio inyectado de la sala de espera
+    sys.salaEsperaService.registrarLlegadaPaciente(pacienteActual)
     
     MOSTRAR_MENSAJE "Registro de llegada completado con éxito. Paciente derivado a sala de espera."
 SINO

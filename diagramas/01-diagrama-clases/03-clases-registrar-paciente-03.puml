@@ -46,6 +46,7 @@ class Sistema {
     -persistenciaService: IPersistenciaService
     -auditoriaService: IAuditoriaService
     +registrarPaciente(nombre: String, apellido: String, dni: String, email: String, direccion: String): Boolean
+    +crearCuentaUsuario(datosPersonales: Map<String, String>): Usuario
 }
 
 class ValidacionDatosService {
@@ -77,4 +78,3 @@ AuditoriaService -up-|> IAuditoriaService
 Sistema --> Paciente : crea y gestiona
 Secretaria --> Sistema : interactúa
 @enduml
-

@@ -38,7 +38,7 @@
 
 ## 3. Diagrama de Actividades
 
-![Diagrama de Actividades - Registrar paciente](../../diagramas/04-diagramas-actividades/04-actividad-registrar-paciente-03.png)
+![Diagrama de Actividades - Registrar paciente](../../diagramas/04-diagramas-actividades/04-actividad-registrar-paciente-04.png)
 
 **Swimlanes:**
 - **Secretaria:** Responsable de recopilar los datos físicos e ingresarlos secuencialmente en el formulario digital.
@@ -56,13 +56,12 @@
 **Participantes:**
 - `io : Secretaria` (Línea de vida del actor en interfaz)
 - `sys : Sistema` (Clase de control/orquestación central)
-- `valService : IValidacionDatosService` (Abstracción inyectada para validación de datos)
-- `db : IPersistenciaService` (Abstracción inyectada para el acceso y guardado en disco)
+- `nuevoPaciente : Paciente` (Instancia de entidad de dominio concreta creada en la transacción)
+- `usuario : Usuario` (Clase base de la jerarquía heredada)
 
 **Mensajes clave:**
-- `registrarNuevoPaciente(nombre, apellido, dni, email, direccion)` → Mensaje inicial enviado a la clase de control.
-- `validarDniUnico(dni)` → Consulta crítica al servicio de validación para contrastar duplicados.
-- `guardarPaciente(paciente)` → Envío de la entidad recién instanciada al servicio de persistencia para su almacenamiento final.
+- `registrarPaciente(datosPersonales)` → Mensaje inicial que transporta la estructura de campos obligatorios.
+- `crearCuentaUsuario(datosPersonales)` → Operación interna del sistema que orquesta la instanciación de la cuenta de seguridad heredada por el paciente en el dominio.
 
 ---
 
@@ -74,7 +73,7 @@
 
 | Clase | Responsabilidad (según tarjeta CRC) | Tarjeta CRC |
 |-------|-------------------------------------|-------------|
-| Sistema | Orquestador principal del sistema clínico, encargado de delegar las operaciones de negocio a los servicios abstractos correspondientes. | [08-tarjeta-crc-sistema.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
+| Sistema | Orquestador principal del sistema clínico, encargado de delegar las operaciones de negocio a los servicios abstractos correspondientes. | [08-tarjeta-crc-sistema.md](../../herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md) |
 | Paciente | Entidad del dominio que hereda de Usuario, encargada de almacenar de forma segura la información clínica e historial médico de la persona. | [02-tarjeta-crc-paciente.md](../../herramientas-agile/tarjetas-crc/02-tarjeta-crc-paciente.md) |
 | Secretaria | Personal administrativo responsable de interactuar con la interfaz del sistema para notificar y registrar eventos de atención al paciente. | [03-tarjeta-crc-secretaria.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
 
@@ -83,7 +82,7 @@
 | Relación | Clases | Justificación |
 |----------|--------|---------------|
 | Asociación Estructural | `Sistema` → `IValidacionDatosService` | El sistema cuenta con una referencia directa a la abstracción de validación para desacoplar las reglas lógicas del motor central (DIP). |
-| Herencia | `Paciente` --\|> `Usuario` | Un Paciente es una especialización de la clase abstracta Usuario, reutilizando atributos como DNI, nombre, apellido e email. |
+| Herencia | `Paciente` --\|> `Usuario` | Un Paciente es una especialización de la clase abstracta Usuario, reutilizando atributos como DNI y nombre, e implementando polimorfismo lógico. El método `getDetallesContacto()` actúa como resolvedor de consistencia de datos de cara al subsistema de notificaciones. |
 
 ---
 
@@ -93,42 +92,36 @@
 INICIO Registrar paciente
 
 // Contexto: La secretaria ingresa los datos de un paciente que no existía en el padrón de la clínica.
-// Se asume que el objeto 'sys' (Sistema) se encuentra instanciado y configurado con sus servicios abstractos.
+// Se asumen inyectados los servicios requeridos que encapsulan la lógica de la secuencia.
 
 LEER nombre, apellido, dni, email, direccion desde la interfaz
 
-// Invocación a las validaciones lógicas inyectadas a través del servicio abstracto
-esEmailValido = sys.validacionService.validarFormatoEmail(email)
-esDniUnico = sys.validacionService.validarDniUnico(dni)
+Map datosPersonales = ["nombre": nombre, "apellido": apellido, "dni": dni, "email": email, "direccion": direccion]
 
-SI esEmailValido == TRUE Y esDniUnico == TRUE
+// Mapeo directo del mensaje crítico de secuencia
+Usuario nuevaCuenta = sys.crearCuentaUsuario(datosPersonales)
+
+SI nuevaCuenta != NULL
+    esEmailValido = sys.validacionService.validarFormatoEmail(email)
+    esDniUnico = sys.validacionService.validarDniUnico(dni)
     
-    // Instanciar de forma segura el nuevo objeto de dominio Paciente con sus atributos tipados
-    Paciente nuevoPaciente = nuevo Paciente()
-    nuevoPaciente.id = GenerarUUID()
-    nuevoPaciente.nombre = nombre
-    nuevoPaciente.apellido = apellido
-    nuevoPaciente.dni = dni
-    nuevoPaciente.email = email
-    nuevoPaciente.direccion = direccion
-    nuevoPaciente.numeroHistorial = GenerarNumeroHistorialUnico()
-    
-    // Delegar al servicio de persistencia el guardado de la nueva entidad
-    exitoPersistencia = sys.persistenciaService.guardarPaciente(nuevoPaciente)
-    
-    SI exitoPersistencia == TRUE
-        sys.auditoriaService.registrarEvento("Alta de paciente exitosa - DNI: " + dni)
-        MOSTRAR_MENSAJE "Paciente registrado correctamente. Historial Clínico Nro: " + nuevoPaciente.numeroHistorial
+    SI esEmailValido == TRUE Y esDniUnico == TRUE
+        Paciente nuevoPaciente = (Paciente) nuevaCuenta
+        nuevoPaciente.numeroHistorial = GenerarNumeroHistorialUnico()
+        
+        exitoPersistencia = sys.persistenciaService.guardarPaciente(nuevoPaciente)
+        
+        SI exitoPersistencia == TRUE
+            sys.auditoriaService.registrarEvento("Alta de paciente exitosa - DNI: " + dni)
+            MOSTRAR_MENSAJE "Paciente registrado correctamente."
+        SINO
+            MOSTRAR_MENSAJE "Error: Falló la persistencia."
+        FIN SI
     SINO
-        MOSTRAR_MENSAJE "Error crítico: Falló la persistencia en la base de datos."
+        MOSTRAR_MENSAJE "Error: Validaciones de identidad rechazadas."
     FIN SI
 SINO
-    SI esEmailValido == FALSE
-        MOSTRAR_MENSAJE "Error: El formato del correo electrónico ingresado es inválido."
-    SINO
-        MOSTRAR_MENSAJE "Error: Ya existe un paciente registrado con el DNI ingresado."
-    FIN SI
+    MOSTRAR_MENSAJE "Error: No se pudo inicializar la cuenta de usuario."
 FIN SI
 
 FIN
-
