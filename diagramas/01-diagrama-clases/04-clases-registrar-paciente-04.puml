@@ -1,0 +1,76 @@
+@startuml
+!theme plain
+title CU04 - Registrar Paciente
+
+skinparam class {
+    BackgroundColor #F0F4F8
+    BorderColor #2E86AB
+    ArrowColor #2E86AB
+    FontColor #1F1F1F
+}
+
+abstract class Usuario {
+    - id: String
+    - nombre: String
+    - email: String
+    - telefono: String
+    ---
+    + login(): void
+    + logout(): void
+    + modificarPerfil(): void
+}
+
+class Paciente {
+    - numeroHistorial: String
+    - dni: String
+    - direccion: String
+    - alergias: List<String>
+    ---
+    + solicitarTurno(doctor: Doctor, fecha: Date, hora: Time): Turno
+    + cancelarTurno(turno: Turno): boolean
+    + consultarTurnos(): List<Turno>
+    + registrarLlegada(turno: Turno): void
+}
+
+class Secretaria {
+    - departamento: String
+    ---
+    + solicitarDatosPersonales(): Map<String, String>
+    + validarDatos(datos: Map<String, String>): boolean
+    + registrarPaciente(datos: Map<String, String>): Paciente
+}
+
+interface IPacienteRepository {
+    + existePorDni(dni: String): boolean
+    + guardar(paciente: Paciente): void
+}
+
+class Sistema {
+    - pacienteRepository: IPacienteRepository
+    ---
+    + seleccionarRegistrarPaciente(): void
+    + registrarPaciente(datos: Map<String, String>): Paciente
+    + validarDuplicidad(dni: String): boolean
+    + crearCuentaUsuario(datos: Map<String, String>): Usuario
+}
+
+class Turno {
+    - id: String
+    - fecha: Date
+    - hora: Time
+    - estado: String
+    ---
+    + obtenerDetalles(): Map<String, String>
+}
+
+Usuario <|-- Paciente
+Usuario <|-- Secretaria
+
+Secretaria --> Sistema : utiliza
+Secretaria --> Paciente : registra
+Sistema ..> IPacienteRepository : depende
+Sistema --> Paciente : crea
+Sistema --> Usuario : crearCuentaUsuario
+Paciente --> Turno : relaciona
+
+@enduml

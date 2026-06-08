@@ -9,3 +9,5 @@
   * [Diagrama de Clases - DIP (Dependency Inversion Principle)](./01-solid-05-dip.puml)
 * Diagramas por Caso de Uso
   * [Diagrama de Clases - Solicitar Turno](./01-clases-solicitar-turno.puml)
+  * [Diagrama de Clases - Registrar Paciente](./04-clases-registrar-paciente-04.puml)
+  * [Diagrama de Clases - Ver Agenda](./05-clases-ver-agenda-05.puml)
