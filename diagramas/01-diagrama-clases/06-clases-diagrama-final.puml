@@ -1,0 +1,214 @@
+@startuml
+title Diagrama de Clases Final - Sistema de Turnos Médicos del Dr. Molina
+
+' En esta fase se modelan solo clases, atributos y operaciones.
+' Las relaciones serán agregadas en la siguiente iteración.
+
+abstract class Usuario {
+    - id: String
+    - nombre: String
+    - email: String
+    - telefono: String
+    + login(nombreUsuario: String, contrasena: String): boolean
+    + logout(): void
+    + modificarPerfil(nombre: String, email: String, telefono: String): void
+}
+
+class Paciente {
+    - numeroHistorial: String
+    - dni: String
+    - direccion: String
+    - alergias: List<String>
+    + solicitarTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+    + cancelarTurno(turnoId: String, motivo: String): boolean
+    + consultarTurnos(): List<Turno>
+    + registrarLlegada(): LlegadaPaciente
+    + obtenerHistorialClinico(): List<String>
+}
+
+class Secretaria {
+    - departamento: String
+    + registrarPaciente(datosPersonales: Map<String, String>): Paciente
+    + crearTurno(fecha: LocalDate, hora: LocalTime, paciente: Paciente, especialidad: Especialidad): Turno
+    + modificarTurno(turnoId: String, nuevaFecha: LocalDate, nuevaHora: LocalTime): boolean
+    + cancelarTurno(turnoId: String, motivo: String): boolean
+    + registrarLlegadaPaciente(paciente: Paciente): LlegadaPaciente
+    + solicitarBloqueoHorario(fecha: LocalDate, horaInicio: LocalTime, horaFin: LocalTime): void
+    + verAgenda(doctor: Doctor, fecha: LocalDate): List<Turno>
+}
+
+class Doctor {
+    - numeroLicencia: String
+    - especialidad: Especialidad
+    - consultorio: String
+    - horariosDisponibles: List<LocalTime>
+    + verAgenda(fecha: LocalDate): List<Turno>
+    + consultarPacientesEsperando(): List<Paciente>
+    + registrarDiagnostico(turnoId: String, diagnostico: String): boolean
+    + autorizarSobreturno(): boolean
+}
+
+class Turno {
+    - id: String
+    - fecha: LocalDate
+    - hora: LocalTime
+    - estado: EstadoTurno
+    - motivoConsulta: String
+    - pacienteId: String
+    - doctorId: String
+    - especialidad: Especialidad
+    - duracion: Integer
+    - esSobreturno: Boolean
+    + crearTurno(paciente: Paciente, doctor: Doctor, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+    + cancelarTurno(motivo: String): void
+    + modificarTurno(nuevaFecha: LocalDate, nuevaHora: LocalTime): void
+    + marcarEnEspera(): void
+    + marcarAtendido(): void
+    + getDetalles(): String
+}
+
+class Agenda {
+    - doctorId: String
+    - turnos: List<Turno>
+    - fecha: LocalDate
+    - horaApertura: LocalTime
+    - horaCierre: LocalTime
+    - horariosBloqueados: List<LocalDateTime>
+    - estado: EstadoAgenda
+    + verificarDisponibilidad(fecha: LocalDate, hora: LocalTime): boolean
+    + agregarTurno(turno: Turno): boolean
+    + eliminarTurno(turnoId: String): boolean
+    + obtenerTurnosDelDia(fecha: LocalDate): List<Turno>
+    + obtenerInfoTurno(turnoId: String): Turno
+    + sugerirProximasFranjasLibres(fecha: LocalDate): List<LocalTime>
+}
+
+class SalaEspera {
+    - pacientes: List<Paciente>
+    - horaLlegada: Map<Paciente, LocalDateTime>
+    - estadoPaciente: Map<Paciente, EstadoEspera>
+    - ordenFila: List<Paciente>
+    + registrarLlegada(paciente: Paciente, horaActual: LocalDateTime): void
+    + obtenerPacientesEsperando(): List<Paciente>
+    + removerPaciente(paciente: Paciente): void
+    + registrarFinCiclo(paciente: Paciente): void
+}
+
+class LlegadaPaciente {
+    - horaLlegada: LocalDateTime
+    - estadoValidacion: Boolean
+    - idTurno: String
+    - prioridad: Boolean
+    + validarTurnoExistente(paciente: Paciente): boolean
+    + notificarIngresoASalaDeEspera(salaEspera: SalaEspera): void
+    + determinarPrioridad(): void
+}
+
+class Sistema {
+    - usuarioActual: Usuario
+    - usuarios: List<Usuario>
+    - turnos: List<Turno>
+    - agendas: List<Agenda>
+    - servicioAutenticacion: ServicioAutenticacion
+    - servicioNotificaciones: ServicioNotificaciones
+    - persistenciaService: PersistenciaService
+    - auditoriaService: AuditoriaService
+    + iniciarSesion(nombreUsuario: String, contrasena: String): boolean
+    + cerrarSesion(): void
+    + registrarPaciente(datosPersonales: Map<String, String>): Paciente
+    + solicitarTurno(fecha: LocalDate, hora: LocalTime, paciente: Paciente, especialidad: Especialidad): Turno
+    + cancelarTurno(turnoId: String, motivo: String): boolean
+    + registrarLlegadaPaciente(paciente: Paciente): LlegadaPaciente
+    + verAgendaDoctor(doctor: Doctor, fecha: LocalDate): List<Turno>
+    + enviarRecordatorioAutomatico(paciente: Paciente, turno: Turno): void
+    + validarColisionTurno(turno: Turno): boolean
+    + orquestarFlujo(): void
+    + guardarCambios(): void
+}
+
+class ServicioAutenticacion {
+    + autenticarUsuario(nombreUsuario: String, contrasena: String): boolean
+}
+
+class ServicioNotificaciones {
+    + enviarNotificacion(paciente: Paciente, mensaje: String): void
+    + programarRecordatorio(paciente: Paciente, turno: Turno): void
+}
+
+class PersistenciaService {
+    + guardarUsuario(usuario: Usuario): void
+    + guardarTurno(turno: Turno): void
+    + guardarAgenda(agenda: Agenda): void
+}
+
+class AuditoriaService {
+    + registrarEvento(evento: String): void
+}
+
+class Especialidad {
+    - codigo: String
+    - nombre: String
+    - descripcion: String
+    + definirEspecialidad(nombre: String, descripcion: String): void
+    + obtenerNombre(): String
+    + obtenerDescripcion(): String
+}
+
+class Notificacion {
+    - id: String
+    - mensaje: String
+    - fechaEnvio: LocalDateTime
+    - destinatario: String
+    - tipo: String
+    - estado: String
+    + enviar(): boolean
+    + programarEnvio(fechaEnvio: LocalDateTime): void
+}
+
+enum EstadoTurno {
+    Disponible
+    Reservado
+    Cancelado
+    EnEspera
+    Atendido
+}
+
+enum EstadoAgenda {
+    Activa
+    Inactiva
+    Bloqueada
+}
+
+enum EstadoEspera {
+    Esperando
+    EnConsulta
+    Finalizado
+}
+
+' Relaciones de modelo y multiplicidades
+Usuario <|-- Paciente
+Usuario <|-- Secretaria
+Usuario <|-- Doctor
+
+Doctor "1" *-- "1" Agenda
+Agenda "1" o-- "0..*" Turno
+Paciente "1" o-- "0..*" Turno
+Doctor "1" o-- "0..*" Turno
+Doctor "1" o-- "1" Especialidad
+Turno "1" o-- "1" Especialidad
+SalaEspera "1" o-- "0..*" Paciente
+LlegadaPaciente "1" o-- "1" Paciente
+LlegadaPaciente "1" o-- "1" Turno
+
+Sistema "1" o-- "0..*" Usuario
+Sistema "1" o-- "0..*" Turno
+Sistema "1" o-- "0..*" Agenda
+Sistema "1" o-- "1" ServicioAutenticacion
+Sistema "1" o-- "1" ServicioNotificaciones
+Sistema "1" o-- "1" PersistenciaService
+Sistema "1" o-- "1" AuditoriaService
+Sistema "1" o-- "0..*" Notificacion
+Notificacion "1" o-- "1" Paciente
+Notificacion "0..1" o-- "1" Turno
+
+@enduml
