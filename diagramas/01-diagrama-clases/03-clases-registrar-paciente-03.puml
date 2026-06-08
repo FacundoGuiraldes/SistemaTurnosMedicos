@@ -1,0 +1,80 @@
+@startuml 03-clases-registrar-paciente-03
+title Diagrama de Clases: Registrar paciente
+
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+abstract class Usuario {
+    +id: String
+    +nombre: String
+    +apellido: String
+    +dni: String
+    +email: String
+    +validarCredenciales(): Boolean
+}
+
+class Paciente {
+    -numeroHistorial: String
+    -direccion: String
+    -alergias: List<String>
+    +getDetallesContacto(): String
+}
+
+class Secretaria {
+    -departamento: String
+    +solicitarDatosPersonales(): void
+    +registrarNuevoPaciente(nombre: String, apellido: String, dni: String, email: String, direccion: String): Boolean
+}
+
+interface IValidacionDatosService {
+    +validarFormatoEmail(email: String): Boolean
+    +validarDniUnico(dni: String): Boolean
+    +validarCamposObligatorios(datos: Map<String, String>): Boolean
+}
+
+interface IPersistenciaService {
+    +guardarPaciente(paciente: Paciente): Boolean
+    +existePacienteConDni(dni: String): Boolean
+}
+
+interface IAuditoriaService {
+    +registrarEvento(evento: String): void
+}
+
+class Sistema {
+    -validacionService: IValidacionDatosService
+    -persistenciaService: IPersistenciaService
+    -auditoriaService: IAuditoriaService
+    +registrarPaciente(nombre: String, apellido: String, dni: String, email: String, direccion: String): Boolean
+}
+
+class ValidacionDatosService {
+    +validarFormatoEmail(email: String): Boolean
+    +validarDniUnico(dni: String): Boolean
+    +validarCamposObligatorios(datos: Map<String, String>): Boolean
+}
+
+class PersistenciaService {
+    +guardarPaciente(paciente: Paciente): Boolean
+    +existePacienteConDni(dni: String): Boolean
+}
+
+class AuditoriaService {
+    +registrarEvento(evento: String): void
+}
+
+Paciente --|> Usuario
+Secretaria --|> Usuario
+
+Sistema --> IValidacionDatosService : usa (DIP)
+Sistema --> IPersistenciaService : usa (DIP)
+Sistema --> IAuditoriaService : usa (DIP)
+
+ValidacionDatosService -up-|> IValidacionDatosService
+PersistenciaService -up-|> IPersistenciaService
+AuditoriaService -up-|> IAuditoriaService
+
+Sistema --> Paciente : crea y gestiona
+Secretaria --> Sistema : interactúa
+@enduml
+
