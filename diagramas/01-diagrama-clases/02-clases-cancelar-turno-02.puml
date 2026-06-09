@@ -26,11 +26,12 @@ class Turno {
     -hora: Time
     -estado: EstadoTurno
     +cancelar(): void
+    +getPaciente(): Paciente
 }
 
 class Agenda {
     -id: String
-    +liberarBloqueHorario(fecha: DateTime, hora: Time): void
+    +liberarDisponibilidad(turno: Turno): Boolean
 }
 
 enum EstadoTurno {

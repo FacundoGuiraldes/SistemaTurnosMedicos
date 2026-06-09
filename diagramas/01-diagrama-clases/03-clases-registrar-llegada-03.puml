@@ -1,5 +1,5 @@
-@startuml 02-clases-registrar-llegada-02
-title Diagrama de Clases: Registrar llegada del paciente
+@startuml 03-clases-registrar-llegada-03
+title Diagrama de Clases: Registrar Llegada del Paciente (CU3)
 
 skinparam classAttributeIconSize 0
 skinparam monochrome true
@@ -10,79 +10,50 @@ abstract class Usuario {
     +apellido: String
     +dni: String
     +email: String
-    +validarCredenciales(): Boolean
 }
 
 class Paciente {
     -numeroHistorial: String
-    -direccion: String
 }
 
 class Secretaria {
     -departamento: String
-    +solicitarDni(): String
 }
 
 class Turno {
     -id: String
     -fecha: DateTime
     -hora: Time
-    -estado: EstadoTurno
-    +marcarEnEspera(): void
-    +getPaciente(): Paciente
+    -asistencia: Boolean
+    +registrarAsistencia(): void
 }
 
-enum EstadoTurno {
-    PENDIENTE
-    EN_ESPERA
-    ATENDIDO
-    AUSENTE
+class SalaEspera {
+    -id: String
+    -pacientesEnEspera: List<Paciente>
+    +agregarPaciente(paciente: Paciente): void
 }
 
 interface ITurnoService {
-    +buscarTurnoPaciente(pacienteId: String): Turno
-}
-
-interface ISalaEsperaService {
-    +registrarLlegadaPaciente(paciente: Paciente): Boolean
-}
-
-interface IPersistenciaService {
+    +buscarTurnoPaciente(dni: String, fecha: DateTime): Turno
     +actualizarTurno(turno: Turno): Boolean
 }
 
-interface IAuditoriaService {
-    +registrarEvento(evento: String): void
+interface ISalaEsperaService {
+    +asignarASala(paciente: Paciente): Boolean
 }
 
 class Sistema {
     -turnoService: ITurnoService
     -salaEsperaService: ISalaEsperaService
-    -persistenciaService: IPersistenciaService
-    -auditoriaService: IAuditoriaService
-    +registrarLlegadaPaciente(pacienteId: String): Boolean
-}
-
-class TurnoService {
-    +buscarTurnoPaciente(pacienteId: String): Turno
-}
-
-class SalaEsperaService {
-    +registrarLlegadaPaciente(paciente: Paciente): Boolean
+    +registrarLlegadaPaciente(dni: String, fechaActual: DateTime): Boolean
 }
 
 Paciente --|> Usuario
 Secretaria --|> Usuario
-Turno "1" --> "1" Paciente : vinculado a
-Turno .up.> EstadoTurno : usa
-
+Turno "1" --> "1" Paciente : pertenece a
 Sistema --> ITurnoService : usa (DIP)
 Sistema --> ISalaEsperaService : usa (DIP)
-Sistema --> IPersistenciaService : usa (DIP)
-Sistema --> IAuditoriaService : usa (DIP)
+SalaEspera "1" --> "*" Paciente : contiene
 
-TurnoService -up-|> ITurnoService
-SalaEsperaService -up-|> ISalaEsperaService
-
-Secretaria --> Sistema : interactúa
 @enduml
