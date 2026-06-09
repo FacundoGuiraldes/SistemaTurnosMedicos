@@ -26,6 +26,7 @@ class Turno {
     -hora: Time
     -asistencia: Boolean
     +registrarAsistencia(): void
+    +getPaciente(): Paciente
 }
 
 class SalaEspera {
