@@ -1,0 +1,74 @@
+@startuml 02-clases-cancelar-turno-02
+title Diagrama de Clases: Cancelar Turno (CU2)
+
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+abstract class Usuario {
+    +id: String
+    +nombre: String
+    +apellido: String
+    +dni: String
+    +email: String
+}
+
+class Paciente {
+    -numeroHistorial: String
+}
+
+class Secretaria {
+    -departamento: String
+}
+
+class Turno {
+    -id: String
+    -fecha: DateTime
+    -hora: Time
+    -estado: EstadoTurno
+    +cancelar(): void
+}
+
+class Agenda {
+    -id: String
+    +liberarBloqueHorario(fecha: DateTime, hora: Time): void
+}
+
+enum EstadoTurno {
+    PENDIENTE
+    EN_ESPERA
+    ATENDIDO
+    AUSENTE
+    CANCELADO
+}
+
+interface ITurnoRepository {
+    +buscarPorId(turnoId: String): Turno
+    +actualizar(turno: Turno): Boolean
+}
+
+interface IAgendaService {
+    +liberarDisponibilidad(turno: Turno): Boolean
+}
+
+interface INotificacionService {
+    +enviarNotificacionCancelacion(usuario: Usuario, detalle: String): void
+}
+
+class Sistema {
+    -turnoRepository: ITurnoRepository
+    -agendaService: IAgendaService
+    -notificacionService: INotificacionService
+    +cancelarTurno(turnoId: String, solicitadoPor: Usuario): Boolean
+}
+
+Paciente --|> Usuario
+Secretaria --|> Usuario
+Turno "1" --> "1" Paciente : pertenece a
+Turno "1" --> "1" Agenda : asociado a
+Turno .up.> EstadoTurno : usa
+
+Sistema --> ITurnoRepository : usa (DIP)
+Sistema --> IAgendaService : usa (DIP)
+Sistema --> INotificacionService : usa (DIP)
+
+@enduml
