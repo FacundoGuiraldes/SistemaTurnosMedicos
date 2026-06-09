@@ -50,16 +50,18 @@ La interacción cronológica y el paso de mensajes entre los objetos del sistema
 ## 5. Diagrama de Clases Parcial y Relaciones UML
 El diseño estructural específico para dar soporte a este comportamiento se encuentra implementado bajo principios SOLID en el archivo `02-clases-cancelar-turno-02.puml`.
 
+![Diagrama de Clases CU2](../../diagramas/01-diagrama-clases/02-clases-cancelar-turno-02.png)
+
 ### Tabla de Relaciones Estructurales:
 | Origen | Relación UML | Destino | Multiplicidad / Nota |
 | :--- | :--- | :--- | :--- |
 | `Paciente` | Herencia (`--\|>`) | `Usuario` | Especialización de entidad general. |
 | `Secretaria` | Herencia (`--\|>`) | `Usuario` | Especialización de entidad general. |
 | `Turno` | Asociación (`-->`) | `Paciente` | 1 a 1 (Un turno pertenece a un paciente). |
-| `Turno` | Asociación (`-->`) | `Agenda` | 1 a 1 (Asociado al bloque del médico). |
-| `Sistema` | Dependencia (`..>`) | `ITurnoRepository` | Inversión de Dependencias (DIP). |
-| `Sistema` | Dependencia (`..>`) | `IAgendaService` | Inversión de Dependencias (DIP). |
-| `Sistema` | Dependencia (`..>`) | `INotificacionService` | Inversión de Dependencias (DIP). |
+| `Turno` | Asociación (`-->`) | `Agenda` | 1 a 1 (Asociado al bloque de la agenda médica). |
+| `Sistema` | Asociación (`-->`) | `ITurnoRepository` | Inversión de Dependencias (DIP) mediante inyección. |
+| `Sistema` | Asociación (`-->`) | `IAgendaService` | Inversión de Dependencias (DIP) mediante inyección. |
+| `Sistema` | Asociación (`-->`) | `INotificacionService` | Inversión de Dependencias (DIP) mediante inyección. |
 
 ---
 
