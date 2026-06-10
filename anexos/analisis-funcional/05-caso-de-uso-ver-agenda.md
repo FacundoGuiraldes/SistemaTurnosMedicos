@@ -82,22 +82,22 @@
 
 | Clase | Responsabilidad (según tarjeta CRC) | Tarjeta CRC |
 |-------|-------------------------------------|-------------|
-| [Doctor] | Ver agenda diaria de turnos, consultar pacientes en sala de espera, Marcar pacientes atendidos, Definir disponibilidad general | [Tarjeta CRC - Doctor](../../herramientas-agile/tarjetas-crc/04-tarjeta-crc-doctor.md) |
-| [Sistema] | validar colisiones de turnos y enviar recordatorio automático al paciente | [Tarjeta CRC - Sistema](../../herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md) |
-| [Agenda] | Configurar reglas de disponibilidad, gestionar franjas horarias y validar turnos contra reglas horarias | [Tarjeta CRC - Agenda](../../herramientas-agile/tarjetas-crc/06-tarjeta-crc-agenda.md) |
-| [Turno] | Mantener ciclo de vida de la cita, actualizar estado por llegada, proveer detalle completo de la cita.  | [Tarjeta CRC - Turno](../../herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md) |
-| [Paciente] | Consultar mis turnos programados, registrar mi llegada al consultorio  | [Tarjeta CRC - Paciente](../../herramientas-agile/tarjetas-crc/02-tarjeta-crc-paciente.md) |
-| [Usuario] | Autenticarse en el sistema y modificar perfil personal| [Tarjeta CRC - Usuario](../../herramientas-agile/tarjetas-crc/01-tarjeta-crc-usuario.md) |
+| `Doctor` | Ver agenda diaria de turnos, consultar pacientes en sala de espera, Marcar pacientes atendidos, Definir disponibilidad general | [Tarjeta CRC - Doctor](../../herramientas-agile/tarjetas-crc/04-tarjeta-crc-doctor.md) |
+| `Sistema` | validar colisiones de turnos y enviar recordatorio automático al paciente | [Tarjeta CRC - Sistema](../../herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md) |
+| `Agenda` | Configurar reglas de disponibilidad, gestionar franjas horarias y validar turnos contra reglas horarias | [Tarjeta CRC - Agenda](../../herramientas-agile/tarjetas-crc/06-tarjeta-crc-agenda.md) |
+| `Turno` | Mantener ciclo de vida de la cita, actualizar estado por llegada, proveer detalle completo de la cita.  | [Tarjeta CRC - Turno](../../herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md) |
+| `Paciente` | Consultar mis turnos programados, registrar mi llegada al consultorio  | [Tarjeta CRC - Paciente](../../herramientas-agile/tarjetas-crc/02-tarjeta-crc-paciente.md) |
+| `Usuario` | Autenticarse en el sistema y modificar perfil personal| [Tarjeta CRC - Usuario](../../herramientas-agile/tarjetas-crc/01-tarjeta-crc-usuario.md) |
 
 **Relaciones UML:**
 
 | Relación | Clases | Justificación |
 |----------|--------|---------------|
-| [Herencia] | [Doctor] → [Usuario] | Se utiliza herencia porque el doctor comparte atributos y comportamientos generales de un usuario del sistema (identificación, acceso y gestión de perfil), especializando esa funcionalidad con responsabilidades propias del rol médico. |
-| [Asociación] | [Doctor] → [Sistema] | Existe una interacción directa y permanente durante el caso de uso, ya que el doctor utiliza el sistema para consultar la agenda. No es una dependencia porque el doctor mantiene una relación funcional con el sistema durante la ejecución del proceso. |
-| [Asociación] | [Sistema] → [Agenda] | El sistema solicita la agenda correspondiente a una fecha determinada y trabaja con ella para mostrar la información al doctor. La agenda tiene identidad propia dentro del dominio, por lo que no corresponde modelarla como dependencia temporal. |
-| [Agregación] | [Agenda] → [Turno] | La agenda está compuesta por un conjunto de turnos, pero los turnos pueden seguir existiendo independientemente de una agenda específica. Por ello corresponde una agregación y no una composición.|
-| [Asociación] | [Turno] → [Paciente] | Cada turno está vinculado a un paciente y necesita acceder a su información para mostrarla en la agenda. Se modela como asociación porque existe una relación de dominio persistente entre ambas entidades.|
+| Herencia | `Doctor` → `Usuario` | Se utiliza herencia porque el doctor comparte atributos y comportamientos generales de un usuario del sistema (identificación, acceso y gestión de perfil), especializando esa funcionalidad con responsabilidades propias del rol médico. |
+| Asociación | `Doctor` → `Sistema` | Existe una interacción directa y permanente durante el caso de uso, ya que el doctor utiliza el sistema para consultar la agenda. No es una dependencia porque el doctor mantiene una relación funcional con el sistema durante la ejecución del proceso. |
+| Asociación | `Sistema` → `Agenda` | El sistema solicita la agenda correspondiente a una fecha determinada y trabaja con ella para mostrar la información al doctor. La agenda tiene identidad propia dentro del dominio, por lo que no corresponde modelarla como dependencia temporal. |
+| Agregación | `Agenda` → `Turno` | La agenda está compuesta por un conjunto de turnos, pero los turnos pueden seguir existiendo independientemente de una agenda específica. Por ello corresponde una agregación y no una composición.|
+| Asociación | `Turno` → `Paciente` | Cada turno está vinculado a un paciente y necesita acceder a su información para mostrarla en la agenda. Se modela como asociación porque existe una relación de dominio persistente entre ambas entidades.|
 
 ---
 

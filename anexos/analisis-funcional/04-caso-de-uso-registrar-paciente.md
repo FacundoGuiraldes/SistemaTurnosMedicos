@@ -91,18 +91,17 @@ Los objetos nuevoPaciente:Paciente y usuario:Usuario son temporales dentro de la
 | Secretaria | Registrar nuevo paciente en el sistema, crear o modificar turnos, cancelar turnos y liberar horarios | [Tarjeta CRC - Secretaria](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
 | Sistema | autenticar usuarios e iniciar sesión y enviar recordatorio automático al paciente | [Tarjeta CRC - Sistema](../../herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md) |
 | Usuario | Autenticarse en el sistema, cerrar sesión y modificar perfil personal | [Tarjeta CRC - Usuario](../../herramientas-agile/tarjetas-crc/01-tarjeta-crc-usuario.md) |
-| Turno | Crear reserva de cita médica | [Tarjeta CRC - Turno](../../herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md) |
 
 
 **Relaciones UML:**
 
 | Relación | Clases | Justificación |
 |----------|--------|---------------|
-| Herencia | [Secretaria] → [Usuario] | La secretaria es un tipo específico de usuario del sistema y hereda sus atributos y comportamientos generales, como identificación y acceso al sistema |
-|Asociación | [Secretaria] → [Sistema] | La secretaria interactúa con el sistema para validar datos y registrar pacientes durante el proceso de alta |
-| Creación/Dependencia | [Sistema] → [Paciente] | El sistema crea la instancia del paciente al ejecutar el proceso de registro utilizando los datos ingresados por la secretaria |
-| Asociación | [Sistema] → [Usuario] | El sistema genera la cuenta de usuario asociada al paciente mediante la operación crearCuentaUsuario(datos) |
-| Asociación | [Paciente] → [Turno] | Un paciente puede tener uno o más turnos asociados, por lo que existe una relación funcional entre ambas clases |
+| Herencia | `Secretaria` → `Usuario` | La secretaria es un tipo específico de usuario del sistema y hereda sus atributos y comportamientos generales, como identificación y acceso al sistema |
+|Asociación | `Secretaria` → `Sistema` | La secretaria interactúa con el sistema para validar datos y registrar pacientes durante el proceso de alta |
+| Creación/Dependencia | `Sistema` → `Paciente` | El sistema crea la instancia del paciente al ejecutar el proceso de registro utilizando los datos ingresados por la secretaria |
+| Asociación | `Sistema` → `Usuario` | El sistema genera la cuenta de usuario asociada al paciente mediante la operación crearCuentaUsuario(datos) |
+| Asociación | `Paciente` → `Turno` | Un paciente puede tener uno o más turnos asociados, por lo que existe una relación funcional entre ambas clases |
 ---
 
 ## 6. Pseudocódigo
