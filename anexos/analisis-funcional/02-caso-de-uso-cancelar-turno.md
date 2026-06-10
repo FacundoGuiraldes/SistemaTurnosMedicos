@@ -85,7 +85,7 @@ Clase Sistema {
         }
         
         // 2. Modificación del estado interno del objeto de negocio (SRP)
-        turnoActual.cancelar()
+        turnoActual.eliminarTurno()
         Boolean persistenciaExitosa = repositorioTurno.actualizar(turnoActual)
         
         Si (NOT persistenciaExitosa) {
@@ -93,8 +93,8 @@ Clase Sistema {
             Retornar Falso
         }
         
-        // 3. Invocación al servicio de Agenda para liberar el bloque horario
-        Boolean agendaLiberada = agendaService.liberarDisponibilidad(turnoActual)
+        // 3. Invocación al servicio de Agenda para remover el turno
+        Boolean agendaLiberada = agendaService.removerTurno(turnoActual)
         
         Si (NOT agendaLiberada) {
             // Log de advertencia para auditoría técnica, no bloquea el flujo principal

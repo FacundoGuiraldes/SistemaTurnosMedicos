@@ -25,13 +25,13 @@ class Turno {
     -fecha: DateTime
     -hora: Time
     -estado: EstadoTurno
-    +cancelar(): void
+    +eliminarTurno(): void
     +getPaciente(): Paciente
 }
 
 class Agenda {
     -id: String
-    +liberarDisponibilidad(turno: Turno): Boolean
+    +removerTurno(turno: Turno): Boolean
 }
 
 enum EstadoTurno {
@@ -48,7 +48,7 @@ interface ITurnoRepository {
 }
 
 interface IAgendaService {
-    +liberarDisponibilidad(turno: Turno): Boolean
+    +removerTurno(turno: Turno): Boolean
 }
 
 interface INotificacionService {

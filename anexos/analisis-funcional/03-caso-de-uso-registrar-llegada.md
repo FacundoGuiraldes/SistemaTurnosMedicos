@@ -43,7 +43,7 @@ El comportamiento funcional de este módulo se encuentra tipificado en el modelo
 - **Secretaria** → Actor principal del flujo de interfaz que interactúa de manera directa con el sistema para buscar el turno del paciente e ingresar la confirmación.
 - **Paciente** → Actor secundario que inicia la acción física al presentarse en el mostrador de recepción y proveer sus datos de identificación.
 - **Include (Verificar turno)** → El flujo requiere obligatoriamente comprobar que el paciente posea una cita válida agendada previamente para poder avanzar con la admisión.
-- **Include (Registrar asistencia)** → Operación automática e imprescindible que modifica el ciclo de vida del turno una vez validada la presencia del paciente.
+- **Include (Marcar en espera)** → Operación automática e imprescindible que modifica el ciclo de vida del turno una vez validada la presencia del paciente.
 
 ---
 
@@ -76,7 +76,7 @@ La interacción cronológica y el paso de mensajes entre los objetos del sistema
 **Mensajes clave:**
 - `registrarLlegadaPaciente(dni, fechaActual)` → Mensajes de inicialización de búsqueda desde la interfaz al orquestador.
 - `buscarTurnoPaciente(dni, fecha)` → Mensaje interno delegado al modelo para constatar el registro pendiente.
-- `registrarAsistencia()` → Mensaje de mutación de estado que altera el ciclo de vida de la entidad Turno.
+- `marcarEnEspera()` → Mensaje de mutación de estado que altera el ciclo de vida de la entidad Turno.
 
 ---
 
@@ -121,7 +121,7 @@ Clase Sistema {
         SI (turnoExistente != NULL Y turnoExistente.asistencia == Falso) {
             
             // 2. Mutación interna del estado de la entidad según el diseño estructural
-            turnoExistente.registrarAsistencia()
+            turnoExistente.marcarEnEspera()
             Boolean actualizacionExitosa = turnoService.actualizarTurno(turnoExistente)
             
             SI (NOT actualizacionExitosa) {
@@ -133,7 +133,7 @@ Clase Sistema {
             Paciente pacienteActual = turnoExistente.getPaciente()
             
             // 4. Delegación estructural al servicio inyectado de la sala de espera (DIP)
-            Boolean asignacionSala = salaEsperaService.asignarASala(pacienteActual)
+            Boolean asignacionSala = salaEsperaService.registrarLlegada(pacienteActual)
             
             SI (NOT asignacionSala) {
                 Imprimir("Advertencia: No se pudo registrar automáticamente en la cola física.")

@@ -25,7 +25,7 @@ class Turno {
     -fecha: DateTime
     -hora: Time
     -asistencia: Boolean
-    +registrarAsistencia(): void
+    +marcarEnEspera(): void
     +getPaciente(): Paciente
 }
 
@@ -41,7 +41,7 @@ interface ITurnoService {
 }
 
 interface ISalaEsperaService {
-    +asignarASala(paciente: Paciente): Boolean
+    +registrarLlegada(paciente: Paciente): Boolean
 }
 
 class Sistema {
