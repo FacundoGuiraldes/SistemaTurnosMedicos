@@ -28,13 +28,13 @@ Paciente -> secretaria: indicarTurnoCancelar(turno)
 activate secretaria
 secretaria -> sistema: cancelarTurno(turno)
 activate sistema
-sistema -> turno: eliminarTurno()
+sistema -> turno: cancelar()
 activate turno
-turno --> sistema: turnoEliminado
+turno --> sistema: turnoCancelado
 deactivate turno
-sistema -> agenda: removerTurno(turno)
+sistema -> agenda: liberarDisponibilidad(turno)
 activate agenda
-agenda --> sistema: turnoRemovido
+agenda --> sistema: disponibilidadLiberada
 deactivate agenda
 sistema --> secretaria: turnoCancelado
 deactivate sistema

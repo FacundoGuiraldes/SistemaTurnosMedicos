@@ -43,7 +43,7 @@ El comportamiento funcional de este módulo se encuentra tipificado en el modelo
 - **Secretaria** → Actor principal del flujo de interfaz que interactúa de manera directa con el sistema para buscar el turno del paciente e ingresar la confirmación.
 - **Paciente** → Actor secundario que inicia la acción física al presentarse en el mostrador de recepción y proveer sus datos de identificación.
 - **Include (Verificar turno)** → El flujo requiere obligatoriamente comprobar que el paciente posea una cita válida agendada previamente para poder avanzar con la admisión.
-- **Include (Marcar en espera)** → Operación automática e imprescindible que modifica el ciclo de vida del turno una vez validada la presencia del paciente.
+- **Include (Registrar asistencia)** → Operación automática e imprescindible que modifica el ciclo de vida del turno una vez validada la presencia del paciente.
 
 ---
 

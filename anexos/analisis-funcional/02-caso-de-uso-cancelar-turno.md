@@ -23,7 +23,7 @@ El sistema permite que un Paciente o una Secretaria soliciten la cancelación de
 ## 2. Diagrama de Casos de Uso (A2)
 El comportamiento funcional de este módulo se encuentra tipificado en el modelo general de casos de uso de la Actividad N° 2. 
 
-![Diagrama de Casos de Uso CU2](../../diagramas/02-casos-de-uso/02-caso-uso-cancelar-turno.png)
+![Diagrama de Casos de Uso CU2](../../diagramas/02-casos-de-uso/02-caso-uso-cancelar-turno-02/02-caso-uso-cancelar-turno-02.png)
 
 * **Descripción breve:** El diagrama (Ref: image_78a7e4.png) expone que tanto el actor `Paciente` como el actor `Secretaria` pueden iniciar el caso de uso principal `Cancelar turno`. Este último incluye de manera obligatoria (`«include»`) la ejecución secuencial de los subprocesos `Buscar turno`, `Liberar disponibilidad` y `Notificar cancelación`.
 
@@ -32,7 +32,7 @@ El comportamiento funcional de este módulo se encuentra tipificado en el modelo
 ## 3. Diagrama de Actividades (A3)
 El flujo operativo y las bifurcaciones lógicas del proceso de cancelación se encuentran documentados en el artefacto de la Actividad N° 3.
 
-![Diagrama de Actividades CU2](../../diagramas/04-diagramas-actividades/04-actividad-cancelar-turno.png)
+![Diagrama de Actividades CU2](../../diagramas/04-diagramas-actividades/04-actividad-cancelar-turno-02.png)
 
 * **Descripción breve:** El flujo inicia con la recepción del identificador del turno, evalúa la existencia del registro en el repositorio y, ante una resolución positiva, procede en paralelo a modificar el estado de la cita, liberar el bloque de la agenda del médico y despachar la alerta de confirmación.
 
@@ -41,7 +41,7 @@ El flujo operativo y las bifurcaciones lógicas del proceso de cancelación se e
 ## 4. Diagrama de Secuencia (A3)
 La interacción cronológica y el paso de mensajes entre los objetos del sistema durante la ejecución de este caso de uso se detallan a continuación.
 
-![Diagrama de Secuencia CU2](../../diagramas/05-diagramas-secuencia/05-secuencia-cancelar-turno.png)
+![Diagrama de Secuencia CU2](../../diagramas/05-diagramas-secuencia/05-secuencia-cancelar-turno-cancelar-turno-02.png)
 
 * **Descripción breve:** Describe la secuencia de llamadas desde la interfaz de usuario hacia el controlador `Sistema`, el cual invoca secuencialmente al repositorio de datos para recuperar la entidad, ejecuta la cancelación y delega a las interfaces correspondientes la liberación de la agenda y el envío de notificaciones.
 

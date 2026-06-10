@@ -23,13 +23,13 @@ sistema --> secretaria: turnoVerificado
 deactivate sistema
 secretaria -> sistema: registrarLlegadaPaciente(paciente)
 activate sistema
-sistema -> salaEspera: registrarLlegada(paciente, horaActual)
+sistema -> salaEspera: asignarASala(paciente)
 activate salaEspera
-salaEspera --> sistema: llegadaRegistrada
+salaEspera --> sistema: salaAsignada
 deactivate salaEspera
-sistema -> turno: marcarEnEspera()
+sistema -> turno: registrarAsistencia()
 activate turno
-turno --> sistema: estadoActualizado
+turno --> sistema: turnoActualizado
 deactivate turno
 sistema --> secretaria: llegadaConfirmada
 deactivate sistema
