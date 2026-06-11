@@ -1,0 +1,60 @@
+@startuml 03-clases-registrar-llegada-03
+title Diagrama de Clases: Registrar Llegada del Paciente (CU3)
+
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+abstract class Usuario {
+    +id: String
+    +nombre: String
+    +apellido: String
+    +dni: String
+    +email: String
+}
+
+class Paciente {
+    -numeroHistorial: String
+}
+
+class Secretaria {
+    -departamento: String
+}
+
+class Turno {
+    -id: String
+    -fecha: DateTime
+    -hora: Time
+    -asistencia: Boolean
+    +marcarEnEspera(): void
+    +getPaciente(): Paciente
+}
+
+class SalaEspera {
+    -id: String
+    -pacientesEnEspera: List<Paciente>
+    +agregarPaciente(paciente: Paciente): void
+}
+
+interface ITurnoService {
+    +buscarTurnoPaciente(dni: String, fecha: DateTime): Turno
+    +actualizarTurno(turno: Turno): Boolean
+}
+
+interface ISalaEsperaService {
+    +registrarLlegada(paciente: Paciente): Boolean
+}
+
+class Sistema {
+    -turnoService: ITurnoService
+    -salaEsperaService: ISalaEsperaService
+    +registrarLlegadaPaciente(dni: String, fechaActual: DateTime): Boolean
+}
+
+Paciente --|> Usuario
+Secretaria --|> Usuario
+Turno "1" --> "1" Paciente : pertenece a
+Sistema --> ITurnoService : usa (DIP)
+Sistema --> ISalaEsperaService : usa (DIP)
+SalaEspera "1" --> "*" Paciente : contiene
+
+@enduml

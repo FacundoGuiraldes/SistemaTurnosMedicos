@@ -1,0 +1,53 @@
+@startuml
+' Diagrama de Clases - Solicitar Turno con correcciones SOLID
+
+class Paciente {
+  - dni: String
+  - nombre: String
+  - telefono: String
+}
+
+class Doctor {
+  - matricula: String
+  - nombre: String
+  - especialidad: String
+  + obtenerAgenda(): Agenda
+}
+
+class Agenda {
+  - horariosDisponibles: List<Date>
+  + estaDisponible(fecha: Date): Boolean
+  + reservar(fecha: Date)
+}
+
+class Turno {
+  - idTurno: String
+  - fecha: Date
+}
+
+interface INotificacion <<interfaz>> {
+  + enviarNotificacion(mensaje: String)
+}
+
+interface IPersistencia <<interfaz>> {
+  + guardarTurno(turno: Turno)
+}
+
+class Sistema {
+  - notificador: INotificacion
+  - baseDeDatos: IPersistencia
+  + buscarPaciente(dni: String): Paciente
+  + buscarDoctor(matricula: String): Doctor
+  + registrarTurno(paciente: Paciente, doctor: Doctor, fecha: Date): Turno
+}
+
+' Relaciones UML
+Sistema ..> INotificacion : usa
+Sistema ..> IPersistencia : usa
+
+Doctor "1" --> "1" Agenda : administra
+Sistema "1" --> "*" Turno : registra
+Turno "*" --> "1" Paciente : pertenece a
+Turno "*" --> "1" Doctor : asignado a
+
+@enduml
