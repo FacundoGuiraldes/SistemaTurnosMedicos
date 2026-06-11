@@ -10,7 +10,7 @@ La clase `Paciente` oculta atributos sensibles como `- dni: String`, `- direccio
 ![Encapsulamiento - Ejemplo 1](../../diagramas/01-diagrama-clases/capturas-pilares/poo-encapsulamiento-ejemplo-1.png)
 
 **Ejemplo 2 — Turno:**
-La clase `Turno` encapsula su ciclo de vida mediante el atributo privado `- estado: EstadoTurno`. El estado solo cambia a través de métodos controlados como `+ cancelarTurno(motivo: String): void`, `+ marcarEnEspera(): void` y `+ marcarAtendido(): void`, evitando que otras clases modifiquen el estado internamente.
+La clase `Turno` encapsula su ciclo de vida mediante el atributo privado `- estado: EstadoTurno`. El estado solo cambia a través de métodos controlados como `+ eliminarTurno(): void`, `+ marcarEnEspera(): void` y `+ marcarAtendido(): void`, evitando que otras clases modifiquen el estado internamente.
 
 ![Encapsulamiento - Ejemplo 2](../../diagramas/01-diagrama-clases/capturas-pilares/poo-encapsulamiento-ejemplo-2.png)
 
