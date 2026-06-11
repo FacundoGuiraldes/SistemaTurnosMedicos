@@ -60,7 +60,7 @@ class Turno {
     - duracion: Integer
     - esSobreturno: Boolean
     + crearTurno(paciente: Paciente, doctor: Doctor, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
-    + cancelarTurno(motivo: String): void
+    + eliminarTurno(): void
     + modificarTurno(nuevaFecha: LocalDate, nuevaHora: LocalTime): void
     + marcarEnEspera(): void
     + marcarAtendido(): void
@@ -77,7 +77,7 @@ class Agenda {
     - estado: EstadoAgenda
     + verificarDisponibilidad(fecha: LocalDate, hora: LocalTime): boolean
     + agregarTurno(turno: Turno): boolean
-    + eliminarTurno(turnoId: String): boolean
+    + removerTurno(turno: Turno): Boolean
     + obtenerTurnosDelDia(fecha: LocalDate): List<Turno>
     + obtenerInfoTurno(turnoId: String): Turno
     + sugerirProximasFranjasLibres(fecha: LocalDate): List<LocalTime>
