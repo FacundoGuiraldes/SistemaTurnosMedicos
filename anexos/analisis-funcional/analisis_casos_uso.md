@@ -15,6 +15,7 @@ Clases principales:
 - `Turno`
 - `Especialidad`
 - `Sistema`
+
 Descripción:
 - `Paciente` inicia la búsqueda y selección de turno en una `Especialidad` concreta.
 - `Agenda` responde con `obtenerTurnosDelDia(...)` y `sugerirProximasFranjasLibres(...)`.
@@ -28,6 +29,7 @@ Clases principales:
 - `Turno`
 - `Sistema`
 - `Agenda`
+
 Descripción:
 - `Paciente` o `Secretaria` pueden invocar `cancelarTurno(...)` en `Turno`.
 - `Turno` encapsula la lógica de cambio de estado y mantiene coherencia de su ciclo de vida.
@@ -41,6 +43,7 @@ Clases principales:
 - `SalaEspera`
 - `Turno`
 - `Sistema`
+
 Descripción:
 - `Paciente` utiliza `registrarLlegada()` para modelar su ingreso.
 - `LlegadaPaciente` valida la existencia del turno con `validarTurnoExistente(...)` y notifica ingreso a `SalaEspera`.
@@ -53,6 +56,7 @@ Clases principales:
 - `Agenda`
 - `Turno`
 - `Sistema`
+
 Descripción:
 - `Doctor` consulta su agenda con `verAgenda(fecha: LocalDate)`.
 - `Agenda` representa la programación diaria del doctor y responde con los turnos asociados.
@@ -66,6 +70,7 @@ Clases principales:
 - `Notificacion`
 - `Paciente`
 - `Turno`
+
 Descripción:
 - `Sistema` delega el envío de alertas a `ServicioNotificaciones` con `enviarRecordatorioAutomatico(...)`.
 - `ServicioNotificaciones` envía mensajes relacionados con el `Turno` y el estado del paciente.
