@@ -8,7 +8,7 @@ Actúa como un Analista Funcional y Arquitecto de Software Senior experto en pri
 Necesito diseñar los diagramas de clases específicos en PlantUML para:
 
 CU4: Registrar paciente
-CU3: Ver agenda
+CU5: Ver agenda
 Para garantizar la coherencia absoluta con el trabajo previo del equipo, analiza detalladamente el contenido de los siguientes archivos de mi espacio de trabajo como fuentes de contexto obligatorias:
 
 "diagramas/01-diagrama-clases/01-boceto-inicial.excalidraw"

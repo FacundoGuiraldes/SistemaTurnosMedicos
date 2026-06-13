@@ -54,15 +54,6 @@ class Sistema {
     + crearCuentaUsuario(datos: Map<String, String>): Usuario
 }
 
-class Turno {
-    - id: String
-    - fecha: Date
-    - hora: Time
-    - estado: String
-    ---
-    + obtenerDetalles(): Map<String, String>
-}
-
 Usuario <|-- Paciente
 Usuario <|-- Secretaria
 
@@ -71,6 +62,5 @@ Secretaria --> Paciente : registra
 Sistema ..> IPacienteRepository : depende
 Sistema --> Paciente : crea
 Sistema --> Usuario : crearCuentaUsuario
-Paciente --> Turno : relaciona
 
 @enduml

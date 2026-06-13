@@ -68,11 +68,11 @@ usuario:Usuario: objeto de la clase Usuario representado con la notación objeto
 
 **Mensajes clave:**
 
-[registrarPaciente(datosPersonales)]: inicia el proceso de alta dentro del sistema utilizando los datos proporcionados por el paciente.
-[crearPaciente(datosPersonales)]: provoca la creación de la entidad nuevoPaciente:Paciente.
-[crearCuentaUsuario(datosPersonales)]: genera la cuenta de acceso asociada al nuevo paciente mediante el objeto usuario:Usuario.
-[pacienteRegistrado]: confirma a la secretaria que el registro fue completado correctamente.
-[registroConfirmado]: comunica al paciente el resultado exitoso del proceso.
+`registrarPaciente(datosPersonales)`: inicia el proceso de alta dentro del sistema utilizando los datos proporcionados por el paciente.
+`crearPaciente(datosPersonales)`: provoca la creación de la entidad nuevoPaciente:Paciente.
+`crearCuentaUsuario(datosPersonales)`: genera la cuenta de acceso asociada al nuevo paciente mediante el objeto usuario:Usuario.
+`pacienteRegistrado`: confirma a la secretaria que el registro fue completado correctamente.
+`registroConfirmado`: comunica al paciente el resultado exitoso del proceso.
 
 **Objetos temporales destruidos:**
 Los objetos nuevoPaciente:Paciente y usuario:Usuario son temporales dentro de la interacción modelada. Se crean durante la ejecución de los mensajes crearPaciente(datosPersonales) y crearCuentaUsuario(datosPersonales) respectivamente, y luego son destruidos (indicados mediante la "X" al final de sus líneas de vida) porque el diagrama representa únicamente el proceso de creación y registro. Una vez persistidos sus datos en el sistema, estas instancias temporales ya no participan en la interacción mostrada.
