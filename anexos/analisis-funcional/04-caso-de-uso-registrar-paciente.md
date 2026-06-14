@@ -33,8 +33,8 @@
 
 **Actores y relaciones:**
 
-- [Paciente]: es el actor principal que se beneficia del proceso de registro, proporcionando su información personal para ser identificado en el sistema.
-- [Secretaria]: es quien interactúa directamente con el sistema para registrar al paciente.
+- {Paciente}: es el actor principal que se beneficia del proceso de registro, proporcionando su información personal para ser identificado en el sistema.
+- {Secretaria}: es quien interactúa directamente con el sistema para registrar al paciente.
 
 - Asociación: se utiliza entre los actores (Paciente y Secretaria) y el caso de uso principal (Registrar paciente) porque ambos participan directamente en la ejecución del proceso, iniciándolo o aportando información necesaria para completarlo.
 - <<include>>: se emplea para representar comportamientos obligatorios y reutilizables dentro del caso de uso principal. Tanto Validar datos como Ingresar datos personales forman parte necesaria del flujo de registro y siempre deben ejecutarse cuando se registra un paciente.
@@ -61,10 +61,10 @@ Revalidación tras correcciones: luego de que la secretaria actualiza la informa
 **Participantes:**
 
 Paciente: actor externo que inicia el proceso proporcionando la información necesaria para el registro.
-:Secretaria: instancia de la clase Secretaria representada mediante la notación :Objeto, encargada de interactuar con el paciente y operar el sistema.
-:Sistema: instancia del sistema que coordina la lógica de registro y la creación de entidades.
-nuevoPaciente:Paciente: objeto de la clase Paciente representado con la notación objeto:Clase, creado durante la ejecución para almacenar los datos del nuevo paciente.
-usuario:Usuario: objeto de la clase Usuario representado con la notación objeto:Clase, generado para asociar las credenciales de acceso del paciente al sistema.
+{Secretaria}: instancia de la clase Secretaria representada mediante la notación :Objeto, encargada de interactuar con el paciente y operar el sistema.
+{Sistema}: instancia del sistema que coordina la lógica de registro y la creación de entidades.
+{nuevoPaciente}: objeto de la clase Paciente representado con la notación objeto:Clase, creado durante la ejecución para almacenar los datos del nuevo paciente.
+{usuario}: objeto de la clase Usuario representado con la notación objeto:Clase, generado para asociar las credenciales de acceso del paciente al sistema.
 
 **Mensajes clave:**
 

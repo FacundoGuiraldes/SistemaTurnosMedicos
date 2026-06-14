@@ -25,11 +25,6 @@ class Paciente {
     - dni: String
     - direccion: String
     - alergias: List<String>
-    ---
-    + solicitarTurno(doctor: Doctor, fecha: Date, hora: Time): Turno
-    + cancelarTurno(turno: Turno): boolean
-    + consultarTurnos(): List<Turno>
-    + registrarLlegada(turno: Turno): void
 }
 
 class Secretaria {
