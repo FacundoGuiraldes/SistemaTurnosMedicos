@@ -1,4 +1,4 @@
- Diagramas de Clases
+# Diagramas de Clases
 
 * [Diagrama de Clases - Boceto Inicial](./01-boceto-inicial.excalidraw)
 * Principios SOLID
@@ -7,7 +7,16 @@
   * [Diagrama de Clases - LSP (Liskov Substitution Principle)](./01-solid-03-lsp.puml)
   * [Diagrama de Clases - ISP (Interface Segregation Principle)](./01-solid-04-isp.puml)
   * [Diagrama de Clases - DIP (Dependency Inversion Principle)](./01-solid-05-dip.puml)
-* Diagramas por Caso de Uso
-  * [Diagrama de Clases - Solicitar Turno](./01-clases-solicitar-turno.puml)
-  * [Diagrama de Clases - Registrar Paciente](./04-clases-registrar-paciente-04.puml)
-  * [Diagrama de Clases - Ver Agenda](./05-clases-ver-agenda-05.puml)
+
+=======
+
+### 2. Diagramas de Clases por Caso de Uso (Módulo Técnico)
+
+| Caso de Uso | Archivo Fuente | Diagrama Renderizado | Descripción |
+| :--- | :--- | :--- | :--- |
+| **CU1: Registrar Turno** | `01-clases-solicitar-turno.puml` | `01-clases-solicitar-turno.png` | Estructura base orientada a objetos para la gestión e instanciación de turnos médicos (Especialista: Valeria Silva). |
+| **CU2: Cancelar turno** | `02-clases-cancelar-turno-02.puml` | `02-clases-cancelar-turno-02.png` | Modelado de clases del flujo de baja de citas, liberación de bloques horarios e inversión de dependencias para alertas. |
+| **CU3: Registrar llegada del paciente** | `03-clases-registrar-llegada-03.puml` | `03-clases-registrar-llegada-03.png` | Modelado de clases del flujo de admisión en sala de espera, integrando estados de turnos y acoplamiento abstracto. | 
+| **CU4: Registrar paciente** | `04-clases-registrar-paciente-04.puml` | `04-clases-registrar-paciente-04.png` | Modelado de clases del flujo de registro de nuevos pacientes, incluyendo validación de datos y creación de cuentas de usuario. |
+| **CU5: Ver agenda** | `05-clases-ver-agenda-05.puml` | `05-clases-ver-agenda-05.png` | Modelado de clases del flujo de visualización de la agenda médica, permitiendo a los usuarios consultar turnos programados y disponibilidad. | 
+ 
