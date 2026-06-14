@@ -8,8 +8,6 @@
   * [Diagrama de Clases - ISP (Interface Segregation Principle)](./01-solid-04-isp.puml)
   * [Diagrama de Clases - DIP (Dependency Inversion Principle)](./01-solid-05-dip.puml)
 
-=======
-
 ### 2. Diagramas de Clases por Caso de Uso (Módulo Técnico)
 
 | Caso de Uso | Archivo Fuente | Diagrama Renderizado | Descripción |
