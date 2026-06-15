@@ -50,7 +50,20 @@ Descripción:
 - `SalaEspera` organiza la fila de pacientes y registra su estado.
 - `Turno` puede transitar a `EnEspera`, lo que permite sincronizar la llegada con la atención médica.
 
-## CU4 - Ver Agenda
+## CU4 - Registrar Paciente
+Clases principales:
+- `Secretaria`
+- `Sistema`
+- `Paciente`
+- `Usuario`
+
+Descripción:
+- `Secretaria` inicia el flujo con `solicitarDatosPersonales()` y valida la información con `validarDatos(...)`.
+- `Sistema` orquesta el registro mediante `seleccionarRegistrarPaciente()`, `validarDuplicidad(dni)` y `registrarPaciente(datosPersonales)`.
+- `Sistema` también crea la cuenta de acceso con `crearCuentaUsuario(datos)`, retornando un `Usuario` asociado al nuevo `Paciente`.
+- `Paciente` es el resultado del proceso y concentra los datos de identidad y clínicos del nuevo usuario del sistema.
+
+## CU5 - Ver Agenda
 Clases principales:
 - `Doctor`
 - `Agenda`
@@ -58,23 +71,10 @@ Clases principales:
 - `Sistema`
 
 Descripción:
-- `Doctor` consulta su agenda con `verAgenda(fecha: LocalDate)`.
-- `Agenda` representa la programación diaria del doctor y responde con los turnos asociados.
+- `Doctor` consulta su agenda con `verAgenda(fecha: LocalDate)`, que retorna `List<Turno>`.
+- `Agenda` representa la programación diaria del doctor y expone métodos como `obtenerTurnosDelDia(...)`, `crearAgendaDelDia(...)` y `validarTurnosContraReglas()`.
 - `Turno` y `Especialidad` permiten ver qué citas están asociadas a cada especialidad y horario.
-- `Sistema` puede orquestar esta consulta para asegurar que el doctor solo acceda a su propia agenda.
-
-## CU5 - Envío de Notificaciones
-Clases principales:
-- `Sistema`
-- `ServicioNotificaciones`
-- `Notificacion`
-- `Paciente`
-- `Turno`
-
-Descripción:
-- `Sistema` delega el envío de alertas a `ServicioNotificaciones` con `enviarRecordatorioAutomatico(...)`.
-- `ServicioNotificaciones` envía mensajes relacionados con el `Turno` y el estado del paciente.
-- La entidad `Notificacion` modela los metadatos asociados al mensaje y su destinatario.
+- `Sistema` orquesta la consulta con `seleccionarVerAgenda()` y permite al doctor consultar un paciente específico con `consultarPacienteEspecifico(turno)`.
 
 ## Referencias de contexto
 Este análisis se construyó a partir de:

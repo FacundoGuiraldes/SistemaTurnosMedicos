@@ -30,7 +30,34 @@ Incluye los siguientes entregables:
 - anexos/analisis-funcional/analisis_casos_uso.md
 
 Describe también los ajustes realizados al output de la IA y las iteraciones relevantes.
-``` 
+```
+
+## Prompt de verificación de coherencia (iteración 2)
+
+```text
+Actuás como revisor técnico del Sistema de Turnos Médicos del Dr. Molina.
+
+Tu tarea es verificar que el diagrama de clases final unificado sea coherente con todos los diagramas parciales por caso de uso. Abrí los siguientes archivos como contexto:
+
+DIAGRAMAS PARCIALES:
+- diagramas/01-diagrama-clases/01-clases-solicitar-turno.puml (CU1)
+- diagramas/01-diagrama-clases/02-clases-cancelar-turno-02.puml (CU2)
+- diagramas/01-diagrama-clases/03-clases-registrar-llegada-03.puml (CU3)
+- diagramas/01-diagrama-clases/04-clases-registrar-paciente-04.puml (CU4)
+- diagramas/01-diagrama-clases/05-clases-ver-agenda-05.puml (CU5)
+
+DIAGRAMA FINAL:
+- diagramas/01-diagrama-clases/06-clases-diagrama-final.puml
+
+Verificá específicamente:
+1. Que todos los nombres de clases que aparecen en los parciales existan en el diagrama final
+2. Que los atributos de cada clase sean coherentes entre los parciales y el final
+3. Que los métodos de cada clase sean coherentes
+4. Que las relaciones entre clases sean coherentes
+5. Que las interfaces definidas en los parciales estén representadas o sus responsabilidades cubiertas en el diagrama final
+
+Para cada inconsistencia encontrada indicá clase afectada, qué dice el parcial, qué dice el final y qué cambio concreto hay que hacer.
+```
 
 ## Archivos de contexto referenciados
 
@@ -55,6 +82,8 @@ Las plantillas obligatorias fueron proporcionadas por el solicitante (adjuntas) 
 - Se creó el archivo `anexos/analisis-funcional/analisis_casos_uso.md` para cubrir el entregable solicitado.
 - Se generó `diagramas/01-diagrama-clases/06-clases-diagrama-final.png` a partir del archivo PlantUML usando el servidor remoto de PlantUML.
 - Se eliminó la carpeta `scripts/` y archivos auxiliares temporales que no forman parte de la entrega.
+- Se corrigió nomenclatura en el diagrama final: `Turno.cancelarTurno()` renombrado a `Turno.eliminarTurno()` y `Agenda.eliminarTurno()` renombrado a `Agenda.removerTurno()` para coherencia con diagramas parciales de CU2 y CU3.
+- Se ejecutó verificación de coherencia con IA sobre los 5 diagramas parciales y se aplicaron correcciones al diagrama final detectadas en la iteración 2.
 
 ## Iteraciones relevantes
 
@@ -63,6 +92,9 @@ Las plantillas obligatorias fueron proporcionadas por el solicitante (adjuntas) 
 3. Se creó el PNG final y se limpió el repositorio de scripts auxiliares.
 4. Se agregó el anexo de casos de uso (`analisis_casos_uso.md`) para completar los archivos listados en la consigna.
 5. Se documentó explícitamente el contexto y los ajustes en esta bitácora.
+6. Al mergear los diagramas parciales de CU2 y CU3 (Carola), se detectaron inconsistencias de nomenclatura en `Turno` y `Agenda` y se corrigieron directamente en el diagrama final.
+7. Al mergear los diagramas parciales de CU4 y CU5 (Caterina), se ejecutó verificación de coherencia asistida por IA sobre los 5 casos de uso. Se detectaron 14 inconsistencias entre los parciales y el diagrama final, que fueron resueltas actualizando `06-clases-diagrama-final.puml` y documentadas en la sección 4 de `diagramas_de_clases.md`.
+8. Se regeneró el PNG del diagrama final con los cambios incorporados.
 
 ## Limitaciones del entorno
 

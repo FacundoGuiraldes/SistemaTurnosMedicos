@@ -32,13 +32,13 @@ La clase abstracta `Usuario` contiene atributos y métodos comunes como `- id`, 
 
 **Definición:** El polimorfismo permite que diferentes clases respondan a la misma operación o mensaje con comportamientos adecuados a su tipo concreto.
 
-**Ejemplo 1 — `login(...)` en `Paciente`, `Secretaria` y `Doctor`:**
-El método `login(...)` es parte de la abstracción `Usuario` y puede aplicarse a sus subclases. Aunque el diagrama no detalla la implementación específica, el modelo admite que cada tipo de usuario valide credenciales según su rol mientras comparte la misma interfaz de acceso.
+**Ejemplo 1 — `login(...)` declarado en `Usuario` y sobreescribible por `Paciente`, `Doctor` y `Secretaria`:**
+La clase abstracta `Usuario` declara `+ login(nombreUsuario: String, contrasena: String): boolean` como interfaz uniforme de acceso al sistema. Cada subclase concreta puede sobreescribir este método con lógica específica a su rol: `Paciente` valida su número de historial clínico, `Doctor` valida su número de licencia médica y `Secretaria` sus credenciales administrativas. El sistema invoca `usuario.login(...)` sin conocer el tipo concreto en tiempo de compilación; el comportamiento correcto se resuelve en tiempo de ejecución según la clase real del objeto.
 
 ![Polimorfismo - Ejemplo 1](../../diagramas/01-diagrama-clases/capturas-pilares/poo-polimorfismo-ejemplo-1.png)
 
-**Ejemplo 2 — `verAgenda(...)` en `Doctor` y `Secretaria`:**
-`Doctor` y `Secretaria` realizan la acción de ver agenda con firmas diferentes, pero el dominio mantiene el mismo propósito: consultar disponibilidad y turnos del doctor. Este diseño permite comportamientos diferenciados según el rol que solicita la información.
+**Ejemplo 2 — `cancelarTurno(...)` en `Paciente` y `Secretaria`:**
+Tanto `Paciente` como `Secretaria` definen el método `+ cancelarTurno(turnoId: String, motivo: String): boolean` con la misma firma. Cuando el sistema necesita cancelar un turno, puede invocar esta operación sobre cualquiera de los dos tipos de usuario y obtener un resultado del mismo tipo, aunque con reglas de negocio distintas: `Paciente` solo puede cancelar sus propios turnos, mientras que `Secretaria` puede cancelar turnos de cualquier paciente. Esta es la esencia del polimorfismo: misma interfaz de operación, comportamiento diferenciado según el tipo concreto en tiempo de ejecución.
 
 ![Polimorfismo - Ejemplo 2](../../diagramas/01-diagrama-clases/capturas-pilares/poo-polimorfismo-ejemplo-2.png)
 

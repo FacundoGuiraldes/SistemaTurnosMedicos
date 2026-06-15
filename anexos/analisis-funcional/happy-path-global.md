@@ -4,7 +4,7 @@
 
 **Escenario:** Reserva de turno por especialidad, verificación de disponibilidad, confirmación con notificación y gestión de llegada hasta sala de espera.
 
-**Casos de uso involucrados:** CU1 Solicitar Turno, CU2 Cancelar Turno, CU3 Registrar Llegada, CU4 Ver Agenda, CU5 Envío de Notificaciones
+**Casos de uso involucrados:** CU1 Solicitar Turno, CU2 Cancelar Turno, CU3 Registrar Llegada, CU4 Registrar Paciente, CU5 Ver Agenda
 
 **Clases participantes:**
 
@@ -25,7 +25,7 @@
 INICIO Sistema de Turnos Médicos - Happy Path Global
 
 // ============================================================
-// CU4: inicialización y verificación de la agenda del doctor
+// CU5: inicialización y verificación de la agenda del doctor
 // ============================================================
 
 doctor1 = nuevo Doctor()
@@ -60,14 +60,32 @@ sino
 fin si
 
 // ============================================================
-// CU1: búsqueda de turno por especialidad y selección de franja
+// CU4: registro de nuevo paciente en el sistema
 // ============================================================
 
-paciente1 = nuevo Paciente()
-paciente1.numeroHistorial = "HIS-347256"
-paciente1.dni = "34123456"
-paciente1.direccion = "Av. Salud 123"
-paciente1.alergias = ["Ninguna"]
+secretaria1 = nueva Secretaria()
+secretaria1.departamento = "Administración"
+datosPersonales = secretaria1.solicitarDatosPersonales()
+esValido = secretaria1.validarDatos(datosPersonales)
+
+si esValido entonces
+    sistema.seleccionarRegistrarPaciente()
+    esDuplicado = sistema.validarDuplicidad(datosPersonales["dni"])
+    si no esDuplicado entonces
+        paciente1 = sistema.registrarPaciente(datosPersonales)
+        usuarioCreado = sistema.crearCuentaUsuario(datosPersonales)
+        sistema.guardarCambios()
+        registrar("Paciente registrado exitosamente")
+    sino
+        registrar("Paciente ya existe en el sistema")
+    fin si
+sino
+    registrar("Datos inválidos, no se puede registrar el paciente")
+fin si
+
+// ============================================================
+// CU1: búsqueda de turno por especialidad y selección de franja
+// ============================================================
 
 resultados = agenda1.obtenerTurnosDelDia(agenda1.fecha)
 turnoSeleccionado = null
@@ -87,7 +105,7 @@ si turnoSeleccionado == null entonces
 fin si
 
 // ============================================================
-// CU2: reserva de turno y validación de colisión
+// CU1: reserva de turno y validación de colisión
 // ============================================================
 
 turnoTemporal = nuevo Turno()
@@ -110,12 +128,16 @@ sino
 fin si
 
 // ============================================================
-// CU5: envío de notificación y generación de comprobante
+// CU1: envío de notificación de confirmación
 // ============================================================
 
-comprobante = "Comprobante de Turno: " + turnoReservado.id
+notificacion1 = nueva Notificacion()
+notificacion1.mensaje = "Su turno ha sido reservado."
+notificacion1.destinatario = paciente1.email
+notificacion1.tipo = "Confirmacion"
 sistema.enviarRecordatorioAutomatico(paciente1, turnoReservado)
-sistema.servicioNotificaciones.enviarNotificacion(paciente1, "Su turno ha sido reservado. " + comprobante)
+sistema.servicioNotificaciones.enviarNotificacion(paciente1, notificacion1.mensaje)
+notificacion1.enviar()
 
 // ============================================================
 // CU3: llegada del paciente y paso a sala de espera
@@ -131,6 +153,14 @@ sino
     registrar("Flujo de llegada interrumpido por turno inválido")
 fin si
 
+// ============================================================
+// CU2: cancelación de turno (flujo alternativo)
+// ============================================================
+
+// Si el paciente decide cancelar antes de ser atendido:
+// sistema.cancelarTurno(turnoReservado.id, "Cancelación por paciente")
+// agenda1.removerTurno(turnoReservado)
+
 FIN
 ```
 
@@ -138,8 +168,10 @@ FIN
 
 | Bloque | Caso de uso | Clases involucradas | Diagrama de secuencia de referencia |
 |--------|-------------|---------------------|-------------------------------------|
-| Inicialización y verificación de agenda | CU4 Ver Agenda | Doctor, Agenda, Sistema | `diagramas/05-diagramas-secuencia/05-secuencia-ver-agenda-ver-agenda-exitoso-05.png` |
+| Inicialización y verificación de agenda | CU5 Ver Agenda | Doctor, Agenda, Sistema | `diagramas/05-diagramas-secuencia/05-secuencia-ver-agenda-ver-agenda-exitoso-05.png` |
+| Registro de nuevo paciente | CU4 Registrar Paciente | Secretaria, Sistema, Paciente | `diagramas/05-diagramas-secuencia/05-secuencia-registrar-paciente-registrar-paciente-04.png` |
 | Búsqueda y selección de turno | CU1 Solicitar Turno | Paciente, Doctor, Agenda, Turno | `diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png` |
-| Reserva y validación de colisión | CU2 Cancelar Turno / reservar turno | Sistema, Agenda, Turno, Paciente | `diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png` |
-| Envío de notificación | CU5 Envío de Notificaciones | Sistema, ServicioNotificaciones, Paciente, Notificacion | `diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png` |
+| Reserva y validación de colisión | CU1 Solicitar Turno | Sistema, Agenda, Turno, Paciente | `diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png` |
+| Envío de notificación de confirmación | CU1 Solicitar Turno | Sistema, ServicioNotificaciones, Paciente, Notificacion | `diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png` |
 | Registro de llegada y sala de espera | CU3 Registrar Llegada | Paciente, LlegadaPaciente, SalaEspera, Turno | `diagramas/05-diagramas-secuencia/05-secuencia-registrar-llegada-registrar-llegada-del-paciente-03.png` |
+| Cancelación de turno (alternativo) | CU2 Cancelar Turno | Sistema, Agenda, Turno | `diagramas/05-diagramas-secuencia/05-secuencia-cancelar-turno-cancelar-turno-02.png` |

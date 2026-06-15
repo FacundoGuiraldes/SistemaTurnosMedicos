@@ -1,12 +1,10 @@
 @startuml
 title Diagrama de Clases Final - Sistema de Turnos Médicos del Dr. Molina
 
-' En esta fase se modelan solo clases, atributos y operaciones.
-' Las relaciones serán agregadas en la siguiente iteración.
-
 abstract class Usuario {
     - id: String
     - nombre: String
+    - apellido: String
     - email: String
     - telefono: String
     + login(nombreUsuario: String, contrasena: String): boolean
@@ -35,6 +33,8 @@ class Secretaria {
     + registrarLlegadaPaciente(paciente: Paciente): LlegadaPaciente
     + solicitarBloqueoHorario(fecha: LocalDate, horaInicio: LocalTime, horaFin: LocalTime): void
     + verAgenda(doctor: Doctor, fecha: LocalDate): List<Turno>
+    + solicitarDatosPersonales(): Map<String, String>
+    + validarDatos(datos: Map<String, String>): boolean
 }
 
 class Doctor {
@@ -44,8 +44,10 @@ class Doctor {
     - horariosDisponibles: List<LocalTime>
     + verAgenda(fecha: LocalDate): List<Turno>
     + consultarPacientesEsperando(): List<Paciente>
-    + registrarDiagnostico(turnoId: String, diagnostico: String): boolean
-    + autorizarSobreturno(): boolean
+    + registrarDiagnostico(turno: Turno, diagnostico: String): void
+    + autorizarSobreturno(agenda: Agenda): boolean
+    + marcarPacienteAtendido(turno: Turno): void
+    + definirDisponibilidad(horarios: List<String>): void
 }
 
 class Turno {
@@ -59,15 +61,19 @@ class Turno {
     - especialidad: Especialidad
     - duracion: Integer
     - esSobreturno: Boolean
+    - asistencia: Boolean
     + crearTurno(paciente: Paciente, doctor: Doctor, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
     + eliminarTurno(): void
     + modificarTurno(nuevaFecha: LocalDate, nuevaHora: LocalTime): void
     + marcarEnEspera(): void
     + marcarAtendido(): void
     + getDetalles(): String
+    + getPaciente(): Paciente
+    + obtenerInfoPaciente(): Paciente
 }
 
 class Agenda {
+    - id: String
     - doctorId: String
     - turnos: List<Turno>
     - fecha: LocalDate
@@ -81,10 +87,13 @@ class Agenda {
     + obtenerTurnosDelDia(fecha: LocalDate): List<Turno>
     + obtenerInfoTurno(turnoId: String): Turno
     + sugerirProximasFranjasLibres(fecha: LocalDate): List<LocalTime>
+    + crearAgendaDelDia(fecha: LocalDate): void
+    + validarTurnosContraReglas(): boolean
 }
 
 class SalaEspera {
-    - pacientes: List<Paciente>
+    - id: String
+    - pacientesEnEspera: List<Paciente>
     - horaLlegada: Map<Paciente, LocalDateTime>
     - estadoPaciente: Map<Paciente, EstadoEspera>
     - ordenFila: List<Paciente>
@@ -92,6 +101,7 @@ class SalaEspera {
     + obtenerPacientesEsperando(): List<Paciente>
     + removerPaciente(paciente: Paciente): void
     + registrarFinCiclo(paciente: Paciente): void
+    + agregarPaciente(paciente: Paciente): void
 }
 
 class LlegadaPaciente {
@@ -124,6 +134,12 @@ class Sistema {
     + validarColisionTurno(turno: Turno): boolean
     + orquestarFlujo(): void
     + guardarCambios(): void
+    + seleccionarRegistrarPaciente(): void
+    + validarDuplicidad(dni: String): boolean
+    + crearCuentaUsuario(datos: Map<String, String>): Usuario
+    + accederAlSistema(numeroLicencia: String): boolean
+    + seleccionarVerAgenda(): Agenda
+    + consultarPacienteEspecifico(turno: Turno): Paciente
 }
 
 class ServicioAutenticacion {
@@ -168,9 +184,11 @@ class Notificacion {
 enum EstadoTurno {
     Disponible
     Reservado
+    Pendiente
     Cancelado
     EnEspera
     Atendido
+    Ausente
 }
 
 enum EstadoAgenda {
@@ -210,5 +228,9 @@ Sistema "1" o-- "1" AuditoriaService
 Sistema "1" o-- "0..*" Notificacion
 Notificacion "1" o-- "1" Paciente
 Notificacion "0..1" o-- "1" Turno
+
+Turno .> EstadoTurno : usa
+Agenda .> EstadoAgenda : usa
+SalaEspera .> EstadoEspera : usa
 
 @enduml
