@@ -1,5 +1,7 @@
 # Los Cuatro Pilares del Paradigma Orientado a Objetos
 
+---
+
 ## 1. Encapsulamiento
 
 **Definición:** El encapsulamiento agrupa datos y comportamientos en una unidad y oculta los detalles internos, exponiendo solo una interfaz pública controlada.
@@ -13,6 +15,8 @@ La clase `Paciente` oculta atributos sensibles como `- dni: String`, `- direccio
 La clase `Turno` encapsula su ciclo de vida mediante el atributo privado `- estado: EstadoTurno`. El estado solo cambia a través de métodos controlados como `+ eliminarTurno(): void`, `+ marcarEnEspera(): void` y `+ marcarAtendido(): void`, evitando que otras clases modifiquen el estado internamente.
 
 ![Encapsulamiento - Ejemplo 2](../../diagramas/01-diagrama-clases/capturas-pilares/poo-encapsulamiento-ejemplo-2.png)
+
+---
 
 ## 2. Herencia
 
@@ -28,6 +32,8 @@ La clase abstracta `Usuario` contiene atributos y métodos comunes como `- id`, 
 
 ![Herencia - Ejemplo 2](../../diagramas/01-diagrama-clases/capturas-pilares/poo-herencia-ejemplo-2.png)
 
+---
+
 ## 3. Polimorfismo
 
 **Definición:** El polimorfismo permite que diferentes clases respondan a la misma operación o mensaje con comportamientos adecuados a su tipo concreto.
@@ -41,6 +47,8 @@ La clase abstracta `Usuario` declara `+ login(nombreUsuario: String, contrasena:
 Tanto `Paciente` como `Secretaria` definen el método `+ cancelarTurno(turnoId: String, motivo: String): boolean` con la misma firma. Cuando el sistema necesita cancelar un turno, puede invocar esta operación sobre cualquiera de los dos tipos de usuario y obtener un resultado del mismo tipo, aunque con reglas de negocio distintas: `Paciente` solo puede cancelar sus propios turnos, mientras que `Secretaria` puede cancelar turnos de cualquier paciente. Esta es la esencia del polimorfismo: misma interfaz de operación, comportamiento diferenciado según el tipo concreto en tiempo de ejecución.
 
 ![Polimorfismo - Ejemplo 2](../../diagramas/01-diagrama-clases/capturas-pilares/poo-polimorfismo-ejemplo-2.png)
+
+---
 
 ## 4. Abstracción
 

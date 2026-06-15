@@ -1,22 +1,12 @@
 # Changelog
 
-## [Release Actividad N4] - 2026-06-18
-
-### Added
-
-- [feature/analista-cu-2-3-add-anexo-cu2-cu3] Diseño de diagramas de clases estructurales en PlantUML para CU2 y CU3 aplicando principios SOLID (SRP/DIP), redacción de anexos funcionales con pseudocódigo completo y documentación del proceso de IA en la bitácora. PR: [#112](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/112) - @carolabenvenuto-uces (Analista Funcional CU2 Y CU3)
-
-## [Release Actividad N4] - 2026-06-06
+## [Release Actividad N4] 
 
 ### Added
 - [feature/coordinador-devops-add-anexo-cu1] Recuperación de boceto inicial, diseño de diagrama de clases, elaboración de anexo CU1 y actualización de roles en `README.md`. PR: [#105](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/105) - @ValeriaMSilva (Coordinador de Repositorio + Analista Funcional CU1)
-- [feature/analista-cu-4-5-add-anexo-cu4-cu5] Diseño de diagramas de clases en PlantUML para CU4 y CU5, elaboración de anexo técnico con análisis detallado de clases, atributos, métodos y relaciones UML. PR: [#115](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/115) - @caterinacerdan (Analista Funcional CU4 y CU5) | Issues: [#113](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/113), [#114](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/114)
-
-## [Release Actividad N4]
-
-### Added
 - [feature/arquitecto-dominio-add-diagrama-final] Diagrama de clases final unificado, anexo de los cuatro pilares del paradigma orientado a objetos, pseudocódigo del happy path global y documentación de IA. PR: [#109](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/109) | Issues: [#106](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/106), [#107](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/107), [#108](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/108) - @FacundoGuiraldes (Arquitecto de Dominio)
 - [feature/analista-cu-2-3-add-anexo-cu2-cu3] Diagramas de clases, anexos funcionales y pseudocódigo orientado a objetos para CU2 (Cancelar Turno) y CU3 (Registrar Llegada del Paciente), con documentación de IA. PR: [#112](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/112) | Issues: [#110](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/110), [#111](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/111) - @carolabenvenuto-uces (Analista Funcional CU2 y CU3)
+- [feature/analista-cu-4-5-add-anexo-cu4-cu5] Diseño de diagramas de clases en PlantUML para CU4 y CU5, elaboración de anexo técnico con análisis detallado de clases, atributos, métodos y relaciones UML. PR: [#115](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/115) | Issues: [#113](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/113), [#114](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/114) - @caterinacerdan (Analista Funcional CU4 y CU5)
 
 ## [Release Actividad N3] - 2026-05-21
 

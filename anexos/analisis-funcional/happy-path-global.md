@@ -1,5 +1,7 @@
 # Pseudocódigo - Happy Path Global del Sistema
 
+---
+
 ## 1. Escenario Elegido
 
 **Escenario:** Reserva de turno por especialidad, verificación de disponibilidad, confirmación con notificación y gestión de llegada hasta sala de espera.
@@ -18,6 +20,8 @@
 - SalaEspera
 - LlegadaPaciente
 - Especialidad
+
+---
 
 ## 2. Pseudocódigo
 
@@ -163,6 +167,8 @@ fin si
 
 FIN
 ```
+
+---
 
 ## 3. Trazabilidad del Pseudocódigo
 

@@ -22,6 +22,8 @@
 
 # Diagrama de Clases Final - Sistema de Turnos Médicos
 
+---
+
 ## 1. Versión del Diagrama
 
 | Versión | Casos de uso integrados | Fecha |
@@ -29,9 +31,13 @@
 | v1 | CU1 Solicitar Turno, CU2 Cancelar Turno, CU3 Registrar Llegada, CU4 Registrar Paciente, CU5 Ver Agenda | 2026-06-07 |
 | v2 | Integración de inconsistencias detectadas en CU2, CU3, CU4 y CU5 | 2026-06-15 |
 
+---
+
 ## 2. Diagrama
 
 ![Diagrama de Clases Final](06-clases-diagrama-final.png)
+
+---
 
 ## 3. Clases del Sistema
 
@@ -53,28 +59,32 @@
 | Especialidad | Definir la especialidad médica asociada a doctores y turnos. | CU1, CU4, CU5 |
 | Notificacion | Representar mensajes enviados al paciente sobre el turno. | CU5 |
 
+---
+
 ## 4. Decisiones de Integración
 
-| Inconsistencia encontrada | Decisión tomada | Justificación |
-|--------------------------|-----------------|---------------|
-| `Usuario` no tenía atributo `apellido: String` (presente en CU2 y CU3) | Se agregó `- apellido: String` a `Usuario` | Es un dato de identidad básico que debe estar en la clase base |
-| `Turno` no tenía atributo `asistencia: Boolean` (presente en CU3) | Se agregó `- asistencia: Boolean` a `Turno` | Necesario para registrar si el paciente se presentó al turno |
-| `Turno` no tenía métodos `getPaciente()` ni `obtenerInfoPaciente()` (presentes en CU2, CU3 y CU5) | Se agregaron ambos métodos a `Turno` | Son operaciones requeridas por múltiples casos de uso |
-| `Agenda` no tenía atributo `id: String` (presente en CU2) | Se agregó `- id: String` a `Agenda` | Necesario para identificar unívocamente cada agenda |
-| `Agenda` no tenía métodos `crearAgendaDelDia()` ni `validarTurnosContraReglas()` (presentes en CU5) | Se agregaron ambos métodos a `Agenda` | Operaciones requeridas por el flujo de visualización de agenda |
-| `SalaEspera` no tenía atributo `id: String` y usaba `pacientes` en lugar de `pacientesEnEspera` (CU3) | Se agregó `- id: String` y se renombró el atributo a `pacientesEnEspera` | Consistencia con el diagrama parcial de CU3 |
-| `SalaEspera` no tenía método `agregarPaciente()` (presente en CU3) | Se agregó `+ agregarPaciente(paciente: Paciente): void` | Operación requerida por el flujo de admisión |
-| `Doctor` no tenía métodos `marcarPacienteAtendido()` ni `definirDisponibilidad()` (presentes en CU5) | Se agregaron ambos métodos a `Doctor` | Operaciones requeridas por el flujo de gestión de agenda |
-| `Doctor.autorizarSobreturno()` no tenía parámetro `agenda: Agenda` (presente en CU5) | Se actualizó la firma a `autorizarSobreturno(agenda: Agenda): boolean` | Consistencia con el diagrama parcial de CU5 |
-| `Doctor.registrarDiagnostico()` tenía firma incompatible con CU5 | Se unificó a `registrarDiagnostico(turno: Turno, diagnostico: String): void` | El parámetro `Turno` es más expresivo que `turnoId: String` |
-| `Doctor.verAgenda()` retornaba `Agenda` en CU5 pero `List<Turno>` en el final | Se mantuvo `List<Turno>` en el diagrama final | Retornar la lista de turnos es más útil para el consumidor que retornar la entidad Agenda completa |
-| `Doctor.consultarPacientesSalaEspera()` en CU5 difiere de `consultarPacientesEsperando()` en el final | Se mantuvo `consultarPacientesEsperando()` en el diagrama final | El nombre es más expresivo y consistente con el contexto de sala de espera del sistema |
-| `Agenda.obtenerInfoTurno(turno: Turno): Map<String,String>` en CU5 difiere de `obtenerInfoTurno(turnoId: String): Turno` en el final | Se mantuvo la firma del final con `turnoId: String` y retorno `Turno` | Pasar el ID es suficiente para buscar el turno y retornar la entidad completa es más expresivo que un Map |
-| `Turno.obtenerDetalles(): Map<String,String>` en CU5 difiere de `getDetalles(): String` en el final | Se mantuvo `getDetalles(): String` en el diagrama final | Una representación en String es más simple y suficiente para el nivel de detalle requerido en el sistema |
-| `Secretaria` no tenía métodos `solicitarDatosPersonales()` ni `validarDatos()` (presentes en CU4) | Se agregaron ambos métodos a `Secretaria` | Operaciones requeridas por el flujo de registro de pacientes |
-| `EstadoTurno` no tenía valores `Pendiente` ni `Ausente` (presentes en CU2) | Se agregaron ambos valores al enum | Estados necesarios para el ciclo de vida completo del turno |
-| `Sistema` no tenía métodos de CU4 y CU5: `seleccionarRegistrarPaciente()`, `validarDuplicidad()`, `crearCuentaUsuario()`, `accederAlSistema()`, `seleccionarVerAgenda()`, `consultarPacienteEspecifico()` | Se agregaron todos al `Sistema` | Operaciones de orquestación requeridas por CU4 y CU5 |
-| Las interfaces DIP de los parciales (ITurnoRepository, IAgendaService, etc.) no están representadas en el final | Se decidió mantener clases de servicio concretas | El diagrama final prioriza claridad de la estructura de dominio sobre la representación de abstracciones técnicas |
+| Inconsistencia encontrada | Issue creada | Rama fix/ | Decisión tomada | Justificación |
+|--------------------------|--------------|-----------|-----------------|---------------|
+| `Usuario` no tenía atributo `apellido: String` (presente en CU2 y CU3) | — | — | Se agregó `- apellido: String` a `Usuario` | Es un dato de identidad básico que debe estar en la clase base |
+| `Turno` no tenía atributo `asistencia: Boolean` (presente en CU3) | — | — | Se agregó `- asistencia: Boolean` a `Turno` | Necesario para registrar si el paciente se presentó al turno |
+| `Turno` no tenía métodos `getPaciente()` ni `obtenerInfoPaciente()` (presentes en CU2, CU3 y CU5) | — | — | Se agregaron ambos métodos a `Turno` | Son operaciones requeridas por múltiples casos de uso |
+| `Agenda` no tenía atributo `id: String` (presente en CU2) | — | — | Se agregó `- id: String` a `Agenda` | Necesario para identificar unívocamente cada agenda |
+| `Agenda` no tenía métodos `crearAgendaDelDia()` ni `validarTurnosContraReglas()` (presentes en CU5) | — | — | Se agregaron ambos métodos a `Agenda` | Operaciones requeridas por el flujo de visualización de agenda |
+| `SalaEspera` no tenía atributo `id: String` y usaba `pacientes` en lugar de `pacientesEnEspera` (CU3) | — | — | Se agregó `- id: String` y se renombró el atributo a `pacientesEnEspera` | Consistencia con el diagrama parcial de CU3 |
+| `SalaEspera` no tenía método `agregarPaciente()` (presente en CU3) | — | — | Se agregó `+ agregarPaciente(paciente: Paciente): void` | Operación requerida por el flujo de admisión |
+| `Doctor` no tenía métodos `marcarPacienteAtendido()` ni `definirDisponibilidad()` (presentes en CU5) | — | — | Se agregaron ambos métodos a `Doctor` | Operaciones requeridas por el flujo de gestión de agenda |
+| `Doctor.autorizarSobreturno()` no tenía parámetro `agenda: Agenda` (presente en CU5) | — | — | Se actualizó la firma a `autorizarSobreturno(agenda: Agenda): boolean` | Consistencia con el diagrama parcial de CU5 |
+| `Doctor.registrarDiagnostico()` tenía firma incompatible con CU5 | — | — | Se unificó a `registrarDiagnostico(turno: Turno, diagnostico: String): void` | El parámetro `Turno` es más expresivo que `turnoId: String` |
+| `Doctor.verAgenda()` retornaba `Agenda` en CU5 pero `List<Turno>` en el final | — | — | Se mantuvo `List<Turno>` en el diagrama final | Retornar la lista de turnos es más útil para el consumidor que retornar la entidad Agenda completa |
+| `Doctor.consultarPacientesSalaEspera()` en CU5 difiere de `consultarPacientesEsperando()` en el final | — | — | Se mantuvo `consultarPacientesEsperando()` en el diagrama final | El nombre es más expresivo y consistente con el contexto de sala de espera del sistema |
+| `Agenda.obtenerInfoTurno(turno: Turno): Map<String,String>` en CU5 difiere de `obtenerInfoTurno(turnoId: String): Turno` en el final | — | — | Se mantuvo la firma del final con `turnoId: String` y retorno `Turno` | Pasar el ID es suficiente para buscar el turno y retornar la entidad completa es más expresivo que un Map |
+| `Turno.obtenerDetalles(): Map<String,String>` en CU5 difiere de `getDetalles(): String` en el final | — | — | Se mantuvo `getDetalles(): String` en el diagrama final | Una representación en String es más simple y suficiente para el nivel de detalle requerido en el sistema |
+| `Secretaria` no tenía métodos `solicitarDatosPersonales()` ni `validarDatos()` (presentes en CU4) | — | — | Se agregaron ambos métodos a `Secretaria` | Operaciones requeridas por el flujo de registro de pacientes |
+| `EstadoTurno` no tenía valores `Pendiente` ni `Ausente` (presentes en CU2) | — | — | Se agregaron ambos valores al enum | Estados necesarios para el ciclo de vida completo del turno |
+| `Sistema` no tenía métodos de CU4 y CU5: `seleccionarRegistrarPaciente()`, `validarDuplicidad()`, `crearCuentaUsuario()`, `accederAlSistema()`, `seleccionarVerAgenda()`, `consultarPacienteEspecifico()` | — | — | Se agregaron todos al `Sistema` | Operaciones de orquestación requeridas por CU4 y CU5 |
+| Las interfaces DIP de los parciales (ITurnoRepository, IAgendaService, etc.) no están representadas en el final | — | — | Se decidió mantener clases de servicio concretas | El diagrama final prioriza claridad de la estructura de dominio sobre la representación de abstracciones técnicas |
+
+---
 
 ## 5. Coherencia con Artefactos Previos
 
