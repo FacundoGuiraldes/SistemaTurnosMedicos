@@ -10,6 +10,7 @@
 
 ### Added
 - [feature/coordinador-devops-add-anexo-cu1] Recuperación de boceto inicial, diseño de diagrama de clases, elaboración de anexo CU1 y actualización de roles en `README.md`. PR: [#105](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/105) - @ValeriaMSilva (Coordinador de Repositorio + Analista Funcional CU1)
+- [feature/analista-cu-4-5-add-anexo-cu4-cu5] Diseño de diagramas de clases en PlantUML para CU4 y CU5, elaboración de anexo técnico con análisis detallado de clases, atributos, métodos y relaciones UML. PR: [#115](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/115) - @caterinacerdan (Analista Funcional CU4 y CU5) | Issues: [#113](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/113), [#114](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/114)
 
 ## [Release Actividad N4]
 

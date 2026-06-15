@@ -15,6 +15,8 @@
 | **CU1: Registrar Turno** | `01-clases-solicitar-turno.puml` | `01-clases-solicitar-turno.png` | Estructura base orientada a objetos para la gestión e instanciación de turnos médicos (Especialista: Valeria Silva). |
 | **CU2: Cancelar turno** | `02-clases-cancelar-turno-02.puml` | `02-clases-cancelar-turno-02.png` | Modelado de clases del flujo de baja de citas, liberación de bloques horarios e inversión de dependencias para alertas. |
 | **CU3: Registrar llegada del paciente** | `03-clases-registrar-llegada-03.puml` | `03-clases-registrar-llegada-03.png` | Modelado de clases del flujo de admisión en sala de espera, integrando estados de turnos y acoplamiento abstracto. |
+| **CU4: Registrar paciente** | `04-clases-registrar-paciente-04.puml` | `04-clases-registrar-paciente-04.png` | Modelado de clases del flujo de registro de nuevos pacientes, incluyendo validación de datos y creación de cuentas de usuario. |
+| **CU5: Ver agenda** | `05-clases-ver-agenda-05.puml` | `05-clases-ver-agenda-05.png` | Modelado de clases del flujo de visualización de la agenda médica, permitiendo a los usuarios consultar turnos programados y disponibilidad. |
 
 ---
 
