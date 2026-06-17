@@ -68,7 +68,6 @@ class Turno {
     + marcarEnEspera(): void
     + marcarAtendido(): void
     + getDetalles(): String
-    + getPaciente(): Paciente
     + obtenerInfoPaciente(): Paciente
 }
 
@@ -208,7 +207,7 @@ Usuario <|-- Paciente
 Usuario <|-- Secretaria
 Usuario <|-- Doctor
 
-Doctor "1" *-- "1" Agenda
+Doctor "1" *-- "0..*" Agenda
 Agenda "1" o-- "0..*" Turno
 Paciente "1" o-- "0..*" Turno
 Doctor "1" o-- "0..*" Turno
@@ -227,10 +226,6 @@ Sistema "1" o-- "1" PersistenciaService
 Sistema "1" o-- "1" AuditoriaService
 Sistema "1" o-- "0..*" Notificacion
 Notificacion "1" o-- "1" Paciente
-Notificacion "0..1" o-- "1" Turno
-
-Turno .> EstadoTurno : usa
-Agenda .> EstadoAgenda : usa
-SalaEspera .> EstadoEspera : usa
+Turno "0..1" o-- "0..*" Notificacion
 
 @enduml
