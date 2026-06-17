@@ -26,7 +26,7 @@ class Turno {
     -hora: Time
     -estado: EstadoTurno
     +eliminarTurno(): void
-    +getPaciente(): Paciente
+    +obtenerInfoPaciente(): Paciente
 }
 
 class Agenda {
