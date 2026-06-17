@@ -61,10 +61,30 @@ Para cada inconsistencia encontrada indicá clase afectada, qué dice el parcial
 
 ## Archivos de contexto referenciados
 
+### Iteración 1 — Generación del diagrama final
 - `diagramas/01-diagrama-clases/01-boceto-inicial.excalidraw`
-- `herramientas-agile/tarjetas-crc/`
-- `diagramas/05-diagramas-secuencia/`
-- `diagramas/01-diagrama-clases/`
+- `herramientas-agile/tarjetas-crc/01-tarjeta-crc-usuario.md`
+- `herramientas-agile/tarjetas-crc/02-tarjeta-crc-paciente.md`
+- `herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md`
+- `herramientas-agile/tarjetas-crc/04-tarjeta-crc-doctor.md`
+- `herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md`
+- `herramientas-agile/tarjetas-crc/06-tarjeta-crc-agenda.md`
+- `herramientas-agile/tarjetas-crc/07-tarjeta-crc-sala-espera.md`
+- `herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md`
+- `herramientas-agile/tarjetas-crc/09-tarjeta-crc-llegadapaciente.md`
+- `diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.puml`
+- `diagramas/05-diagramas-secuencia/05-secuencia-cancelar-turno-cancelar-turno-02.puml`
+- `diagramas/05-diagramas-secuencia/05-secuencia-registrar-llegada-registrar-llegada-del-paciente-03.puml`
+- `diagramas/05-diagramas-secuencia/05-secuencia-registrar-paciente-registrar-paciente-04.puml`
+- `diagramas/05-diagramas-secuencia/05-secuencia-ver-agenda-ver-agenda-exitoso-05.puml`
+
+### Iteración 2 — Verificación de coherencia
+- `diagramas/01-diagrama-clases/01-clases-solicitar-turno.puml`
+- `diagramas/01-diagrama-clases/02-clases-cancelar-turno-02.puml`
+- `diagramas/01-diagrama-clases/03-clases-registrar-llegada-03.puml`
+- `diagramas/01-diagrama-clases/04-clases-registrar-paciente-04.puml`
+- `diagramas/01-diagrama-clases/05-clases-ver-agenda-05.puml`
+- `diagramas/01-diagrama-clases/06-clases-diagrama-final.puml`
 
 ## Plantillas utilizadas
 
@@ -84,6 +104,8 @@ Las plantillas obligatorias fueron proporcionadas por el solicitante (adjuntas) 
 - Se eliminó la carpeta `scripts/` y archivos auxiliares temporales que no forman parte de la entrega.
 - Se corrigió nomenclatura en el diagrama final: `Turno.cancelarTurno()` renombrado a `Turno.eliminarTurno()` y `Agenda.eliminarTurno()` renombrado a `Agenda.removerTurno()` para coherencia con diagramas parciales de CU2 y CU3.
 - Se ejecutó verificación de coherencia con IA sobre los 5 diagramas parciales y se aplicaron correcciones al diagrama final detectadas en la iteración 2.
+- Se unificó `getPaciente()` → `obtenerInfoPaciente()` en diagramas parciales CU2 y CU3 para coherencia con diagrama final y diagramas de secuencia. Ver Issue #116, PR #117.
+- Se corrigieron multiplicidades: `Doctor "1" *-- "0..*" Agenda` y relación `Turno "0..1" o-- "0..*" Notificacion`. Ver PR #109.
 
 ## Iteraciones relevantes
 
@@ -95,6 +117,8 @@ Las plantillas obligatorias fueron proporcionadas por el solicitante (adjuntas) 
 6. Al mergear los diagramas parciales de CU2 y CU3 (Carola), se detectaron inconsistencias de nomenclatura en `Turno` y `Agenda` y se corrigieron directamente en el diagrama final.
 7. Al mergear los diagramas parciales de CU4 y CU5 (Caterina), se ejecutó verificación de coherencia asistida por IA sobre los 5 casos de uso. Se detectaron 14 inconsistencias entre los parciales y el diagrama final, que fueron resueltas actualizando `06-clases-diagrama-final.puml` y documentadas en la sección 4 de `diagramas_de_clases.md`.
 8. Se regeneró el PNG del diagrama final con los cambios incorporados.
+9. Se detectó redundancia `getPaciente()` / `obtenerInfoPaciente()` en clase `Turno`. Se unificó a `obtenerInfoPaciente()` en diagrama final y diagramas parciales CU2 y CU3. Issue #116, PR #117.
+10. Se corrigieron multiplicidades `Doctor ↔ Agenda` y relación `Turno ↔ Notificacion` en diagrama final para mayor precisión del modelo de dominio.
 
 ## Limitaciones del entorno
 
