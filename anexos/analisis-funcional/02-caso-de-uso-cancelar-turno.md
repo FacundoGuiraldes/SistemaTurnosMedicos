@@ -66,44 +66,46 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 ---
 
 ## 6. Pseudocódigo Orientado a Objetos
-A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio y los servicios abstractos, garantizando el cumplimiento de SRP y DIP:
+A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio, asegurando la trazabilidad con el diagrama de secuencia del CU2 y la eliminación de identificadores relacionales:
 
-```text
-Clase Sistema {
-    Atributos:
-        - repositorioTurno: ITurnoRepository
-        - agendaService: IAgendaService
-        - notificacionService: INotificacionService
+Clase InterfazSecretaria {
+    Metodo solicitarCancelacion(turno: Turno, motivo: String) {
+        // Inicializa el flujo enviando las entidades de dominio correspondientes
+        ControladorAgenda.cancelarTurno(turno, motivo)
+    }
+    
+    Metodo mostrarConfirmacion(mensaje: String) {
+        Imprimir(mensaje)
+    }
+}
 
-    Metodo cancelarTurno(turnoId: String, solicitadoPor: Usuario): Boolean {
-        // 1. Localización de la entidad mediante abstracción de persistencia
-        Turno turnoActual = repositorioTurno.buscarPorId(turnoId)
-        
-        Si (turnoActual == Nulo) {
-            Excepcion("El identificador de turno provisto no es válido.")
+Clase ControladorAgenda {
+    Metodo cancelarTurno(turno: Turno, motivo: String) {
+        Si (turno == Nulo) {
+            Excepcion("La instancia del turno provista no es válida.")
             Retornar Falso
         }
         
-        // 2. Modificación del estado interno del objeto de negocio (SRP)
-        turnoActual.eliminarTurno()
-        Boolean persistenciaExitosa = repositorioTurno.actualizar(turnoActual)
+        // 1. Delegación directa sobre los objetos de dominio involucrados según el diagrama de secuencia
+        Paciente pacienteAsociado = turno.getPaciente()
+        Agenda agendaAsociada = turno.getAgenda()
         
-        Si (NOT persistenciaExitosa) {
-            Excepcion("Error interno al procesar la actualización del estado.")
-            Retornar Falso
+        // 2. Modificación del estado interno de la entidad de negocio (SRP)
+        turno.cambiarEstadoACancelado(motivo)
+        
+        // 3. Colaboración con la Agenda para liberar el bloque horario
+        Si (agendaAsociada != Nulo) {
+            agendaAsociada.removerTurno(turno)
+        } Sinuco {
+            Imprimir("Advertencia: No se detectó una agenda vinculada a la instancia del turno.")
         }
         
-        // 3. Invocación al servicio de Agenda para remover el turno
-        Boolean agendaLiberada = agendaService.removerTurno(turnoActual)
+        // 4. Despacho de la notificación interactuando con la entidad Paciente
+        String detalleMensaje = "Notificación formal: El turno médico ha sido cancelado exitosamente. Motivo: " + motivo
+        pacienteAsociado.recibirNotificacion(detalleMensaje)
         
-        Si (NOT agendaLiberada) {
-            // Log de advertencia para auditoría técnica, no bloquea el flujo principal
-            Imprimir("Advertencia: No se pudo liberar el bloque horario de forma automática.")
-        }
-        
-        // 4. Despacho de la notificación utilizando el contrato abstracto (DIP)
-        String detalleMensaje = "Notificación formal: El turno médico ha sido cancelado exitosamente."
-        notificacionService.enviarNotificacionCancelacion(turnoActual.getPaciente(), detalleMensaje)
+        // 5. Cierre del ciclo de vida de la interacción informando a la vista
+        InterfazSecretaria.mostrarConfirmacion("El turno fue cancelado y procesado correctamente por el sistema.")
         
         Retornar Verdadero
     }

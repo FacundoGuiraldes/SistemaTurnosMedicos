@@ -19,11 +19,11 @@
 
 **Flujo principal:**
 1. El Paciente se presenta ante la Secretaria e informa su arribo.
-2. La Secretaria solicita el documento de identidad al Paciente.
-3. La Secretaria ingresa el DNI en el sistema para verificar la existencia de un turno programado para la fecha y hora actual.
-4. El Sistema valida que el turno existe y se encuentra pendiente.
-5. El Sistema cambia el estado del turno registrando la asistencia.
-6. El Sistema añade al paciente a la lista de la sala de espera.
+2. La Secretaria selecciona la instancia del Paciente que se encuentra físicamente en el mostrador.
+3. La Secretaria solicita al sistema registrar la llegada pasando la instancia del Paciente y la fecha actual.
+4. El Sistema valida que la instancia del turno vinculado al Paciente existe y se encuentra en estado pendiente.
+5. El Sistema delega en la entidad Turno la mutación de su propio estado para registrar la asistencia.
+6. El Sistema añade la instancia del Paciente a la lista de la sala de espera.
 7. El Sistema confirma el registro exitoso en la pantalla de la Secretaria.
 
 ### Mapeo de Trazabilidad Explícita:
@@ -54,11 +54,11 @@ El flujo operativo y las bifurcaciones lógicas del proceso de admisión se encu
 
 **Swimlanes:**
 - **Paciente:** Representa las acciones iniciales del usuario del dominio (presentarse en recepción y proveer documentación).
-- **Secretaria:** Carril de interfaz encargado de la entrada de datos (tipear DNI) y la visualización de las respuestas del software.
-- **Sistema:** Carril técnico que ejecuta las reglas de negocio, consultas lógicas a la persistencia y cambios de estado del dominio.
+- **Secretaria:** Carril de interfaz encargado de la entrada de datos (selección del paciente) y la visualización de las respuestas del software.
+- **Sistema:** Carril técnico que ejecuta las reglas de negocio, validaciones lógicas entre objetos del dominio y cambios de estado.
 
 **Decisiones clave del flujo:**
-- **¿Existe turno vigente?** Bifurcación en el carril del Sistema. Si el turno es hallado en la fecha del día, prosigue con la asignación de estado; si no se encuentra o ya caducó, se desvía al flujo alternativo de rechazo o redirección manual.
+- **¿Existe turno vigente?** Bifurcación en el carril del Sistema. Si la instancia del turno es hallada en la fecha del día, prosigue con la asignación de estado; si no se encuentra o ya caducó, se desvía al flujo alternativo de rechazo.
 
 ---
 
@@ -68,15 +68,16 @@ La interacción cronológica y el paso de mensajes entre los objetos del sistema
 ![Diagrama de Secuencia - Registrar llegada del paciente](../../diagramas/05-diagramas-secuencia/05-secuencia-registrar-llegada-registrar-llegada-del-paciente-03.png)
 
 **Participantes:**
-- `io : Secretaria` (Línea de vida de actor/interfaz)
-- `sys : Sistema` (Clase de control/orquestación principal)
-- `turno : Turno` (Instancia de entidad del dominio concreta mapeada por el servicio)
-- `salaEspera : SalaEspera` (Entidad donde se registra la cola de pacientes del día)
+- `io : InterfazSecretaria` (Línea de vida de interfaz de usuario)
+- `controlador : ControladorAsistencia` (Clase de control/orquestación del proceso)
+- `turno : Turno` (Instancia de entidad del dominio de la cita médica)
+- `salaEspera : SalaEspera` (Entidad encargada de agrupar los pacientes del día)
 
 **Mensajes clave:**
-- `registrarLlegadaPaciente(dni, fechaActual)` → Mensajes de inicialización de búsqueda desde la interfaz al orquestador.
-- `buscarTurnoPaciente(dni, fecha)` → Mensaje interno delegado al modelo para constatar el registro pendiente.
-- `marcarEnEspera()` → Mensaje de mutación de estado que altera el ciclo de vida de la entidad Turno.
+- `registrarLlegada(paciente, fechaActual)` → Mensaje de inicialización enviado desde la interfaz al controlador pasándole las instancias correspondientes del dominio.
+- `obtenerTurnoActivo(fechaActual)` → Mensaje enviado al objeto Turno para comprobar su vigencia temporal.
+- `marcarEnEspera()` → Mensaje de mutación interna enviado a la entidad Turno para alterar su propio estado de negocio.
+- `agregarPaciente(paciente)` → Mensaje enviado al objeto SalaEspera para encolar al paciente físicamente listo.
 
 ---
 
@@ -88,8 +89,8 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 ### Clases involucradas:
 | Clase | Responsabilidad (según tarjeta CRC) | Tarjeta CRC |
 |-------|-------------------------------------|-------------|
-| **Sistema** | Orquestador principal del sistema clínico, encargado de delegar las operaciones de negocio a los servicios abstractos correspondientes. | [08-tarjeta-crc-sistema.md](../../herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md) |
-| **Secretaria** | Personal administrativo responsable de interactuar con la interfaz del sistema para notificar y registrar eventos de atención al paciente. | [03-tarjeta-crc-secretaria.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
+| **ControladorAsistencia** | Orquestador del flujo de asistencia, encargado de coordinar los mensajes de negocio directamente entre los objetos del dominio involucrados. | [08-tarjeta-crc-sistema.md](../../herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md) |
+| **InterfazSecretaria** | Responsable de interactuar con el personal administrativo para notificar y renderizar los eventos de atención al paciente. | [03-tarjeta-crc-secretaria.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
 | **Turno** | Representar la cita médica pactada, controlando sus datos horarios, profesional asignado y sus transiciones de estado de negocio. | [05-tarjeta-crc-turno.md](../../herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md) |
 | **SalaEspera** | Gestionar el agrupamiento dinámico y orden cronológico de los pacientes que se encuentran físicamente listos para ser llamados por el médico. | [07-tarjeta-crc-sala-espera.md](../../herramientas-agile/tarjetas-crc/07-tarjeta-crc-sala-espera.md) |
 
@@ -100,50 +101,58 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 | `Secretaria` | Herencia (`--\|>`) | `Usuario` | Especialización de entidad general. |
 | `Turno` | Asociación (`-->`) | `Paciente` | 1 a 1 (Un turno pertenece a un paciente). |
 | `SalaEspera` | Agregación (`-->`) | `Paciente` | 1 a muchas (Agrupa temporalmente a los pacientes en espera). |
-| `Sistema` | Dependencia (`..>`) | `ITurnoService` | Inversión de Dependencias (DIP). |
-| `Sistema` | Dependencia (`..>`) | `ISalaEsperaService` | Inversión de Dependencias (DIP). |
+| `ControladorAsistencia` | Dependencia (`..>`) | `Turno` | Operación directa sobre entidades de negocio. |
+| `ControladorAsistencia` | Dependencia (`..>`) | `SalaEspera` | Operación directa sobre entidades de negocio. |
 
 ---
 
 ## 6. Pseudocódigo Orientado a Objetos
-A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio y los servicios abstractos, garantizando la consistencia absoluta con las firmas definidas en el archivo estructural `03-clases-registrar-llegada-03.puml`:
+A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio, garantizando la consistencia absoluta con las firmas del diseño orientado a objetos puro y eliminando cualquier identificador relacional indirecto (RC27):
 
 ```text
-Clase Sistema {
-    Atributos:
-        - turnoService: ITurnoService
-        - salaEsperaService: ISalaEsperaService
+Clase InterfazSecretaria {
+    Metodo solicitarRegistrarLlegada(paciente: Paciente, fechaActual: DateTime) {
+        // Inicia la interacción enviando directamente la instancia del Paciente
+        ControladorAsistencia.registrarLlegadaPaciente(paciente, fechaActual)
+    }
 
-    Metodo registrarLlegadaPaciente(dni: String, fechaActual: DateTime): Boolean {
-        // 1. Localización coordinada mediante el servicio abstracto mapeado en la secuencia
-        Turno turnoExistente = turnoService.buscarTurnoPaciente(dni, fechaActual)
-        
-        SI (turnoExistente != NULL Y turnoExistente.asistencia == Falso) {
-            
-            // 2. Mutación interna del estado de la entidad según el diseño estructural
-            turnoExistente.marcarEnEspera()
-            Boolean actualizacionExitosa = turnoService.actualizarTurno(turnoExistente)
-            
-            SI (NOT actualizacionExitosa) {
-                Excepcion("Error interno al procesar el cambio de estado del turno.")
-                Retornar Falso
-            }
-            
-            // 3. Obtención del objeto Paciente asociado para su derivación
-            Paciente pacienteActual = turnoExistente.getPaciente()
-            
-            // 4. Delegación estructural al servicio inyectado de la sala de espera (DIP)
-            Boolean asignacionSala = salaEsperaService.registrarLlegada(pacienteActual)
-            
-            SI (NOT asignacionSala) {
-                Imprimir("Advertencia: No se pudo registrar automáticamente en la cola física.")
-            }
-            
-            MOSTRAR_MENSAJE "Registro de llegada completado con éxito. Paciente derivado a sala de espera."
-            Retornar Verdadero
-        SINO
-            MOSTRAR_MENSAJE "Error: No se encontró ningún turno pendiente para el paciente en la fecha actual o la asistencia ya fue registrada."
+    Metodo mostrarConfirmacion(mensaje: String) {
+        Imprimir(mensaje)
+    }
+}
+
+Clase ControladorAsistencia {
+    Atributos:
+        - salaEspera: SalaEspera
+
+    Metodo registrarLlegadaPaciente(paciente: Paciente, fechaActual: DateTime): Boolean {
+        Si (paciente == Nulo) {
+            Excepcion("La instancia del paciente provista no es válida.")
             Retornar Falso
-        FIN SI
+        }
+
+        // 1. Obtención de la instancia del Turno correspondiente directamente desde el objeto Paciente
+        Turno turnoAsociado = paciente.getTurnoAsignado()
+
+        Si (turnoAsociado != Nulo Y turnoAsociado.esVálidoParaFecha(fechaActual)) {
+            
+            // 2. Mutación interna del estado de la entidad (Cumplimiento estricto de SRP)
+            turnoAsociado.marcarEnEspera()
+
+            // 3. Colaboración directa con la entidad SalaEspera enviando el objeto de dominio Paciente
+            Boolean asignacionSala = salaEspera.agregarPaciente(paciente)
+
+            Si (NOT asignacionSala) {
+                Imprimir("Advertencia: No se pudo registrar dinámicamente en la cola física de SalaEspera.")
+            }
+
+            // 4. Cierre del ciclo de interacción informando el éxito a la interfaz
+            InterfazSecretaria.mostrarConfirmacion("Registro de llegada completado con éxito. Paciente derivado a sala de espera.")
+            Retornar Verdadero
+
+        Sino {
+            InterfazSecretaria.mostrarConfirmacion("Error: El paciente no posee un turno pendiente asignado para la fecha actual.")
+            Retornar Falso
+        }
     }
 }
