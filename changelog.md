@@ -10,6 +10,7 @@
 
 ### Fixed
 - [fix/unificar-nombre-obtener-paciente] Unificación `getPaciente()` → `obtenerInfoPaciente()` en diagramas parciales CU2 y CU3 para mantener coherencia con diagrama final y diagramas de secuencia; PR:[#117] - @FacundoGuiraldes (Arquitecto de Dominio)
+- [fix/correccion-rc-anexo-cu1] Resolución de RC1, RC2 y RC4 en Anexo CU1 ajustando trazabilidad, formato de pseudocódigo y enlaces a diagramas; PR:[#120] - @ValeriaMSilva (Coordinadora de Repositorio / Analista CU1)
 
 ## [Release Actividad N3] - 2026-05-21
 
