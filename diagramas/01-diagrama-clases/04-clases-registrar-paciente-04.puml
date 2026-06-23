@@ -10,7 +10,6 @@ skinparam class {
 }
 
 abstract class Usuario {
-    - id: String
     - nombre: String
     - email: String
     - telefono: String
@@ -25,6 +24,10 @@ class Paciente {
     - dni: String
     - direccion: String
     - alergias: List<String>
+    ---
+    + validarDatosPersonales(): boolean
+    + actualizarDatosPersonales(datos: Map<String, String>): void
+    + obtenerDatosPersonales(): Map<String, String>
 }
 
 class Secretaria {

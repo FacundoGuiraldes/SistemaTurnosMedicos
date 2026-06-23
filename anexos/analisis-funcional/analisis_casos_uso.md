@@ -1,11 +1,12 @@
-# Análisis de Casos de Uso
-Este anexo documenta la correspondencia entre los casos de uso del sistema y el diagrama de clases final, mostrando cómo las entidades del dominio y sus colaboraciones soportan el flujo de cada caso.
+# Análisis Funcional por Casos de Uso
 
-### Registro de Anexos Desarrollados (Actividad N° 4)
-| Caso de Uso | Documento de Análisis | Descripción Funcional |
-| :--- | :--- | :--- |
-| **CU2: Cancelar turno** | [`02-caso-de-uso-cancelar-turno.md`](02-caso-de-uso-cancelar-turno.md) | Análisis del flujo de baja de citas por Paciente o Secretaria, liberación de bloques horarios en la agenda médica y envío de notificaciones de cancelación. |
-| **CU3: Registrar llegada del paciente** | [`03-caso-de-uso-registrar-llegada.md`](03-caso-de-uso-registrar-llegada.md) | Documentación completa del flujo de admisión física, reglas de asignación a sala de espera y pseudocódigo orientado a objetos. |
+* [Analisis Funcional - Solicitar turno 01](01-caso-de-uso-solicitar-turno.md)
+* [Analisis Funcional - Cancelar turno 02](02-caso-de-uso-cancelar-turno.md)
+* [Analisis Funcional - Registrar llegada del paciente 03](03-caso-de-uso-registrar-llegada.md)
+* [Analisis Funcional - Registrar paciente 04](04-caso-de-uso-registrar-paciente.md)
+* [Analisis Funcional - Ver agenda 05](05-caso-de-uso-ver-agenda.md)
+* [Los Cuatro Pilares del Paradigma Orientado a Objetos](pilares-poo.md)
+* [Pseudocódigo - Happy Path Global del Sistema](happy-path-global.md)
 
 ## CU1 - Solicitar Turno
 Clases principales:
