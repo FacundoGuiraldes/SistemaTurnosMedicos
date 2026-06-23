@@ -8,19 +8,15 @@
   * [Diagrama de Clases - ISP (Interface Segregation Principle)](./01-solid-04-isp.puml)
   * [Diagrama de Clases - DIP (Dependency Inversion Principle)](./01-solid-05-dip.puml)
 
-### 2. Diagramas de Clases por Caso de Uso (Módulo Técnico)
+* Diagramas de Clases por Caso de Uso 
 
-| Caso de Uso | Archivo Fuente | Diagrama Renderizado | Descripción |
-| :--- | :--- | :--- | :--- |
-| **CU1: Registrar Turno** | `01-clases-solicitar-turno.puml` | `01-clases-solicitar-turno.png` | Estructura base orientada a objetos para la gestión e instanciación de turnos médicos (Especialista: Valeria Silva). |
-| **CU2: Cancelar turno** | `02-clases-cancelar-turno-02.puml` | `02-clases-cancelar-turno-02.png` | Modelado de clases del flujo de baja de citas, liberación de bloques horarios e inversión de dependencias para alertas. |
-| **CU3: Registrar llegada del paciente** | `03-clases-registrar-llegada-03.puml` | `03-clases-registrar-llegada-03.png` | Modelado de clases del flujo de admisión en sala de espera, integrando estados de turnos y acoplamiento abstracto. |
-| **CU4: Registrar paciente** | `04-clases-registrar-paciente-04.puml` | `04-clases-registrar-paciente-04.png` | Modelado de clases del flujo de registro de nuevos pacientes, incluyendo validación de datos y creación de cuentas de usuario. |
-| **CU5: Ver agenda** | `05-clases-ver-agenda-05.puml` | `05-clases-ver-agenda-05.png` | Modelado de clases del flujo de visualización de la agenda médica, permitiendo a los usuarios consultar turnos programados y disponibilidad. |
+* [Diagrama de Clases - Registrar Turno 01](./01-clases-solicitar-turno.puml)
+* [Diagrama de Clases - Cancelar Turno 02](./02-clases-cancelar-turno-02.puml)
+* [Diagrama de Clases - Registrar Llegada del Paciente 03](./03-clases-registrar-llegada-03.puml)
+* [Diagrama de Clases - Registrar Paciente 04](./04-clases-registrar-paciente-04.puml)
+* [Diagrama de Clases - Ver Agenda 05](./05-clases-ver-agenda-05.puml)
 
----
-
-# Diagrama de Clases Final - Sistema de Turnos Médicos
+* Diagrama de Clases Final - Sistema de Turnos Médicos
 
 ---
 
