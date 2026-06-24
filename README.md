@@ -9,12 +9,12 @@
 
 ## Integrantes
 
-| Nombre y Apellido | Matrícula | Usuario de GitHub | Rol Actividad N4 |
-| --- | --- | --- | --- |
-| Valeria Silva | 156612 | @ValeriaMSilva | Coordinador de Repositorio + Analista Funcional CU1 |
-| Carola Benvenuto | 158686 | @carolabenvenuto-uces | Analista Funcional de Casos de Uso 2 y 3 |
-| Caterina Cerdán | 159237 | @caterinacerdan | Analista Funcional de Casos de Uso 4 y 5 |
-| Facundo Guiraldes | 114794 | @FacundoGuiraldes | Arquitecto de Dominio |
+| Nombre y Apellido | Matrícula | Usuario de GitHub |
+| --- | --- | --- |
+| Valeria Silva | 156612 | @ValeriaMSilva |
+| Carola Benvenuto | 158686 | @carolabenvenuto-uces |
+| Caterina Cerdán | 159237 | @caterinacerdan |
+| Facundo Guiraldes | 114794 | @FacundoGuiraldes |
 
 ## Documentación Principal
 
