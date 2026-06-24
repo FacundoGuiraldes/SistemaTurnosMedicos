@@ -1,6 +1,6 @@
 # Diagramas de Clases
 
-* [Diagrama de Clases - Boceto Inicial](./01-boceto-inicial.excalidraw)
+* [Diagrama de Clases - Boceto Inicial](./01-boceto-inicial.png)
 * Principios SOLID
   * [Diagrama de Clases - SRP (Single Responsibility Principle)](./01-solid-01-srp.puml)
   * [Diagrama de Clases - OCP (Open/Closed Principle)](./01-solid-02-ocp.puml)
