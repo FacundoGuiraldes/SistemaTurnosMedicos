@@ -174,10 +174,10 @@ FIN
 
 | Bloque | Caso de uso | Clases involucradas | Diagrama de secuencia de referencia |
 |--------|-------------|---------------------|-------------------------------------|
-| Inicialización y verificación de agenda | CU5 Ver Agenda | Doctor, Agenda, Sistema | `diagramas/05-diagramas-secuencia/05-secuencia-ver-agenda-ver-agenda-exitoso-05.png` |
-| Registro de nuevo paciente | CU4 Registrar Paciente | Secretaria, Sistema, Paciente | `diagramas/05-diagramas-secuencia/05-secuencia-registrar-paciente-registrar-paciente-04.png` |
-| Búsqueda y selección de turno | CU1 Solicitar Turno | Paciente, Doctor, Agenda, Turno | `diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png` |
-| Reserva y validación de colisión | CU1 Solicitar Turno | Sistema, Agenda, Turno, Paciente | `diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png` |
-| Envío de notificación de confirmación | CU1 Solicitar Turno | Sistema, ServicioNotificaciones, Paciente, Notificacion | `diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png` |
-| Registro de llegada y sala de espera | CU3 Registrar Llegada | Paciente, LlegadaPaciente, SalaEspera, Turno | `diagramas/05-diagramas-secuencia/05-secuencia-registrar-llegada-registrar-llegada-del-paciente-03.png` |
-| Cancelación de turno (alternativo) | CU2 Cancelar Turno | Sistema, Agenda, Turno | `diagramas/05-diagramas-secuencia/05-secuencia-cancelar-turno-cancelar-turno-02.png` |
+| Inicialización y verificación de agenda | CU5 Ver Agenda | Doctor, Agenda, Sistema | [Ver Agenda](../../diagramas/05-diagramas-secuencia/05-secuencia-ver-agenda-ver-agenda-exitoso-05.png) |
+| Registro de nuevo paciente | CU4 Registrar Paciente | Secretaria, Sistema, Paciente | [Registrar Paciente](../../diagramas/05-diagramas-secuencia/05-secuencia-registrar-paciente-registrar-paciente-04.png) |
+| Búsqueda y selección de turno | CU1 Solicitar Turno | Paciente, Doctor, Agenda, Turno | [Solicitar Turno](../../diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png) |
+| Reserva y validación de colisión | CU1 Solicitar Turno | Sistema, Agenda, Turno, Paciente | [Solicitar Turno](../../diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png) |
+| Envío de notificación de confirmación | CU1 Solicitar Turno | Sistema, ServicioNotificaciones, Paciente, Notificacion | [Solicitar Turno](../../diagramas/05-diagramas-secuencia/05-secuencia-solicitar-turno-solicitar-turno-01.png) |
+| Registro de llegada y sala de espera | CU3 Registrar Llegada | Paciente, LlegadaPaciente, SalaEspera, Turno | [Registrar Llegada](../../diagramas/05-diagramas-secuencia/05-secuencia-registrar-llegada-registrar-llegada-del-paciente-03.png) |
+| Cancelación de turno (alternativo) | CU2 Cancelar Turno | Sistema, Agenda, Turno | [Cancelar Turno](../../diagramas/05-diagramas-secuencia/05-secuencia-cancelar-turno-cancelar-turno-02.png) |
