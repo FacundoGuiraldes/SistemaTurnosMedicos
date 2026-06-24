@@ -10,6 +10,8 @@
 
 ### Fixed
 - [fix/unificar-nombre-obtener-paciente] Unificación `getPaciente()` → `obtenerInfoPaciente()` en diagramas parciales CU2 y CU3 para mantener coherencia con diagrama final y diagramas de secuencia; PR:[#117] - @FacundoGuiraldes (Arquitecto de Dominio)
+- [fix/correccion-indices-readme] Eliminación de tabla de integrantes en índice de clases y links innecesarios en README para resolver RCN13 y RCN14; PR:[#127] - @ValeriaMSilva (Coordinadora de Repositorio)
+
 
 ## [Release Actividad N3] - 2026-05-21
 
