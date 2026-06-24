@@ -153,7 +153,7 @@ Clase ControladorAsistencia {
             // COMENTARIO DE DOMINIO: Mensaje de colaboración hacia el objeto SalaEspera para encolar al Paciente físicamente presente.
             Boolean asignacionSala = salaEspera.agregarPaciente(paciente)
 
-            Si (SINO asignacionSala) {
+            Si (NOT asignacionSala) {
                 Imprimir("Advertencia: No se pudo registrar dinámicamente en la cola física de SalaEspera.")
             }
 
