@@ -169,28 +169,3 @@ Clase ControladorAsistencia {
     }
 }
 
-// ============================================================================
-// BLOQUE DE EJECUCIÓN (INSTANCIACIÓN E INTERACCIÓN DEL FLUJO PRINCIPAL)
-// ============================================================================
-Programa Ejecucion_CU3_RegistrarLlegada {
-    
-    // 1. Instanciación explícita de las componentes arquitectónicas e interfaces
-    ControladorAsistencia elControlador = Instanciar ControladorAsistencia()
-    InterfazSecretaria laInterfaz = Instanciar InterfazSecretaria()
-    
-    // 2. Instanciación inicial de los objetos de dominio necesarios en el escenario de negocio
-    Paciente pacienteFisico = Instanciar Paciente("Caro Benvenuto")
-    Turno turnoPrevio = Instanciar Turno()
-    SalaEspera salaEsperaConsultorio = Instanciar SalaEspera()
-    
-    // 3. Configuración de enlaces cruzados entre instancias (Paso de referencias sin IDs relacionales)
-    pacienteFisico.setTurnoAsignado(turnoPrevio)
-    elControlador.salaEspera = salaEsperaConsultorio
-    elControlador.interfazUsuario = laInterfaz
-    laInterfaz.controlador = elControlador
-    
-    DateTime fechaDeHoy = ObtenerFechaActual()
-    
-    // 4. Simulación del flujo principal: Arribo físico e interacción de los actores con la interfaz
-    laInterfaz.solicitarRegistrarLlegada(pacienteFisico, fechaDeHoy)
-}
