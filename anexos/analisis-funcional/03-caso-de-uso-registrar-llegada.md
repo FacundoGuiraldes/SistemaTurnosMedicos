@@ -22,7 +22,7 @@
 2. La Secretaria selecciona la instancia del Paciente que se encuentra físicamente en el mostrador.
 3. La Secretaria solicita al sistema registrar la llegada pasando la instancia del Paciente y la fecha actual.
 4. El Sistema valida que la instancia del turno vinculado al Paciente existe y se encuentra en estado pendiente.
-5. El Sistema delega en la entidad Turno la mutación de su propio estado para registrar la asistencia.
+5. El Sistema cambia el estado del turno registrando la asistencia.
 6. El Sistema añade la instancia del Paciente a la lista de la sala de espera.
 7. El Sistema confirma el registro exitoso en la pantalla de la Secretaria.
 
@@ -37,7 +37,7 @@
 ## 2. Diagrama de Casos de Uso (A2)
 El comportamiento funcional de este módulo se encuentra tipificado en el modelo general de casos de uso de la Actividad N° 2.
 
-![Diagrama de Casos de Uso - Registrar llegada del paciente](../../diagramas/02-casos-de-uso/02-caso-uso-registrar-llegada-03.png)
+![Diagrama de Casos de Uso - Registrar llegada del paciente](../../diagramas/02-casos-de-uso/03-caso-uso-registrar-llegada-03.png)
 
 **Actores y relaciones:**
 - **Secretaria** → Actor principal del flujo de interfaz que interactúa de manera directa con el sistema para buscar el turno del paciente e ingresar la confirmación.
@@ -93,6 +93,8 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 | **InterfazSecretaria** | Responsable de interactuar con el personal administrativo para notificar y renderizar los eventos de atención al paciente. | [03-tarjeta-crc-secretaria.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
 | **Turno** | Representar la cita médica pactada, controlando sus datos horarios, profesional asignado y sus transiciones de estado de negocio. | [05-tarjeta-crc-turno.md](../../herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md) |
 | **SalaEspera** | Gestionar el agrupamiento dinámico y orden cronológico de los pacientes que se encuentran físicamente listos para ser llamados por el médico. | [07-tarjeta-crc-sala-espera.md](../../herramientas-agile/tarjetas-crc/07-tarjeta-crc-sala-espera.md) |
+| **Paciente** | Representar al sujeto de atención médica del sistema, almacenando su información personal y vinculación con sus citas. | [04-tarjeta-crc-paciente.md](../../herramientas-agile/tarjetas-crc/04-tarjeta-crc-paciente.md) |
+| **Usuario** | Entidad abstracta del dominio que define los atributos básicos de identificación y credenciales comunes para los actores del sistema. | [01-tarjeta-crc-usuario.md](../../herramientas-agile/tarjetas-crc/01-tarjeta-crc-usuario.md) |
 
 ### Tabla de Relaciones Estructurales:
 | Origen | Relación UML | Destino | Multiplicidad / Nota |
@@ -107,16 +109,18 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 ---
 
 ## 6. Pseudocódigo Orientado a Objetos
-A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio, garantizando la consistencia absoluta con las firmas del diseño orientado a objetos puro y eliminando cualquier identificador relacional indirecto (RC27):
+A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio, garantizando la consistencia absoluta con las firmas del diseño orientado a objetos puro, modelando el paso de mensajes del flujo y eliminando cualquier identificador relacional indirecto:
 
 ```text
 Clase InterfazSecretaria {
     Metodo solicitarRegistrarLlegada(paciente: Paciente, fechaActual: DateTime) {
-        // Inicia la interacción enviando directamente la instancia del Paciente
+        // COMENTARIO DE DOMINIO: El actor Secretaria inicia la interacción seleccionando la instancia 
+        // física del Paciente presente en el mostrador de atención y envía el mensaje al controlador.
         ControladorAsistencia.registrarLlegadaPaciente(paciente, fechaActual)
     }
 
     Metodo mostrarConfirmacion(mensaje: String) {
+        // COMENTARIO DE DOMINIO: Renderiza en la pantalla del terminal de la secretaria el resultado del proceso.
         Imprimir(mensaje)
     }
 }
@@ -126,31 +130,34 @@ Clase ControladorAsistencia {
         - salaEspera: SalaEspera
 
     Metodo registrarLlegadaPaciente(paciente: Paciente, fechaActual: DateTime): Boolean {
+        // COMENTARIO DE DOMINIO: Validar que el objeto Paciente recibido por parámetro constituya una instancia válida.
         Si (paciente == Nulo) {
             Excepcion("La instancia del paciente provista no es válida.")
             Retornar Falso
         }
 
-        // 1. Obtención de la instancia del Turno correspondiente directamente desde el objeto Paciente
+        // COMENTARIO DE DOMINIO: Interacción directa con el objeto Paciente para recuperar su Turno asignado en memoria.
         Turno turnoAsociado = paciente.getTurnoAsignado()
 
+        // COMENTARIO DE DOMINIO: El sistema le pregunta a la entidad Turno si es válida para la fecha del día actual.
         Si (turnoAsociado != Nulo Y turnoAsociado.esVálidoParaFecha(fechaActual)) {
             
-            // 2. Mutación interna del estado de la entidad (Cumplimiento estricto de SRP)
+            // COMENTARIO DE DOMINIO: Mutación interna controlada por la propia entidad Turno para cambiar su estado (SRP).
             turnoAsociado.marcarEnEspera()
 
-            // 3. Colaboración directa con la entidad SalaEspera enviando el objeto de dominio Paciente
+            // COMENTARIO DE DOMINIO: Mensaje de colaboración hacia el objeto SalaEspera para encolar al Paciente físicamente presente.
             Boolean asignacionSala = salaEspera.agregarPaciente(paciente)
 
             Si (NOT asignacionSala) {
                 Imprimir("Advertencia: No se pudo registrar dinámicamente en la cola física de SalaEspera.")
             }
 
-            // 4. Cierre del ciclo de interacción informando el éxito a la interfaz
+            // COMENTARIO DE DOMINIO: Comunicación final devolviendo el control al objeto de interfaz de usuario.
             InterfazSecretaria.mostrarConfirmacion("Registro de llegada completado con éxito. Paciente derivado a sala de espera.")
             Retornar Verdadero
 
         Sino {
+            // COMENTARIO DE DOMINIO: Flujo alternativo en caso de no hallar un turno activo asociado a la instancia para la fecha indicada.
             InterfazSecretaria.mostrarConfirmacion("Error: El paciente no posee un turno pendiente asignado para la fecha actual.")
             Retornar Falso
         }
