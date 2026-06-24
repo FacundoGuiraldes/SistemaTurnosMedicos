@@ -10,6 +10,7 @@
 
 ### Fixed
 - [fix/unificar-nombre-obtener-paciente] Unificación `getPaciente()` → `obtenerInfoPaciente()` en diagramas parciales CU2 y CU3 para mantener coherencia con diagrama final y diagramas de secuencia; PR:[#117] - @FacundoGuiraldes (Arquitecto de Dominio)
+- [fix/correccion-actividades-cu1] Resolución de RCN4 conectando el nodo STOP en el diagrama de actividades del CU1; PR:[#126] - @ValeriaMSilva (Coordinador de Repositorio)
 
 ## [Release Actividad N3] - 2026-05-21
 
