@@ -91,9 +91,10 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 |-------|-------------------------------------|-------------|
 | **ControladorAsistencia** | Orquestador del flujo de asistencia, encargado de coordinar los mensajes de negocio directamente entre los objetos del dominio involucrados. | [08-tarjeta-crc-sistema.md](../../herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md) |
 | **InterfazSecretaria** | Responsable de interactuar con el personal administrativo para notificar y renderizar los eventos de atención al paciente. | [03-tarjeta-crc-secretaria.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
+| **Secretaria** | Personal administrativo responsable de validar la identidad del paciente e ingresar el registro operativo de su arribo físico. | [03-tarjeta-crc-secretaria.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
 | **Turno** | Representar la cita médica pactada, controlando sus datos horarios, profesional asignado y sus transiciones de estado de negocio. | [05-tarjeta-crc-turno.md](../../herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md) |
 | **SalaEspera** | Gestionar el agrupamiento dinámico y orden cronológico de los pacientes que se encuentran físicamente listos para ser llamados por el médico. | [07-tarjeta-crc-sala-espera.md](../../herramientas-agile/tarjetas-crc/07-tarjeta-crc-sala-espera.md) |
-| **Paciente** | Representar al sujeto de atención médica del sistema, almacenando su información personal y vinculación con sus citas. | [04-tarjeta-crc-paciente.md](../../herramientas-agile/tarjetas-crc/04-tarjeta-crc-paciente.md) |
+| **Paciente** | Representar al sujeto de atención médica del sistema, almacenando su información personal y vinculación con sus citas. | [02-tarjeta-crc-paciente.md](../../herramientas-agile/tarjetas-crc/02-tarjeta-crc-paciente.md) |
 | **Usuario** | Entidad abstracta del dominio que define los atributos básicos de identificación y credenciales comunes para los actores del sistema. | [01-tarjeta-crc-usuario.md](../../herramientas-agile/tarjetas-crc/01-tarjeta-crc-usuario.md) |
 
 ### Tabla de Relaciones Estructurales:
@@ -109,14 +110,17 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 ---
 
 ## 6. Pseudocódigo Orientado a Objetos
-A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio, garantizando la consistencia absoluta con las firmas del diseño orientado a objetos puro, modelando el paso de mensajes del flujo y eliminando cualquier identificador relacional indirecto:
+A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio, garantizando la consistencia absoluta con las firmas del diseño orientado a objetos puro, reflejando la instanciación e interacción secuencial, y eliminando cualquier identificador relacional indirecto:
 
 ```text
 Clase InterfazSecretaria {
+    Atributos:
+        - controlador: ControladorAsistencia
+
     Metodo solicitarRegistrarLlegada(paciente: Paciente, fechaActual: DateTime) {
         // COMENTARIO DE DOMINIO: El actor Secretaria inicia la interacción seleccionando la instancia 
-        // física del Paciente presente en el mostrador de atención y envía el mensaje al controlador.
-        ControladorAsistencia.registrarLlegadaPaciente(paciente, fechaActual)
+        // física del Paciente presente en el mostrador de atención y envía el mensaje a su controlador asociado.
+        controlador.registrarLlegadaPaciente(paciente, fechaActual)
     }
 
     Metodo mostrarConfirmacion(mensaje: String) {
@@ -128,6 +132,7 @@ Clase InterfazSecretaria {
 Clase ControladorAsistencia {
     Atributos:
         - salaEspera: SalaEspera
+        - interfazUsuario: InterfazSecretaria
 
     Metodo registrarLlegadaPaciente(paciente: Paciente, fechaActual: DateTime): Boolean {
         // COMENTARIO DE DOMINIO: Validar que el objeto Paciente recibido por parámetro constituya una instancia válida.
@@ -148,18 +153,44 @@ Clase ControladorAsistencia {
             // COMENTARIO DE DOMINIO: Mensaje de colaboración hacia el objeto SalaEspera para encolar al Paciente físicamente presente.
             Boolean asignacionSala = salaEspera.agregarPaciente(paciente)
 
-            Si (NOT asignacionSala) {
+            Si (SINO asignacionSala) {
                 Imprimir("Advertencia: No se pudo registrar dinámicamente en la cola física de SalaEspera.")
             }
 
-            // COMENTARIO DE DOMINIO: Comunicación final devolviendo el control al objeto de interfaz de usuario.
-            InterfazSecretaria.mostrarConfirmacion("Registro de llegada completado con éxito. Paciente derivado a sala de espera.")
+            // COMENTARIO DE DOMINIO: Comunicación final devolviendo el control a la instancia de la interfaz asociada.
+            interfazUsuario.mostrarConfirmacion("Registro de llegada completado con éxito. Paciente derivado a sala de espera.")
             Retornar Verdadero
 
         Sino {
             // COMENTARIO DE DOMINIO: Flujo alternativo en caso de no hallar un turno activo asociado a la instancia para la fecha indicada.
-            InterfazSecretaria.mostrarConfirmacion("Error: El paciente no posee un turno pendiente asignado para la fecha actual.")
+            interfazUsuario.mostrarConfirmacion("Error: El paciente no posee un turno pendiente asignado para la fecha actual.")
             Retornar Falso
         }
     }
+}
+
+// ============================================================================
+// BLOQUE DE EJECUCIÓN (INSTANCIACIÓN E INTERACCIÓN DEL FLUJO PRINCIPAL)
+// ============================================================================
+Programa Ejecucion_CU3_RegistrarLlegada {
+    
+    // 1. Instanciación explícita de las componentes arquitectónicas e interfaces
+    ControladorAsistencia elControlador = Instanciar ControladorAsistencia()
+    InterfazSecretaria laInterfaz = Instanciar InterfazSecretaria()
+    
+    // 2. Instanciación inicial de los objetos de dominio necesarios en el escenario de negocio
+    Paciente pacienteFisico = Instanciar Paciente("Caro Benvenuto")
+    Turno turnoPrevio = Instanciar Turno()
+    SalaEspera salaEsperaConsultorio = Instanciar SalaEspera()
+    
+    // 3. Configuración de enlaces cruzados entre instancias (Paso de referencias sin IDs relacionales)
+    pacienteFisico.setTurnoAsignado(turnoPrevio)
+    elControlador.salaEspera = salaEsperaConsultorio
+    elControlador.interfazUsuario = laInterfaz
+    laInterfaz.controlador = elControlador
+    
+    DateTime fechaDeHoy = ObtenerFechaActual()
+    
+    // 4. Simulación del flujo principal: Arribo físico e interacción de los actores con la interfaz
+    laInterfaz.solicitarRegistrarLlegada(pacienteFisico, fechaDeHoy)
 }

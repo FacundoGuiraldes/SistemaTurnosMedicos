@@ -59,7 +59,7 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 | **ControladorAgenda** | Orquestador encargado de coordinar los mensajes de negocio y las interacciones lógicas entre las entidades del dominio para la gestión de turnos. | [08-tarjeta-crc-sistema.md](../../herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md) |
 | **Turno** | Representar la cita médica pactada, controlando sus datos horarios, profesional asignado y sus transiciones de estado de negocio. | [05-tarjeta-crc-turno.md](../../herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md) |
 | **Agenda** | Administrar los bloques horarios disponibles de los médicos y gestionar la asignación o remoción de turnos asociados. | [06-tarjeta-crc-agenda.md](../../herramientas-agile/tarjetas-crc/06-tarjeta-crc-agenda.md) |
-| **Paciente** | Representar al sujeto de atención médica del sistema, almacenando su información personal y vinculación con sus citas. | [04-tarjeta-crc-paciente.md](../../herramientas-agile/tarjetas-crc/04-tarjeta-crc-paciente.md) |
+| **Paciente** | Representar al sujeto de atención médica del sistema, almacenando su información personal y vinculación con sus citas. | [02-tarjeta-crc-paciente.md](../../herramientas-agile/tarjetas-crc/02-tarjeta-crc-paciente.md) |
 
 ### Tabla de Relaciones Estructurales:
 | Origen | Relación UML | Destino | Multiplicidad / Nota |
@@ -106,7 +106,7 @@ Clase ControladorAgenda {
         // 3. Colaboración con la Agenda para liberar el bloque horario
         Si (agendaAsociada != Nulo) {
             agendaAsociada.removerTurno(turno)
-        } Sinuco {
+        } Sino {
             Imprimir("Advertencia: No se detectó una agenda vinculada a la instancia del turno.")
         }
         
