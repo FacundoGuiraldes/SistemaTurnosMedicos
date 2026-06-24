@@ -18,6 +18,8 @@
 - [fix/correccion-rc-anexo-cu1] Resolución de RC1, RC2 y RC4 en Anexo CU1 ajustando trazabilidad, formato de pseudocódigo y enlaces a diagramas; PR:[#120] - @ValeriaMSilva (Coordinadora de Repositorio / Analista CU1)
 - [fix/analista-cu2-cu3-correcciones] Resolución de RC13, RC14, RC15, RC16, RC18, RC19, RC20, RC21, RC22, RC23, RC26 y RC27 en diagramas de clases parciales y especificaciones de pseudocódigo en anexos funcionales para CU2 y CU3, eliminando identificadores relacionales y asegurando consistencia estructural OO pura; PR:[#121] - @carolabenvenuto-uces (Analista Funcional CU2 y CU3)
 - [fix/correcciones-rc-cu4-cu5] Resolución de RC24, RC25, RC28, RC29, RC31, RC32, RC34 y RC35 en diagramas de clases de CU4 y CU5, eliminando atributos ID, ajustando relaciones estructurales a dependencias/composiciones y corrigiendo índices del análisis funcional; PR:[#119] - @caterinacerdan (Analista Funcional CU4 y CU5)
+- [fix/correccion-rcn5-al-rcn10] Resolución de RCN5, RCN7, RCN8, RCN9 y RCN10 en anexos funcionales de CU2 y CU3; cerrando bloques de pseudocódigo, completando tablas de clases involucradas (incluyendo Secretaria, Paciente y Usuario), reparando rutas relativas de diagramas; PR:[#...] - @carolabenvenuto-uces (Analista Funcional CU2 y CU3)
+- [fix/rc11-13] Simplificación de índices generales del repositorio y agregado de enlaces cruzados para trazabilidad explícita de artefactos; PR:[#128] - @FacundoGuiraldes (Arquitecto de Dominio)
 
 ## [Release Actividad N3] - 2026-05-21
 
