@@ -82,10 +82,10 @@
 
 | Clase | Responsabilidad (según tarjeta CRC) | Tarjeta CRC |
 |-------|-------------------------------------|-------------|
-| `Sistema` | Orquestar el flujo, recibir los inputs de la interfaz y delegar tareas a los servicios. | `01-tarjeta-crc-sistema.md` |
-| `Agenda` | Conocer los horarios libres y ocupados, y bloquear las franjas horarias solicitadas. | `02-tarjeta-crc-agenda.md` |
-| `Turno` | Conocer los datos específicos de la reserva (fecha, hora, paciente) y mantener su estado. | `03-tarjeta-crc-turno.md` |
-| `Paciente` | Conocer sus datos personales y de contacto para que el sistema pueda enviar notificaciones. | `04-tarjeta-crc-paciente.md` |
+| `Sistema` | Orquestar el flujo, recibir los inputs de la interfaz y delegar tareas a los servicios. | [01-tarjeta-crc-sistema.md](../../herramientas-agile/tarjetas-crc/01-tarjeta-crc-sistema.md) |
+| `Agenda` | Conocer los horarios libres y ocupados, y bloquear las franjas horarias solicitadas. | [02-tarjeta-crc-agenda.md](../../herramientas-agile/tarjetas-crc/02-tarjeta-crc-agenda.md) |
+| `Turno` | Conocer los datos específicos de la reserva (fecha, hora, paciente) y mantener su estado. | [03-tarjeta-crc-turno.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-turno.md) |
+| `Paciente` | Conocer sus datos personales y de contacto para que el sistema pueda enviar notificaciones. | [04-tarjeta-crc-paciente.md](../../herramientas-agile/tarjetas-crc/04-tarjeta-crc-paciente.md) |
 
 **Relaciones UML:**
 
