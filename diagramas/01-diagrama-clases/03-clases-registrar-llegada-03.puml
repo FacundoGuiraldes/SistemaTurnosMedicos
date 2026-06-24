@@ -5,34 +5,54 @@ skinparam classAttributeIconSize 0
 skinparam monochrome true
 
 abstract class Usuario {
-    +id: String
     +nombre: String
     +apellido: String
     +dni: String
     +email: String
+    +getNombreCompleto(): String
+    +actualizarPerfil(nombre: String, apellido: String, email: String): Boolean
+    +recibirNotificacion(mensaje: String): void
 }
 
 class Paciente {
-    -numeroHistorial: String
+    -fechaNacimiento: Date
+    -telefono: String
+    -direccion: String
+    +solicitarTurno(fecha: DateTime, hora: Time, especialidad: String): Turno
+    +cancelarTurno(turno: Turno, motivo: String): Boolean
+    +consultarTurnos(): List<Turno>
+    +registrarLlegada(turno: Turno): Boolean
 }
 
 class Secretaria {
     -departamento: String
+    +programarTurno(paciente: Paciente, fecha: DateTime, hora: Time, especialidad: String): Turno
+    +cancelarTurno(turno: Turno, motivo: String): Boolean
+    +reagendarTurno(turno: Turno, nuevaFecha: DateTime, nuevaHora: Time): Boolean
+    +buscarPacientePorDNI(dni: String): Paciente
 }
 
 class Turno {
-    -id: String
     -fecha: DateTime
     -hora: Time
     -asistencia: Boolean
     +marcarEnEspera(): void
-    +obtenerInfoPaciente(): Paciente
+    +marcarAsistencia(presentado: Boolean): void
+    +obtenerPaciente(): Paciente
+    +cancelar(solicitadoPor: Usuario, motivo: String): Boolean
 }
 
 class SalaEspera {
-    -id: String
     -pacientesEnEspera: List<Paciente>
-    +agregarPaciente(paciente: Paciente): void
+    +agregarPaciente(paciente: Paciente): Boolean
+    +removerPaciente(paciente: Paciente): Boolean
+    +listarPacientes(): List<Paciente>
+}
+
+class Agenda {
+    +agregarTurno(turno: Turno): Boolean
+    +removerTurno(turno: Turno): Boolean
+    +listarTurnos(): List<Turno]
 }
 
 interface ITurnoService {
