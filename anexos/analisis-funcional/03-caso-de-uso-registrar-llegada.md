@@ -37,7 +37,7 @@
 ## 2. Diagrama de Casos de Uso (A2)
 El comportamiento funcional de este módulo se encuentra tipificado en el modelo general de casos de uso de la Actividad N° 2.
 
-![Diagrama de Casos de Uso - Registrar llegada del paciente](../../diagramas/02-casos-de-uso/03-caso-uso-registrar-llegada-03.png)
+![Diagrama de Casos de Uso - Registrar llegada del paciente](../../diagramas/02-casos-de-uso/02-caso-uso-registrar-llegada-03/02-caso-uso-registrar-llegada-03.png)  
 
 **Actores y relaciones:**
 - **Secretaria** → Actor principal del flujo de interfaz que interactúa de manera directa con el sistema para buscar el turno del paciente e ingresar la confirmación.
