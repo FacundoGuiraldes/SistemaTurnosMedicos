@@ -291,7 +291,6 @@ Usuario <|-- Doctor
 PersistenciaService ..|> IPersistencia
 PersistenciaService ..|> ITurnoRepository
 PersistenciaService ..|> IPacienteRepository
-PersistenciaService ..|> ITurnoService
 ServicioNotificaciones ..|> INotificacionService
 Agenda ..|> IAgendaService
 SalaEspera ..|> ISalaEsperaService
@@ -301,7 +300,7 @@ SalaEspera ..|> ISalaEsperaService
 ' ========================
 
 Doctor "1" *-- "0..*" Agenda
-Agenda "1" o-- "0..*" Turno
+Agenda "1" *-- "0..*" Turno
 Paciente "1" o-- "0..*" Turno
 Doctor "1" o-- "0..*" Turno
 Doctor "1" o-- "1" Especialidad
@@ -309,6 +308,8 @@ Turno "1" o-- "1" Especialidad
 SalaEspera "1" o-- "0..*" Paciente
 LlegadaPaciente "1" o-- "1" Paciente
 LlegadaPaciente "1" o-- "1" Turno
+
+Turno ..> EstadoTurno : usa
 
 ' ========================
 ' DEPENDENCIAS DE SISTEMA
