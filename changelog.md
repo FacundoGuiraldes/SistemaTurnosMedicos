@@ -22,7 +22,7 @@
 - [fix/rc11-13] Simplificación de índices generales del repositorio y agregado de enlaces cruzados para trazabilidad explícita de artefactos; PR:[#128] - @FacundoGuiraldes (Arquitecto de Dominio)
 - [fix/diag-final-cortado] Corrección de inconsistencias en diagrama de clases final: eliminación de relación incorrecta ITurnoService, composición Agenda-Turno y dependencia EstadoTurno; regeneración de PNG sin cortes. PR:[#131] - @FacundoGuiraldes (Arquitecto de Dominio)
 - [fix/correccion-enlaces-rotos] Corrección de enlaces en CU1 y refinamiento de pseudocódigo en CU2 y CU3 resolviendo RCN1 a RCN10; PR:[#132] - @ValeriaMSilva (Coordinadora de Repositorio)
-
+- [fix/resolucion-rcn1-rcn4-rcn5-rcn10] Resolución definitiva de RCN1, RCN4, RCN5 y RCN10 en anexos de CU1, CU2 y CU3; reparación de ruta del diagrama de clases de CU1, conexión del flujo de control al nodo STOP terminal en actividades, cierre hermético de bloques Markdown y reescritura de pseudocódigos bajo paradigma OO puro (incorporando SalaEspera y removiendo parámetros de IDs relacionales); PR:[#...] - @carolabenvenuto-uces (Analista Funcional CU2 y CU3)
 
 ## [Release Actividad N3] - 2026-05-21
 
