@@ -20,6 +20,7 @@
 - [fix/correcciones-rc-cu4-cu5] Resolución de RC24, RC25, RC28, RC29, RC31, RC32, RC34 y RC35 en diagramas de clases de CU4 y CU5, eliminando atributos ID, ajustando relaciones estructurales a dependencias/composiciones y corrigiendo índices del análisis funcional; PR:[#119] - @caterinacerdan (Analista Funcional CU4 y CU5)
 - [fix/correccion-rcn5-al-rcn10] Resolución de RCN5, RCN7, RCN8, RCN9 y RCN10 en anexos funcionales de CU2 y CU3; cerrando bloques de pseudocódigo, completando tablas de clases involucradas (incluyendo Secretaria, Paciente y Usuario), reparando rutas relativas de diagramas; PR:[#130] - @carolabenvenuto-uces (Analista Funcional CU2 y CU3)
 - [fix/rc11-13] Simplificación de índices generales del repositorio y agregado de enlaces cruzados para trazabilidad explícita de artefactos; PR:[#128] - @FacundoGuiraldes (Arquitecto de Dominio)
+- [fix/diag-final-cortado] Corrección de inconsistencias en diagrama de clases final: eliminación de relación incorrecta ITurnoService, composición Agenda-Turno y dependencia EstadoTurno; regeneración de PNG sin cortes. PR:[#131] - @FacundoGuiraldes (Arquitecto de Dominio)
 
 ## [Release Actividad N3] - 2026-05-21
 
