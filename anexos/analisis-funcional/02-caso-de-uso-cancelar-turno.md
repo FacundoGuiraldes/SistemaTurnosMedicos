@@ -77,47 +77,47 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 ## 6. Pseudocódigo Orientado a Objetos
 A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio, asegurando la trazabilidad con el diagrama de secuencia del CU2 y la eliminación de identificadores relacionales:
 
-```text
-Clase InterfazSecretaria {
-    Metodo solicitarCancelacion(turno: Turno, motivo: String) {
-        // Inicializa el flujo enviando las entidades de dominio correspondientes
+Clase InterfazSecretaria
+    Método solicitarCancelacion(turno, motivo)
+        // La secretaria inicia el proceso de cancelación en el sistema indicando el motivo correspondiente
         ControladorAgenda.cancelarTurno(turno, motivo)
-    }
+    Fin Método
     
-    Metodo mostrarConfirmacion(mensaje: String) {
-        Imprimir(mensaje)
-    }
-}
+    Método mostrarConfirmacion(mensaje)
+        // La pantalla le muestra a la secretaria que la operación terminó con éxito
+        Mostrar en pantalla(mensaje)
+    Fin Método
+Fin Clase
 
-Clase ControladorAgenda {
-    Metodo cancelarTurno(turno: Turno, motivo: String) {
-        Si (turno == Nulo) {
-            Excepcion("La instancia del turno provista no es válida.")
+Clase ControladorAgenda
+    Método cancelarTurno(turno, motivo)
+        Si el turno no es válido entonces
+            // Se detiene el proceso si ocurre un error con el turno enviado
+            Mostrar error "La instancia del turno provista no es válida."
             Retornar Falso
-        }
+        Fin Si
         
-        // 1. Delegación directa sobre los objetos de dominio involucrados según el diagrama de secuencia
-        Paciente pacienteAsociado = turno.getPaciente()
-        Agenda agendaAsociada = turno.getAgenda()
+        // El sistema obtiene la información del paciente y la agenda médica vinculadas a este turno
+        pacienteAsociado = turno.obtenerInfoPaciente()
+        agendaAsociada = turno.obtenerAgenda()
         
-        // 2. Modificación del estado interno de la entidad de negocio (SRP)
+        // Se cambia la condición del turno a cancelado y se registra por qué se canceló
         turno.cambiarEstadoACancelado(motivo)
         
-        // 3. Colaboración con la Agenda para liberar el bloque horario
-        Si (agendaAsociada != Nulo) {
+        // Se libera el horario en la agenda médica para que el bloque quede disponible para otros pacientes
+        Si la agendaAsociada existe entonces
             agendaAsociada.removerTurno(turno)
-        } Sino {
-            Imprimir("Advertencia: No se detectó una agenda vinculada a la instancia del turno.")
-        }
+        Sino
+            Mostrar advertencia "No se detectó una agenda vinculada a la instancia del turno."
+        Fin Si
         
-        // 4. Despacho de la notificación interactuando con la entidad Paciente
-        String detalleMensaje = "Notificación formal: El turno médico ha sido cancelado exitosamente. Motivo: " + motivo
+        // El sistema redacta y envía una alerta al paciente para que sepa que ya no tiene su turno
+        detalleMensaje = "Notificación formal: El turno médico ha sido cancelado exitosamente. Motivo: " + motivo
         pacienteAsociado.recibirNotificacion(detalleMensaje)
         
-        // 5. Cierre del ciclo de vida de la interacción informando a la vista
+        // El controlador le avisa a la interfaz que finalizó el circuito para que informe a la secretaria
         InterfazSecretaria.mostrarConfirmacion("El turno fue cancelado y procesado correctamente por el sistema.")
         
         Retornar Verdadero
-    }
-}
-```
+    Fin Método
+Fin Clase
