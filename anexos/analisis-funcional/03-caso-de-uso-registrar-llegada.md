@@ -117,10 +117,12 @@ INICIO Registrar Llegada del Paciente
 // Contexto: El Paciente se presenta ante el mostrador de atención. La Recepcionista selecciona la instancia del Paciente en su terminal e inicia el registro.
 ControladorLlegadas elControlador = Instanciar ControladorLlegadas()
 InterfazRecepcionista laInterfaz = Instanciar InterfazRecepcionista()
+SalaEspera salaDeEspera = Instanciar SalaEspera()
 
 // Se configuran los enlaces por inyección de referencias entre componentes de software
 laInterfaz.controlador = elControlador
 elControlador.interfazUsuario = laInterfaz
+elControlador.salaEspera = salaDeEspera
 
 // Se obtienen las instancias de dominio requeridas del escenario actual en memoria
 Paciente pacientePresente = laInterfaz.obtenerPacienteSeleccionado()
@@ -159,6 +161,7 @@ Clase InterfazRecepcionista {
 Clase ControladorLlegadas {
     Atributos:
         - interfazUsuario: InterfazRecepcionista
+        - salaDeEspera: SalaEspera
 
     Método procesarLlegada(paciente: Paciente, fechaActual: DateTime): Booleano {
         // Qué está resolviendo este bloque: Recuperación del turno interactuando directamente con el objeto de dominio
@@ -176,6 +179,9 @@ Clase ControladorLlegadas {
         // Mutación controlada del estado interno del objeto de negocio (SRP)
         turnoActual.cambiarEstadoAEnEspera()
         
+        // Colaboración explícita con la instancia de SalaEspera
+        salaDeEspera.agregarPaciente(paciente)
+        
         // Envío de un mensaje de colaboración interactivo para alertar al profesional en su consultorio
         medicoAsociado.recibirAlertaLlegada(paciente)
         
@@ -185,3 +191,4 @@ Clase ControladorLlegadas {
         Retornar Verdadero
     }
 }
+```

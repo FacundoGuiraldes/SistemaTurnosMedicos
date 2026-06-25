@@ -105,23 +105,25 @@ INICIO Solicitar turno
 
 // Contexto: El paciente solicitó atención y la secretaria inicia el proceso en la UI
 Sistema sistemaTurnos = nuevo Sistema()
+Paciente pacienteSolicitante = sistemaTurnos.obtenerPacienteEnRecepcion()
+Doctor doctorSeleccionado = sistemaTurnos.obtenerDoctorDisponible()
 
 // El sistema delega la búsqueda a la entidad correspondiente del dominio
-Agenda agendaDoctor = sistemaTurnos.obtenerAgenda(idDoctor)
+Agenda agendaDoctor = doctorSeleccionado.obtenerAgenda()
 Lista<Horario> horariosLibres = agendaDoctor.consultarDisponibilidad(fechaDeseada)
 
 // ¿Hay disponibilidad en la agenda?
 SI horariosLibres.contiene(horarioElegido)
     // Instanciación principal de la entidad
-    Turno nuevoTurno = nuevo Turno(idPaciente, idDoctor, fechaDeseada, horarioElegido)
+    Turno nuevoTurno = nuevo Turno(pacienteSolicitante, doctorSeleccionado, fechaDeseada, horarioElegido)
     
     // Mutación de estado y persistencia
     sistemaTurnos.guardarTurno(nuevoTurno)
-    agendaDoctor.bloquearHorario(fechaDeseada, horarioElegido)
+    agendaDoctor.bloquearHorario(horarioElegido)
     
     // Inyección de dependencias para disparo de automatización
     INotificacionService notificador = sistemaTurnos.getServicioNotificacion()
-    notificador.enviar(idPaciente, "Su turno ha sido confirmado.")
+    notificador.enviar(pacienteSolicitante, nuevoTurno)
     
     Retornar "Turno solicitado y registrado con éxito."
 SINO
@@ -130,3 +132,4 @@ SINO
 FIN SI
 
 FIN
+```
