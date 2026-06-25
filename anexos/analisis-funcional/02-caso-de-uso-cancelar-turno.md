@@ -74,50 +74,50 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 
 ---
 
-## 6. Pseudocódigo Orientado a Objetos
-A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio, asegurando la trazabilidad con el diagrama de secuencia del CU2 y la eliminación de identificadores relacionales:
+## 6. Pseudocódigo
 
-Clase InterfazSecretaria
-    Método solicitarCancelacion(turno, motivo)
-        // La secretaria inicia el proceso de cancelación en el sistema indicando el motivo correspondiente
-        ControladorAgenda.cancelarTurno(turno, motivo)
-    Fin Método
+```text
+INICIO Cancelar Turno
+
+// Contexto: El actor Secretaria inicia la interacción en el consultorio médico solicitando la baja de una cita programada.
+ControladorAgenda elControlador = Instanciar ControladorAgenda()
+InterfazSecretaria laInterfaz = Instanciar InterfazSecretaria()
+
+// Se configuran los enlaces por inyección de referencias entre componentes
+laInterfaz.controlador = elControlador
+elControlador.interfazUsuario = laInterfaz
+
+// Instanciación inicial de las entidades de dominio necesarias obtenidas en memoria
+Turno turnoSeleccionado = laInterfaz.obtenerTurnoSeleccionado()
+
+SI turnoSeleccionado != Nulo
     
-    Método mostrarConfirmacion(mensaje)
-        // La pantalla le muestra a la secretaria que la operación terminó con éxito
-        Mostrar en pantalla(mensaje)
-    Fin Método
-Fin Clase
+    // Qué está resolviendo este bloque: Recuperación del grafo de objetos de dominio vinculados (sin usar IDs)
+    Paciente pacienteAsociado = turnoSeleccionado.obtenerInfoPaciente()
+    Agenda agendaAsociada = turnoSeleccionado.obtenerAgenda()
+    
+    // Mutación controlada del estado interno del objeto de negocio (SRP)
+    turnoSeleccionado.cambiarEstadoACancelado("Solicitado por el paciente")
+    
+    // Qué decisión se toma y por qué: Colaboración entre objetos para liberar el bloque horario en la agenda médica
+    SI agendaAsociada != Nulo
+        agendaAsociada.removerTurno(turnoSeleccionado)
+    SINO
+        laInterfaz.mostrarAdvertencia("No se detectó una agenda vinculada a la instancia del turno.")
+    FIN SI
+    
+    // Envío de mensaje interactivo hacia la entidad Paciente para despachar la notificación formal
+    String detalleMensaje = "Notificación formal: El turno médico ha sido cancelado exitosamente."
+    pacienteAsociado.recibirNotificacion(detalleMensaje)
+    
+    // Qué produce esta acción en el sistema: Cierre de la transacción notificando a la instancia de la vista
+    laInterfaz.mostrarConfirmacion("El turno fue cancelado y procesado correctamente por el sistema.")
+    
+SINO
+    laInterfaz.mostrarError("La instancia del turno provista no es válida.")
+FIN SI
 
-Clase ControladorAgenda
-    Método cancelarTurno(turno, motivo)
-        Si el turno no es válido entonces
-            // Se detiene el proceso si ocurre un error con el turno enviado
-            Mostrar error "La instancia del turno provista no es válida."
-            Retornar Falso
-        Fin Si
-        
-        // El sistema obtiene la información del paciente y la agenda médica vinculadas a este turno
-        pacienteAsociado = turno.obtenerInfoPaciente()
-        agendaAsociada = turno.obtenerAgenda()
-        
-        // Se cambia la condición del turno a cancelado y se registra por qué se canceló
-        turno.cambiarEstadoACancelado(motivo)
-        
-        // Se libera el horario en la agenda médica para que el bloque quede disponible para otros pacientes
-        Si la agendaAsociada existe entonces
-            agendaAsociada.removerTurno(turno)
-        Sino
-            Mostrar advertencia "No se detectó una agenda vinculada a la instancia del turno."
-        Fin Si
-        
-        // El sistema redacta y envía una alerta al paciente para que sepa que ya no tiene su turno
-        detalleMensaje = "Notificación formal: El turno médico ha sido cancelado exitosamente. Motivo: " + motivo
-        pacienteAsociado.recibirNotificacion(detalleMensaje)
-        
-        // El controlador le avisa a la interfaz que finalizó el circuito para que informe a la secretaria
-        InterfazSecretaria.mostrarConfirmacion("El turno fue cancelado y procesado correctamente por el sistema.")
-        
-        Retornar Verdadero
-    Fin Método
-Fin Clase
+// Estado final del sistema tras ejecutar el caso de uso
+Retornar turnoSeleccionado
+
+FIN
