@@ -109,46 +109,86 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 
 ---
 
-## 6. Pseudocódigo Orientado a Objetos
-A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio, garantizando la consistencia absoluta con las firmas del diseño orientado a objetos puro, reflejando la instanciación e interacción secuencial, y eliminando cualquier identificador relacional indirecto:
+## 6. Pseudocódigo
 
 ```text
-Clase InterfazRecepcionista
-    Método registrarLlegadaPaciente(dniPaciente)
-        // La recepcionista ingresa el DNI del paciente en el sistema para anunciar que ya se encuentra en la clínica
-        ControladorLlegadas.procesarLlegada(dniPaciente)
-    Fin Método
-    
-    Método mostrarConfirmacion(mensaje)
-        // La pantalla le indica a la recepcionista el resultado final de la operación
-        Mostrar en pantalla(mensaje)
-    Fin Método
-Fin Clase
+INICIO Registrar Llegada del Paciente
 
-Clase ControladorLlegadas
-    Método procesarLlegada(dniPaciente)
-        // El sistema busca en la agenda médica si existe un turno asignado para ese paciente en el día de hoy
-        turnoActual = Agenda.buscarTurnoPorDNI(dniPaciente)
+// Contexto: El Paciente se presenta ante el mostrador de atención. La Recepcionista selecciona la instancia del Paciente en su terminal e inicia el registro.
+ControladorLlegadas elControlador = Instanciar ControladorLlegadas()
+InterfazRecepcionista laInterfaz = Instanciar InterfazRecepcionista()
+SalaEspera salaDeEspera = Instanciar SalaEspera()
+
+// Se configuran los enlaces por inyección de referencias entre componentes de software
+laInterfaz.controlador = elControlador
+elControlador.interfazUsuario = laInterfaz
+elControlador.salaEspera = salaDeEspera
+
+// Se obtienen las instancias de dominio requeridas del escenario actual en memoria
+Paciente pacientePresente = laInterfaz.obtenerPacienteSeleccionado()
+DateTime fechaDeHoy = ObtenerFechaActual()
+
+SI pacientePresente != Nulo
+    
+    // Qué está resolviendo este bloque: Interacción directa entre componentes para orquestar la llegada sin IDs relacionales
+    laInterfaz.solicitarProcesarLlegada(pacientePresente, fechaDeHoy)
+    
+SINO
+    laInterfaz.mostrarConfirmacion("Error: No se pudo identificar una instancia de paciente válida.")
+FIN SI
+
+FIN
+
+// ============================================================================
+// DEFINICIONES DE COMPONENTES (COLABORACIÓN E INTERACCIÓN POR INSTANCIAS)
+// ============================================================================
+
+Clase InterfazRecepcionista {
+    Atributos:
+        - controlador: ControladorLlegadas
+
+    Método solicitarProcesarLlegada(paciente: Paciente, fechaActual: DateTime) {
+        // Envió del mensaje de negocio delegando el control en la instancia del controlador
+        controlador.procesarLlegada(paciente, fechaActual)
+    }
+    
+    Método mostrarConfirmacion(mensaje: String) {
+        // Qué produce esta acción en el sistema: Renderiza en la pantalla física la notificación para el actor
+        Mostrar en pantalla(mensaje)
+    }
+}
+
+Clase ControladorLlegadas {
+    Atributos:
+        - interfazUsuario: InterfazRecepcionista
+        - salaDeEspera: SalaEspera
+
+    Método procesarLlegada(paciente: Paciente, fechaActual: DateTime): Booleano {
+        // Qué está resolviendo este bloque: Recuperación del turno interactuando directamente con el objeto de dominio
+        Turno turnoActual = paciente.obtenerTurnoActivo()
         
-        Si el turnoActual no existe entonces
-            // Si el paciente no tiene un turno válido para hoy, se frena el proceso y se avisa a la recepcionista
-            InterfazRecepcionista.mostrarConfirmacion("El paciente no posee un turno asignado para el día de hoy.")
+        // Qué decisión se toma y por qué: Validar la existencia de la cita programada para la jornada actual
+        SI turnoActual == Nulo O NOT turnoActual.esValidoParaFecha(fechaActual)
+            interfazUsuario.mostrarConfirmacion("El paciente no posee un turno asignado para el día de hoy.")
             Retornar Falso
-        Fin Si
+        FIN SI
         
-        // El sistema identifica al paciente y al profesional médico vinculados a ese turno
-        pacienteAsociado = turnoActual.obtenerInfoPaciente()
-        medicoAsociado = turnoActual.obtenerMedico()
+        // El sistema recupera la instancia del Médico vinculada directamente a la entidad Turno
+        Medico medicoAsociado = turnoActual.obtenerMedico()
         
-        // Se actualiza la condición del turno para reflejar que el paciente ya está en la sala de espera
+        // Mutación controlada del estado interno del objeto de negocio (SRP)
         turnoActual.cambiarEstadoAEnEspera()
         
-        // El sistema le envía una alerta interna al médico para notificarle que su paciente ha llegado
-        medicoAsociado.recibirAlertaLlegada(pacienteAsociado)
+        // Colaboración explícita con la instancia de SalaEspera
+        salaDeEspera.agregarPaciente(paciente)
         
-        // El controlador le avisa a la interfaz que el circuito finalizó correctamente para que le informe a la recepcionista
-        InterfazRecepcionista.mostrarConfirmacion("Llegada registrada exitosamente. El paciente ya se encuentra en espera.")
+        // Envío de un mensaje de colaboración interactivo para alertar al profesional en su consultorio
+        medicoAsociado.recibirAlertaLlegada(paciente)
+        
+        // Cierre del circuito informando el éxito a la instancia de la vista asociada
+        interfazUsuario.mostrarConfirmacion("Llegada registrada exitosamente. El paciente ya se encuentra en espera.")
         
         Retornar Verdadero
-    Fin Método
-Fin Clase
+    }
+}
+```
