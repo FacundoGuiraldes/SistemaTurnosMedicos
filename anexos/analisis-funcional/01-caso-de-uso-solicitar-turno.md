@@ -76,7 +76,7 @@
 
 ## 5. Diagrama de Clases del Caso de Uso
 
-![Diagrama de Clases - Solicitar turno](../../diagramas/01-diagrama-clases/01-clases-solicitar-turno.png)
+![Diagrama de Clases - Solicitar turno](../../diagramas/01-diagrama-clases/01-clases-solicitar-turno-01.png)
 
 **Clases involucradas:**
 
