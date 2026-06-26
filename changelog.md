@@ -1,5 +1,10 @@
 # Changelog
 
+## [Segundo Parcial] - 2026-06-25
+
+### Added
+- [feature/esp-patron-comportamiento-add-patron-facade] Aplicación local del patrón estructural Facade sobre el diseño del Sistema de Turnos Médicos: anexo técnico, diagrama UML en PlantUML, documentación IA y actualización de índices - @caterinacerdan (Especialista en Patrón de Diseño Estructural)
+
 ## [Release Actividad N4] - 2026-06-18
 
 ### Added
