@@ -52,6 +52,15 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 
 ![Diagrama de Clases CU2](../../diagramas/01-diagrama-clases/02-clases-cancelar-turno-02.png)
 
+### Clases involucradas:
+| Clase | Responsabilidad (según tarjeta CRC) | Tarjeta CRC |
+|-------|-------------------------------------|-------------|
+| **InterfazSecretaria** | Responsable de interactuar con el personal administrativo para notificar y renderizar los eventos de atención al paciente. | [03-tarjeta-crc-secretaria.md](../../herramientas-agile/tarjetas-crc/03-tarjeta-crc-secretaria.md) |
+| **ControladorAgenda** | Orquestador encargado de coordinar los mensajes de negocio y las interacciones lógicas entre las entidades del dominio para la gestión de turnos. | [08-tarjeta-crc-sistema.md](../../herramientas-agile/tarjetas-crc/08-tarjeta-crc-sistema.md) |
+| **Turno** | Representar la cita médica pactada, controlando sus datos horarios, profesional asignado y sus transiciones de estado de negocio. | [05-tarjeta-crc-turno.md](../../herramientas-agile/tarjetas-crc/05-tarjeta-crc-turno.md) |
+| **Agenda** | Administrar los bloques horarios disponibles de los médicos y gestionar la asignación o remoción de turnos asociados. | [06-tarjeta-crc-agenda.md](../../herramientas-agile/tarjetas-crc/06-tarjeta-crc-agenda.md) |
+| **Paciente** | Representar al sujeto de atención médica del sistema, almacenando su información personal y vinculación con sus citas. | [02-tarjeta-crc-paciente.md](../../herramientas-agile/tarjetas-crc/02-tarjeta-crc-paciente.md) |
+
 ### Tabla de Relaciones Estructurales:
 | Origen | Relación UML | Destino | Multiplicidad / Nota |
 | :--- | :--- | :--- | :--- |
@@ -65,46 +74,51 @@ El diseño estructural específico para dar soporte a este comportamiento se enc
 
 ---
 
-## 6. Pseudocódigo Orientado a Objetos
-A continuación se detalla la especificación algorítmica completa que modela la colaboración entre los objetos de dominio y los servicios abstractos, garantizando el cumplimiento de SRP y DIP:
+## 6. Pseudocódigo
 
 ```text
-Clase Sistema {
-    Atributos:
-        - repositorioTurno: ITurnoRepository
-        - agendaService: IAgendaService
-        - notificacionService: INotificacionService
+INICIO Cancelar Turno
 
-    Metodo cancelarTurno(turnoId: String, solicitadoPor: Usuario): Boolean {
-        // 1. Localización de la entidad mediante abstracción de persistencia
-        Turno turnoActual = repositorioTurno.buscarPorId(turnoId)
-        
-        Si (turnoActual == Nulo) {
-            Excepcion("El identificador de turno provisto no es válido.")
-            Retornar Falso
-        }
-        
-        // 2. Modificación del estado interno del objeto de negocio (SRP)
-        turnoActual.eliminarTurno()
-        Boolean persistenciaExitosa = repositorioTurno.actualizar(turnoActual)
-        
-        Si (NOT persistenciaExitosa) {
-            Excepcion("Error interno al procesar la actualización del estado.")
-            Retornar Falso
-        }
-        
-        // 3. Invocación al servicio de Agenda para remover el turno
-        Boolean agendaLiberada = agendaService.removerTurno(turnoActual)
-        
-        Si (NOT agendaLiberada) {
-            // Log de advertencia para auditoría técnica, no bloquea el flujo principal
-            Imprimir("Advertencia: No se pudo liberar el bloque horario de forma automática.")
-        }
-        
-        // 4. Despacho de la notificación utilizando el contrato abstracto (DIP)
-        String detalleMensaje = "Notificación formal: El turno médico ha sido cancelado exitosamente."
-        notificacionService.enviarNotificacionCancelacion(turnoActual.getPaciente(), detalleMensaje)
-        
-        Retornar Verdadero
-    }
-}
+// Contexto: El actor Secretaria inicia la interacción en el consultorio médico solicitando la baja de una cita programada.
+ControladorAgenda elControlador = Instanciar ControladorAgenda()
+InterfazSecretaria laInterfaz = Instanciar InterfazSecretaria()
+
+// Se configuran los enlaces por inyección de referencias entre componentes
+laInterfaz.controlador = elControlador
+elControlador.interfazUsuario = laInterfaz
+
+// Instanciación inicial de las entidades de dominio necesarias obtenidas en memoria
+Turno turnoSeleccionado = laInterfaz.obtenerTurnoSeleccionado()
+
+SI turnoSeleccionado != Nulo
+    
+    // Qué está resolviendo este bloque: Recuperación del grafo de objetos de dominio vinculados (sin usar IDs)
+    Paciente pacienteAsociado = turnoSeleccionado.obtenerInfoPaciente()
+    Agenda agendaAsociada = turnoSeleccionado.obtenerAgenda()
+    
+    // Mutación controlada del estado interno del objeto de negocio (SRP)
+    turnoSeleccionado.cambiarEstadoACancelado("Solicitado por el paciente")
+    
+    // Qué decisión se toma y por qué: Colaboración entre objetos para liberar el bloque horario en la agenda médica
+    SI agendaAsociada != Nulo
+        agendaAsociada.removerTurno(turnoSeleccionado)
+    SINO
+        laInterfaz.mostrarAdvertencia("No se detectó una agenda vinculada a la instancia del turno.")
+    FIN SI
+    
+    // Envío de mensaje interactivo hacia la entidad Paciente para despachar la notificación formal
+    String detalleMensaje = "Notificación formal: El turno médico ha sido cancelado exitosamente."
+    pacienteAsociado.recibirNotificacion(detalleMensaje)
+    
+    // Qué produce esta acción en el sistema: Cierre de la transacción notificando a la instancia de la vista
+    laInterfaz.mostrarConfirmacion("El turno fue cancelado y procesado correctamente por el sistema.")
+    
+SINO
+    laInterfaz.mostrarError("La instancia del turno provista no es válida.")
+FIN SI
+
+// Estado final del sistema tras ejecutar el caso de uso
+Retornar turnoSeleccionado
+
+FIN
+```

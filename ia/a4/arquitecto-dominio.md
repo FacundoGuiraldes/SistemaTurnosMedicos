@@ -86,13 +86,6 @@ Para cada inconsistencia encontrada indicá clase afectada, qué dice el parcial
 - `diagramas/01-diagrama-clases/05-clases-ver-agenda-05.puml`
 - `diagramas/01-diagrama-clases/06-clases-diagrama-final.puml`
 
-## Plantillas utilizadas
-
-Las plantillas obligatorias fueron proporcionadas por el solicitante (adjuntas) y se usaron como referencia para redactar los anexos finales. No se añadieron archivos de plantilla adicionales al repositorio; los documentos finales siguen la estructura y secciones definidas en:
-
-- `00-plantilla-diagrama-clases-final.md` (proporcionada)
-- `00-plantilla-pilares-poo.md` (proporcionada)
-- `00-plantilla-happy-path-global.md` (proporcionada)
 
 ## Ajustes realizados al output de la IA
 
@@ -119,19 +112,3 @@ Las plantillas obligatorias fueron proporcionadas por el solicitante (adjuntas) 
 8. Se regeneró el PNG del diagrama final con los cambios incorporados.
 9. Se detectó redundancia `getPaciente()` / `obtenerInfoPaciente()` en clase `Turno`. Se unificó a `obtenerInfoPaciente()` en diagrama final y diagramas parciales CU2 y CU3. Issue #116, PR #117.
 10. Se corrigieron multiplicidades `Doctor ↔ Agenda` y relación `Turno ↔ Notificacion` en diagrama final para mayor precisión del modelo de dominio.
-
-## Limitaciones del entorno
-
-- No se realizaron creaciones automáticas de issues en GitHub desde este entorno, ya que no se dispone de acceso directo al API o credenciales dentro del editor.
-- La creación de issues y la asociación a la PR `feature/arquitecto-dominio-add-diagrama-final → develop` debe hacerse manualmente en GitHub o mediante un flujo de CI/CD externo.
-
-## Notas sobre capturas-pilares
-
-Las imágenes en `diagramas/01-diagrama-clases/capturas-pilares/` fueron generadas como fragmentos que muestran únicamente las clases relevantes para cada ejemplo. Si el revisor exige "recortes pixel-perfect" extraídos literalmente de `diagramas/01-diagrama-clases/06-clases-diagrama-final.png`, incluyo a continuación un script recomendado para generar crops locales (ImageMagick):
-
-```powershell
-# Ejemplo: recortar una región y guardarla
-magick convert -crop 300x200+100+150 "diagramas/01-diagrama-clases/06-clases-diagrama-final.png" "diagramas/01-diagrama-clases/capturas-pilares/poo-encapsulamiento-ejemplo-1.png"
-```
-
-Ejecutá y ajustá las coordenadas según sea necesario; luego `git add` / `git commit` / `git push`.

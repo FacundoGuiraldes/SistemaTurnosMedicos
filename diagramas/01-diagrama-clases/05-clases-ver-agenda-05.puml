@@ -10,7 +10,6 @@ skinparam class {
 }
 
 abstract class Usuario {
-    - id: String
     - nombre: String
     - email: String
     - telefono: String
@@ -35,7 +34,6 @@ class Doctor {
 }
 
 class Agenda {
-    - doctorId: String
     - fecha: Date
     - horaApertura: Time
     - horaCierre: Time
@@ -50,14 +48,11 @@ class Agenda {
 }
 
 class Turno {
-    - id: String
     - fecha: Date
     - hora: Time
     - estado: String
     - especialidad: String
     - motivoConsulta: String
-    - pacienteId: String
-    - doctorId: String
     ---
     + obtenerDetalles(): Map<String, String>
     + obtenerInfoPaciente(): Paciente
@@ -75,7 +70,7 @@ class Paciente {
 }
 
 interface ITurnoRepository {
-    + obtenerTurnosPorFecha(fecha: Date, doctorId: String): List<Turno>
+    + obtenerTurnosPorFecha(fecha: Date, doctor: Doctor): List<Turno>
 }
 
 class Sistema {
@@ -89,10 +84,9 @@ class Sistema {
 Usuario <|-- Doctor
 
 Doctor --> Sistema : accede a
-Sistema --> Agenda : solicita
-Agenda o-- Turno : contiene
+Sistema ..> Agenda : crea y consulta
+Agenda "1" *-- "0..*" Turno : contiene
 Agenda ..> ITurnoRepository : depende
 Turno --> Paciente : referencia
-Turno --> Doctor : referencia
 
 @enduml
