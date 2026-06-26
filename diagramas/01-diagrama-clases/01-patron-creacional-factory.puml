@@ -1,0 +1,234 @@
+@startuml
+title Patrón Factory Method - Sistema de Turnos Médicos
+
+' ========================
+' FACTORY PARA TURNOS
+' ========================
+
+package "Factory Method - Creación de Turnos" {
+
+    ' INTERFAZ CREADORA
+    interface ITurnoFactory <<interfaz>> {
+        + crearTurno(fecha: LocalDate, hora: LocalTime, \nespecialidad: Especialidad): Turno
+    }
+
+    ' CREADORES CONCRETOS
+    class TurnoPresencialFactory implements ITurnoFactory {
+        - agendaConsultorios: AgendaConsultorios
+        + crearTurno(fecha: LocalDate, hora: LocalTime, \nespecialidad: Especialidad): TurnoPresencial
+        + validarDisponibilidadConsultorio(fecha: LocalDate): boolean
+        + asignarConsultorio(): String
+    }
+
+    class TurnoVirtualFactory implements ITurnoFactory {
+        - servicioVideoconferencia: ServicioVideoconferencia
+        + crearTurno(fecha: LocalDate, hora: LocalTime, \nespecialidad: Especialidad): TurnoVirtual
+        + generarEnlaceVideollamada(): String
+        + generarCodigoAcceso(): String
+        + validarDisponibilidadPlataforma(): boolean
+    }
+
+    class TurnoTelemedicinaFactory implements ITurnoFactory {
+        - registroProveedores: RegistroProveedoresTelemedicina
+        + crearTurno(fecha: LocalDate, hora: LocalTime, \nespecialidad: Especialidad): TurnoTelemedicina
+        + asignarProveedorServicio(): String
+        + validarCobertura(zona: String): boolean
+    }
+
+    ' PRODUCTOS ABSTRACTOS Y CONCRETOS
+    abstract class Turno {
+        - id: String
+        - fecha: LocalDate
+        - hora: LocalTime
+        - estado: EstadoTurno
+        - especialidad: Especialidad
+        + {abstract} confirmar(): void
+        + {abstract} cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+        + {abstract} marcarAsistencia(presentado: Boolean): void
+    }
+
+    class TurnoPresencial extends Turno {
+        - numeroConsultorio: String
+        - pisoEdificio: Integer
+        + confirmar(): void
+        + cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+        + marcarAsistencia(presentado: Boolean): void
+    }
+
+    class TurnoVirtual extends Turno {
+        - enlaceVideollamada: String
+        - codigoAcceso: String
+        - plataforma: String
+        + confirmar(): void
+        + cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+        + marcarAsistencia(presentado: Boolean): void
+        + enviarEnlaceAlPaciente(): void
+    }
+
+    class TurnoTelemedicina extends Turno {
+        - idProveedor: String
+        - direccionPaciente: String
+        - equipoMedico: List<String>
+        + confirmar(): void
+        + cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+        + marcarAsistencia(presentado: Boolean): void
+        + coordinarVisitaDomiciliaria(): void
+    }
+
+    ' RELACIONES
+    ITurnoFactory ..> Turno : crea
+    TurnoPresencialFactory --> TurnoPresencial : produce
+    TurnoVirtualFactory --> TurnoVirtual : produce
+    TurnoTelemedicinaFactory --> TurnoTelemedicina : produce
+}
+
+' ========================
+' FACTORY PARA NOTIFICACIONES
+' ========================
+
+package "Factory Method - Creación de Notificaciones" {
+
+    ' INTERFAZ CREADORA
+    interface INotificacionFactory <<interfaz>> {
+        + crearNotificacion(destinatario: String, \nmensaje: String): Notificacion
+    }
+
+    ' CREADORES CONCRETOS
+    class EmailNotificacionFactory implements INotificacionFactory {
+        - servidorSMTP: ServidorSMTP
+        + crearNotificacion(destinatario: String, \nmensaje: String): EmailNotificacion
+        + validarEmail(email: String): boolean
+    }
+
+    class SMSNotificacionFactory implements INotificacionFactory {
+        - proveedorSMS: ProveedorSMS
+        + crearNotificacion(destinatario: String, \nmensaje: String): SMSNotificacion
+        + validarTelefono(numero: String): boolean
+        + calcularCosto(): Double
+    }
+
+    class WhatsAppNotificacionFactory implements INotificacionFactory {
+        - apiWhatsApp: APIWhatsApp
+        + crearNotificacion(destinatario: String, \nmensaje: String): WhatsAppNotificacion
+        + validarNumeroWhatsApp(numero: String): boolean
+    }
+
+    class PushNotificacionFactory implements INotificacionFactory {
+        - servicioNotificaciones: ServicioPush
+        + crearNotificacion(destinatario: String, \nmensaje: String): PushNotificacion
+        + validarDispositivoRegistrado(usuarioId: String): boolean
+    }
+
+    ' PRODUCTOS ABSTRACTOS Y CONCRETOS
+    abstract class Notificacion {
+        - id: String
+        - destinatario: String
+        - mensaje: String
+        - estado: String
+        - fechaEnvio: LocalDateTime
+        + {abstract} enviar(): boolean
+        + {abstract} validarDestinatario(): boolean
+        + programarEnvio(fecha: LocalDateTime): void
+    }
+
+    class EmailNotificacion extends Notificacion {
+        - email: String
+        - asunto: String
+        - contenidoHTML: String
+        + enviar(): boolean
+        + validarDestinatario(): boolean
+    }
+
+    class SMSNotificacion extends Notificacion {
+        - numeroCelular: String
+        - longitudMensaje: Integer
+        + enviar(): boolean
+        + validarDestinatario(): boolean
+        + fragmentarMensajeLargo(): List<String>
+    }
+
+    class WhatsAppNotificacion extends Notificacion {
+        - numeroWhatsApp: String
+        - tipoMensaje: String
+        - urlMedia: String
+        + enviar(): boolean
+        + validarDestinatario(): boolean
+        + enviarMediaAdjunto(tipo: String, url: String): void
+    }
+
+    class PushNotificacion extends Notificacion {
+        - idDispositivo: String
+        - tituloNotificacion: String
+        - accionAsociada: String
+        + enviar(): boolean
+        + validarDestinatario(): boolean
+    }
+
+    ' RELACIONES
+    INotificacionFactory ..> Notificacion : crea
+    EmailNotificacionFactory --> EmailNotificacion : produce
+    SMSNotificacionFactory --> SMSNotificacion : produce
+    WhatsAppNotificacionFactory --> WhatsAppNotificacion : produce
+    PushNotificacionFactory --> PushNotificacion : produce
+}
+
+' ========================
+' CLASES DEL SISTEMA REFACTORIZADAS
+' ========================
+
+package "Sistema Desacoplado" {
+
+    class Sistema {
+        - turnoFactory: ITurnoFactory
+        - notificacionFactory: INotificacionFactory
+        + Sistema(turnoFactory: ITurnoFactory, \nnotificacionFactory: INotificacionFactory)
+        + setTurnoFactory(factory: ITurnoFactory): void
+        + solicitarTurno(fecha: LocalDate, hora: LocalTime, \nespecialidad: Especialidad): Turno
+        + registrarTurno(paciente: Paciente, doctor: Doctor, \nfecha: LocalDate): Turno
+        + enviarRecordatorioAutomatico(paciente: Paciente, \nturno: Turno): void
+    }
+
+    class Secretaria {
+        - turnoFactory: ITurnoFactory
+        + Secretaria(turnoFactory: ITurnoFactory)
+        + programarTurno(paciente: Paciente, fecha: LocalDate, \nhora: LocalTime, especialidad: Especialidad): Turno
+        + registrarPaciente(datos: Map<String, String>): Paciente
+    }
+
+    class ServicioNotificaciones {
+        - notificacionFactory: INotificacionFactory
+        + ServicioNotificaciones(factory: INotificacionFactory)
+        + setFactory(factory: INotificacionFactory): void
+        + enviarNotificacion(canal: String, destinatario: String, \nmensaje: String): boolean
+    }
+
+    ' RELACIONES CON FACTORIES
+    Sistema --> ITurnoFactory : inyecta
+    Sistema --> INotificacionFactory : inyecta
+    Secretaria --> ITurnoFactory : usa
+    ServicioNotificaciones --> INotificacionFactory : usa
+}
+
+' ========================
+' NOTAS
+' ========================
+
+note right of ITurnoFactory
+    **Factory Creator**
+    Define contrato para crear turnos
+    de cualquier tipo sin acoplamiento
+end note
+
+note right of INotificacionFactory
+    **Factory Creator**
+    Define contrato para crear
+    notificaciones por cualquier canal
+end note
+
+note top of Sistema
+    **Cliente Desacoplado**
+    Recibe factories inyectadas
+    No instancia directamente
+end note
+
+@enduml
