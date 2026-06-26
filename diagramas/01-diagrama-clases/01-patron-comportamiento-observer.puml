@@ -1,0 +1,84 @@
+@startuml 01-patron-comportamiento-observer.puml
+title Patrón Observer — Sistema de Turnos Médicos
+
+' Interfaces
+interface IObserverTurno {
+  +actualizar(TurnoEvent evento)
+}
+
+interface ISubjectTurno {
+  +suscribir(IObserverTurno observer)
+  +desuscribir(IObserverTurno observer)
+  +notificar(TurnoEvent evento)
+}
+
+' Evento que transporta contexto del cambio de turno
+class TurnoEvent {
+  +id: String
+  +pacienteId: String
+  +medicoId: String
+  +fechaAnterior: Date
+  +fechaNueva: Date
+  +motivo: String
+}
+
+' Sujeto concreto
+class TurnoMedico {
+  -observadores: List~IObserverTurno~
+  -id: String
+  -pacienteId: String
+  -medicoId: String
+  -fecha: Date
+  +suscribir(IObserverTurno)
+  +desuscribir(IObserverTurno)
+  +notificar(TurnoEvent)
+  +cancelar(motivo: String)
+  +reprogramar(nuevaFecha: Date, motivo: String)
+}
+
+' Observadores concretos
+class NotificadorPaciente {
+  +actualizar(TurnoEvent)
+  -enviarNotificacionPaciente(TurnoEvent)
+}
+
+class NotificadorMedico {
+  +actualizar(TurnoEvent)
+  -enviarNotificacionMedico(TurnoEvent)
+}
+
+class SistemaFacturacion {
+  +actualizar(TurnoEvent)
+  -procesarImpactoFacturacion(TurnoEvent)
+}
+
+' Relaciones
+TurnoMedico ..|> ISubjectTurno
+NotificadorPaciente ..|> IObserverTurno
+NotificadorMedico ..|> IObserverTurno
+SistemaFacturacion ..|> IObserverTurno
+
+TurnoMedico "1" o-- "0..*" IObserverTurno : mantiene
+TurnoMedico --> TurnoEvent : crea/
+
+note right of TurnoMedico
+  - Actualiza estado y persiste
+  - Crea TurnoEvent con contexto
+  - Llama a notificar(evento)
+end note
+
+note left of NotificadorPaciente
+  - Resuelve contacto del paciente
+  - Envío asíncrono y reintentos
+end note
+
+note left of NotificadorMedico
+  - Notifica al médico y calendario
+end note
+
+note left of SistemaFacturacion
+  - Ajusta registros contables
+  - Aplica políticas de cancelación
+end note
+
+@enduml
