@@ -1,5 +1,10 @@
 # Changelog
 
+## [Release Segundo Parcial] - 2026-06-26
+
+### Added
+- [feature/esp-patron-comportamiento-add-patron-observer] Aplicación del patrón de comportamiento Observer para notificaciones de turnos, creación de justificación técnica y diagrama UML (Issue #138). PR: [#139](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/139) - @ValeriaMSilva (Especialista en Patrón de Diseño de Comportamiento)
+
 ## [Release Actividad N4] - 2026-06-18
 
 ### Added
