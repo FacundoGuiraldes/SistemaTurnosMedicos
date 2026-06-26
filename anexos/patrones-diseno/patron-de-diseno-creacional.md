@@ -28,9 +28,9 @@ Las clases `Sistema`, `Secretaria` y `ServicioNotificaciones` ahora reciben esta
 ## 4. Estructura de Clases
 A continuación, se detalla el modelado UML de la solución implementada donde se visualiza el desacoplamiento de las fábricas y sus respectivos productos:
 
-![Diagrama de Clases - Patrón Creacional Factory Method](../../diagramas/01-diagrama-clases/01-patron-creacional-factory.png)
+![Diagrama de Clases - Patrón Creacional Factory Method](../../diagramas/01-diagrama-clases/06-patron-creacional-factory.png)
 
-*El diagrama interactivo original y su sintaxis editable pueden comprobarse en el siguiente enlace:* [Archivo fuente PlantUML (01-patron-creacional-factory.puml)](../../diagramas/01-diagrama-clases/01-patron-creacional-factory.puml)
+*El diagrama interactivo original y su sintaxis editable pueden comprobarse en el siguiente enlace:* [Archivo fuente PlantUML (01-patron-creacional-factory.puml)](../../diagramas/01-diagrama-clases/06-patron-creacional-factory.puml)
 
 ## 5. Justificación Técnica de la Solución Propuesta
 La solución optimiza la creación de objetos en el sistema debido a:
