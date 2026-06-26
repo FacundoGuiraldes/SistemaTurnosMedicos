@@ -1,5 +1,9 @@
 # Changelog
 
+## [Release Segundo Parcial] - 2026-06-27
+### Added
+- [ feature/esp-patron-creacional-add-patron-factory] Aplicación del Patrón de Diseño Creacional [Factory Method] sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico explicativo, el diagrama de clases en PlantUML/PNG (`01-patron-creacional-factory.puml`) y la bitácora de IA asociada. PR: [#COMPLETAR](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/COMPLETAR) | Issue: [#140](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/140) - @carolabenvenuto-uces (Especialista en Patrón de Diseño Creacional)
+
 ## [Release Actividad N4] - 2026-06-18
 
 ### Added
