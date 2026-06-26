@@ -1,6 +1,29 @@
 # Changelog
 
-## Unreleased
+## [Release Actividad N4] - 2026-06-18
+
+### Added
+- [feature/coordinador-devops-add-anexo-cu1] Recuperación de boceto inicial, diseño de diagrama de clases, elaboración de anexo CU1 y actualización de roles en `README.md`. PR: [#105](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/105) - @ValeriaMSilva (Coordinador de Repositorio + Analista Funcional CU1)
+- [feature/arquitecto-dominio-add-diagrama-final] Diagrama de clases final unificado, anexo de los cuatro pilares del paradigma orientado a objetos, pseudocódigo del happy path global y documentación de IA. PR: [#109](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/109) | Issues: [#106](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/106), [#107](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/107), [#108](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/108) - @FacundoGuiraldes (Arquitecto de Dominio)
+- [feature/analista-cu-2-3-add-anexo-cu2-cu3] Diagramas de clases, anexos funcionales y pseudocódigo orientado a objetos para CU2 (Cancelar Turno) y CU3 (Registrar Llegada del Paciente), con documentación de IA. PR: [#112](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/112) | Issues: [#110](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/110), [#111](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/111) - @carolabenvenuto-uces (Analista Funcional CU2 y CU3)
+- [feature/analista-cu-4-5-add-anexo-cu4-cu5] Diseño de diagramas de clases en PlantUML para CU4 y CU5, elaboración de anexo técnico con análisis detallado de clases, atributos, métodos y relaciones UML. PR: [#115](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/115) | Issues: [#113](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/113), [#114](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/114) - @caterinacerdan (Analista Funcional CU4 y CU5)
+
+### Fixed
+- [fix/unificar-nombre-obtener-paciente] Unificación `getPaciente()` → `obtenerInfoPaciente()` en diagramas parciales CU2 y CU3 para mantener coherencia con diagrama final y diagramas de secuencia; PR:[#117] - @FacundoGuiraldes (Arquitecto de Dominio)
+- [fix/correccion-anexos-md] Limpieza de marcas residuales de conflictos Git y texto duplicado en 04-isp.md resolviendo RCN1 y RCN2; PR:[#129] - @ValeriaMSilva (Coordinadora de Repositorio)
+- [fix/correccion-indices-readme] Eliminación de tabla de integrantes en índice de clases y links innecesarios en README para resolver RCN13 y RCN14; PR:[#127] - @ValeriaMSilva (Coordinadora de Repositorio)
+- [fix/correccion-actividades-cu1] Resolución de RCN4 conectando el nodo STOP en el diagrama de actividades del CU1; PR:[#126] - @ValeriaMSilva (Coordinador de Repositorio)
+- [fix/limpieza-repo] Eliminación de archivo de imagen genérico mal ubicado en el directorio de anexos funcionales; PR:[#123] - @ValeriaMSilva (Coordinadora de Repositorio)
+- [fix/correccion-diagrama-cu1] Resolución de RC5, RC6, RC7, RC9 y RC10 en el diagrama de clases del CU1; PR:[#122] - @ValeriaMSilva (Coordinadora de Repositorio / Analista CU1)
+- [fix/correccion-rc-anexo-cu1] Resolución de RC1, RC2 y RC4 en Anexo CU1 ajustando trazabilidad, formato de pseudocódigo y enlaces a diagramas; PR:[#120] - @ValeriaMSilva (Coordinadora de Repositorio / Analista CU1)
+- [fix/analista-cu2-cu3-correcciones] Resolución de RC13, RC14, RC15, RC16, RC18, RC19, RC20, RC21, RC22, RC23, RC26 y RC27 en diagramas de clases parciales y especificaciones de pseudocódigo en anexos funcionales para CU2 y CU3, eliminando identificadores relacionales y asegurando consistencia estructural OO pura; PR:[#121] - @carolabenvenuto-uces (Analista Funcional CU2 y CU3)
+- [fix/correcciones-rc-cu4-cu5] Resolución de RC24, RC25, RC28, RC29, RC31, RC32, RC34 y RC35 en diagramas de clases de CU4 y CU5, eliminando atributos ID, ajustando relaciones estructurales a dependencias/composiciones y corrigiendo índices del análisis funcional; PR:[#119] - @caterinacerdan (Analista Funcional CU4 y CU5)
+- [fix/correccion-rcn5-al-rcn10] Resolución de RCN5, RCN7, RCN8, RCN9 y RCN10 en anexos funcionales de CU2 y CU3; cerrando bloques de pseudocódigo, completando tablas de clases involucradas (incluyendo Secretaria, Paciente y Usuario), reparando rutas relativas de diagramas; PR:[#130] - @carolabenvenuto-uces (Analista Funcional CU2 y CU3)
+- [fix/rc11-13] Simplificación de índices generales del repositorio y agregado de enlaces cruzados para trazabilidad explícita de artefactos; PR:[#128] - @FacundoGuiraldes (Arquitecto de Dominio)
+- [fix/diag-final-cortado] Corrección de inconsistencias en diagrama de clases final: eliminación de relación incorrecta ITurnoService, composición Agenda-Turno y dependencia EstadoTurno; regeneración de PNG sin cortes. PR:[#131] - @FacundoGuiraldes (Arquitecto de Dominio)
+- [fix/correccion-enlaces-rotos] Corrección de enlaces en CU1 y refinamiento de pseudocódigo en CU2 y CU3 resolviendo RCN1 a RCN10; PR:[#132] - @ValeriaMSilva (Coordinadora de Repositorio)
+- [fix/resolucion-rcn1-rcn4-rcn5-rcn10] Resolución definitiva de RCN1, RCN4, RCN5 y RCN10 en anexos de CU1, CU2 y CU3; reparación de ruta del diagrama de clases de CU1, conexión del flujo de control al nodo STOP terminal en actividades, cierre hermético de bloques Markdown y reescritura de pseudocódigos bajo paradigma OO puro (incorporando SalaEspera y removiendo parámetros de IDs relacionales); PR:[#133] - @carolabenvenuto-uces (Analista Funcional CU2 y CU3)
+- [fix/correciones-01-solicitar-turno] Corrección de inconsistencias en el anexo funcional 01-solicitar-turno.md: ajuste de relaciones UML, inclusión del actor Doctor en diagrama de secuencia, unificación de nomenclatura de métodos y actualización de enlaces a tarjetas CRC; PR:[#134] - @caterinacerdan (Analista Funcional CU4 y CU5)
 
 ## [Release Actividad N3] - 2026-05-21
 

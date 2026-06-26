@@ -4,7 +4,7 @@ title Diagrama de Secuencia: Cancelar Turno
 actor Paciente
 participant ":Secretaria" as secretaria
 participant ":Sistema" as sistema
-participant "agenda:Agenda" as agenda
+participant "agendaService:IAgendaService" as agendaService
 participant "turno:Turno" as turno
 
 Paciente -> secretaria: solicitarCancelarTurno()
@@ -15,10 +15,10 @@ sistema --> secretaria: menu
 deactivate sistema
 secretaria -> sistema: seleccionarCancelarTurno()
 activate sistema
-sistema -> agenda: obtenerTurnosPaciente(paciente)
-activate agenda
-agenda --> sistema: listaTurnosPaciente
-deactivate agenda
+sistema -> agendaService: obtenerTurnosPaciente(paciente)
+activate agendaService
+agendaService --> sistema: listaTurnosPaciente
+deactivate agendaService
 sistema --> secretaria: turnosPaciente
 deactivate sistema
 secretaria --> Paciente: listaTurnos
@@ -30,12 +30,12 @@ secretaria -> sistema: cancelarTurno(turno)
 activate sistema
 sistema -> turno: eliminarTurno()
 activate turno
-turno --> sistema: turnoEliminado
+turno --> sistema: turnoCancelado
 deactivate turno
-sistema -> agenda: removerTurno(turno)
-activate agenda
-agenda --> sistema: turnoRemovido
-deactivate agenda
+sistema -> agendaService: removerTurno(turno)
+activate agendaService
+agendaService --> sistema: disponibilidadLiberada
+deactivate agendaService
 sistema --> secretaria: turnoCancelado
 deactivate sistema
 secretaria --> Paciente: turnoCanceladoConfirmado

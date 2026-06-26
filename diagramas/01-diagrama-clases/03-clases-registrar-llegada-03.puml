@@ -1,0 +1,80 @@
+@startuml 03-clases-registrar-llegada-03
+title Diagrama de Clases: Registrar Llegada del Paciente (CU3)
+
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+abstract class Usuario {
+    +nombre: String
+    +apellido: String
+    +dni: String
+    +email: String
+    +getNombreCompleto(): String
+    +actualizarPerfil(nombre: String, apellido: String, email: String): Boolean
+    +recibirNotificacion(mensaje: String): void
+}
+
+class Paciente {
+    -fechaNacimiento: Date
+    -telefono: String
+    -direccion: String
+    +solicitarTurno(fecha: DateTime, hora: Time, especialidad: String): Turno
+    +cancelarTurno(turno: Turno, motivo: String): Boolean
+    +consultarTurnos(): List<Turno>
+    +registrarLlegada(turno: Turno): Boolean
+}
+
+class Secretaria {
+    -departamento: String
+    +programarTurno(paciente: Paciente, fecha: DateTime, hora: Time, especialidad: String): Turno
+    +cancelarTurno(turno: Turno, motivo: String): Boolean
+    +reagendarTurno(turno: Turno, nuevaFecha: DateTime, nuevaHora: Time): Boolean
+    +buscarPacientePorDNI(dni: String): Paciente
+}
+
+class Turno {
+    -fecha: DateTime
+    -hora: Time
+    -asistencia: Boolean
+    +marcarEnEspera(): void
+    +marcarAsistencia(presentado: Boolean): void
+    +obtenerPaciente(): Paciente
+    +cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+}
+
+class SalaEspera {
+    -pacientesEnEspera: List<Paciente>
+    +agregarPaciente(paciente: Paciente): Boolean
+    +removerPaciente(paciente: Paciente): Boolean
+    +listarPacientes(): List<Paciente>
+}
+
+class Agenda {
+    +agregarTurno(turno: Turno): Boolean
+    +removerTurno(turno: Turno): Boolean
+    +listarTurnos(): List<Turno]
+}
+
+interface ITurnoService {
+    +buscarTurnoPaciente(dni: String, fecha: DateTime): Turno
+    +actualizarTurno(turno: Turno): Boolean
+}
+
+interface ISalaEsperaService {
+    +registrarLlegada(paciente: Paciente): Boolean
+}
+
+class Sistema {
+    -turnoService: ITurnoService
+    -salaEsperaService: ISalaEsperaService
+    +registrarLlegadaPaciente(dni: String, fechaActual: DateTime): Boolean
+}
+
+Paciente --|> Usuario
+Secretaria --|> Usuario
+Turno "1" --> "1" Paciente : pertenece a
+Sistema --> ITurnoService : usa (DIP)
+Sistema --> ISalaEsperaService : usa (DIP)
+SalaEspera "1" --> "*" Paciente : contiene
+
+@enduml

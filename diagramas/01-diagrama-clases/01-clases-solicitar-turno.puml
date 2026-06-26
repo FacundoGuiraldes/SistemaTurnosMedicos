@@ -1,0 +1,52 @@
+@startuml 01-clases-solicitar-turno-01
+
+interface IPersistencia <<interfaz>> {
+  + guardarTurno(turno: Turno): void
+}
+
+interface INotificacion <<interfaz>> {
+  + enviarNotificacion(mensaje: String): void
+}
+
+class Paciente {
+  - dni: String
+  - nombre: String
+  - telefono: String
+  + obtenerDatosContacto(): String
+  + actualizarDatos(): void
+}
+
+class Doctor {
+  - matricula: String
+  - nombre: String
+  - especialidad: String
+  + obtenerEspecialidad(): String
+}
+
+class Turno {
+  - fecha: Date
+  - horario: Time
+  - estado: String
+  + confirmar(): void
+  + cancelar(): void
+}
+
+class Sistema {
+  - notificador: INotificacion
+  - baseDeDatos: IPersistencia
+  + buscarPaciente(dni: String): Paciente
+  + buscarDoctor(matricula: String): Doctor
+  + registrarTurno(paciente: Paciente, doctor: Doctor, fecha: Date): Turno
+}
+
+Sistema ..> IPersistencia : <<usa>>
+Sistema ..> INotificacion : <<usa>>
+
+Sistema --> "1" Doctor : consulta >
+Sistema --> "1" Paciente : consulta >
+Turno --> "1" Paciente : asignado a >
+Turno --> "1" Doctor : asignado a >
+
+Sistema *-- "0..*" Turno : registra >
+
+@enduml

@@ -8,6 +8,8 @@ Al analizar el diseño inicial del Sistema de Turnos Médicos, identificamos cla
 
 ## Explicación de Interfaces
 En la Programación Orientada a Objetos, una interfaz es un contrato abstracto que define un conjunto de comportamientos (métodos) que una clase concreta se compromete a implementar. Aplicar el ISP significa que estas interfaces deben estar diseñadas desde la perspectiva del cliente que las va a usar; deben ser "contratos" específicos para un dominio acotado para asegurar que las clases que las implementan usen el 100% de los métodos definidos.
+=======
+En la Programación Orientada a Objetos, una interfaz es un contrato abstracto que define un conjunto de comportamientos (métodos) que una clase concreta se compromete a implementar [3]. Aplicar el ISP significa que estas interfaces deben estar diseñadas desde la perspectiva del cliente que las va a usar; deben ser "contratos" específicos para un dominio acotado para asegurar que las clases que las implementan usen el 100% de los métodos definidos.
 
 ## Estructura de Clases
 A continuación se presenta el diagrama de clases modelado con PlantUML que refleja la refactorización aplicando ISP:

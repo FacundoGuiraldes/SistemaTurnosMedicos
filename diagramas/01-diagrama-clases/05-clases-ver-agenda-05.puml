@@ -1,0 +1,92 @@
+@startuml
+
+title CU05 - Ver Agenda
+
+skinparam class {
+    BackgroundColor #F0F4F8
+    BorderColor #2E86AB
+    ArrowColor #2E86AB
+    FontColor #1F1F1F
+}
+
+abstract class Usuario {
+    - nombre: String
+    - email: String
+    - telefono: String
+    ---
+    + login(): void
+    + logout(): void
+    + modificarPerfil(): void
+}
+
+class Doctor {
+    - numeroLicencia: String
+    - especialidad: String
+    - consultorio: String
+    - horariosDisponibles: List<String>
+    ---
+    + verAgenda(fecha: Date): Agenda
+    + consultarPacientesSalaEspera(): List<Paciente>
+    + marcarPacienteAtendido(turno: Turno): void
+    + definirDisponibilidad(horarios: List<String>): void
+    + registrarDiagnostico(turno: Turno, diagnostico: String): void
+    + autorizarSobreturno(agenda: Agenda): boolean
+}
+
+class Agenda {
+    - fecha: Date
+    - horaApertura: Time
+    - horaCierre: Time
+    - turnos: List<Turno>
+    - horariosBloqueados: List<String>
+    ---
+    + crearAgendaDelDia(fecha: Date): void
+    + obtenerTurnosDelDia(fecha: Date): List<Turno>
+    + obtenerInfoTurno(turno: Turno): Map<String, String>
+    + validarTurnosContraReglas(): boolean
+    + sugerirProximasFranjasLibres(): List<String>
+}
+
+class Turno {
+    - fecha: Date
+    - hora: Time
+    - estado: String
+    - especialidad: String
+    - motivoConsulta: String
+    ---
+    + obtenerDetalles(): Map<String, String>
+    + obtenerInfoPaciente(): Paciente
+}
+
+class Paciente {
+    - numeroHistorial: String
+    - dni: String
+    - direccion: String
+    - alergias: List<String>
+    ---
+    + solicitarTurno(doctor: Doctor, fecha: Date, hora: Time): Turno
+    + cancelarTurno(turno: Turno): boolean
+    + consultarTurnos(): List<Turno>
+}
+
+interface ITurnoRepository {
+    + obtenerTurnosPorFecha(fecha: Date, doctor: Doctor): List<Turno>
+}
+
+class Sistema {
+    - turnoRepository: ITurnoRepository
+    ---
+    + accederAlSistema(numeroLicencia: String): boolean
+    + seleccionarVerAgenda(): Agenda
+    + consultarPacienteEspecifico(turno: Turno): Paciente
+}
+
+Usuario <|-- Doctor
+
+Doctor --> Sistema : accede a
+Sistema ..> Agenda : crea y consulta
+Agenda "1" *-- "0..*" Turno : contiene
+Agenda ..> ITurnoRepository : depende
+Turno --> Paciente : referencia
+
+@enduml

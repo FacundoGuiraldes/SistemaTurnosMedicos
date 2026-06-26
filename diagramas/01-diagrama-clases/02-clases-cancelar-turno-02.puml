@@ -1,0 +1,87 @@
+@startuml 02-clases-cancelar-turno-02
+title Diagrama de Clases: Cancelar Turno (CU2)
+
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+abstract class Usuario {
+    +nombre: String
+    +apellido: String
+    +dni: String
+    +email: String
+    +getNombreCompleto(): String
+    +actualizarPerfil(nombre: String, apellido: String, email: String): Boolean
+    +recibirNotificacion(mensaje: String): void
+}
+
+class Paciente {
+    -fechaNacimiento: Date
+    -telefono: String
+    -direccion: String
+    +solicitarTurno(fecha: DateTime, hora: Time, especialidad: String): Turno
+    +cancelarTurno(turno: Turno, motivo: String): Boolean
+    +consultarTurnos(): List<Turno>
+    +registrarLlegada(turno: Turno): Boolean
+}
+
+class Secretaria {
+    -departamento: String
+    +programarTurno(paciente: Paciente, fecha: DateTime, hora: Time, especialidad: String): Turno
+    +cancelarTurno(turno: Turno, motivo: String): Boolean
+    +reagendarTurno(turno: Turno, nuevaFecha: DateTime, nuevaHora: Time): Boolean
+    +buscarPacientePorDNI(dni: String): Paciente
+}
+
+class Turno {
+    -fecha: DateTime
+    -hora: Time
+    -estado: EstadoTurno
+    +cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+    +obtenerPaciente(): Paciente
+}
+
+class Agenda {
+    +removerTurno(turno: Turno): Boolean
+    +agregarTurno(turno: Turno): Boolean
+    +listarTurnos(): List<Turno>
+}
+
+enum EstadoTurno {
+    PENDIENTE
+    EN_ESPERA
+    ATENDIDO
+    AUSENTE
+    CANCELADO
+}
+
+interface ITurnoRepository {
+    +buscarPorId(turnoId: String): Turno
+    +actualizar(turno: Turno): Boolean
+}
+
+interface IAgendaService {
+    +removerTurno(turno: Turno): Boolean
+}
+
+interface INotificacionService {
+    +enviarNotificacionCancelacion(usuario: Usuario, detalle: String): void
+}
+
+class Sistema {
+    -turnoRepository: ITurnoRepository
+    -agendaService: IAgendaService
+    -notificacionService: INotificacionService
+    +cancelarTurno(turnoId: String, solicitadoPor: Usuario): Boolean
+}
+
+Paciente --|> Usuario
+Secretaria --|> Usuario
+Turno "1" --> "1" Paciente : pertenece a
+Turno "1" --> "1" Agenda : asociado a
+Turno .up.> EstadoTurno : usa
+
+Sistema --> ITurnoRepository : usa (DIP)
+Sistema --> IAgendaService : usa (DIP)
+Sistema --> INotificacionService : usa (DIP)
+
+@enduml

@@ -9,24 +9,15 @@
 
 ## Integrantes
 
-| Nombre y Apellido | Matrícula | Usuario de GitHub | Rol Actividad N3 |
-| --- | --- | --- | --- |
-| Caterina Cerdán | 159237 | @caterinacerdan | Esp. Actividades (CU 1 y 2) |
-| Facundo Guiraldes | 114794 | @FacundoGuiraldes | Esp. Actividades (CU 3, 4 y 5) |
-| Valeria Silva | 156612 | @ValeriaMSilva | Especialista en Secuencia |
-| Carola Benvenuto | 158686 | @carolabenvenuto-uces | Documentador y Coordinador |
+| Nombre y Apellido | Matrícula | Usuario de GitHub |
+| --- | --- | --- |
+| Valeria Silva | 156612 | @ValeriaMSilva |
+| Carola Benvenuto | 158686 | @carolabenvenuto-uces |
+| Caterina Cerdán | 159237 | @caterinacerdan |
+| Facundo Guiraldes | 114794 | @FacundoGuiraldes |
 
-## Diagramas UML
+## Documentación Principal
 
-* [Diagramas de Casos de Uso](./diagramas/02-casos-de-uso/diagramas_de_casos_de_uso.md)
-* [Escenarios de Casos de Uso](./diagramas/03-escenarios-casos-de-uso/escenarios_de_casos_de_uso.md)
-* [Diagramas de Actividades](./diagramas/04-diagramas-actividades/diagramas_de_actividades.md)
-* [Diagramas de Secuencia](./diagramas/05-diagramas-secuencia/diagramas_de_secuencias.md)
-
-## Documentación Adicional
-
-- [Principios SOLID](./anexos/principios-solid/principios_solid.md)
-- [Tarjetas CRC](./herramientas-agile/tarjetas-crc/tarjetas_crc.md)
-- [Historial de Procesos IA](./ia/)
-- [Herramientas Agile](./herramientas-agile/herramientas_agile.md)
+- [Índice de Diagramas UML](./diagramas/diagramasUML.md)
+- [Índice de Anexos](./anexos/anexos.md)
 - [Historial de Cambios](./changelog.md)
