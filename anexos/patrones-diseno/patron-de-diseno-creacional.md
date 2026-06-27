@@ -45,6 +45,12 @@ A continuación, se detalla el modelado UML de la solución implementada donde s
 * **Product (`Turno`):** Diseñado como clase abstracta en lugar de interfaz pura porque aloja atributos estructurales del dominio compartidos por todos los tipos de turnos (`fecha`, `hora`, `especialidad`) y define las firmas polimórficas de los métodos abstractos `confirmar()`, `cancelar()` y `marcarAsistencia()`.
 * **ConcreteProducts (`TurnoPresencial`, `TurnoVirtual`, `TurnoTelemedicina`):** Especializaciones del dominio que incorporan sus propios atributos de estado complementarios y específicos (`numeroConsultorio`/`pisoEdificio`, `enlaceVideollamada`/`codigoAcceso`/`plataforma`, y `idProveedor`/`direccionPaciente`/`equipoMedico` respectivamente) para ejecutar sus comportamientos polimórficos de atención al paciente.
 
+#### Jerarquía del Sistema de Notificaciones
+* **Creator (`INotificacionFactory`):** Interfaz que define el contrato abstracto de instanciación para los canales de comunicación de alertas de la clínica.
+* **ConcreteCreators (`Email- / SMS- / WhatsApp- / PushNotificacionFactory`):** Componentes técnicos aislados encargados de resolver la configuración inicial, credenciales de pasarelas, protocolos y parámetros de red específicos de cada canal proveedor (SMTP, Twilio, Firebase, etc.).
+* **Product (`Notificacion`):** Clase abstracta que define la interfaz común de comunicación externa a través del método abstracto `enviar(mensaje: String)`.
+* **ConcreteProducts (`EmailNotificacion`, `SMSNotificacion`, `WhatsAppNotificacion`, `PushNotificacion`):** Implementaciones de bajo nivel que encapsulan los detalles del driver o librería encargada de la transmisión efectiva del mensaje según el medio físico seleccionado.
+
 ## 5. Justificación Técnica de la Solución Propuesta
 La solución optimiza la creación de objetos en el sistema debido a:
 - **Reducción del Acoplamiento:** Las clases clientes interaccionan puramente con `ITurnoFactory` e `INotificacionFactory`. Desconocen qué subtipo de objeto se está instanciando en tiempo de ejecución.
