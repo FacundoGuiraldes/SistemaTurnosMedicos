@@ -247,3 +247,64 @@ Observaciones secundarias nuevas detectadas:
 
 ### Ajustes aplicados antes de publicar el comentario en GitHub
 Se solicitó a Claude que publicara el informe de seguimiento como comentario en la PR, indicando qué observaciones fueron resueltas, cuál quedó parcialmente resuelta y detallando las tres observaciones secundarias nuevas detectadas.
+
+---
+
+## Revisión 5 – PR: `feature/esp-patron-creacional-add-patron-factory` (Tercera revisión)
+
+### Prompt utilizado en Claude
+```
+Actuá como revisor técnico senior especializado en diseño orientado a objetos y 
+patrones de diseño GoF.
+
+Estoy realizando una tercera revisión de una Pull Request que implementa el patrón 
+de diseño creacional Factory Method en un sistema de gestión de turnos médicos.
+
+En la revisión anterior quedaron 5 puntos pendientes de corrección:
+
+OBS 2.6 — Composition root parcialmente resuelto. Problemas pendientes:
+- Problema 1: Secretaria y ServicioNotificaciones no conectados al composition root
+- Problema 2: Selección de factory concreta sin criterio documentado
+- Problema 3: Etiqueta instancializa con error tipográfico (debe ser instancia o crea)
+
+OBS A — Inconsistencia en nombres de métodos abstractos de Turno: el documento 
+menciona ejecutarProtocolo() pero el diagrama define confirmar(), cancelar() y 
+marcarAsistencia()
+
+OBS B — Inconsistencia en nombres de atributos de ConcreteProducts: el documento 
+cita nroConsultorio, urlReunion y tokenPlataformaMedica pero el diagrama usa 
+numeroConsultorio, enlaceVideollamada, e idProveedor / direccionPaciente / 
+equipoMedico respectivamente
+
+Los archivos actualizados son:
+- anexos/patrones-diseno/patron-de-diseno-creacional.md
+- diagramas/01-diagrama-clases/06-patron-creacional-factory.puml
+- diagramas/01-diagrama-clases/06-patron-creacional-factory.png
+
+Para cada punto pendiente indicá:
+- Si fue resuelto correctamente
+- Si fue resuelto parcialmente (qué falta)
+- Si no fue resuelto
+
+No modifices ningún archivo. Limitá tu respuesta exclusivamente a un informe de 
+seguimiento extremadamente detallado.
+```
+
+### Output generado por Claude
+Informe de Seguimiento — Tercera Revisión Técnica
+PR: Patrón de Diseño Creacional — Factory Method
+Fecha: 2026-06-27
+
+OBS 2.6.1 — Secretaria y ServicioNotificaciones sin conexión al composition root: RESUELTA.
+OBS 2.6.2 — Criterio de selección de factory concreta no documentado: RESUELTA.
+OBS 2.6.3 — Etiqueta instancializa con error tipográfico: RESUELTA.
+OBS A — Método abstracto ejecutarProtocolo() inexistente en el diagrama: RESUELTA.
+OBS B — Nombres de atributos incorrectos en ConcreteProducts: RESUELTA.
+
+REGRESIÓN DETECTADA — Severidad: Alta — bloquea aprobación:
+El commit 144ff04 eliminó por completo la subsección "Jerarquía del Sistema de Notificaciones" de la sección 4.1 del documento. Esta sección había sido aprobada en la revisión anterior como corrección a OBS 1.2. Los ocho participantes de la jerarquía de Notificaciones (INotificacionFactory, cuatro ConcreteCreators, Notificacion, cuatro ConcreteProducts) ya no tienen análisis técnico en el documento pese a estar completamente modelados en el diagrama. La OBS 1.2 debe reabrirse.
+
+Corrección requerida: Restaurar la subsección eliminada desde el commit b414814.
+
+### Ajustes aplicados antes de publicar el comentario en GitHub
+Se solicitó a Claude que publicara el informe de seguimiento como comentario en la PR, indicando que los 5 puntos pendientes fueron resueltos pero que se introdujo una regresión que bloquea el merge, con instrucción específica de restaurar la subsección desde el commit b414814.
