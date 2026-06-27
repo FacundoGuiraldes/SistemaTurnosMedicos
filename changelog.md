@@ -1,9 +1,9 @@
 # Changelog
 
-## [Release Segundo Parcial] - 2026-06-26
+## [Release Segundo Parcial] - 2026-06-27
 
 ### Added
-- [feature/coord-devops-update-docs] Coordinación y documentación del Segundo Parcial. Se creó el índice de patrones de diseño (`anexos/patrones-diseno/patrones_diseno.md`), se actualizó `anexos/anexos.md`, `README.md` y se documentaron las 3 revisiones de PRs asistidas con IA en `ia/segundo-parcial/coordinador-devops.md`. PR: [#137](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/137) | Issue: [#143](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/143) - @FacundoGuiraldes (Coordinador y DevOps)
+- [feature/coord-devops-update-docs] Coordinación y documentación del Segundo Parcial. Se creó el índice de patrones de diseño (`anexos/patrones-diseno/patrones_diseno.md`), se actualizó `anexos/anexos.md`, `README.md` y `diagramas/01-diagrama-clases/diagramas_clases.md`, y se documentaron 12 revisiones de PRs asistidas con IA en `ia/segundo-parcial/coordinador-devops.md`. PR: [#137](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/137) | Issue: [#143](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/143) - @FacundoGuiraldes (Coordinador y DevOps)
 
 ## [Release Actividad N4] - 2026-06-18
 
