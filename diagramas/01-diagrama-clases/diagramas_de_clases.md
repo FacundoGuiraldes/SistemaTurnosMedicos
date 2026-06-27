@@ -16,3 +16,6 @@
   * [Diagrama de Clases - Ver Agenda 05](./05-clases-ver-agenda-05.puml)
 
 * [Diagrama de Clases Final - Sistema de Turnos Médicos](./06-clases-diagrama-final.puml)
+
+* Patrones de Diseño
+  * [Diagrama de Clases - Patrón Estructural Facade](./01-patron-estructural-facade.puml)
