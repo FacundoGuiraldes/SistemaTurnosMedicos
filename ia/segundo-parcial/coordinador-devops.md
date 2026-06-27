@@ -430,3 +430,84 @@ Fix 12 — Iteración 2 sin listado de archivos de contexto: NO RESUELTO.
 
 ### Ajustes aplicados antes de publicar el comentario en GitHub
 Se solicitó a Claude que publicara el informe de seguimiento como comentario en la PR, detallando el estado de cada fix y especificando las correcciones pendientes antes de aprobar el merge.
+
+---
+
+## Revisión 8 – PR: `feature/esp-patron-comportamiento-add-patron-observer` (Tercera revisión)
+
+### Prompt utilizado en Claude
+```
+Actuá como revisor técnico senior especializado en diseño orientado a objetos y 
+patrones de diseño GoF.
+
+Estoy realizando una tercera revisión de una Pull Request que implementa el patrón 
+de diseño de comportamiento Observer en un sistema de gestión de turnos médicos.
+
+En la revisión anterior quedaron 12 fixes pendientes (0 resueltos, 2 parciales, 
+10 sin resolver). Los fixes y sus correcciones requeridas son:
+
+Fix 1: Agregar DIP en sección SOLID: TurnoMedico depende de IObserverTurno, no de 
+implementaciones concretas.
+Fix 2: Cambiar todos los ### de sección principal por ##.
+Fix 3: En .md línea 35 reemplazar notificarCancelacion por notificar(TurnoEvent evento). 
+En línea 37 reemplazar notificarCancelacion(evento) o notificar(evento) por notificar(evento).
+Fix 4: En línea 71 reemplazar la ruta ia/segundo-parcial/patron-de-diseno-de-comportamiento.md 
+por ia/segundo-parcial/especialista-patron-comportamiento.md.
+Fix 5: Eliminar mención de actualizar() sin parámetros en línea 29 y dejar solo 
+void actualizar(TurnoEvent evento) como firma definitiva.
+Fix 6: En .puml línea 62 cambiar crea/ por crea o <<creates>>.
+Fix 7: Agregar en .puml:
+IObserverTurno ..> TurnoEvent : usa
+ISubjectTurno ..> TurnoEvent : usa
+Fix 8: Opcional — agregar punto de composición.
+Fix 9: Agregar sección ## Comparación con Patrones Alternativos con tabla que 
+incluya Mediator, Strategy, Chain of Responsibility y Command.
+Fix 10: Reestructurar inicio de especialista-patron-comportamiento.md agregando 
+encabezado ### Iteración 1 y envolviendo el prompt en bloque ```text.
+Fix 11: Agregar subsección Ajustes realizados debajo de cada prompt en ambas 
+iteraciones.
+Fix 12: Agregar listado de archivos de contexto en Iteración 2.
+
+Los archivos actualizados son:
+- anexos/patrones-diseno/patron-de-diseno-de-comportamiento.md
+- ia/segundo-parcial/especialista-patron-comportamiento.md
+- diagramas/01-diagrama-clases/01-patron-comportamiento-observer.puml
+- diagramas/01-diagrama-clases/01-patron-comportamiento-observer.png
+
+Para cada fix indicá:
+- Si fue resuelto correctamente
+- Si fue resuelto parcialmente (qué falta)
+- Si no fue resuelto
+
+No modifices ningún archivo. Limitá tu respuesta exclusivamente a un informe de 
+seguimiento extremadamente detallado.
+```
+
+### Output generado por Claude
+Tercera Revisión Técnica — Patrón Observer
+Fecha: 2026-06-27
+
+Resultado: 10 fixes completamente resueltos — 1 parcialmente resuelto — 0 sin resolver.
+
+Fix 1 — DIP en sección SOLID: RESUELTO.
+Fix 2 — Jerarquía ## en encabezados: RESUELTO.
+Fix 3 — notificarCancelacion → notificar: RESUELTO.
+Fix 4 — Pie de documento referencia correcta: RESUELTO.
+Fix 5 — Firma única actualizar(TurnoEvent evento): RESUELTO.
+Fix 6 — Etiqueta crea/ → crea: RESUELTO.
+Fix 7 — Dependencias explícitas de interfaces hacia TurnoEvent: RESUELTO.
+Fix 8 — Punto de composición EventDispatcher: RESUELTO.
+Fix 9 — Sección comparativa de patrones alternativos: RESUELTO.
+Fix 10 — Iteración 1 con header y bloque text: RESUELTO.
+Fix 11 — Ajustes realizados documentados: PARCIALMENTE RESUELTO. Dos inexactitudes factuales:
+  - Iteración 1: documenta etiqueta crea > pero el .puml implementa crea (sin el >).
+  - Iteración 2: documenta "Alternativas consideradas" pero la sección real se llama 
+    "Comparación con Patrones Alternativos".
+Fix 12 — Iteración 2 con archivos de contexto: RESUELTO.
+
+Queda pendiente únicamente Fix 11 con dos correcciones puntuales antes del merge.
+
+### Ajustes aplicados antes de publicar el comentario en GitHub
+Se solicitó a Claude que publicara el informe de seguimiento como comentario en la PR, 
+indicando que 10 de 12 fixes fueron resueltos y detallando las dos correcciones 
+puntuales pendientes del Fix 11 antes de aprobar el merge.
