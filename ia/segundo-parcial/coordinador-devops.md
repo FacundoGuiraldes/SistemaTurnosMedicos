@@ -308,3 +308,53 @@ Corrección requerida: Restaurar la subsección eliminada desde el commit b41481
 
 ### Ajustes aplicados antes de publicar el comentario en GitHub
 Se solicitó a Claude que publicara el informe de seguimiento como comentario en la PR, indicando que los 5 puntos pendientes fueron resueltos pero que se introdujo una regresión que bloquea el merge, con instrucción específica de restaurar la subsección desde el commit b414814.
+
+---
+
+## Revisión 6 – PR: `feature/esp-patron-creacional-add-patron-factory` (Cuarta revisión)
+
+### Prompt utilizado en Claude
+```
+Actuá como revisor técnico senior especializado en diseño orientado a objetos y 
+patrones de diseño GoF.
+
+Estoy realizando una cuarta revisión de una Pull Request que implementa el patrón 
+de diseño creacional Factory Method en un sistema de gestión de turnos médicos.
+
+En la revisión anterior quedó un único punto pendiente de corrección:
+
+REGRESIÓN OBS 1.2 — La subsección "Jerarquía del Sistema de Notificaciones" fue 
+eliminada accidentalmente de la sección 4.1 del documento 
+patron-de-diseno-creacional.md. Se requería restaurar el análisis técnico de los 
+ocho participantes de la jerarquía de Notificaciones (INotificacionFactory, cuatro 
+ConcreteCreators, Notificacion, cuatro ConcreteProducts).
+
+El archivo actualizado es:
+- anexos/patrones-diseno/patron-de-diseno-creacional.md
+
+Verificá únicamente si la subsección "Jerarquía del Sistema de Notificaciones" fue 
+restaurada correctamente en la sección 4.1, con análisis técnico de todos los 
+participantes GoF del subsistema de notificaciones.
+
+No modifices ningún archivo. Limitá tu respuesta exclusivamente a un informe de 
+seguimiento extremadamente detallado.
+```
+
+### Output generado por Claude
+Informe de Seguimiento — Cuarta Revisión Técnica
+PR: Patrón de Diseño Creacional — Factory Method
+Fecha: 2026-06-27
+
+REGRESIÓN OBS 1.2 — Subsección "Jerarquía del Sistema de Notificaciones": RESUELTA CORRECTAMENTE.
+
+La subsección fue restaurada en su totalidad en la sección 4.1 (líneas 48–52). Los cuatro participantes GoF del subsistema de Notificaciones fueron verificados individualmente:
+
+- Creator (INotificacionFactory): rol GoF explícito, contrato abstracto de instanciación correctamente descrito.
+- ConcreteCreators (Email- / SMS- / WhatsApp- / PushNotificacionFactory): cuatro factories nombradas con responsabilidad técnica diferencial documentada (SMTP, Twilio, Firebase).
+- Product (Notificacion): clase abstracta con método abstracto enviar() referenciado.
+- ConcreteProducts (EmailNotificacion, SMSNotificacion, WhatsAppNotificacion, PushNotificacion): cuatro productos nombrados con justificación técnica válida.
+
+Conclusión: Todos los puntos observados a lo largo de las cuatro revisiones han sido resueltos. No quedan observaciones pendientes. La PR está técnicamente lista para aprobación y merge.
+
+### Ajustes aplicados antes de publicar el comentario en GitHub
+Se solicitó a Claude que publicara el informe de seguimiento como comentario en la PR, confirmando que todos los puntos están cerrados y que la PR está lista para aprobación y merge.
