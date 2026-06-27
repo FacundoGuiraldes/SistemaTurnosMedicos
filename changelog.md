@@ -1,7 +1,9 @@
 # Changelog
 
-## [Release Segundo Parcial] - 2026-06-27
+## [Release Segundo Parcial] - 2026-06-26
+
 ### Added
+- [feature/esp-patron-comportamiento-add-patron-observer] Aplicación del patrón de comportamiento Observer para notificaciones de turnos, creación de justificación técnica y diagrama UML (Issue #138). PR: [#139](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/139) - @ValeriaMSilva (Especialista en Patrón de Diseño de Comportamiento)
 - [ feature/esp-patron-creacional-add-patron-factory] Aplicación del Patrón de Diseño Creacional [Factory Method] sobre el diseño del Sistema de Turnos Médicos. Se agregaron el anexo técnico explicativo, el diagrama de clases en PlantUML/PNG (`06-patron-creacional-factory.puml`) y la bitácora de IA asociada. PR: [#142](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/142) | Issue: [#140](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/140) - @carolabenvenuto-uces (Especialista en Patrón de Diseño Creacional)
 
 ## [Release Actividad N4] - 2026-06-18
