@@ -182,16 +182,68 @@ Se solicitó a Claude que publicara la revisión como comentario en la PR corres
 
 ---
 
-## Revisión 4 – PR: `feature/coord-devops-update-docs`
+## Revisión 4 – PR: `feature/esp-patron-creacional-add-patron-factory` (Segunda revisión)
 
 ### Prompt utilizado en Claude
 ```
-[Completar con el prompt usado al momento de revisar la PR]
+Actuá como revisor técnico senior especializado en diseño orientado a objetos y 
+patrones de diseño GoF.
+
+Estoy realizando una segunda revisión de una Pull Request que implementa el patrón 
+de diseño creacional Factory Method en un sistema de gestión de turnos médicos.
+
+En la revisión anterior se detectaron las siguientes observaciones pendientes de 
+corrección:
+
+CRITERIO 1:
+- Relación con SOLID incompleta: faltaban SRP, LSP e ISP
+- Justificación técnica de cada clase ausente en sección 4
+
+CRITERIO 2:
+- Estereotipo <<interfaz>> no estándar (debe ser <<interface>>)
+- Tipos de retorno covariantes inconsistentes con contrato GoF
+- Inconsistencia en notación de relaciones de creación (..> y --> mezclados)
+- Firma incompleta en Sistema.registrarTurno() (faltan hora y especialidad)
+- Coexistencia de constructor injection y setter injection en Sistema
+- Ausencia del punto de composición (composition root)
+
+CRITERIO 3:
+- Ausencia total de análisis comparativo con Abstract Factory, Builder y Prototype
+
+Los archivos actualizados son:
+- anexos/patrones-diseno/patron-de-diseno-creacional.md
+- ia/segundo-parcial/especialista-patron-creacional.md
+- diagramas/01-diagrama-clases/06-patron-creacional-factory.puml
+- diagramas/01-diagrama-clases/06-patron-creacional-factory.png
+
+Para cada observación de la revisión anterior indicá:
+- Si fue resuelta correctamente
+- Si fue resuelta parcialmente (qué falta)
+- Si no fue resuelta
+
+No modifices ningún archivo. Limitá tu respuesta exclusivamente a un informe de 
+seguimiento extremadamente detallado.
 ```
 
 ### Output generado por Claude
-[Completar con el output generado por Claude]
+Informe de Seguimiento de Segunda Revisión Técnica
+PR: Patrón de Diseño Creacional — Factory Method
+Fecha: 2026-06-27
+
+OBS 1.1 — SOLID incompleto: RESUELTA. Los cinco principios cubiertos correctamente.
+OBS 1.2 — Justificación técnica de clases ausente: RESUELTA. Sección 4.1 agregada con justificación por participante GoF para ambas jerarquías.
+OBS 2.1 — Estereotipo <<interfaz>>: RESUELTA. Reemplazado por <<interface>> en ambas interfaces.
+OBS 2.2 — Tipos de retorno covariantes: RESUELTA. Todos los ConcreteCreators retornan el tipo abstracto.
+OBS 2.3 — Notación de relaciones mixta: RESUELTA. Diferenciación semántica correcta entre ..> y -->.
+OBS 2.4 — Firma incompleta en registrarTurno(): RESUELTA. Parámetros hora y especialidad incorporados.
+OBS 2.5 — Setter injection coexistente: RESUELTA. Setters eliminados de todas las clases afectadas.
+OBS 2.6 — Composition root ausente: PARCIALMENTE RESUELTA. TurnosMedicosApp incorporada pero incompleta: Secretaria y ServicioNotificaciones no están conectados al composition root; selección de factory concreta sin criterio documentado; etiqueta instancializa con error tipográfico.
+OBS 3.1 — Análisis comparativo GoF ausente: RESUELTA. Sección 6 incorporada con descarte técnico de Abstract Factory, Builder y Prototype.
+
+Observaciones secundarias nuevas detectadas:
+- Inconsistencia entre método abstracto citado en documentación (ejecutarProtocolo()) y métodos reales del diagrama (confirmar(), cancelar(), marcarAsistencia())
+- Nombres de atributos de ConcreteProducts en sección 4.1 no coinciden con los del PUML
+- Etiqueta instancializa con error tipográfico en relaciones del composition root
 
 ### Ajustes aplicados antes de publicar el comentario en GitHub
-[Completar con los cambios realizados al output antes de publicarlo]
-````
+Se solicitó a Claude que publicara el informe de seguimiento como comentario en la PR, indicando qué observaciones fueron resueltas, cuál quedó parcialmente resuelta y detallando las tres observaciones secundarias nuevas detectadas.
