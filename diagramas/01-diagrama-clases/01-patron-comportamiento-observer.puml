@@ -22,9 +22,16 @@ class TurnoEvent {
   +motivo: String
 }
 
+' Componente opcional de composición
+class EventDispatcher {
+  -observadores: List~IObserverTurno~
+  +registrar(IObserverTurno observer)
+  +desregistrar(IObserverTurno observer)
+  +despachar(TurnoEvent evento)
+}
+
 ' Sujeto concreto
 class TurnoMedico {
-  -observadores: List~IObserverTurno~
   -id: String
   -pacienteId: String
   -medicoId: String
@@ -58,23 +65,25 @@ NotificadorPaciente ..|> IObserverTurno
 NotificadorMedico ..|> IObserverTurno
 SistemaFacturacion ..|> IObserverTurno
 
-TurnoMedico "1" o-- "0..*" IObserverTurno : mantiene
-TurnoMedico --> TurnoEvent : crea >
+TurnoMedico --> EventDispatcher : usa
+EventDispatcher "1" o-- "0..*" IObserverTurno : mantiene
+EventDispatcher --> TurnoEvent : despacha
+TurnoMedico --> TurnoEvent : crea
 
-IObserverTurno ..> TurnoEvent : <<usa>>
-ISubjectTurno ..> TurnoEvent : <<usa>>
+IObserverTurno ..> TurnoEvent : usa
+ISubjectTurno ..> TurnoEvent : usa
 
 note top of TurnoMedico
   Punto de composición:
-  Un Gestor o el Caso de Uso instancia los observadores
-  (NotificadorPaciente, etc.) y los inscribe al TurnoMedico
-  mediante agregarObservador().
+  Un Gestor o el Caso de Uso instancia el EventDispatcher,
+  registra los observadores (NotificadorPaciente, etc.) y
+  lo asocia al TurnoMedico mediante suscribir().
 end note
 
 note right of TurnoMedico
   - Actualiza estado y persiste
   - Crea TurnoEvent con contexto
-  - Llama a notificar(evento)
+  - Delega la difusión en EventDispatcher
 end note
 
 note left of NotificadorPaciente

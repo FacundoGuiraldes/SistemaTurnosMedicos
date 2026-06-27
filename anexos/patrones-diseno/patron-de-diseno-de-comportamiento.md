@@ -27,13 +27,12 @@ A continuación se muestra el diagrama de clases que ilustra la relación entre 
 [Ver diagrama en tamaño completo](../../diagramas/01-diagrama-clases/01-patron-comportamiento-observer.png)
 
 ## Justificación Técnica de la Estructura de Clases
-- **IObserverTurno:** Define la interfaz común para todos los observadores con el método `actualizar(TurnoEvent evento)`. Esta interfaz asegura que `TurnoMedico` puede notificar observadores genéricos sin conocer su implementación concreta. Firma recomendada:
-  - `void actualizar(TurnoEvent evento)` — permite pasar información contextual (tipo de cambio, motivo, datos del turno).
+- **IObserverTurno:** Define la interfaz común para todos los observadores con el método `actualizar(TurnoEvent evento)`. Esta interfaz asegura que `TurnoMedico` puede notificar observadores genéricos sin conocer su implementación concreta. El objeto `TurnoEvent` transporta toda la información contextual del cambio (tipo de cambio, motivo, datos del turno).
 
 - **ISubjectTurno:** Interfaz del sujeto con métodos para gestionar observadores:
   - `suscribir(IObserverTurno observer)` — añade un observador.
   - `desuscribir(IObserverTurno observer)` — remueve un observador.
-  - `notificar(TurnoEvent evento)` — notifica a todos los observadores sobre una cancelación o reprogramación. También puede existir un método genérico `notificar(TurnoEvent evento)` para distintos tipos de eventos.
+  - `notificar(TurnoEvent evento)` — notifica a todos los observadores registrados. El objeto `TurnoEvent` encapsula el tipo de cambio, el motivo y los datos relevantes del turno.
 
 - **TurnoMedico (Sujeto concreto):** Mantiene una colección segura de observadores (por ejemplo, una lista thread-safe o una copia defensiva antes de iterar). Cuando el estado del turno cambia (cancelado, reprogramado), crea un `TurnoEvent` con los detalles relevantes y llama a `notificar(evento)`. Consideraciones técnicas:
   - Al cancelar/reprogramar, primero cambia el estado interno del turno, persiste el cambio y luego invoca `notificar(...)`.
@@ -67,16 +66,17 @@ Consideraciones adicionales:
 - Manejo de errores: asegure que una excepción en un observador no impida notificar a los demás (capturar excepciones por observador y registrar fallos).
 - Políticas de reintento y entrega: delegue envíos externos a colas o trabajos asíncronos para mejorar la resiliencia.
 
-## Alternativas consideradas
-Se analizaron varias alternativas de patrones de diseño antes de optar por Observer:
+## Comparación con Patrones Alternativos
 
-- Mediator: centraliza la comunicación entre componentes. No es ideal cuando los observadores son independientes y no deben conocer un mediador central único que coordine todo, pues añade un punto único de control y reduce la capacidad de añadir observadores externos fácilmente.
-- Strategy: sirve para intercambiar algoritmos o comportamientos entre sí, pero no está pensado para notificar múltiples receptores independientes ante un mismo evento.
-- Chain of Responsibility: útil para encadenar y delegar responsabilidad hasta que uno la maneje; no es adecuado cuando todos los receptores deben ser notificados de forma independiente.
-- Command: encapsula solicitudes como objetos, útil para deshacer/colar operaciones, pero no es la forma más directa para notificar múltiples subscriptores simultáneamente.
+| Patrón | Cuándo usarlo en lugar de Observer |
+|--------|-----------------------------------|
+| **Mediator** | Cuando los objetos se comunican entre sí en múltiples direcciones y la red de dependencias es compleja. Observer es adecuado cuando la dirección es Publisher → Subscribers. |
+| **Strategy** | Cuando el comportamiento varía por algoritmo intercambiable en tiempo de ejecución, no por distribución de eventos a múltiples receptores. |
+| **Chain of Responsibility** | Cuando un evento debe ser procesado por exactamente un manejador en una cadena ordenada, no por todos los observadores en paralelo. |
+| **Command** | Cuando se necesita encapsular operaciones para soporte de undo/redo o encolado diferido. Observer no encapsula la operación, solo distribuye la notificación. |
 
 Conclusión: Observer es la solución óptima porque: (a) hay múltiples receptores independientes, (b) el número de receptores puede variar dinámicamente, y (c) los receptores no necesitan conocerse entre sí.
 
 ---
 
-Archivo generado a partir de la versión en `ia/segundo-parcial/especialista-patron-comportamiento.md`.
+Archivo generado a partir del proceso documentado en `ia/segundo-parcial/especialista-patron-comportamiento.md`.

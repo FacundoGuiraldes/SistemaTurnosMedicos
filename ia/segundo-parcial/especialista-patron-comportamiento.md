@@ -1,5 +1,16 @@
 ### Iteración 1: Generación del diagrama PlantUML
-En esta primera iteración se solicitó a la IA la generación de la estructura base del patrón Observer en PlantUML a partir de los diagramas del sistema
+
+En esta primera iteración se solicitó a la IA la generación de la estructura base del patrón Observer en PlantUML a partir de los diagramas del sistema.
+
+Como contexto obligatorio, se utilizaron los siguientes archivos del proyecto:
+- `diagramas/01-diagrama-clases/01-diagrama-clases-final.puml`
+- `diagramas/01-diagrama-clases/01-solid-01-srp.puml`
+- `diagramas/01-diagrama-clases/01-solid-02-ocp.puml`
+- `diagramas/01-diagrama-clases/01-solid-03-lsp.puml`
+- `diagramas/01-diagrama-clases/01-solid-04-isp.puml`
+- `diagramas/01-diagrama-clases/01-solid-05-dip.puml`
+
+Para generar el código en PlantUML para el diagrama de clases `01-patron-comportamiento-observer.puml`, utilicé el siguiente prompt:
 
 ```text
 Actúa como un experto en Diseño Orientado a Objetos y patrones de diseño GoF.
@@ -16,11 +27,21 @@ Como contexto obligatorio, por favor utiliza los siguientes archivos del proyect
 Con base en este contexto, genera el código en PlantUML para el diagrama de clases (`01-patron-comportamiento-observer.puml`) que implemente la solución. Solo debes incluir las clases directamente implicadas en la implementación del patrón Observer, evitando sobrecargar el diagrama con detalles irrelevantes. Incluye la interfaz Subject/Publisher, la interfaz Observer/Subscriber, y sus implementaciones concretas adaptadas a nuestro dominio (ej. TurnoMedico, NotificadorPaciente, NotificadorMedico).
 ```
 
-#### Ajustes realizados
+**Ajustes realizados:**
 - Se corrigió la etiqueta de asociación de creación `crea/` a `crea >` en el diagrama PlantUML.
 - Se unificó el método de notificación bajo la firma `notificar(TurnoEvent evento)` para evitar ambigüedades entre variantes de notificación.
 
 ### Iteración 2: Generación del documento de justificación técnica
+
+Como contexto obligatorio, se proporcionaron los siguientes archivos:
+- `diagramas/01-diagrama-clases/01-patron-comportamiento-observer.puml` (generado en Iteración 1)
+- `diagramas/01-diagrama-clases/01-patron-comportamiento-observer.png`
+- `diagramas/01-diagrama-clases/01-solid-01-srp.puml`
+- `diagramas/01-diagrama-clases/01-solid-02-ocp.puml`
+- `diagramas/01-diagrama-clases/01-solid-03-lsp.puml`
+- `diagramas/01-diagrama-clases/01-solid-04-isp.puml`
+- `diagramas/01-diagrama-clases/01-solid-05-dip.puml`
+
 Para generar el anexo explicativo con la justificación técnica, la motivación y la estructura de clases del patrón Observer, utilicé el siguiente prompt:
 
 ```text
@@ -33,11 +54,15 @@ El documento debe seguir estrictamente esta estructura y contener las siguientes
 - Justificación Técnica de la Estructura de Clases (IObserverTurno, ISubjectTurno, TurnoMedico, NotificadorPaciente, etc.)
 ```
 
-#### Ajustes realizados
+**Ajustes realizados:**
 - Se eliminaron ambigüedades en las firmas de `IObserverTurno` dejando solo `actualizar(TurnoEvent evento)`.
 - Se agregó la subsección de `Alternativas consideradas` explicando por qué otros patrones no aplican y por qué Observer es la opción óptima.
 
 #### Archivos de contexto referenciados
 - `diagramas/01-diagrama-clases/01-patron-comportamiento-observer.puml`
 - `diagramas/01-diagrama-clases/01-patron-comportamiento-observer.png`
-- `diagramas/01-diagrama-clases/01-solid-01-srp.puml`, `01-solid-02-ocp.puml`, `01-solid-03-lsp.puml`, `01-solid-04-isp.puml`, `01-solid-05-dip.puml`
+- `diagramas/01-diagrama-clases/01-solid-01-srp.puml`
+- `diagramas/01-diagrama-clases/01-solid-02-ocp.puml`
+- `diagramas/01-diagrama-clases/01-solid-03-lsp.puml`
+- `diagramas/01-diagrama-clases/01-solid-04-isp.puml`
+- `diagramas/01-diagrama-clases/01-solid-05-dip.puml`
