@@ -68,4 +68,4 @@ Restricciones:
 
 - `anexos/patrones-diseno/patron-de-diseno-estructural.md`
 - `diagramas/01-diagrama-clases/01-patron-estructural-facade.puml`
-- `ia/segundo-parcial/especialista-patron-estructural.md`S
+- `ia/segundo-parcial/especialista-patron-estructural.md`

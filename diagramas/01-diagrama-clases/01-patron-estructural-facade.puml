@@ -35,7 +35,6 @@ package "Fachada" {
     + cancelarTurno(turnoId: String, motivo: String): boolean
     + registrarLlegadaPaciente(paciente: Paciente): LlegadaPaciente
     + verAgendaDoctor(doctor: Doctor, fecha: LocalDate): List<Turno>
-    + guardarCambios(): void
   }
 }
 
