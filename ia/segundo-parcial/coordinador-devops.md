@@ -1,4 +1,3 @@
-````markdown
 # Coordinador y DevOps – Segundo Parcial
 ## Documentación de Code Reviews asistidos con IA
 
@@ -511,3 +510,122 @@ Queda pendiente únicamente Fix 11 con dos correcciones puntuales antes del merg
 Se solicitó a Claude que publicara el informe de seguimiento como comentario en la PR, 
 indicando que 10 de 12 fixes fueron resueltos y detallando las dos correcciones 
 puntuales pendientes del Fix 11 antes de aprobar el merge.
+
+---
+
+## Revisión 9 – PR: `feature/esp-patron-comportamiento-add-patron-observer` (Cuarta revisión)
+
+### Prompt utilizado en Claude
+```
+Actuá como revisor técnico senior especializado en diseño orientado a objetos y 
+patrones de diseño GoF.
+
+Estoy realizando una cuarta revisión de una Pull Request que implementa el patrón 
+de diseño de comportamiento Observer en un sistema de gestión de turnos médicos.
+
+En la revisión anterior quedó únicamente un punto pendiente:
+
+Fix 11 — Parcialmente resuelto. Dos inexactitudes factuales en las descripciones 
+de ajustes realizados:
+
+1. Iteración 1, línea 31: documenta etiqueta crea > pero el .puml implementa crea 
+   (sin el >). Corrección requerida: cambiar crea > por crea.
+
+2. Iteración 2, línea 59: documenta "Alternativas consideradas" pero la sección 
+   real del documento se llama "Comparación con Patrones Alternativos". 
+   Corrección requerida: cambiar "Alternativas consideradas" por 
+   "Comparación con Patrones Alternativos".
+
+El archivo actualizado es:
+- ia/segundo-parcial/especialista-patron-comportamiento.md
+
+Verificá únicamente si las dos correcciones del Fix 11 fueron aplicadas correctamente.
+
+No modifices ningún archivo. Limitá tu respuesta exclusivamente a un informe de 
+seguimiento extremadamente detallado.
+```
+
+### Output generado por Claude
+Informe de Seguimiento — Cuarta Revisión — Fix 11
+Fecha: 2026-06-27
+
+Fix 11 — Corrección 1 — Iteración 1, línea 31: NO RESUELTA.
+La línea dice "Se corrigió la etiqueta de asociación de creación `crea/` a `crea`", pero el hallazgo original identificaba `crea >` (con signo mayor-que) como valor previo, no `crea/`. El valor origen documentado sigue siendo incorrecto.
+Corrección requerida: reemplazar `crea/` por `crea >` en la descripción de la línea 31.
+
+Fix 11 — Corrección 2 — Iteración 2, línea 59: RESUELTA.
+El texto ya refleja "Comparación con Patrones Alternativos", coincidiendo exactamente con el nombre real de la sección en el documento.
+
+Fix 11 sigue parcialmente pendiente únicamente en su Corrección 1.
+
+### Ajustes aplicados antes de publicar el comentario en GitHub
+Se solicitó a Claude que publicara el informe como comentario en la PR, indicando que la Corrección 2 está cerrada y que la Corrección 1 requiere reemplazar `crea/` por `crea >` en la línea 31 de especialista-patron-comportamiento.md.
+
+---
+
+## Revisión 10 – PR: `feature/esp-patron-estructural-add-patron-facade` (Segunda revisión)
+
+### Prompt utilizado en Claude
+```
+Actuá como revisor técnico senior especializado en diseño orientado a objetos y 
+patrones de diseño GoF.
+
+Estoy realizando una segunda revisión de una Pull Request que implementa el patrón 
+de diseño estructural Facade en un sistema de gestión de turnos médicos.
+
+En la revisión anterior se detectaron 9 correcciones requeridas:
+
+CRITERIO 1:
+- Corrección 1: Agregar mención de LSP con justificación de su impacto reducido en Facade
+- Corrección 2: Agregar descripción textual de la estructura del diagrama UML en la 
+  sección "Estructura de Clases"
+- Corrección 3: Separar justificación de subsistemas internos en entradas individuales, 
+  especialmente ServicioAutenticacion y AuditoriaService
+- Corrección 4: Agregar análisis comparativo contra Adapter, Bridge, Composite, 
+  Decorator y Proxy en el documento principal
+
+CRITERIO 2:
+- Corrección 5: Eliminar guardarCambios() de la interfaz pública de Sistema en el PUML
+- Corrección 6: Corregir crearTurno() en Turno: marcar como estático o reemplazar 
+  por constructor
+- Corrección 7: Unificar uso de Boolean vs boolean en todo el diagrama
+- Corrección 8: Alinear nombre Secretaria.programarTurno() con Sistema.solicitarTurno() 
+  o documentar la diferencia
+
+CRITERIO 4:
+- Corrección 9: Eliminar carácter espúreo S al final de línea 71 en 
+  especialista-patron-estructural.md
+
+Los archivos actualizados son:
+- anexos/patrones-diseno/patron-de-diseno-estructural.md
+- ia/segundo-parcial/especialista-patron-estructural.md
+- diagramas/01-diagrama-clases/01-patron-estructural-facade.puml
+- diagramas/01-diagrama-clases/01-patron-estructural-facade.png
+
+Para cada corrección indicá:
+- Si fue resuelta correctamente
+- Si fue resuelta parcialmente (qué falta)
+- Si no fue resuelta
+
+No modifices ningún archivo. Limitá tu respuesta exclusivamente a un informe de 
+seguimiento extremadamente detallado.
+```
+
+### Output generado por Claude
+Informe de Segunda Revisión — Patrón Facade
+Fecha: 2026-06-27
+
+Corrección 1 — LSP con justificación de impacto reducido: RESUELTA.
+Corrección 2 — Descripción textual del diagrama UML: RESUELTA.
+Corrección 3 — Subsistemas internos con entradas individuales: RESUELTA. Los siete subsistemas tienen entradas separadas con responsabilidad y operaciones de fachada documentadas.
+Corrección 4 — Análisis comparativo contra los cinco patrones estructurales: RESUELTA. Sección "Descarte de otros patrones estructurales" incorporada con análisis técnico de Adapter, Bridge, Composite, Decorator y Proxy.
+Corrección 5 — Eliminar guardarCambios() de Sistema: RESUELTA.
+Corrección 6 — Corregir crearTurno() en Turno: NO RESUELTA. El método sigue siendo de instancia retornando su propio tipo. No fue marcado como {static} ni reemplazado por constructor.
+Corrección 7 — Unificar Boolean vs boolean: NO RESUELTA. Persiste mezcla en cuatro clases: cinco ocurrencias boolean y cuatro Boolean.
+Corrección 8 — Alinear programarTurno / solicitarTurno: NO RESUELTA. La discrepancia persiste sin alineación de nombres ni documentación de la diferencia.
+Corrección 9 — Eliminar carácter espúreo S en línea 71: RESUELTA.
+
+Correcciones resueltas: 6 de 9. Las tres pendientes (6, 7 y 8) afectan exclusivamente al PUML y son independientes entre sí.
+
+### Ajustes aplicados antes de publicar el comentario en GitHub
+Se solicitó a Claude que publicara el informe como comentario en la PR, detallando las tres correcciones pendientes con instrucciones concretas para cada una antes de aprobar el merge.
