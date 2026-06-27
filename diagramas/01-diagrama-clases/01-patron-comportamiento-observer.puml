@@ -59,7 +59,17 @@ NotificadorMedico ..|> IObserverTurno
 SistemaFacturacion ..|> IObserverTurno
 
 TurnoMedico "1" o-- "0..*" IObserverTurno : mantiene
-TurnoMedico --> TurnoEvent : crea/
+TurnoMedico --> TurnoEvent : crea >
+
+IObserverTurno ..> TurnoEvent : <<usa>>
+ISubjectTurno ..> TurnoEvent : <<usa>>
+
+note top of TurnoMedico
+  Punto de composición:
+  Un Gestor o el Caso de Uso instancia los observadores
+  (NotificadorPaciente, etc.) y los inscribe al TurnoMedico
+  mediante agregarObservador().
+end note
 
 note right of TurnoMedico
   - Actualiza estado y persiste

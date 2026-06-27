@@ -1,17 +1,18 @@
 # Anexo – Aplicación de Patrón de Diseño de Comportamiento – Observer
 
-### Patrones de Diseño de Comportamiento y su relación con SOLID
+## Patrones de Diseño de Comportamiento y su relación con SOLID
 Los patrones de diseño de comportamiento se centran en la comunicación y colaboración entre objetos —cómo interactúan, se notifican y delegan responsabilidades— para resolver problemas recurrentes de diseño. Estos patrones promueven principios SOLID al favorecer la separación de responsabilidades y la extensibilidad:
 
 - Responsabilidad Única (SRP): Cada objeto tiene una única razón para cambiar; por ejemplo, un notificador se encarga sólo de notificar.
 - Abierto/Cerrado (OCP): Los componentes pueden extenderse (añadiendo nuevos observadores) sin modificar la lógica del sujeto que publica eventos.
+- Inversión de Dependencias (DIP): `TurnoMedico` depende de la abstracción `IObserverTurno` y no de sus implementaciones concretas, permitiendo sustituir o ampliar observadores sin recompilar el sujeto.
 
-### Propósito y Tipo del Patrón
+## Propósito y Tipo del Patrón
 **Propósito:** El objetivo es notificar automáticamente al paciente, al médico y al sistema de facturación cuando un turno es cancelado o reprogramado, evitando el acoplamiento fuerte entre `TurnoMedico` y los módulos de notificación y facturación. De este modo, la lógica de gestión de turnos permanece separada de las responsabilidades de notificación y cobro.
 
 **Tipo:** Patrón de Comportamiento — Observer.
 
-### Motivación
+## Motivación
 Antes de aplicar el patrón Observer, la clase `TurnoMedico` tenía la responsabilidad adicional de invocar directamente a los servicios de notificación (`NotificadorPaciente`, `NotificadorMedico`) y al `SistemaFacturacion` cada vez que un turno cambiaba de estado (cancelado, reprogramado). Esto implicaba:
 
 - Violación del principio Abierto/Cerrado: cada nueva forma de notificar requería modificar `TurnoMedico`.
@@ -19,22 +20,22 @@ Antes de aplicar el patrón Observer, la clase `TurnoMedico` tenía la responsab
 
 El patrón Observer resuelve esto introduciendo un sistema de publicación/suscripción: el `TurnoMedico` actúa como sujeto (subject) que mantiene una lista de observadores (observers). Los observadores se registran para recibir eventos y reaccionan de forma independiente cuando el sujeto emite una notificación. De esta forma, nuevas reacciones ante cambios en el turno se añaden registrando nuevos observadores, sin tocar la clase `TurnoMedico`.
 
-### Estructura de Clases
+## Estructura de Clases
 A continuación se muestra el diagrama de clases que ilustra la relación entre el sujeto y los observadores:
 
 ![Diagrama Observer](../../diagramas/01-diagrama-clases/01-patron-comportamiento-observer.png)
 [Ver diagrama en tamaño completo](../../diagramas/01-diagrama-clases/01-patron-comportamiento-observer.png)
 
-### Justificación Técnica de la Estructura de Clases
-- **IObserverTurno:** Define la interfaz común para todos los observadores con el método `actualizar(TurnoEvent event)` o `actualizar()` (según la granularidad deseada). Esta interfaz asegura que `TurnoMedico` puede notificar observadores genéricos sin conocer su implementación concreta. Firmas recomendadas:
+## Justificación Técnica de la Estructura de Clases
+- **IObserverTurno:** Define la interfaz común para todos los observadores con el método `actualizar(TurnoEvent evento)`. Esta interfaz asegura que `TurnoMedico` puede notificar observadores genéricos sin conocer su implementación concreta. Firma recomendada:
   - `void actualizar(TurnoEvent evento)` — permite pasar información contextual (tipo de cambio, motivo, datos del turno).
 
 - **ISubjectTurno:** Interfaz del sujeto con métodos para gestionar observadores:
   - `suscribir(IObserverTurno observer)` — añade un observador.
   - `desuscribir(IObserverTurno observer)` — remueve un observador.
-  - `notificarCancelacion(TurnoEvent evento)` — notifica a todos los observadores sobre una cancelación o reprogramación. También puede existir un método genérico `notificar(TurnoEvent evento)` para distintos tipos de eventos.
+  - `notificar(TurnoEvent evento)` — notifica a todos los observadores sobre una cancelación o reprogramación. También puede existir un método genérico `notificar(TurnoEvent evento)` para distintos tipos de eventos.
 
-- **TurnoMedico (Sujeto concreto):** Mantiene una colección segura de observadores (por ejemplo, una lista thread-safe o una copia defensiva antes de iterar). Cuando el estado del turno cambia (cancelado, reprogramado), crea un `TurnoEvent` con los detalles relevantes y llama a `notificarCancelacion(evento)` o `notificar(evento)`. Consideraciones técnicas:
+- **TurnoMedico (Sujeto concreto):** Mantiene una colección segura de observadores (por ejemplo, una lista thread-safe o una copia defensiva antes de iterar). Cuando el estado del turno cambia (cancelado, reprogramado), crea un `TurnoEvent` con los detalles relevantes y llama a `notificar(evento)`. Consideraciones técnicas:
   - Al cancelar/reprogramar, primero cambia el estado interno del turno, persiste el cambio y luego invoca `notificar(...)`.
   - Para sistemas concurrentes, evite bloqueos largos y use estrategias como copia por valor de la lista de observadores antes de iterar.
 
@@ -47,7 +48,7 @@ A continuación se muestra el diagrama de clases que ilustra la relación entre 
 
 - **SistemaFacturacion:** Observador que actualiza registros de facturación cuando corresponde (por ejemplo, marcar una cita como no facturable, aplicar políticas de cancelación, generar notas de crédito). Implementa `IObserverTurno` y contiene la lógica de negocio para determinar efectos contables de la cancelación o reprogramación.
 
-- **Flujo de comportamiento (paso a paso):**
+## Flujo de comportamiento (paso a paso):
   1. Al inicio del sistema, se crean instancias de los observadores: `NotificadorPaciente`, `NotificadorMedico`, `SistemaFacturacion` y se suscriben a instancias o a la fábrica/gestor de `TurnoMedico` según corresponda.
   2. Un usuario o proceso invoca `TurnoMedico.cancelar()` o `TurnoMedico.reprogramar(nuevaFecha)`.
   3. `TurnoMedico` valida reglas de negocio y actualiza su estado interno y la persistencia.
@@ -66,6 +67,16 @@ Consideraciones adicionales:
 - Manejo de errores: asegure que una excepción en un observador no impida notificar a los demás (capturar excepciones por observador y registrar fallos).
 - Políticas de reintento y entrega: delegue envíos externos a colas o trabajos asíncronos para mejorar la resiliencia.
 
+## Alternativas consideradas
+Se analizaron varias alternativas de patrones de diseño antes de optar por Observer:
+
+- Mediator: centraliza la comunicación entre componentes. No es ideal cuando los observadores son independientes y no deben conocer un mediador central único que coordine todo, pues añade un punto único de control y reduce la capacidad de añadir observadores externos fácilmente.
+- Strategy: sirve para intercambiar algoritmos o comportamientos entre sí, pero no está pensado para notificar múltiples receptores independientes ante un mismo evento.
+- Chain of Responsibility: útil para encadenar y delegar responsabilidad hasta que uno la maneje; no es adecuado cuando todos los receptores deben ser notificados de forma independiente.
+- Command: encapsula solicitudes como objetos, útil para deshacer/colar operaciones, pero no es la forma más directa para notificar múltiples subscriptores simultáneamente.
+
+Conclusión: Observer es la solución óptima porque: (a) hay múltiples receptores independientes, (b) el número de receptores puede variar dinámicamente, y (c) los receptores no necesitan conocerse entre sí.
+
 ---
 
-Archivo generado a partir de la versión en `ia/segundo-parcial/patron-de-diseno-de-comportamiento.md`.
+Archivo generado a partir de la versión en `ia/segundo-parcial/especialista-patron-comportamiento.md`.
