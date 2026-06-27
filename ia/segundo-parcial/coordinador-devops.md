@@ -676,3 +676,70 @@ El fragmento `crea/` fue reemplazado por `crea >` de forma precisa, sin caracter
 
 ### Ajustes aplicados antes de publicar el comentario en GitHub
 Se solicitó a Claude que publicara el informe de aprobación como comentario en la PR, confirmando que el Fix 11 está completamente resuelto y que la PR está lista para aprobación y merge.
+
+---
+
+## Revisión 12 – PR: `feature/esp-patron-estructural-add-patron-facade` (Tercera revisión)
+
+### Prompt utilizado en Claude
+```
+Actuá como revisor técnico senior especializado en diseño orientado a objetos y 
+patrones de diseño GoF.
+
+Estoy realizando una tercera revisión de una Pull Request que implementa el patrón 
+de diseño estructural Facade en un sistema de gestión de turnos médicos.
+
+En la revisión anterior quedaron 3 correcciones pendientes, todas en el archivo 
+01-patron-estructural-facade.puml:
+
+Corrección 6 — crearTurno() en Turno debe ser estático o constructor:
+El método crearTurno() en la clase Turno es un método de instancia que retorna un 
+objeto de su propio tipo, lo cual es semánticamente incorrecto. Debe aplicarse una 
+de estas dos opciones:
+- Opción A: marcar como estático: {static} + crearTurno(...): Turno
+- Opción B: reemplazar por constructor: + Turno(paciente, doctor, fecha, hora, especialidad)
+
+Corrección 7 — Unificar Boolean vs boolean en todo el diagrama:
+Reemplazar las cuatro ocurrencias de Boolean por boolean en las líneas 13, 49, 56 y 69:
+- Línea 13: Secretaria.cancelarTurno() → boolean
+- Línea 49: Agenda.removerTurno() → boolean
+- Línea 56: Turno.cancelar() → boolean
+- Línea 69: PersistenciaService.actualizar() → boolean
+
+Corrección 8 — Alinear o documentar programarTurno / solicitarTurno:
+La diferencia entre Secretaria.programarTurno() y Sistema.solicitarTurno() debe 
+resolverse con una de estas opciones:
+- Opción A: renombrar programarTurno() en Secretaria por solicitarTurno()
+- Opción B: agregar una nota UML en Secretaria documentando que programarTurno() 
+  invoca internamente a Sistema.solicitarTurno()
+
+El archivo actualizado es:
+- diagramas/01-diagrama-clases/01-patron-estructural-facade.puml
+- diagramas/01-diagrama-clases/01-patron-estructural-facade.png
+
+Para cada corrección indicá:
+- Si fue resuelta correctamente
+- Si fue resuelta parcialmente (qué falta)
+- Si no fue resuelta
+
+No modifices ningún archivo. Limitá tu respuesta exclusivamente a un informe de 
+seguimiento extremadamente detallado.
+```
+
+### Output generado por Claude
+Informe de Seguimiento — Tercera Revisión — Patrón Facade
+Fecha: 2026-06-27
+
+Corrección 6 — crearTurno() marcado como {static}: RESUELTA CORRECTAMENTE.
+La línea 54 declara {static} + crearTurno(...): Turno. Semántica correcta, firma completa.
+
+Corrección 7 — boolean unificado en las 4 ocurrencias: RESUELTA CORRECTAMENTE.
+Las cuatro líneas indicadas (13, 49, 56, 69) usan ahora boolean. El resto del diagrama también es consistente: no quedan ocurrencias de Boolean con mayúscula.
+
+Corrección 8 — Nota UML documentando programarTurno → solicitarTurno: RESUELTA CORRECTAMENTE.
+Se aplicó Opción B. La nota en líneas 108–114 explica que programarTurno() es la acción expresada desde el rol Secretaria y que la operación equivalente en la fachada es Sistema.solicitarTurno(). Observación no bloqueante: el posicionamiento note right of Secretaria podría generar colisión visual con left to right direction; considerar note bottom of Secretaria si hay superposición al renderizar.
+
+Las tres correcciones fueron resueltas correctamente. La PR puede aprobarse.
+
+### Ajustes aplicados antes de publicar el comentario en GitHub
+Se solicitó a Claude que publicara el informe de aprobación como comentario en la PR, confirmando que todas las correcciones están resueltas y que la PR está lista para aprobación y merge.
