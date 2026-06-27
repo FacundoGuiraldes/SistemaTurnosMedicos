@@ -629,3 +629,50 @@ Correcciones resueltas: 6 de 9. Las tres pendientes (6, 7 y 8) afectan exclusiva
 
 ### Ajustes aplicados antes de publicar el comentario en GitHub
 Se solicitó a Claude que publicara el informe como comentario en la PR, detallando las tres correcciones pendientes con instrucciones concretas para cada una antes de aprobar el merge.
+
+---
+
+## Revisión 11 – PR: `feature/esp-patron-comportamiento-add-patron-observer` (Quinta revisión)
+
+### Prompt utilizado en Claude
+```
+Actuá como revisor técnico senior especializado en diseño orientado a objetos y 
+patrones de diseño GoF.
+
+Estoy realizando una quinta revisión de una Pull Request que implementa el patrón 
+de diseño de comportamiento Observer en un sistema de gestión de turnos médicos.
+
+Queda únicamente un punto pendiente de corrección:
+
+Fix 11 — Corrección 1 — Iteración 1, línea 31:
+El texto actual dice:
+"Se corrigió la etiqueta de asociación de creación `crea/` a `crea` en el diagrama PlantUML."
+
+El texto correcto debe decir:
+"Se corrigió la etiqueta de asociación de creación `crea >` a `crea` en el diagrama PlantUML."
+
+El único cambio requerido es reemplazar `crea/` por `crea >` en esa línea.
+
+El archivo actualizado es:
+- ia/segundo-parcial/especialista-patron-comportamiento.md
+
+Verificá únicamente si la línea 31 fue corregida correctamente.
+
+No modifices ningún archivo. Limitá tu respuesta exclusivamente a un informe de 
+seguimiento extremadamente detallado.
+```
+
+### Output generado por Claude
+Informe de Seguimiento — Quinta Revisión de PR
+Fix 11 — Corrección 1 — Iteración 1, Línea 31
+Fecha: 2026-06-27
+
+Estado: APROBADO.
+
+La línea 31 fue corregida correctamente. El texto ahora dice:
+"Se corrigió la etiqueta de asociación de creación `crea >` a `crea` en el diagrama PlantUML."
+
+El fragmento `crea/` fue reemplazado por `crea >` de forma precisa, sin caracteres residuales ni alteraciones en líneas adyacentes. Todos los puntos del Fix 11 están cerrados. No se requiere ninguna acción adicional.
+
+### Ajustes aplicados antes de publicar el comentario en GitHub
+Se solicitó a Claude que publicara el informe de aprobación como comentario en la PR, confirmando que el Fix 11 está completamente resuelto y que la PR está lista para aprobación y merge.
