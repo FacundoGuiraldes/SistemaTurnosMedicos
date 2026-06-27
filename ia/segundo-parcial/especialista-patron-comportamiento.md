@@ -28,7 +28,7 @@ Con base en este contexto, genera el código en PlantUML para el diagrama de cla
 ```
 
 **Ajustes realizados:**
-- Se corrigió la etiqueta de asociación de creación `crea/` a `crea >` en el diagrama PlantUML.
+- Se corrigió la etiqueta de asociación de creación `crea/` a `crea` en el diagrama PlantUML.
 - Se unificó el método de notificación bajo la firma `notificar(TurnoEvent evento)` para evitar ambigüedades entre variantes de notificación.
 
 ### Iteración 2: Generación del documento de justificación técnica
@@ -56,7 +56,7 @@ El documento debe seguir estrictamente esta estructura y contener las siguientes
 
 **Ajustes realizados:**
 - Se eliminaron ambigüedades en las firmas de `IObserverTurno` dejando solo `actualizar(TurnoEvent evento)`.
-- Se agregó la subsección de `Alternativas consideradas` explicando por qué otros patrones no aplican y por qué Observer es la opción óptima.
+- Se agregó la subsección de `Comparación con Patrones Alternativos` explicando por qué otros patrones no aplican y por qué Observer es la opción óptima.
 
 #### Archivos de contexto referenciados
 - `diagramas/01-diagrama-clases/01-patron-comportamiento-observer.puml`
