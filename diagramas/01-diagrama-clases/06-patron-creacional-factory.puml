@@ -1,13 +1,20 @@
 @startuml
-title Patrón Factory Method - Sistema de Turnos Médicos (Corregido según Code Review)
+title Patrón Factory Method - Sistema de Turnos Médicos (Corregido según Segunda Code Review)
 
 ' ==============================================================================
-' 2.6 COMPOSITION ROOT (Punto de Ensamble - Req 2.6)
+' 2.6 COMPOSITION ROOT (Corregido: Grafo completo, nota y semántica - Req 2.6)
 ' ==============================================================================
 package "Infraestructura de Inicialización" {
     class TurnosMedicosApp {
         + {static} main(args: String[]): void
     }
+    
+    note bottom of TurnosMedicosApp
+        **Criterio de Selección de Factories Concretas:**
+        La factory concreta a utilizar es determinada en tiempo de 
+        construcción mediante archivos de configuración (.properties/.json) 
+        o parámetros de arranque del sistema, evitando acoplamiento en runtime.
+    end note
 }
 
 ' ========================
@@ -16,12 +23,10 @@ package "Infraestructura de Inicialización" {
 
 package "Factory Method - Creación de Turnos" {
 
-    ' INTERFAZ CREADORA - Cambiado a <<interface>> estándar (Req 2.1)
     interface ITurnoFactory <<interface>> {
         + crearTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
     }
 
-    ' CREADORES CONCRETOS - Homogeneizados los retornos a la abstracción Turno (Req 2.2)
     class TurnoPresencialFactory implements ITurnoFactory {
         - agendaConsultorios: AgendaConsultorios
         + crearTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
@@ -44,7 +49,6 @@ package "Factory Method - Creación de Turnos" {
         + validarCobertura(zona: String): boolean
     }
 
-    ' PRODUCTOS ABSTRACTOS Y CONCRETOS
     abstract class Turno {
         - id: String
         - fecha: LocalDate
@@ -84,7 +88,6 @@ package "Factory Method - Creación de Turnos" {
         + coordinarVisitaDomiciliaria(): void
     }
 
-    ' RELACIONES UNIFICADAS -> Todas con dependencia punteada ..> (Req 2.3)
     ITurnoFactory ..> Turno : crea
     TurnoPresencialFactory ..> TurnoPresencial : produce
     TurnoVirtualFactory ..> TurnoVirtual : produce
@@ -97,12 +100,10 @@ package "Factory Method - Creación de Turnos" {
 
 package "Factory Method - Creación de Notificaciones" {
 
-    ' INTERFAZ CREADORA - Cambiado a <<interface>> estándar (Req 2.1)
     interface INotificacionFactory <<interface>> {
         + crearNotificacion(destinatario: String, mensaje: String): Notificacion
     }
 
-    ' CREADORES CONCRETOS - Homogeneizados los retornos a la abstracción Notificacion (Req 2.2)
     class EmailNotificacionFactory implements INotificacionFactory {
         - servidorSMTP: ServidorSMTP
         + crearNotificacion(destinatario: String, mensaje: String): Notificacion
@@ -128,7 +129,6 @@ package "Factory Method - Creación de Notificaciones" {
         + validarDispositivoRegistrado(usuarioId: String): boolean
     }
 
-    ' PRODUCTOS ABSTRACTOS Y CONCRETOS
     abstract class Notificacion {
         - id: String
         - destinatario: String
@@ -173,7 +173,6 @@ package "Factory Method - Creación de Notificaciones" {
         + validarDestinatario(): boolean
     }
 
-    ' RELACIONES UNIFICADAS -> Todas con dependencia punteada ..> (Req 2.3)
     INotificacionFactory ..> Notificacion : crea
     EmailNotificacionFactory ..> EmailNotificacion : produce
     SMSNotificacionFactory ..> SMSNotificacion : produce
@@ -192,10 +191,8 @@ package "Sistema Desacoplado" {
         - notificacionFactory: INotificacionFactory
         + Sistema(turnoFactory: ITurnoFactory, notificacionFactory: INotificacionFactory)
         + solicitarTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
-        ' Sincronizada la firma críticamente agregando hora y especialidad (Req 2.4)
         + registrarTurno(paciente: Paciente, doctor: Doctor, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
         + enviarRecordatorioAutomatico(paciente: Paciente, turno: Turno): void
-        ' Se eliminó setTurnoFactory() para evitar violación de inyección pura (Req 2.5)
     }
 
     class Secretaria {
@@ -209,10 +206,8 @@ package "Sistema Desacoplado" {
         - notificacionFactory: INotificacionFactory
         + ServicioNotificaciones(factory: INotificacionFactory)
         + enviarNotificacion(canal: String, destinatario: String, mensaje: String): boolean
-        ' Se eliminó setFactory() para evitar violación de inyección pura (Req 2.5)
     }
 
-    ' RELACIONES CON FACTORIES
     Sistema --> ITurnoFactory : inyecta
     Sistema --> INotificacionFactory : inyecta
     Secretaria --> ITurnoFactory : usa
@@ -220,11 +215,13 @@ package "Sistema Desacoplado" {
 }
 
 ' ==============================================================================
-' ENSAMBLE DEL SYSTEMA (Req 2.6)
+' ENSAMBLE COMPLETO DEL SISTEMA (Corregido Grafo e Inyecciones - Obs 2.6)
 ' ==============================================================================
-TurnosMedicosApp ..> TurnoPresencialFactory : instancializa
-TurnosMedicosApp ..> EmailNotificacionFactory : instancializa
-TurnosMedicosApp ..> Sistema : inyecta-dependencias-en
+TurnosMedicosApp ..> TurnoPresencialFactory : instancia
+TurnosMedicosApp ..> EmailNotificacionFactory : instancia
+TurnosMedicosApp ..> Sistema : instancia-e-inyecta-en
+TurnosMedicosApp ..> Secretaria : instancia-e-inyecta-en
+TurnosMedicosApp ..> ServicioNotificaciones : instancia-e-inyecta-en
 
 ' ========================
 ' NOTAS
