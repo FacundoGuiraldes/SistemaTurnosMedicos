@@ -28,7 +28,7 @@ Con base en este contexto, genera el código en PlantUML para el diagrama de cla
 ```
 
 **Ajustes realizados:**
-- Se corrigió la etiqueta de asociación de creación `crea/` a `crea` en el diagrama PlantUML.
+- Se corrigió la etiqueta de asociación de creación `crea >` a `crea` en el diagrama PlantUML.
 - Se unificó el método de notificación bajo la firma `notificar(TurnoEvent evento)` para evitar ambigüedades entre variantes de notificación.
 
 ### Iteración 2: Generación del documento de justificación técnica
