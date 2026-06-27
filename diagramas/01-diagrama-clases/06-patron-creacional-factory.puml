@@ -1,0 +1,248 @@
+@startuml
+title Patrón Factory Method - Sistema de Turnos Médicos (Corregido según Segunda Code Review)
+
+' ==============================================================================
+' 2.6 COMPOSITION ROOT (Corregido: Grafo completo, nota y semántica - Req 2.6)
+' ==============================================================================
+package "Infraestructura de Inicialización" {
+    class TurnosMedicosApp {
+        + {static} main(args: String[]): void
+    }
+    
+    note bottom of TurnosMedicosApp
+        **Criterio de Selección de Factories Concretas:**
+        La factory concreta a utilizar es determinada en tiempo de 
+        construcción mediante archivos de configuración (.properties/.json) 
+        o parámetros de arranque del sistema, evitando acoplamiento en runtime.
+    end note
+}
+
+' ========================
+' FACTORY PARA TURNOS
+' ========================
+
+package "Factory Method - Creación de Turnos" {
+
+    interface ITurnoFactory <<interface>> {
+        + crearTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+    }
+
+    class TurnoPresencialFactory implements ITurnoFactory {
+        - agendaConsultorios: AgendaConsultorios
+        + crearTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+        + validarDisponibilidadConsultorio(fecha: LocalDate): boolean
+        + asignarConsultorio(): String
+    }
+
+    class TurnoVirtualFactory implements ITurnoFactory {
+        - servicioVideoconferencia: ServicioVideoconferencia
+        + crearTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+        + generarEnlaceVideollamada(): String
+        + generarCodigoAcceso(): String
+        + validarDisponibilidadPlataforma(): boolean
+    }
+
+    class TurnoTelemedicinaFactory implements ITurnoFactory {
+        - registroProveedores: RegistroProveedoresTelemedicina
+        + crearTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+        + asignarProveedorServicio(): String
+        + validarCobertura(zona: String): boolean
+    }
+
+    abstract class Turno {
+        - id: String
+        - fecha: LocalDate
+        - hora: LocalTime
+        - estado: EstadoTurno
+        - especialidad: Especialidad
+        + {abstract} confirmar(): void
+        + {abstract} cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+        + {abstract} marcarAsistencia(presentado: Boolean): void
+    }
+
+    class TurnoPresencial extends Turno {
+        - numeroConsultorio: String
+        - pisoEdificio: Integer
+        + confirmar(): void
+        + cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+        + marcarAsistencia(presentado: Boolean): void
+    }
+
+    class TurnoVirtual extends Turno {
+        - enlaceVideollamada: String
+        - codigoAcceso: String
+        - plataforma: String
+        + confirmar(): void
+        + cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+        + marcarAsistencia(presentado: Boolean): void
+        + enviarEnlaceAlPaciente(): void
+    }
+
+    class TurnoTelemedicina extends Turno {
+        - idProveedor: String
+        - direccionPaciente: String
+        - equipoMedico: List<String>
+        + confirmar(): void
+        + cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+        + marcarAsistencia(presentado: Boolean): void
+        + coordinarVisitaDomiciliaria(): void
+    }
+
+    ITurnoFactory ..> Turno : crea
+    TurnoPresencialFactory ..> TurnoPresencial : produce
+    TurnoVirtualFactory ..> TurnoVirtual : produce
+    TurnoTelemedicinaFactory ..> TurnoTelemedicina : produce
+}
+
+' ========================
+' FACTORY PARA NOTIFICACIONES
+' ========================
+
+package "Factory Method - Creación de Notificaciones" {
+
+    interface INotificacionFactory <<interface>> {
+        + crearNotificacion(destinatario: String, mensaje: String): Notificacion
+    }
+
+    class EmailNotificacionFactory implements INotificacionFactory {
+        - servidorSMTP: ServidorSMTP
+        + crearNotificacion(destinatario: String, mensaje: String): Notificacion
+        + validarEmail(email: String): boolean
+    }
+
+    class SMSNotificacionFactory implements INotificacionFactory {
+        - proveedorSMS: ProveedorSMS
+        + crearNotificacion(destinatario: String, mensaje: String): Notificacion
+        + validarTelefono(numero: String): boolean
+        + calcularCosto(): Double
+    }
+
+    class WhatsAppNotificacionFactory implements INotificacionFactory {
+        - apiWhatsApp: APIWhatsApp
+        + crearNotificacion(destinatario: String, mensaje: String): Notificacion
+        + validarNumeroWhatsApp(numero: String): boolean
+    }
+
+    class PushNotificacionFactory implements INotificacionFactory {
+        - servicioNotificaciones: ServicioPush
+        + crearNotificacion(destinatario: String, mensaje: String): Notificacion
+        + validarDispositivoRegistrado(usuarioId: String): boolean
+    }
+
+    abstract class Notificacion {
+        - id: String
+        - destinatario: String
+        - mensaje: String
+        - estado: String
+        - fechaEnvio: LocalDateTime
+        + {abstract} enviar(): boolean
+        + {abstract} validarDestinatario(): boolean
+        + programarEnvio(fecha: LocalDateTime): void
+    }
+
+    class EmailNotificacion extends Notificacion {
+        - email: String
+        - asunto: String
+        - contenidoHTML: String
+        + enviar(): boolean
+        + validarDestinatario(): boolean
+    }
+
+    class SMSNotificacion extends Notificacion {
+        - numeroCelular: String
+        - longitudMensaje: Integer
+        + enviar(): boolean
+        + validarDestinatario(): boolean
+        + fragmentarMensajeLargo(): List<String>
+    }
+
+    class WhatsAppNotificacion extends Notificacion {
+        - numeroWhatsApp: String
+        - tipoMensaje: String
+        - urlMedia: String
+        + enviar(): boolean
+        + validarDestinatario(): boolean
+        + enviarMediaAdjunto(tipo: String, url: String): void
+    }
+
+    class PushNotificacion extends Notificacion {
+        - idDispositivo: String
+        - tituloNotificacion: String
+        - accionAsociada: String
+        + enviar(): boolean
+        + validarDestinatario(): boolean
+    }
+
+    INotificacionFactory ..> Notificacion : crea
+    EmailNotificacionFactory ..> EmailNotificacion : produce
+    SMSNotificacionFactory ..> SMSNotificacion : produce
+    WhatsAppNotificacionFactory ..> WhatsAppNotificacion : produce
+    PushNotificacionFactory ..> PushNotificacion : produce
+}
+
+' ========================
+' CLASES DEL SISTEMA REFACTORIZADAS
+' ========================
+
+package "Sistema Desacoplado" {
+
+    class Sistema {
+        - turnoFactory: ITurnoFactory
+        - notificacionFactory: INotificacionFactory
+        + Sistema(turnoFactory: ITurnoFactory, notificacionFactory: INotificacionFactory)
+        + solicitarTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+        + registrarTurno(paciente: Paciente, doctor: Doctor, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+        + enviarRecordatorioAutomatico(paciente: Paciente, turno: Turno): void
+    }
+
+    class Secretaria {
+        - turnoFactory: ITurnoFactory
+        + Secretaria(turnoFactory: ITurnoFactory)
+        + programarTurno(paciente: Paciente, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+        + registrarPaciente(datos: Map<String, String>): Paciente
+    }
+
+    class ServicioNotificaciones {
+        - notificacionFactory: INotificacionFactory
+        + ServicioNotificaciones(factory: INotificacionFactory)
+        + enviarNotificacion(canal: String, destinatario: String, mensaje: String): boolean
+    }
+
+    Sistema --> ITurnoFactory : inyecta
+    Sistema --> INotificacionFactory : inyecta
+    Secretaria --> ITurnoFactory : usa
+    ServicioNotificaciones --> INotificacionFactory : usa
+}
+
+' ==============================================================================
+' ENSAMBLE COMPLETO DEL SISTEMA (Corregido Grafo e Inyecciones - Obs 2.6)
+' ==============================================================================
+TurnosMedicosApp ..> TurnoPresencialFactory : instancia
+TurnosMedicosApp ..> EmailNotificacionFactory : instancia
+TurnosMedicosApp ..> Sistema : instancia-e-inyecta-en
+TurnosMedicosApp ..> Secretaria : instancia-e-inyecta-en
+TurnosMedicosApp ..> ServicioNotificaciones : instancia-e-inyecta-en
+
+' ========================
+' NOTAS
+' ========================
+
+note right of ITurnoFactory
+    **Factory Creator**
+    Define contrato para crear turnos
+    de cualquier tipo sin acoplamiento
+end note
+
+note right of INotificacionFactory
+    **Factory Creator**
+    Define contrato para crear
+    notificaciones por cualquier canal
+end note
+
+note top of Sistema
+    **Cliente Desacoplado**
+    Recibe factories inyectadas
+    No instancia directamente
+end note
+
+@enduml
