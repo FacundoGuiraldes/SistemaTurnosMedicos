@@ -10,7 +10,7 @@ package "Clientes del sistema" {
   class Secretaria {
     + registrarPaciente(datosPersonales: Map<String, String>): Paciente
     + programarTurno(paciente: Paciente, fecha: LocalDate, hora: LocalTime): Turno
-    + cancelarTurno(turno: Turno, motivo: String): Boolean
+    + cancelarTurno(turno: Turno, motivo: String): boolean
     + registrarLlegadaPaciente(paciente: Paciente): LlegadaPaciente
     + verAgenda(doctor: Doctor, fecha: LocalDate): List<Turno>
   }
@@ -46,14 +46,14 @@ package "Subsistemas internos" {
   class Agenda {
     + verificarDisponibilidad(fecha: LocalDate, hora: LocalTime): boolean
     + agregarTurno(turno: Turno): boolean
-    + removerTurno(turno: Turno): Boolean
+    + removerTurno(turno: Turno): boolean
     + obtenerTurnosDelDia(fecha: LocalDate): List<Turno>
   }
 
   class Turno {
-    + crearTurno(paciente: Paciente, doctor: Doctor, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+    {static} + crearTurno(paciente: Paciente, doctor: Doctor, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
     + confirmar(): void
-    + cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+    + cancelar(solicitadoPor: Usuario, motivo: String): boolean
     + marcarEnEspera(): void
   }
 
@@ -66,7 +66,7 @@ package "Subsistemas internos" {
   class PersistenciaService {
     + guardarTurno(turno: Turno): void
     + buscarPorId(turnoId: String): Turno
-    + actualizar(turno: Turno): Boolean
+    + actualizar(turno: Turno): boolean
     + guardar(paciente: Paciente): void
   }
 
@@ -103,6 +103,14 @@ note bottom of Agenda
   Los subsistemas conservan sus responsabilidades.
   La fachada no reemplaza la logica de dominio,
   solo coordina el acceso a ella.
+end note
+
+note right of Secretaria
+  programarTurno() expresa la accion
+  desde el rol Secretaria, que agenda
+  un turno en nombre del paciente.
+  La operacion de fachada equivalente
+  es Sistema.solicitarTurno().
 end note
 
 @enduml
