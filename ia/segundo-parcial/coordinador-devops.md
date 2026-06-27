@@ -358,3 +358,75 @@ Conclusión: Todos los puntos observados a lo largo de las cuatro revisiones han
 
 ### Ajustes aplicados antes de publicar el comentario en GitHub
 Se solicitó a Claude que publicara el informe de seguimiento como comentario en la PR, confirmando que todos los puntos están cerrados y que la PR está lista para aprobación y merge.
+
+---
+
+## Revisión 7 – PR: `feature/esp-patron-comportamiento-add-patron-observer` (Segunda revisión)
+
+### Prompt utilizado en Claude
+```
+Actuá como revisor técnico senior especializado en diseño orientado a objetos y 
+patrones de diseño GoF.
+
+Estoy realizando una segunda revisión de una Pull Request que implementa el patrón 
+de diseño de comportamiento Observer en un sistema de gestión de turnos médicos.
+
+En la revisión anterior se detectaron 12 fixes pendientes de corrección:
+
+CRITERIO 1:
+- Fix 1: DIP ausente en la sección SOLID
+- Fix 2: Jerarquía de encabezados inconsistente (### en lugar de ##)
+- Fix 3: Inconsistencia en nombre del método de ISubjectTurno (notificarCancelacion vs notificar)
+- Fix 4: Pie de documento referencia archivo inexistente
+- Fix 5: Ambigüedad en la firma del método actualizar en IObserverTurno
+
+CRITERIO 2:
+- Fix 6: Etiqueta crea/ con barra residual en relación TurnoMedico --> TurnoEvent
+- Fix 7: Falta dependencia explícita de IObserverTurno e ISubjectTurno hacia TurnoEvent
+- Fix 8: Ausencia de punto de composición (opcional)
+
+CRITERIO 3:
+- Fix 9: Ausencia total de sección comparativa de patrones alternativos (Mediator, 
+  Strategy, Chain of Responsibility, Command)
+
+CRITERIO 4:
+- Fix 10: Prompt de Iteración 1 no está en bloque de código con triple backtick
+- Fix 11: Ajustes realizados al output de IA no documentados en ninguna iteración
+- Fix 12: Iteración 2 no lista sus archivos de contexto
+
+Los archivos actualizados son:
+- anexos/patrones-diseno/patron-de-diseno-de-comportamiento.md
+- ia/segundo-parcial/especialista-patron-comportamiento.md
+- diagramas/01-diagrama-clases/01-patron-comportamiento-observer.puml
+- diagramas/01-diagrama-clases/01-patron-comportamiento-observer.png
+
+Para cada fix indicá:
+- Si fue resuelto correctamente
+- Si fue resuelto parcialmente (qué falta)
+- Si no fue resuelto
+
+No modifices ningún archivo. Limitá tu respuesta exclusivamente a un informe de 
+seguimiento extremadamente detallado.
+```
+
+### Output generado por Claude
+Segunda Revisión: Patrón Observer
+Fecha: 2026-06-27
+
+Resultado global: 0 fixes completamente resueltos — 2 parcialmente resueltos — 10 sin resolver.
+
+Fix 1 — DIP ausente en sección SOLID: NO RESUELTO. La sección sigue incluyendo únicamente SRP y OCP.
+Fix 2 — Jerarquía ### en lugar de ##: NO RESUELTO. Todos los encabezados de sección mantienen nivel ###.
+Fix 3 — Inconsistencia notificarCancelacion vs notificar: PARCIALMENTE RESUELTO. El PUML fue corregido pero el documento .md sigue usando ambos nombres en líneas 35 y 37.
+Fix 4 — Pie de documento referencia archivo inexistente: NO RESUELTO. La ruta sigue apuntando a ia/segundo-parcial/patron-de-diseno-de-comportamiento.md que no existe.
+Fix 5 — Ambigüedad en firma de actualizar: PARCIALMENTE RESUELTO. El PUML es correcto pero el documento sigue presentando dos firmas alternativas en línea 29.
+Fix 6 — Etiqueta crea/ con barra residual: NO RESUELTO. La línea 62 del PUML sigue con crea/.
+Fix 7 — Dependencias explícitas de interfaces hacia TurnoEvent: NO RESUELTO. No se agregaron flechas IObserverTurno ..> TurnoEvent ni ISubjectTurno ..> TurnoEvent.
+Fix 8 — Punto de composición (opcional): NO RESUELTO.
+Fix 9 — Sección comparativa de patrones alternativos: NO RESUELTO. El documento no contiene ninguna sección comparativa con Mediator, Strategy, Chain of Responsibility ni Command.
+Fix 10 — Iteración 1 sin bloque de código: NO RESUELTO. El prompt de Iteración 1 sigue en prosa libre sin triple backtick y sin encabezado de sección.
+Fix 11 — Ajustes al output de IA sin documentar: NO RESUELTO. No existe ninguna sección de ajustes en ninguna de las dos iteraciones.
+Fix 12 — Iteración 2 sin listado de archivos de contexto: NO RESUELTO.
+
+### Ajustes aplicados antes de publicar el comentario en GitHub
+Se solicitó a Claude que publicara el informe de seguimiento como comentario en la PR, detallando el estado de cada fix y especificando las correcciones pendientes antes de aprobar el merge.
