@@ -5,6 +5,8 @@ Los patrones de diseño de comportamiento se centran en la comunicación y colab
 
 - Responsabilidad Única (SRP): Cada objeto tiene una única razón para cambiar; por ejemplo, un notificador se encarga sólo de notificar.
 - Abierto/Cerrado (OCP): Los componentes pueden extenderse (añadiendo nuevos observadores) sin modificar la lógica del sujeto que publica eventos.
+- Sustitución de Liskov (LSP): Los observadores concretos (`NotificadorPaciente`, `NotificadorMedico`, `SistemaFacturacion`) son sustitutos válidos de `IObserverTurno`; el sujeto puede usar cualquiera sin distinción.
+- Segregación de Interfaces (ISP): `IObserverTurno` e `ISubjectTurno` son interfaces pequeñas y enfocadas; ningún cliente está obligado a implementar métodos que no necesita.
 - Inversión de Dependencias (DIP): `TurnoMedico` depende de la abstracción `IObserverTurno` y no de sus implementaciones concretas, permitiendo sustituir o ampliar observadores sin recompilar el sujeto.
 
 ## Propósito y Tipo del Patrón
