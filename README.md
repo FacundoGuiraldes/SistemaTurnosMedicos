@@ -19,5 +19,6 @@
 ## Documentación Principal
 
 - [Índice de Diagramas UML](./diagramas/diagramasUML.md)
+- [Índice de Herramientas Ágiles](./herramientas-agile/herramientas_agile.md)
 - [Índice de Anexos](./anexos/anexos.md)
 - [Historial de Cambios](./changelog.md)
