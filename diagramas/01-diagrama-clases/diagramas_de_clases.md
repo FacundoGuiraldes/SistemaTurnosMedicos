@@ -16,3 +16,8 @@
   * [Diagrama de Clases - Ver Agenda 05](./05-clases-ver-agenda-05.puml)
 
 * [Diagrama de Clases Final - Sistema de Turnos Médicos](./06-clases-diagrama-final.puml)
+
+* Patrones de Diseño
+  * [Patrón de Diseño Creacional - Factory Method](./06-patron-creacional-factory.puml)
+  * [Patrón de Diseño Estructural - Facade](./01-patron-estructural-facade.puml)
+  * [Patrón de Diseño de Comportamiento - Observer](./01-patron-comportamiento-observer.puml)

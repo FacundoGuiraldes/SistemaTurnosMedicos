@@ -14,10 +14,11 @@
 | Valeria Silva | 156612 | @ValeriaMSilva |
 | Carola Benvenuto | 158686 | @carolabenvenuto-uces |
 | Caterina Cerdán | 159237 | @caterinacerdan |
-| Facundo Guiraldes | 114794 | @FacundoGuiraldes |
+| Facundo Guiraldes | 114797 | @FacundoGuiraldes |
 
 ## Documentación Principal
 
 - [Índice de Diagramas UML](./diagramas/diagramasUML.md)
+- [Índice de Herramientas Ágiles](./herramientas-agile/herramientas_agile.md)
 - [Índice de Anexos](./anexos/anexos.md)
 - [Historial de Cambios](./changelog.md)
