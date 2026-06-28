@@ -52,7 +52,7 @@ El diagrama se organiza en tres paquetes principales:
 
 Esta organización permite leer el diagrama aun sin renderizar la imagen: los clientes dependen de una única entrada visible, la fachada centraliza la coordinación y los subsistemas quedan ubicados detrás de esa interfaz simplificada.
 
-[Estructura de clases con diagrama UML](../../diagramas/01-diagrama-clases/01-patron-estructural-facade.png)
+![Diagrama de clases - Patrón Facade](../../diagramas/01-diagrama-clases/01-patron-estructural-facade.png)
 
 ## Justificación Técnica de la Estructura de Clases
 
@@ -116,4 +116,3 @@ Por ejemplo, al cancelar un turno, el cliente invoca `cancelarTurno` sobre `Sist
 - Mantiene las reglas de negocio distribuidas en clases del dominio.
 - Facilita incorporar cambios internos sin alterar la forma en que los clientes usan el sistema.
 - Hace más claro el diagrama de clases al separar clientes, fachada y subsistemas.
-
