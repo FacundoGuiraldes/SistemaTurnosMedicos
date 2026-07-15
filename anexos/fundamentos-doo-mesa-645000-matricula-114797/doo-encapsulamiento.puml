@@ -1,0 +1,31 @@
+@startuml
+title Encapsulamiento – SalaEspera e ISalaEsperaService
+
+interface ISalaEsperaService <<interfaz>> {
+  + registrarLlegada(paciente: Paciente): Boolean
+}
+
+class SalaEspera {
+  - id: String
+  - pacientesEnEspera: List<Paciente>
+  - horaLlegada: Map<Paciente, LocalDateTime>
+  - estadoPaciente: Map<Paciente, EstadoEspera>
+  - ordenFila: List<Paciente>
+  + registrarLlegada(paciente: Paciente, horaActual: LocalDateTime): void
+  + obtenerPacientesEsperando(): List<Paciente>
+  + listarPacientes(): List<Paciente>
+  + removerPaciente(paciente: Paciente): void
+  + registrarFinCiclo(paciente: Paciente): void
+  + agregarPaciente(paciente: Paciente): void
+}
+
+enum EstadoEspera {
+  Esperando
+  EnConsulta
+  Finalizado
+}
+
+SalaEspera ..|> ISalaEsperaService
+SalaEspera ..> EstadoEspera : usa
+
+@enduml

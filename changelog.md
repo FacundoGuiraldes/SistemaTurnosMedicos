@@ -1,5 +1,9 @@
 # Changelog
 
+## [Examen Final - Guiraldes Facundo (114797) - Mesa 645000 - ]
+
+
+
 ## [Release Segundo Parcial] - 2026-06-27
 
 ### Added
