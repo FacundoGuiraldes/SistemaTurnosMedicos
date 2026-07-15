@@ -1,0 +1,26 @@
+@startuml
+title Abstracción – Sistema, ITurnoRepository y PersistenciaService
+
+interface ITurnoRepository <<interfaz>> {
+  + buscarPorId(turnoId: String): Turno
+  + actualizar(turno: Turno): Boolean
+  + obtenerTurnosPorFecha(fecha: LocalDate, doctor: Doctor): List<Turno>
+}
+
+class Sistema {
+  - turnoRepository: ITurnoRepository
+  + Sistema(turnoRepository: ITurnoRepository)
+  + cancelarTurno(turnoId: String, motivo: String): boolean
+  + verAgendaDoctor(doctor: Doctor, fecha: LocalDate): List<Turno>
+}
+
+class PersistenciaService {
+  + buscarPorId(turnoId: String): Turno
+  + actualizar(turno: Turno): Boolean
+  + obtenerTurnosPorFecha(fecha: LocalDate, doctor: Doctor): List<Turno>
+}
+
+PersistenciaService ..|> ITurnoRepository
+Sistema ..> ITurnoRepository : depende de (DIP)
+
+@enduml

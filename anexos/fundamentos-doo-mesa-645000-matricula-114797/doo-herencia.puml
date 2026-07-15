@@ -1,0 +1,47 @@
+@startuml
+title Herencia – Jerarquía Usuario → Paciente, Doctor, Secretaria
+
+abstract class Usuario {
+  - nombre: String
+  - apellido: String
+  - email: String
+  - telefono: String
+  + login(nombreUsuario: String, contrasena: String): boolean
+  + logout(): void
+  + modificarPerfil(nombre: String, email: String, telefono: String): void
+  + getNombreCompleto(): String
+  + recibirNotificacion(mensaje: String): void
+}
+
+class Paciente {
+  - numeroHistorial: String
+  - dni: String
+  - fechaNacimiento: Date
+  - direccion: String
+  + solicitarTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+  + cancelarTurno(turno: Turno, motivo: String): boolean
+  + consultarTurnos(): List<Turno>
+  + registrarLlegada(): LlegadaPaciente
+}
+
+class Doctor {
+  - numeroLicencia: String
+  - especialidad: Especialidad
+  - consultorio: String
+  + verAgenda(fecha: LocalDate): List<Turno>
+  + registrarDiagnostico(turno: Turno, diagnostico: String): void
+  + autorizarSobreturno(agenda: Agenda): boolean
+}
+
+class Secretaria {
+  - departamento: String
+  + registrarPaciente(datosPersonales: Map<String, String>): Paciente
+  + programarTurno(paciente: Paciente, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+  + cancelarTurno(turno: Turno, motivo: String): Boolean
+}
+
+Usuario <|-- Paciente
+Usuario <|-- Doctor
+Usuario <|-- Secretaria
+
+@enduml
