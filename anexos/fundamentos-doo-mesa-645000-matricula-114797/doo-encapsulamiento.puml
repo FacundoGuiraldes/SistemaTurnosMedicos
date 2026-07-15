@@ -6,7 +6,6 @@ interface ISalaEsperaService <<interfaz>> {
 }
 
 class SalaEspera {
-  - id: String
   - pacientesEnEspera: List<Paciente>
   - horaLlegada: Map<Paciente, LocalDateTime>
   - estadoPaciente: Map<Paciente, EstadoEspera>
