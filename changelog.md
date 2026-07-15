@@ -1,7 +1,9 @@
 # Changelog
 
-## [Examen Final - Guiraldes Facundo (114797) - Mesa 645000 - ]
+## [Examen Final] - 2026-07-15
 
+### Added
+- [feature/anexo-fundamentos-doo] Anexo Fundamentos del Diseño Orientado a Objetos - Mesa N° 645000 - Guiraldes Facundo (Matrícula 114797). Se creó la carpeta `anexos/fundamentos-doo-mesa-645000-matricula-114797/` con el índice `fundamentos-doo.md` y los anexos `doo-abstraccion.md` (Sistema, ITurnoRepository y PersistenciaService - DIP), `doo-encapsulamiento.md` (SalaEspera e ISalaEsperaService), `doo-herencia.md` (jerarquía Usuario → Paciente/Doctor/Secretaria - LSP) y `doo-polimorfismo.md` (IObserverTurno y observadores concretos - OCP), cada uno con su diagrama PlantUML/PNG y fragmento de código Java justificado. Se actualizó el índice `anexos/anexos.md`. PR: [#149](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/149) - @FacundoGuiraldes
 
 
 ## [Release Segundo Parcial] - 2026-06-27
