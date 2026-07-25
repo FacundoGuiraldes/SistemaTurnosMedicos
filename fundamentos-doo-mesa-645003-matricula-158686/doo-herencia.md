@@ -2,11 +2,15 @@
 
 ---
 
-_La herencia es un principio fundamental de la programación orientada a objetos porque permite definir una clase base con atributos y comportamientos compartidos y, a partir de ella, crear subclases especializadas que reutilizan esa estructura sin duplicar lógica. En el sistema de turnos médicos del Dr. Molina, esta idea se refleja en la jerarquía de usuarios, donde una entidad común como Usuario concentra las operaciones básicas de autenticación y perfil, mientras que Paciente, Doctor y Secretaria agregan responsabilidades específicas del dominio. Desde el punto de vista de diseño, la herencia también está relacionada con el principio SOLID de sustitución de Liskov (LSP), porque las subclases deben poder reemplazar a la superclase sin alterar el comportamiento esperado del sistema. Además, este enfoque facilita el uso de patrones de diseño como Template Method, Strategy y Factory al establecer comportamientos reutilizables y puntos de extensión claros._
+## Propósito
 
----
+La herencia es un principio fundamental de la programación orientada a objetos porque permite definir una clase base con atributos y comportamientos compartidos y, a partir de ella, crear subclases especializadas que reutilizan esa estructura sin duplicar lógica. En el sistema de turnos médicos del Dr. Molina, esta idea se refleja en la jerarquía de usuarios, donde una entidad común como Usuario concentra las operaciones básicas de autenticación y perfil, mientras que Paciente, Doctor y Secretaria agregan responsabilidades específicas del dominio.
 
-## Ejemplo en el proyecto
+## Motivación y Ejemplo del Proyecto
+
+En el proyecto se observa la herencia en la jerarquía de Usuario, que actúa como clase base para los actores del sistema. Paciente incorpora datos propios del paciente, Doctor agrega información del profesional y Secretaria incorpora responsabilidades administrativas. Desde el punto de vista de diseño, la herencia también está relacionada con el principio SOLID de sustitución de Liskov (LSP), porque las subclases deben poder reemplazar a la superclase sin alterar el comportamiento esperado del sistema. Además, este enfoque facilita el uso de patrones de diseño como Template Method, Strategy y Factory al establecer comportamientos reutilizables y puntos de extensión claros.
+
+## Estructura y Diagrama
 
 ---
 
@@ -22,7 +26,7 @@ La herencia se aplica correctamente porque la clase base Usuario ofrece un contr
 
 ---
 
-## Ejemplo de Código
+## Código C#
 
 ---
 
@@ -65,6 +69,17 @@ public class Doctor : Usuario
     {
         return base.Login(nombreUsuario, contrasena) &&
                NumeroLicencia == nombreUsuario;
+    }
+}
+
+public class Secretaria : Usuario
+{
+    public string Departamento { get; private set; }
+
+    public override bool Login(string nombreUsuario, string contrasena)
+    {
+        return base.Login(nombreUsuario, contrasena) &&
+               Departamento == "Administración";
     }
 }
 ```
