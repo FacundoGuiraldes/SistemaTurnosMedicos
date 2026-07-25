@@ -2,11 +2,15 @@
 
 ---
 
-_El encapsulamiento es uno de los pilares de la programación orientada a objetos porque agrupa en una misma entidad sus datos y sus operaciones, ocultando el estado interno y exponiendo solo una interfaz controlada. En el sistema de turnos médicos del Dr. Molina, este principio permite que clases como Paciente, Turno y Agenda gestionen su propia validez, reduciendo la dependencia entre objetos y favoreciendo la cohesión. También se relaciona con los principios SOLID, especialmente con SRP, porque cada clase asume la responsabilidad de proteger su propio estado, y con OCP, porque el comportamiento interno puede evolucionar sin exigir que los clientes del objeto conozcan los detalles de implementación. En diseño, este enfoque facilita el uso de patrones como State para manejar el ciclo de vida de un turno o Repository y Service para separar la lógica de negocio de la persistencia._
+## Propósito
 
----
+El encapsulamiento es uno de los pilares de la programación orientada a objetos porque agrupa en una misma entidad sus datos y sus operaciones, ocultando el estado interno y exponiendo solo una interfaz controlada. En el sistema de turnos médicos del Dr. Molina, este principio permite que clases como Paciente, Turno y Agenda gestionen su propia validez, reduciendo la dependencia entre objetos y favoreciendo la cohesión.
 
-## Ejemplo en el proyecto
+## Motivación y Ejemplo del Proyecto
+
+En el proyecto se observa el encapsulamiento en objetos del dominio que protegen su estado interno y lo exponen mediante operaciones controladas. Por ejemplo, Turno gestiona su estado de forma coherente, Agenda conserva la integridad de sus franjas horarias y Paciente resguarda sus datos personales. Esto se relaciona con los principios SOLID, especialmente con SRP, porque cada clase asume la responsabilidad de proteger su propio estado, y con OCP, porque el comportamiento interno puede evolucionar sin exigir que los clientes del objeto conozcan los detalles de implementación. En diseño, este enfoque facilita el uso de patrones como State para manejar el ciclo de vida de un turno o Repository y Service para separar la lógica de negocio de la persistencia.
+
+## Estructura y Diagrama
 
 ---
 
@@ -22,7 +26,7 @@ El encapsulamiento se cumple porque el estado de cada objeto queda protegido fre
 
 ---
 
-## Ejemplo de Código
+## Código C#
 
 ---
 
