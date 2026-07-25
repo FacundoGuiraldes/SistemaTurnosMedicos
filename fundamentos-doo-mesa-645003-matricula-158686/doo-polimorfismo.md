@@ -2,11 +2,15 @@
 
 ---
 
-_El polimorfismo es uno de los pilares de la programación orientada a objetos porque permite que distintos objetos respondan al mismo mensaje o método de forma específica según su tipo concreto. En el sistema de turnos médicos del Dr. Molina, esta capacidad resulta clave para modelar comportamientos variables como la validación de disponibilidad, el manejo de reglas de negocio y la adaptación de los actores del sistema a situaciones distintas. En términos de diseño, el polimorfismo se relaciona con el principio OCP porque el cliente puede trabajar con abstracciones y recibir nuevas implementaciones sin modificar la lógica central, y con LSP porque las clases concretas pueden sustituir a la abstracción sin romper el contrato esperado. Además, este principio se manifiesta naturalmente en patrones como Strategy, Factory Method y State, donde una misma operación se resuelve de forma distinta según la estrategia o estado activo._
+## Propósito
 
----
+El polimorfismo es uno de los pilares de la programación orientada a objetos porque permite que distintos objetos respondan al mismo mensaje o método de forma específica según su tipo concreto. En el sistema de turnos médicos del Dr. Molina, esta capacidad resulta clave para modelar comportamientos variables como la validación de disponibilidad, el manejo de reglas de negocio y la adaptación de los actores del sistema a situaciones distintas.
 
-## Ejemplo en el proyecto
+## Motivación y Ejemplo del Proyecto
+
+En el proyecto se observa el polimorfismo a través de la jerarquía de Usuario y del uso de Sistema para invocar un comportamiento común. El método Login(), definido en Usuario, puede resolverse de forma distinta en Paciente y Doctor según el tipo concreto del objeto que lo reciba. En términos de diseño, el polimorfismo se relaciona con el principio OCP porque el cliente puede trabajar con abstracciones y recibir nuevas implementaciones sin modificar la lógica central, y con LSP porque las clases concretas pueden sustituir a la abstracción sin romper el contrato esperado. Además, este principio se manifiesta naturalmente en patrones como Strategy, Factory Method y State, donde una misma operación se resuelve de forma distinta según la estrategia o estado activo.
+
+## Estructura y Diagrama
 
 ---
 
@@ -22,7 +26,7 @@ El diseño permite invocar un método polimórfico sin conocer el tipo concreto 
 
 ---
 
-## Ejemplo de Código
+## Código C#
 
 ---
 
