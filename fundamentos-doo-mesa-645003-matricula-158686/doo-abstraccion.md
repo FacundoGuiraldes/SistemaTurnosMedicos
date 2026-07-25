@@ -2,11 +2,15 @@
 
 ---
 
-_La abstracción es un principio esencial de la programación orientada a objetos porque permite modelar solo aquello que es relevante para el problema, ocultando los detalles internos y exponiendo un contrato claro para interactuar con el objeto. En el sistema de turnos médicos del Dr. Molina, esta idea se observa en las interfaces de servicio y en las abstracciones de negocio que permiten que el sistema opere con conceptos del dominio sin depender de la implementación concreta. La abstracción se relaciona con el principio DIP porque el módulo de alto nivel depende de contratos y no de clases concretas, y con ISP porque los contratos se diseñan en torno a responsabilidades específicas. Además, esta forma de pensar se ve reflejada en patrones como Strategy, Factory Method y Repository, donde el comportamiento se encapsula detrás de una interfaz o de una abstracción compartida._
+## Propósito
 
----
+La abstracción es un principio esencial de la programación orientada a objetos porque permite modelar únicamente aquello que es relevante para el problema, ocultando los detalles internos y exponiendo un contrato claro para interactuar con el objeto. En el sistema de turnos médicos del Dr. Molina, esta idea se observa en las interfaces de servicio y en las abstracciones de negocio que permiten que el sistema opere con conceptos del dominio sin depender de la implementación concreta.
 
-## Ejemplo en el proyecto
+## Motivación y Ejemplo del Proyecto
+
+En el proyecto se destaca la abstracción del servicio de persistencia, representada por la interfaz IPersistencia y su implementación PersistenciaService. El sistema puede trabajar con este contrato sin conocer si la información se almacenará en memoria, en archivo o en una base de datos. Esta forma de diseño se relaciona con el principio DIP porque el módulo de alto nivel depende de contratos y no de clases concretas, y con ISP porque los contratos se diseñan en torno a responsabilidades específicas. Además, esta visión se corresponde con patrones como Strategy, Factory Method y Repository, donde el comportamiento se encapsula detrás de una interfaz o de una abstracción compartida.
+
+## Estructura y Diagrama
 
 ---
 
@@ -22,7 +26,7 @@ La abstracción se cumple porque el cliente interactúa con un contrato esencial
 
 ---
 
-## Ejemplo de Código
+## Código C#
 
 ---
 
