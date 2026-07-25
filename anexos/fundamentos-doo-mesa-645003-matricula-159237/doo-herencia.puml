@@ -1,0 +1,68 @@
+@startuml
+title Herencia - Usuarios del Sistema de Turnos Médicos
+
+abstract class Usuario {
+    - id: String
+    - nombre: String
+    - apellido: String
+    - email: String
+    - telefono: String
+
+    + login(nombreUsuario: String, contrasena: String): boolean
+
+    + logout(): void
+
+    + modificarPerfil(nombre: String, email: String, telefono: String): void
+
+    + getNombreCompleto(): String
+    + recibirNotificacion(mensaje: String): void
+}
+
+class Paciente {
+    - numeroHistorial: String
+    - dni: String
+    - fechaNacimiento: Date
+    - direccion: String
+    - alergias: List<String>
+
+    + solicitarTurno(fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+
+    + cancelarTurno(turno: Turno, motivo: String): boolean
+
+    + consultarTurnos(): List<Turno>
+    + registrarLlegada(): LlegadaPaciente
+    + obtenerHistorialClinico(): List<String>
+}
+
+class Secretaria {
+    - departamento: String
+
+    + registrarPaciente(datosPersonales: Map<String, String>): Paciente
+
+    + programarTurno(paciente: Paciente, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+
+    + cancelarTurno(turno: Turno, motivo: String): Boolean
+
+    + verAgenda(doctor: Doctor, fecha: LocalDate): List<Turno>
+}
+
+class Doctor {
+    - numeroLicencia: String
+    - especialidad: Especialidad
+    - consultorio: String
+    - horariosDisponibles: List<LocalTime>
+
+    + verAgenda(fecha: LocalDate): List<Turno>
+
+    + registrarDiagnostico(turno: Turno, diagnostico: String): void
+
+    + autorizarSobreturno(agenda: Agenda): boolean
+
+    + marcarPacienteAtendido(turno: Turno): void
+}
+
+Usuario <|-- Paciente
+Usuario <|-- Secretaria
+Usuario <|-- Doctor
+
+@enduml

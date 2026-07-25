@@ -1,0 +1,45 @@
+@startuml
+title Polimorfismo - IObserverTurno y sus implementaciones concretas
+
+interface IObserverTurno <<interfaz>> {
+    + actualizar(evento: TurnoEvent): void
+}
+
+class TurnoEvent {
+    - tipo: String
+    - turnoId: String
+    - motivo: String
+    - paciente: Paciente
+    - medico: Doctor
+    + getTipo(): String
+    + getMotivo(): String
+}
+
+class TurnoMedico {
+    - observadores: List<IObserverTurno>
+    + suscribir(observer: IObserverTurno): void
+    + desuscribir(observer: IObserverTurno): void
+    + cancelar(motivo: String): void
+    + notificar(evento: TurnoEvent): void
+}
+
+class NotificadorPaciente {
+    + actualizar(evento: TurnoEvent): void
+}
+
+class NotificadorMedico {
+    + actualizar(evento: TurnoEvent): void
+}
+
+class SistemaFacturacion {
+    + actualizar(evento: TurnoEvent): void
+}
+
+NotificadorPaciente ..|> IObserverTurno
+NotificadorMedico ..|> IObserverTurno
+SistemaFacturacion ..|> IObserverTurno
+
+TurnoMedico o-- "0..*" IObserverTurno : notifica a
+TurnoMedico ..> TurnoEvent : crea
+
+@enduml
