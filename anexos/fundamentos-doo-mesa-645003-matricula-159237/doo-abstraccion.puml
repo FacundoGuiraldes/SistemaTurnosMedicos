@@ -1,0 +1,41 @@
+@startuml
+title Abstracción - Persistencia de turnos
+
+interface IPersistencia <<interfaz>> {
+    + guardarTurno(turno: Turno): void
+}
+
+class PersistenciaService {
+    + guardarUsuario(usuario: Usuario): void
+    + guardarTurno(turno: Turno): void
+    + guardarAgenda(agenda: Agenda): void
+    + buscarTurno(fecha: LocalDate, hora: LocalTime, doctor: Doctor): Turno
+    + actualizar(turno: Turno): Boolean
+
+    + obtenerTurnosPorFecha(
+        fecha: LocalDate,
+        doctor: Doctor
+      ): List<Turno>
+
+    + existePorDni(dni: String): boolean
+    + guardar(paciente: Paciente): void
+}
+
+class Sistema {
+    - turnos: List<Turno>
+    - persistenciaService: IPersistencia
+
+    + guardarCambios(): void
+}
+
+class Turno {
+    - fecha: LocalDate
+    - hora: LocalTime
+    - estado: EstadoTurno
+}
+
+PersistenciaService ..|> IPersistencia
+Sistema ..> IPersistencia : utiliza
+IPersistencia ..> Turno : guarda
+
+@enduml

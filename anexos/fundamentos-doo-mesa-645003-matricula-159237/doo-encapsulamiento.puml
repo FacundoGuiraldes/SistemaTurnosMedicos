@@ -1,0 +1,31 @@
+@startuml
+title Encapsulamiento - Clase Turno
+
+class Turno {
+    - fecha: LocalDate
+    - hora: LocalTime
+    - estado: EstadoTurno
+    - motivoConsulta: String
+    - especialidad: Especialidad
+    - paciente: Paciente
+    - doctor: Doctor
+    - duracion: Integer
+    - esSobreturno: Boolean
+    - asistencia: Boolean
+
+    + crearTurno(paciente: Paciente, doctor: Doctor, fecha: LocalDate, hora: LocalTime, especialidad: Especialidad): Turno
+
+    + eliminarTurno(): void
+    + modificarTurno(nuevaFecha: LocalDate, nuevaHora: LocalTime): void
+    + confirmar(): void
+    + cancelar(solicitadoPor: Usuario, motivo: String): Boolean
+    + marcarEnEspera(): void
+    + marcarAtendido(): void
+    + marcarAsistencia(presentado: Boolean): void
+    + obtenerDetalles(): Map<String, String>
+    + obtenerPaciente(): Paciente
+}
+
+Turno ..> EstadoTurno : usa
+
+@enduml
