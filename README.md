@@ -21,5 +21,3 @@
 - [Índice de Diagramas UML](./diagramas/diagramasUML.md)
 - [Índice de Herramientas Ágiles](./herramientas-agile/herramientas_agile.md)
 - [Índice de Anexos](./anexos/anexos.md)
-- [Examen Final Individual - Anexo Técnico DOO](./fundamentos-doo-mesa-645003-matricula-158686/fundamentos-doo.md)
-- [Historial de Cambios](./changelog.md)
