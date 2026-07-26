@@ -1,0 +1,10 @@
+# Tarjetas CRC
+- [Usuario](01-tarjeta-crc-usuario.md)
+- [Paciente](02-tarjeta-crc-paciente.md)
+- [Secretaria](03-tarjeta-crc-secretaria.md)
+- [Doctor](04-tarjeta-crc-doctor.md)
+- [Turno](05-tarjeta-crc-turno.md)
+- [Agenda](06-tarjeta-crc-agenda.md)
+- [Sala de Espera](07-tarjeta-crc-sala-espera.md)
+- [Sistema](08-tarjeta-crc-sistema.md)
+- [Llegada del Paciente](09-tarjeta-crc-llegadapaciente.md)

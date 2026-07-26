@@ -1,0 +1,88 @@
+@startuml 04-actividad-registrar-paciente-04
+!theme plain
+title CU04 - Registrar Paciente\nSistema de Turnos Médicos
+
+skinparam swimlaneWidth 220
+skinparam ActivityBackgroundColor #EAF4FB
+skinparam ActivityBorderColor #2E86AB
+skinparam ArrowColor #2E86AB
+skinparam ActivityDiamondBackgroundColor #FFF3CD
+skinparam ActivityDiamondBorderColor #D4A017
+skinparam NoteBackgroundColor #F0F4F8
+skinparam NoteBorderColor #8BA0B4
+skinparam TitleFontSize 14
+skinparam TitleFontStyle bold
+
+|Paciente|
+start
+:Se presenta en el consultorio\no contacta telefónicamente;
+note right
+  Precondición: el paciente
+  debe otorgar sus datos personales
+end note
+
+|Secretaria|
+:Recibe al paciente o\natiende la llamada telefónica;
+:Solicita los datos personales:\nnombre, DNI, teléfono y dirección;
+
+|Paciente|
+:Proporciona la información\npersonal requerida;
+
+|Secretaria|
+:Verifica que los datos\nestén completos antes de ingresar;
+:Ingresa los datos del paciente\nen el formulario del sistema;
+
+|Sistema|
+:Recibe los datos ingresados\npor la secretaria;
+
+if (¿El paciente ya existe\nen la base de datos?) then (Sí - DNI duplicado)
+  :Muestra alerta:\n"El paciente ya se encuentra\nregistrado en el sistema";
+  |Secretaria|
+  :Informa al paciente que\nya está registrado en el sistema;
+  note right
+    Caso alternativo:
+    paciente preexistente,
+    no se genera duplicado
+  end note
+  END
+else (No - DNI nuevo)
+  :Continúa con la\nvalidación de datos;
+endif
+
+if (¿Los datos ingresados\nson válidos y completos?) then (Sí)
+  :Acepta los datos y\nprocede al registro;
+else (No - datos inválidos o incompletos)
+  :Genera mensaje de error\ncon los campos a corregir;
+  |Secretaria|
+  :Informa al paciente los\ndatos faltantes o incorrectos;
+  :Solicita al paciente que\ncorrija o complete la información;
+  |Paciente|
+  :Proporciona la información\ncorregida o faltante;
+  |Secretaria|
+  :Corrige los datos en\nel formulario del sistema;
+  |Sistema|
+  :Vuelve a validar\nlos datos corregidos;
+endif
+
+:Registra y almacena los datos\ndel paciente en la base de datos;
+:Genera un identificador único\npara el nuevo paciente;
+:Habilita al paciente para\nsolicitar turnos en el sistema;
+note right
+  RF1: Gestión de turnos (precondición)
+  RNF2: Simplicidad del proceso
+end note
+:Genera confirmación de\nregistro exitoso;
+
+|Secretaria|
+:Informa al paciente que\nel registro fue completado;
+
+|Paciente|
+:Recibe la confirmación\nde registro exitoso;
+note right
+  Poscondición: el paciente
+  puede solicitar turnos
+  en el sistema
+end note
+
+stop
+@enduml

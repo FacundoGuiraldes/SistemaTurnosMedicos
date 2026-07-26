@@ -1,0 +1,45 @@
+@startuml
+title Diagrama de Secuencia: Ver Agenda Exitoso
+
+actor Doctor
+participant ":Sistema" as sistema
+participant "agenda:Agenda" as agenda
+participant "turno:Turno" as turno
+
+Doctor -> sistema: accederAlSistema(numeroLicencia)
+activate sistema
+sistema --> Doctor: menu
+deactivate sistema
+
+Doctor -> sistema: seleccionarVerAgenda()
+activate sistema
+sistema -> agenda: crearAgendaDelDia(fecha)
+activate agenda
+agenda -> agenda: obtenerTurnosDelDia(fecha)
+activate agenda
+agenda -> turno: obtenerDetalles()
+activate turno
+turno --> agenda: detallesTurno
+deactivate turno
+agenda --> sistema: listaTurnosProgramados
+deactivate agenda
+deactivate agenda
+sistema --> Doctor: agenda
+deactivate sistema
+
+Doctor -> sistema: consultarPacienteEspecifico(turno)
+activate sistema
+sistema -> agenda: obtenerInfoTurno(turno)
+activate agenda
+agenda -> turno: obtenerInfoPaciente()
+activate turno
+turno --> agenda: infoPaciente
+deactivate turno
+agenda --> sistema: infoPaciente
+deactivate agenda
+sistema --> Doctor: detallesPaciente
+deactivate sistema
+
+destroy turno
+destroy agenda
+@enduml

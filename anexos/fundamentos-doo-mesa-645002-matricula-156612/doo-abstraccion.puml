@@ -1,0 +1,53 @@
+@startuml
+title Abstracción – Sistema, ITurnoRepository y IPacienteRepository
+
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+left to right direction
+
+interface ITurnoRepository <<interfaz>> {
+  + buscarPorId(turnoId: String): Turno
+  + actualizar(turno: Turno): boolean
+  + obtenerTurnosPorFecha(fecha: LocalDate, doctor: Doctor): List<Turno>
+}
+
+interface IPacienteRepository <<interfaz>> {
+  + existePorDni(dni: String): boolean
+  + guardar(paciente: Paciente): void
+}
+
+class Sistema {
+  - turnoRepository: ITurnoRepository
+  - pacienteRepository: IPacienteRepository
+  + Sistema(turnoRepository: ITurnoRepository, pacienteRepository: IPacienteRepository)
+  + cancelarTurno(turnoId: String, motivo: String): boolean
+  + validarPacienteDuplicado(dni: String): boolean
+}
+
+class PersistenciaService {
+  + buscarPorId(turnoId: String): Turno
+  + actualizar(turno: Turno): boolean
+  + obtenerTurnosPorFecha(fecha: LocalDate, doctor: Doctor): List<Turno>
+  + existePorDni(dni: String): boolean
+  + guardar(paciente: Paciente): void
+}
+
+class Turno
+class Doctor
+class Paciente
+
+PersistenciaService ..|> ITurnoRepository
+PersistenciaService ..|> IPacienteRepository
+Sistema ..> ITurnoRepository : depende de
+Sistema ..> IPacienteRepository : depende de
+Sistema ..> Turno : usa
+Sistema ..> Doctor : usa
+Sistema ..> Paciente : usa
+
+note right of Sistema
+  La clase de alto nivel trabaja sobre contratos.
+  El detalle de persistencia queda oculto.
+end note
+
+@enduml

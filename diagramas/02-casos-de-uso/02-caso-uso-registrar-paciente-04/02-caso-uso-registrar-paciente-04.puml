@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor Paciente
+actor Secretaria
+
+rectangle "Sistema de Turnos Médicos" {
+    usecase "Registrar paciente" as UC1
+    usecase "Ingresar datos personales" as UC2
+    usecase "Validar datos" as UC3
+}
+
+Paciente -- UC1
+Secretaria -- UC1
+
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+@enduml

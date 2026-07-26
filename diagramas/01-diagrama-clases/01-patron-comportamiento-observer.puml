@@ -1,0 +1,103 @@
+@startuml 01-patron-comportamiento-observer.puml
+title Patrón Observer — Sistema de Turnos Médicos
+
+' Interfaces
+interface IObserverTurno {
+  +actualizar(TurnoEvent evento)
+}
+
+interface ISubjectTurno {
+  +suscribir(IObserverTurno observer)
+  +desuscribir(IObserverTurno observer)
+  +notificar(TurnoEvent evento)
+}
+
+' Evento que transporta contexto del cambio de turno
+class TurnoEvent {
+  +id: String
+  +pacienteId: String
+  +medicoId: String
+  +fechaAnterior: Date
+  +fechaNueva: Date
+  +motivo: String
+}
+
+' Componente opcional de composición
+class EventDispatcher {
+  -observadores: List~IObserverTurno~
+  +registrar(IObserverTurno observer)
+  +desregistrar(IObserverTurno observer)
+  +despachar(TurnoEvent evento)
+}
+
+' Sujeto concreto
+class TurnoMedico {
+  -id: String
+  -pacienteId: String
+  -medicoId: String
+  -fecha: Date
+  +suscribir(IObserverTurno)
+  +desuscribir(IObserverTurno)
+  +notificar(TurnoEvent)
+  +cancelar(motivo: String)
+  +reprogramar(nuevaFecha: Date, motivo: String)
+}
+
+' Observadores concretos
+class NotificadorPaciente {
+  +actualizar(TurnoEvent)
+  -enviarNotificacionPaciente(TurnoEvent)
+}
+
+class NotificadorMedico {
+  +actualizar(TurnoEvent)
+  -enviarNotificacionMedico(TurnoEvent)
+}
+
+class SistemaFacturacion {
+  +actualizar(TurnoEvent)
+  -procesarImpactoFacturacion(TurnoEvent)
+}
+
+' Relaciones
+TurnoMedico ..|> ISubjectTurno
+NotificadorPaciente ..|> IObserverTurno
+NotificadorMedico ..|> IObserverTurno
+SistemaFacturacion ..|> IObserverTurno
+
+TurnoMedico --> EventDispatcher : usa
+EventDispatcher "1" o-- "0..*" IObserverTurno : mantiene
+EventDispatcher --> TurnoEvent : despacha
+TurnoMedico --> TurnoEvent : crea
+
+IObserverTurno ..> TurnoEvent : usa
+ISubjectTurno ..> TurnoEvent : usa
+
+note top of TurnoMedico
+  Punto de composición:
+  Un Gestor o el Caso de Uso instancia el EventDispatcher,
+  registra los observadores (NotificadorPaciente, etc.) y
+  lo asocia al TurnoMedico mediante suscribir().
+end note
+
+note right of TurnoMedico
+  - Actualiza estado y persiste
+  - Crea TurnoEvent con contexto
+  - Delega la difusión en EventDispatcher
+end note
+
+note left of NotificadorPaciente
+  - Resuelve contacto del paciente
+  - Envío asíncrono y reintentos
+end note
+
+note left of NotificadorMedico
+  - Notifica al médico y calendario
+end note
+
+note left of SistemaFacturacion
+  - Ajusta registros contables
+  - Aplica políticas de cancelación
+end note
+
+@enduml

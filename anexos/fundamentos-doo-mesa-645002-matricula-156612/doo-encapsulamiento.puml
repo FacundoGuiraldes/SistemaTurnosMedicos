@@ -1,0 +1,39 @@
+@startuml
+title Encapsulamiento – SalaEspera e ISalaEsperaService
+
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+left to right direction
+
+interface ISalaEsperaService <<interfaz>> {
+  + registrarLlegada(paciente: Paciente): boolean
+}
+
+class SalaEspera {
+  - pacientesEnEspera: List<Paciente>
+  - horaLlegada: Map<Paciente, LocalDateTime>
+  - ordenAtencion: List<Paciente>
+  + registrarLlegada(paciente: Paciente): boolean
+  + obtenerPacientesEsperando(): List<Paciente>
+  + removerPaciente(paciente: Paciente): boolean
+}
+
+enum EstadoEspera {
+  Esperando
+  EnConsulta
+  Finalizado
+}
+
+class Paciente
+
+SalaEspera ..|> ISalaEsperaService
+SalaEspera ..> EstadoEspera : usa
+SalaEspera --> Paciente : encapsula
+
+note right of SalaEspera
+  El estado interno queda protegido.
+  El exterior solo interactúa mediante métodos públicos.
+end note
+
+@enduml

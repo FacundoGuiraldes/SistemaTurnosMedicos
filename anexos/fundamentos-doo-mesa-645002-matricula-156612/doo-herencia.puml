@@ -1,0 +1,56 @@
+@startuml
+title Herencia – Jerarquía Usuario, Paciente, Doctor y Secretaria
+
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+left to right direction
+
+abstract class Usuario {
+  - nombre: String
+  - email: String
+  - telefono: String
+  + login(): void
+  + logout(): void
+  + modificarPerfil(): void
+  + getNombreCompleto(): String
+}
+
+class Paciente {
+  - numeroHistorial: String
+  - dni: String
+  - direccion: String
+  + validarDatosPersonales(): boolean
+  + actualizarDatosPersonales(datos: Map<String, String>): void
+  + obtenerDatosPersonales(): Map<String, String>
+}
+
+class Doctor {
+  - matricula: String
+  - especialidad: String
+  + verAgenda(fecha: LocalDate): List<Turno>
+  + registrarDiagnostico(turno: Turno, diagnostico: String): void
+}
+
+class Secretaria {
+  - departamento: String
+  + solicitarDatosPersonales(): Map<String, String>
+  + validarDatos(datos: Map<String, String>): boolean
+  + registrarPaciente(datos: Map<String, String>): Paciente
+}
+
+class Turno
+
+Usuario <|-- Paciente
+Usuario <|-- Doctor
+Usuario <|-- Secretaria
+Doctor ..> Turno : consulta
+Paciente ..> Turno : solicita
+Secretaria ..> Paciente : registra
+
+note top of Usuario
+  Superclase común que concentra identidad
+  y operaciones compartidas por los actores.
+end note
+
+@enduml
