@@ -1,34 +1,30 @@
 # Encapsulamiento
 
----
+## Explicación
 
-## Propósito
+El encapsulamiento es el pilar del Diseño Orientado a Objetos (DOO) que consiste en empaquetar datos (atributos) y métodos dentro de una misma entidad o clase, ocultando el estado interno del objeto frente al exterior y exponiendo únicamente una interfaz controlada mediante modificadores de visibilidad (privado, protegido, público).
 
-El encapsulamiento es uno de los pilares de la programación orientada a objetos porque agrupa en una misma entidad sus datos y sus operaciones, ocultando el estado interno y exponiendo solo una interfaz controlada. En el sistema de turnos médicos del Dr. Molina, este principio permite que clases como Paciente, Turno y Agenda gestionen su propia validez, reduciendo la dependencia entre objetos y favoreciendo la cohesión.
+Este principio garantiza la integridad de los datos y se relaciona con los principios SOLID:
+- **SRP (Responsabilidad Única):** Cada clase asume la responsabilidad exclusiva de proteger y gestionar la validez de su propio estado.
+- **OCP (Abierto/Cerrado):** Permite modificar o evolucionar la implementación y las reglas internas de una clase sin afectar a los clientes externos que consumen su interfaz pública.
 
-## Motivación y Ejemplo del Proyecto
+En términos de arquitectura de software, el encapsulamiento facilita la aplicación de patrones de comportamiento como **State**, donde las transiciones de estado se controlan de forma segura evitando modificaciones inválidas o inconsistentes.
 
-En el proyecto se observa el encapsulamiento en objetos del dominio que protegen su estado interno y lo exponen mediante operaciones controladas. Por ejemplo, Turno gestiona su estado de forma coherente, Agenda conserva la integridad de sus franjas horarias y Paciente resguarda sus datos personales. Esto se relaciona con los principios SOLID, especialmente con SRP, porque cada clase asume la responsabilidad de proteger su propio estado, y con OCP, porque el comportamiento interno puede evolucionar sin exigir que los clientes del objeto conozcan los detalles de implementación. En diseño, este enfoque facilita el uso de patrones como State para manejar el ciclo de vida de un turno o Repository y Service para separar la lógica de negocio de la persistencia.
-
-## Estructura y Diagrama
-
----
+## Ejemplo en el proyecto
 
 ![Fragmento Diagrama UML - Encapsulamiento](../diagramas/01-diagrama-clases/capturas-pilares/poo-encapsulamiento-examen.png)
 
 > **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
-### Descripción del Diagrama
-En el diagrama final del sistema se eligieron las clases Paciente, Turno y Agenda para ilustrar el encapsulamiento. En ellas se observa el uso de visibilidad privada para atributos como dni, estado, turnos, horariosBloqueados y fecha, mientras que los métodos públicos permiten interactuar con el objeto de forma controlada. Por ejemplo, Turno expone operaciones como confirmar(), cancelar() y marcarAtendido(), que modifican el estado interno sin permitir que otra clase altere directamente los valores sensibles del objeto. Asimismo, Paciente encapsula datos personales como dni, direccion y alergias, y ofrece métodos de alto nivel para validar o actualizar información sin exponer su estructura interna.
+Se presenta la estructura interna de clases del dominio como `Turno`, `Paciente` y `Agenda`, enfocándose en el uso de visibilidad privada para proteger sus atributos esenciales.
 
-### Justificación Técnica
-El encapsulamiento se cumple porque el estado de cada objeto queda protegido frente a modificaciones arbitrarias desde el exterior. En el caso de Turno, el atributo estado solo puede cambiar a través de métodos que evalúan reglas de negocio, evitando inconsistencias como pasar de “Reservado” a “Atendido” sin validar el contexto correcto. En Paciente, los datos personales se mantienen privados y se accede a ellos mediante operaciones específicas, lo que garantiza que los datos ingresados respeten condiciones mínimas y que el objeto conserve un estado coherente. Este diseño mejora la integridad del modelo, reduce el acoplamiento y permite evolucionar la implementación interna sin romper el contrato del objeto.
+### Descripción y Justificación Técnica
 
----
+El diagrama refleja el principio de encapsulamiento mediante el uso de simbología UML de visibilidad privada (`-`) en atributos sensibles (como `_estado`, `_dni`, `_fecha`, `_turnos`) y pública (`+`) para métodos y propiedades expuestos.
 
-## Código C#
+Las clases seleccionadas cumplen con este fundamento debido a que el estado interno de los objetos no puede ser alterado arbitrariamente desde fuera. En la clase `Turno`, el cambio de estado (ej. pasando a `Atendido` o `Cancelado`) está restringido a métodos específicos (`Confirmar()`, `Cancelar()`, `MarcarAtendido()`), garantizando que cualquier transición respete las reglas de negocio antes de actualizar las variables de estado.
 
----
+## Ejemplo de Código
 
 ```csharp
 public class Turno
@@ -78,7 +74,5 @@ public class Turno
         _estado = EstadoTurno.Atendido;
     }
 }
-```
 
-### Justificación Técnica del Código
-En este fragmento, los atributos `_id`, `_fecha`, `_hora`, `_estado` y `_motivoConsulta` son privados, lo que impide que otras clases modifiquen directamente el estado interno del turno. El acceso a la información se realiza mediante propiedades de lectura (`Id`, `Fecha`, `Hora`, `Estado`) y métodos públicos como `Confirmar()`, `Cancelar()` y `MarcarAtendido()`, que encapsulan las reglas de negocio. Cada operación valida el estado del objeto antes de cambiarlo, garantizando que un turno no pase de un estado inválido a otro sin control. De este modo, la clase Turno preserva la integridad de sus datos y mantiene la coherencia del dominio del sistema de turnos médicos.
+Este fragmento demuestra el encapsulamiento al mantener los campos de estado en ámbito privado (private), restringiendo su modificación externa. Los datos se exponen únicamente mediante propiedades de lectura (get) y los cambios de estado se delegan a métodos con lógica de validación explícita (Confirmar(), Cancelar(), MarcarAtendido()), preservando la invariante del objeto y evitando inconsistencias en el dominio.

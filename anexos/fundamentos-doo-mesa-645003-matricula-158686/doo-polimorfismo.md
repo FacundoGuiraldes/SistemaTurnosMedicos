@@ -1,34 +1,30 @@
 # Polimorfismo
 
----
+## Explicación
 
-## Propósito
+El polimorfismo es el principio de la Programación Orientada a Objetos (POO) que permite a objetos de distintas clases responder de manera diferente y única a un mismo mensaje o llamada a un método común. Esto se logra mediante ligadura tardía (*Late Binding*), donde el comportamiento concreto a ejecutar se determina en tiempo de ejecución según la instancia real del objeto.
 
-El polimorfismo es uno de los pilares de la programación orientada a objetos porque permite que distintos objetos respondan al mismo mensaje o método de forma específica según su tipo concreto. En el sistema de turnos médicos del Dr. Molina, esta capacidad resulta clave para modelar comportamientos variables como la validación de disponibilidad, el manejo de reglas de negocio y la adaptación de los actores del sistema a situaciones distintas.
+Este principio se vincula estrechamente con los principios SOLID:
+- **OCP (Abierto/Cerrado):** Permite extender el comportamiento del sistema agregando nuevas clases derivadas sin necesidad de modificar el código cliente existente.
+- **LSP (Sustitución de Liskov):** Asegura que las distintas implementaciones polimórficas mantengan el contrato y la coherencia del tipo base.
 
-## Motivación y Ejemplo del Proyecto
+En arquitectura de software, el polimorfismo es el motor fundamental para patrones como **Strategy**, **State** y **Factory Method**, donde una operación invocado sobre una abstracción desencadena algoritmos o comportamientos adaptados al contexto u objeto actual.
 
-En el proyecto se observa el polimorfismo a través de la jerarquía de Usuario y del uso de Sistema para invocar un comportamiento común. El método Login(), definido en Usuario, puede resolverse de forma distinta en Paciente y Doctor según el tipo concreto del objeto que lo reciba. En términos de diseño, el polimorfismo se relaciona con el principio OCP porque el cliente puede trabajar con abstracciones y recibir nuevas implementaciones sin modificar la lógica central, y con LSP porque las clases concretas pueden sustituir a la abstracción sin romper el contrato esperado. Además, este principio se manifiesta naturalmente en patrones como Strategy, Factory Method y State, donde una misma operación se resuelve de forma distinta según la estrategia o estado activo.
-
-## Estructura y Diagrama
-
----
+## Ejemplo en el proyecto
 
 ![Fragmento Diagrama UML - Polimorfismo](../diagramas/01-diagrama-clases/capturas-pilares/poo-polimorfismo-examen.png)
 
 > **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
-### Descripción del Diagrama
-En el diseño del proyecto, el polimorfismo se observa en la relación entre una abstracción y varias implementaciones concretas. Por un lado, la jerarquía de Usuario define un contrato común para operaciones como login(), y las clases Paciente, Doctor y Secretaria responden de manera distinta según el tipo de usuario. Por otro lado, el diseño de la disponibilidad horaria del sistema se apoya en una abstracción de estrategia, donde distintas reglas de negocio pueden aplicarse a la misma operación de validación. De esta manera, el mismo mensaje puede interpretarse de manera diferente según el objeto que lo reciba.
+Se presenta la invocación del método abstracto/virtual `Login()` desde la clase de alto nivel `Sistema` hacia la abstracción base `Usuario`, la cual es resuelta polimórficamente por las subclases `Paciente`, `Doctor` y `Secretaria`.
 
-### Justificación Técnica
-El diseño permite invocar un método polimórfico sin conocer el tipo concreto del objeto en tiempo de ejecución porque el cliente depende de una abstracción en lugar de una implementación específica. En el caso de los usuarios, el sistema puede invocar login() sobre una referencia de tipo Usuario y obtener una respuesta acorde al tipo real del objeto. En el caso de la disponibilidad, una clase como Agenda puede delegar la validación a una estrategia concreta, y esa estrategia puede cambiarse sin modificar el comportamiento general del sistema. Esto mejora la extensibilidad y reduce el acoplamiento, ya que el código cliente no necesita conocer los detalles internos de cada variante del comportamiento.
+### Descripción y Justificación Técnica
 
----
+El diagrama refleja el principio de polimorfismo al mostrar que la clase `Sistema` invoca el mensaje `Login()` sobre una referencia de tipo abstracto `Usuario`, sin conocer qué clase concreta ejecutará la acción en tiempo de ejecución.
 
-## Código C#
+Las clases seleccionadas cumplen con este fundamento debido a que cada subclase (`Paciente`, `Doctor`, `Secretaria`) sobrescribe la operación `Login()` para implementar sus propias reglas de autenticación (ej. validación por DNI en pacientes vs. por número de licencia en doctores). De este modo, la clase `Sistema` permanece desacoplada de los tipos específicos, permitiendo incorporar nuevos tipos de usuarios sin modificar el algoritmo de autenticación.
 
----
+## Ejemplo de Código
 
 ```csharp
 public abstract class Usuario
@@ -59,7 +55,5 @@ public class Sistema
         return usuario.Login(nombreUsuario, contrasena);
     }
 }
-```
 
-### Justificación Técnica del Código
-El fragmento demuestra polimorfismo porque el método `Login()` se define en la clase base `Usuario` y se implementa de manera distinta en `Paciente` y `Doctor`. Aunque el cliente invoca el mismo mensaje desde `Sistema`, cada clase concreta responde según su propia lógica de autenticación. Esto permite que el sistema trate a todos los usuarios mediante la misma abstracción, sin conocer en tiempo de compilación qué tipo concreto de usuario está recibiendo. Ese comportamiento es el núcleo del polimorfismo y está alineado con los principios SOLID, especialmente con LSP y OCP, porque el cliente depende de un contrato común y las clases derivadas pueden sustituirlo sin romper la lógica general.
+Este fragmento demuestra el polimorfismo al invocar usuario.Login(...) dentro de Sistema.IniciarSesion(...). La llamada al método depende exclusivamente del contrato abstracto Usuario. En tiempo de ejecución, C# resuelve dinámicamente si debe ejecutar la implementación de Paciente o Doctor, respondiendo de forma especializada según el objeto recibido sin requerir condicionales (if/switch) por tipo de clase.

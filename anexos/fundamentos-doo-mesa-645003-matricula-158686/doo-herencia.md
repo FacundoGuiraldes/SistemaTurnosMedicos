@@ -1,34 +1,29 @@
 # Herencia
 
----
+## Explicación
 
-## Propósito
+La herencia es un mecanismo fundamental de la Programación Orientada a Objetos (POO) mediante el cual una clase derivada (subclase) adquiere propiedades (atributos) y comportamientos (métodos) de una clase base (superclase), facilitando la reutilización de código y la creación de jerarquías de tipos con una relación de "es un".
 
-La herencia es un principio fundamental de la programación orientada a objetos porque permite definir una clase base con atributos y comportamientos compartidos y, a partir de ella, crear subclases especializadas que reutilizan esa estructura sin duplicar lógica. En el sistema de turnos médicos del Dr. Molina, esta idea se refleja en la jerarquía de usuarios, donde una entidad común como Usuario concentra las operaciones básicas de autenticación y perfil, mientras que Paciente, Doctor y Secretaria agregan responsabilidades específicas del dominio.
+Este principio está íntimamente ligado al principio SOLID:
+- **LSP (Sustitución de Liskov):** Garantiza que las subclases derivadas puedan reemplazar a su superclase base en cualquier parte del sistema sin alterar la corrección ni el comportamiento esperado del programa.
 
-## Motivación y Ejemplo del Proyecto
+En términos de arquitectura de software, la herencia sienta las bases para patrones de diseño creacionales y de comportamiento como **Template Method** y **Factory Method**, permitiendo definir esqueletos de comportamiento en la superclase que se especializan en las subclases.
 
-En el proyecto se observa la herencia en la jerarquía de Usuario, que actúa como clase base para los actores del sistema. Paciente incorpora datos propios del paciente, Doctor agrega información del profesional y Secretaria incorpora responsabilidades administrativas. Desde el punto de vista de diseño, la herencia también está relacionada con el principio SOLID de sustitución de Liskov (LSP), porque las subclases deben poder reemplazar a la superclase sin alterar el comportamiento esperado del sistema. Además, este enfoque facilita el uso de patrones de diseño como Template Method, Strategy y Factory al establecer comportamientos reutilizables y puntos de extensión claros.
-
-## Estructura y Diagrama
-
----
+## Ejemplo en el proyecto
 
 ![Fragmento Diagrama UML - Herencia](../diagramas/01-diagrama-clases/capturas-pilares/poo-herencia-examen.png)
 
 > **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
-### Descripción del Diagrama
-La jerarquía elegida para este ejemplo es la formada por la clase base Usuario y las subclases concretas Paciente, Secretaria y Doctor. Usuario encapsula los datos y operaciones comunes a todos los actores del sistema: identificador, nombre, correo, teléfono y métodos como login(), logout() y modificarPerfil(). A partir de esta clase base, Paciente incorpora datos propios del paciente como dni, historial clínico y operaciones para solicitar o cancelar turnos; Doctor agrega información del profesional, como número de licencia, especialidad y consultorio; y Secretaria incorpora responsabilidades administrativas como registrar pacientes, programar turnos y gestionar agendas. De este modo, la herencia permite modelar una familia de objetos relacionados sin repetir la lógica básica en cada clase.
+Se presenta la jerarquía de actores del sistema encabezada por la clase abstracta o base `Usuario`, de la cual derivan las subclases especializadas `Paciente`, `Doctor` y `Secretaria`.
 
-### Justificación Técnica
-La herencia se aplica correctamente porque la clase base Usuario ofrece un contrato común que puede ser reutilizado por todas las subclases, mientras que cada una añade comportamiento específico sin perder la identidad de la superclase. Esta organización respeta el principio de sustitución de Liskov, ya que un objeto de tipo Doctor, Paciente o Secretaria puede utilizarse en contextos donde se espera un Usuario, sin que el sistema necesite conocer el tipo concreto para ejecutar operaciones compartidas como login() o recibirNotificacion(). La reutilización de código se concentra en Usuario, y la especialización ocurre en cada subclase, reduciendo duplicación y manteniendo una estructura más coherente y fácil de extender.
+### Descripción y Justificación Técnica
 
----
+El diagrama refleja el principio de herencia mediante el uso del conector de generalización (flecha con triángulo hueco) que apunta desde las subclases hacia la superclase `Usuario`.
 
-## Código C#
+Las clases seleccionadas cumplen con este fundamento debido a que `Usuario` abstrae los datos y comportamientos comunes (como `Id`, `Nombre`, `Email`, `Login()`, `Logout()`), evitando duplicación de código en el modelo. Cada subclase agrega atributos y responsabilidades especializadas del dominio (ej. `Dni` e historial en `Paciente`; `NumeroLicencia` y especialidad en `Doctor`; tareas de gestión en `Secretaria`). Esta estructura garantiza la jerarquía tipo "es un" y permite cumplir con el principio LSP.
 
----
+## Ejemplo de Código
 
 ```csharp
 public abstract class Usuario
@@ -45,7 +40,7 @@ public abstract class Usuario
 
     public void Logout()
     {
-        // lógica común para cerrar sesión
+        // Lógica común para cerrar sesión
     }
 }
 
@@ -82,7 +77,5 @@ public class Secretaria : Usuario
                Departamento == "Administración";
     }
 }
-```
 
-### Justificación Técnica del Código
-El fragmento demuestra la herencia porque Paciente y Doctor heredan de Usuario y reutilizan sus atributos y métodos comunes, como Login() y Logout(). La clase base define el comportamiento general, mientras que cada subclase lo adapta a su contexto específico: Paciente valida su dni, y Doctor valida su número de licencia. Esto muestra que la herencia no solo reutiliza código, sino que también permite especializar el comportamiento sin romper el contrato de la superclase. Al mantener la misma interfaz de acceso, el sistema puede tratar a los objetos derivados como instancias de Usuario, lo que es esencial para aplicar correctamente el principio de sustitución de Liskov en el diseño orientado a objetos.
+Este fragmento demuestra la herencia al usar la sintaxis : Usuario para derivar Paciente, Doctor y Secretaria. Las subclases reutilizan la estructura base definida en Usuario y especializan la lógica del método Login() mediante la palabra clave override, respetando la firma y la relación de tipo de la superclase.

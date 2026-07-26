@@ -1,34 +1,30 @@
 # Abstracción
 
----
+## Explicación
 
-## Propósito
+La abstracción es un principio fundamental de la Programación Orientada a Objetos (POO) que consiste en identificar y modelar únicamente los aspectos esenciales de una entidad para el problema en cuestión, ignorando los detalles de implementación o irrelevantes. En el diseño de software, la abstracción permite definir contratos claros e interfaces para interactuar con los componentes del sistema sin depender de sus detalles concretos.
 
-La abstracción es un principio esencial de la programación orientada a objetos porque permite modelar únicamente aquello que es relevante para el problema, ocultando los detalles internos y exponiendo un contrato claro para interactuar con el objeto. En el sistema de turnos médicos del Dr. Molina, esta idea se observa en las interfaces de servicio y en las abstracciones de negocio que permiten que el sistema opere con conceptos del dominio sin depender de la implementación concreta.
+Este principio se relaciona directamente con los principios SOLID:
+- **DIP (Inversión de Dependencias):** Los módulos de alto nivel no dependen de módulos de bajo nivel, sino de abstracciones (interfaces o clases abstractas).
+- **ISP (Segregación de Interfaces):** Promueve la creación de interfaces pequeñas y específicas en lugar de interfaces masivas.
 
-## Motivación y Ejemplo del Proyecto
+Asimismo, se conecta con patrones de diseño como **Strategy**, **Repository** y **Factory Method**, los cuales encapsulan comportamientos o creaciones de objetos detrás de abstracciones o interfaces compartidas.
 
-En el proyecto se destaca la abstracción del servicio de persistencia, representada por la interfaz IPersistencia y su implementación PersistenciaService. El sistema puede trabajar con este contrato sin conocer si la información se almacenará en memoria, en archivo o en una base de datos. Esta forma de diseño se relaciona con el principio DIP porque el módulo de alto nivel depende de contratos y no de clases concretas, y con ISP porque los contratos se diseñan en torno a responsabilidades específicas. Además, esta visión se corresponde con patrones como Strategy, Factory Method y Repository, donde el comportamiento se encapsula detrás de una interfaz o de una abstracción compartida.
-
-## Estructura y Diagrama
-
----
+## Ejemplo en el proyecto
 
 ![Fragmento Diagrama UML - Abstracción](../diagramas/01-diagrama-clases/capturas-pilares/poo-abstraccion-examen.png)
 
 > **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
-### Descripción del Diagrama
-Se eligió la abstracción del servicio de persistencia del proyecto, representada por la interfaz `IPersistencia`, junto con su implementación concreta `PersistenciaService`. Esta abstracción se relaciona con la clase `Sistema`, que necesita guardar información de turnos sin conocer los detalles internos del almacenamiento. En el mismo diseño, el sistema también emplea interfaces como `INotificacionService` para abstraer la comunicación con el exterior, ocultando los detalles técnicos del canal de notificación.
+Se presenta la abstracción del servicio de persistencia, representada por la interfaz `IPersistencia` y su implementación concreta `PersistenciaService`, relacionada de forma acotada con la clase `Sistema`.
 
-### Justificación Técnica
-La abstracción se cumple porque el cliente interactúa con un contrato esencial: “guardar turno”, sin conocer el detalle de cómo se implementa esa operación. La clase `Sistema` puede invocar `GuardarTurno()` sobre una referencia de tipo `IPersistencia` o ejecutar su operación de consolidación `GuardarCambios()`, aunque en tiempo de ejecución se esté usando la implementación concreta `PersistenciaService`. Esto permite ocultar reglas complejas, reducir el acoplamiento y facilitar la extensión del sistema. En términos de diseño, este enfoque mejora la mantenibilidad porque nuevos mecanismos de persistencia pueden agregarse sin modificar el comportamiento central del sistema, alineándose con DIP y con el espíritu de los patrones Repository y Strategy.
+### Descripción y Justificación Técnica
 
----
+El diagrama refleja el principio de abstracción al mostrar que la clase `Sistema` interactúa exclusivamente con el contrato esencial `IPersistencia` para la gestión del almacenamiento de turnos, sin depender ni conocer la implementación concreta (`PersistenciaService`).
 
-## Código C#
+Las clases seleccionadas cumplen con este fundamento debido a que se oculta la complejidad técnica de cómo y dónde se persisten los datos (ya sea en memoria, archivo o base de datos). La clase de alto nivel `Sistema` simplemente invoca el método definido en el contrato, reduciendo drásticamente el acoplamiento y permitiendo extender o reemplazar la estrategia de persistencia sin alterar el flujo central del negocio, respetando así el principio DIP.
 
----
+## Ejemplo de Código
 
 ```csharp
 public interface IPersistencia
@@ -40,7 +36,7 @@ public class PersistenciaService : IPersistencia
 {
     public void GuardarTurno(Turno turno)
     {
-        // lógica concreta de almacenamiento
+        // Lógica concreta de almacenamiento
     }
 }
 
@@ -58,7 +54,5 @@ public class Sistema
         _persistencia.GuardarTurno(new Turno());
     }
 }
-```
 
-### Justificación Técnica del Código
-En este fragmento, la interfaz `IPersistencia` representa la abstracción del servicio de almacenamiento que necesita `Sistema`. La clase cliente no necesita conocer si la información se guardará en memoria, en archivo o en una base de datos; solo requiere el contrato esencial de guardar un turno. `PersistenciaService` implementa esa abstracción con los detalles concretos de la persistencia, mientras que `Sistema` se mantiene enfocado en la lógica de negocio. Este diseño aplica la abstracción porque expone únicamente el comportamiento necesario para interactuar con el sistema, ocultando los detalles técnicos y favoreciendo la extensibilidad, el bajo acoplamiento y la coherencia con DIP.
+Este fragmento demuestra la implementación de la abstracción al definir el contrato IPersistencia con la operación esencial GuardarTurno. La clase cliente Sistema recibe la abstracción por inyección de dependencias y solo conoce el qué hace el servicio, mientras que PersistenciaService define el cómo. De esta forma, el código oculta los detalles de implementación, disminuye el acoplamiento y facilita la extensibilidad del sistema.
