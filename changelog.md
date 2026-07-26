@@ -1,14 +1,13 @@
 # Changelog
 
-## [Examen Final] - 2026-07-27
+## [Unreleased]
 
 ### Added
 - [feature/anexo-fundamentos-doo] Anexo Fundamentos del Diseño Orientado a Objetos - Mesa N° 645000 - Guiraldes Facundo (Matrícula 114797). Se creó la carpeta `anexos/fundamentos-doo-mesa-645000-matricula-114797/` con el índice `fundamentos-doo.md` y los anexos `doo-abstraccion.md` (Sistema, ITurnoRepository y PersistenciaService - DIP), `doo-encapsulamiento.md` (SalaEspera e ISalaEsperaService), `doo-herencia.md` (jerarquía Usuario → Paciente/Doctor/Secretaria - LSP) y `doo-polimorfismo.md` (IObserverTurno y observadores concretos - OCP), cada uno con su diagrama PlantUML/PNG y fragmento de código Java justificado. Se actualizó el índice `anexos/anexos.md`. PR: [#149](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/149) - @FacundoGuiraldes
-- [feature/anexo-fundamentos-doo] Anexo Fundamentos del Diseño Orientado a Objetos - Mesa N° 645003 - Carola Benvenuto (Matrícula 158686). Se creó la carpeta `fundamentos-doo-mesa-645003-matricula-158686/` con el índice `fundamentos-doo.md` y los 4 pilares POO (`doo-abstraccion.md`, `doo-encapsulamiento.md`, `doo-herencia.md` y `doo-polimorfismo.md`) alineados al diagrama UML final (`06-clases-diagrama-final.puml`), junto con sus recortes PNG (`poo-*-examen.png`) en `diagramas/01-diagrama-clases/capturas-pilares/`. Se actualizaron los índices en `anexos/anexos.md` y `README.md`. PR: [#151](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/151) - @carolabenvenuto-uces 
+- [feature/anexo-fundamentos-doo-mat-158686] Anexo Fundamentos del Diseño Orientado a Objetos - Mesa N° 645003 - Carola Benvenuto (Matrícula 158686). Se creó la carpeta `anexos/fundamentos-doo-mesa-645003-matricula-158686/` con el índice `fundamentos-doo.md` y los 4 pilares POO (`doo-abstraccion.md`, `doo-encapsulamiento.md`, `doo-herencia.md` y `doo-polimorfismo.md`) alineados al diagrama UML final (`06-clases-diagrama-final.puml`), junto con sus recortes PNG (`poo-*-examen.png`) en `diagramas/01-diagrama-clases/capturas-pilares/`. Se actualizaron los índices en `anexos/anexos.md` y `README.md`. PR: [#151](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/151) - @carolabenvenuto-uces
 
 ### Fixed
 - [feature/anexo-fundamentos-doo] RC1: encabezado changelog corregido a `[Unreleased]` / RC2: eliminado atributo `id` de `SalaEspera` en diagrama de encapsulamiento / RC3: eliminado atributo `id` de `Usuario` en diagrama de herencia — ambos PNG regenerados. PR: [#149](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/149) - @FacundoGuiraldes
-
 
 ## [Release Segundo Parcial] - 2026-06-27
 
@@ -19,11 +18,6 @@
 - [feature/esp-patron-comportamiento-add-patron-facade] Aplicación local del patrón estructural Facade sobre el diseño del Sistema de Turnos Médicos: anexo técnico, diagrama UML en PlantUML, documentación IA y actualización de índices. PR: [#141](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/141) | Issues: [#135](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/135) - @caterinacerdan (Especialista en Patrón de Diseño Estructural)
 
 ## [Release Actividad N4] - 2026-06-18
-## [Unreleased] - Examen Final Individual
-
-### Added
-- [feature/anexo-fundamentos-doo] Elaboración del anexo técnico individual en `fundamentos-doo-mesa-645003-matricula-158686/` (los 4 pilares POO alineados al diagrama final), generación de recortes PNG (`poo-*-examen.png`), vinculación del índice `fundamentos-doo.md` y actualización de accesos en `anexos.md` y `README.md`. PR: [#](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/) - @carolabenvenuto-uces (Matrícula 158686)
-
 ### Added
 - [feature/coordinador-devops-add-anexo-cu1] Recuperación de boceto inicial, diseño de diagrama de clases, elaboración de anexo CU1 y actualización de roles en `README.md`. PR: [#105](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/105) - @ValeriaMSilva (Coordinador de Repositorio + Analista Funcional CU1)
 - [feature/arquitecto-dominio-add-diagrama-final] Diagrama de clases final unificado, anexo de los cuatro pilares del paradigma orientado a objetos, pseudocódigo del happy path global y documentación de IA. PR: [#109](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/109) | Issues: [#106](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/106), [#107](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/107), [#108](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/issues/108) - @FacundoGuiraldes (Arquitecto de Dominio)
