@@ -16,9 +16,8 @@
 | Caterina Cerdán | 159237 | @caterinacerdan |
 | Facundo Guiraldes | 114797 | @FacundoGuiraldes |
 
-## Documentación Principal
+## Diagramas y Diseños
 
 - [Índice de Diagramas UML](./diagramas/diagramasUML.md)
 - [Índice de Herramientas Ágiles](./herramientas-agile/herramientas_agile.md)
 - [Índice de Anexos](./anexos/anexos.md)
-- [Historial de Cambios](./changelog.md)

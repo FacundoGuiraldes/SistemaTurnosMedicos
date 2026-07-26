@@ -12,7 +12,7 @@
   * [Diagrama de Clases - Registrar Turno 01](./01-clases-solicitar-turno.puml)
   * [Diagrama de Clases - Cancelar Turno 02](./02-clases-cancelar-turno-02.puml)
   * [Diagrama de Clases - Registrar Llegada del Paciente 03](./03-clases-registrar-llegada-03.puml)
-  * [Diagrama de Clases - Registrar Paciente 04](./04-clases-registitar-paciente-04.puml)
+  * [Diagrama de Clases - Registrar Paciente 04](./04-clases-registrar-paciente-04.puml)
   * [Diagrama de Clases - Ver Agenda 05](./05-clases-ver-agenda-05.puml)
 
 * [Diagrama de Clases Final - Sistema de Turnos Médicos](./06-clases-diagrama-final.puml)
