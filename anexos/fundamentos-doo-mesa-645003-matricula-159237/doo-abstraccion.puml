@@ -9,7 +9,7 @@ class PersistenciaService {
     + guardarUsuario(usuario: Usuario): void
     + guardarTurno(turno: Turno): void
     + guardarAgenda(agenda: Agenda): void
-    + buscarPorId(turnoId: String): Turno
+    + buscarTurno(fecha: LocalDate, hora: LocalTime, doctor: Doctor): Turno
     + actualizar(turno: Turno): Boolean
 
     + obtenerTurnosPorFecha(
@@ -29,7 +29,6 @@ class Sistema {
 }
 
 class Turno {
-    - id: String
     - fecha: LocalDate
     - hora: LocalTime
     - estado: EstadoTurno

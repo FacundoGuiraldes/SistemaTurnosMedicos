@@ -2,14 +2,13 @@
 title Encapsulamiento - Clase Turno
 
 class Turno {
-    - id: String
     - fecha: LocalDate
     - hora: LocalTime
     - estado: EstadoTurno
     - motivoConsulta: String
     - especialidad: Especialidad
-    - pacienteId: String
-    - doctorId: String
+    - paciente: Paciente
+    - doctor: Doctor
     - duracion: Integer
     - esSobreturno: Boolean
     - asistencia: Boolean

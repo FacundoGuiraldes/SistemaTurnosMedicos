@@ -113,7 +113,6 @@ El siguiente pseudocódigo representa la jerarquía de clases definida en el dia
 ```java
 public abstract class Usuario {
 
-    private String id;
     private String nombre;
     private String apellido;
     private String email;

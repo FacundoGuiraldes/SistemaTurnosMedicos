@@ -76,14 +76,13 @@ El siguiente pseudocódigo representa la aplicación del encapsulamiento en la c
 ```java
 public class Turno {
 
-    private String id;
     private LocalDate fecha;
     private LocalTime hora;
     private EstadoTurno estado;
     private String motivoConsulta;
     private Especialidad especialidad;
-    private String pacienteId;
-    private String doctorId;
+    private Paciente paciente;
+    private Doctor doctor;
     private Integer duracion;
     private Boolean esSobreturno;
     private Boolean asistencia;
