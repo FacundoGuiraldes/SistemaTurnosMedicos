@@ -11,9 +11,9 @@ En términos de arquitectura de software, la herencia sienta las bases para patr
 
 ## Ejemplo en el proyecto
 
-![Fragmento Diagrama UML - Herencia](../diagramas/01-diagrama-clases/capturas-pilares/poo-herencia-examen.png)
+![Fragmento Diagrama UML - Herencia](../../diagramas/01-diagrama-clases/capturas-pilares/poo-herencia-examen.png)
 
-> **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
+> **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
 Se presenta la jerarquía de actores del sistema encabezada por la clase abstracta o base `Usuario`, de la cual derivan las subclases especializadas `Paciente`, `Doctor` y `Secretaria`.
 

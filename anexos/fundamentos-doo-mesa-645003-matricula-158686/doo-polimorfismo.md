@@ -12,9 +12,9 @@ En arquitectura de software, el polimorfismo es el motor fundamental para patron
 
 ## Ejemplo en el proyecto
 
-![Fragmento Diagrama UML - Polimorfismo](../diagramas/01-diagrama-clases/capturas-pilares/poo-polimorfismo-examen.png)
+![Fragmento Diagrama UML - Polimorfismo](../../diagramas/01-diagrama-clases/capturas-pilares/poo-polimorfismo-examen.png)
 
-> **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
+> **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
 Se presenta la invocación del método abstracto/virtual `Login()` desde la clase de alto nivel `Sistema` hacia la abstracción base `Usuario`, la cual es resuelta polimórficamente por las subclases `Paciente`, `Doctor` y `Secretaria`.
 

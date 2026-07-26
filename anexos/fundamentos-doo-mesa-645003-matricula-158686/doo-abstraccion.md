@@ -12,9 +12,9 @@ Asimismo, se conecta con patrones de diseño como **Strategy**, **Repository** y
 
 ## Ejemplo en el proyecto
 
-![Fragmento Diagrama UML - Abstracción](../diagramas/01-diagrama-clases/capturas-pilares/poo-abstraccion-examen.png)
+![Fragmento Diagrama UML - Abstracción](../../diagramas/01-diagrama-clases/capturas-pilares/poo-abstraccion-examen.png)
 
-> **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
+> **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
 Se presenta la abstracción del servicio de persistencia, representada por la interfaz `IPersistencia` y su implementación concreta `PersistenciaService`, relacionada de forma acotada con la clase `Sistema`.
 

@@ -12,9 +12,9 @@ En términos de arquitectura de software, el encapsulamiento facilita la aplicac
 
 ## Ejemplo en el proyecto
 
-![Fragmento Diagrama UML - Encapsulamiento](../diagramas/01-diagrama-clases/capturas-pilares/poo-encapsulamiento-examen.png)
+![Fragmento Diagrama UML - Encapsulamiento](../../diagramas/01-diagrama-clases/capturas-pilares/poo-encapsulamiento-examen.png)
 
-> **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
+> **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
 Se presenta la estructura interna de clases del dominio como `Turno`, `Paciente` y `Agenda`, enfocándose en el uso de visibilidad privada para proteger sus atributos esenciales.
 
