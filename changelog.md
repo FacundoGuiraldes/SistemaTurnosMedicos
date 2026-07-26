@@ -8,6 +8,7 @@
 
 ### Fixed
 - [feature/anexo-fundamentos-doo] RC1: encabezado changelog corregido a `[Unreleased]` / RC2: eliminado atributo `id` de `SalaEspera` en diagrama de encapsulamiento / RC3: eliminado atributo `id` de `Usuario` en diagrama de herencia — ambos PNG regenerados. PR: [#149](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/149) - @FacundoGuiraldes
+- [feature/anexo-fundamentos-doo-mat-158686] Resolucion de revision docente (RC1-RC11): correccion de encabezado a `[Unreleased]` (RC1) y limpieza de entradas ajenas a la entrega (RC2); simplificacion de `README.md` a bullets requeridos (RC3); adicion de introduccion en `fundamentos-doo.md` (RC4) y eliminacion de enlace de retorno redundante (RC5); reestructuracion de la carpeta a `anexos/` (RC6); estandarizacion de titulos/plantilla oficial en pilares DOO (RC7, RC9, RC10, RC11); acotamiento del ejemplo y diagrama de Abstraccion a clases pertinentes `Sistema`, `IPersistencia` y `PersistenciaService` (RC8); y actualizacion general de rutas relativas de navegacion. PR: [#151](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/151) - @carolabenvenuto-uces
 
 ## [Release Segundo Parcial] - 2026-06-27
 
