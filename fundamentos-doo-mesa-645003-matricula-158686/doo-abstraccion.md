@@ -22,7 +22,7 @@ En el proyecto se destaca la abstracción del servicio de persistencia, represen
 Se eligió la abstracción del servicio de persistencia del proyecto, representada por la interfaz `IPersistencia`, junto con su implementación concreta `PersistenciaService`. Esta abstracción se relaciona con la clase `Sistema`, que necesita guardar información de turnos sin conocer los detalles internos del almacenamiento. En el mismo diseño, el sistema también emplea interfaces como `INotificacionService` para abstraer la comunicación con el exterior, ocultando los detalles técnicos del canal de notificación.
 
 ### Justificación Técnica
-La abstracción se cumple porque el cliente interactúa con un contrato esencial: “guardar turno”, sin conocer el detalle de cómo se implementa esa operación. La clase `Sistema` puede invocar `GuardarTurno()` sobre una referencia de tipo `IPersistencia`, aunque en tiempo de ejecución se esté usando la implementación concreta `PersistenciaService`. Esto permite ocultar reglas complejas, reducir el acoplamiento y facilitar la extensión del sistema. En términos de diseño, este enfoque mejora la mantenibilidad porque nuevos mecanismos de persistencia pueden agregarse sin modificar el comportamiento central del sistema, alineándose con DIP y con el espíritu de los patrones Repository y Strategy.
+La abstracción se cumple porque el cliente interactúa con un contrato esencial: “guardar turno”, sin conocer el detalle de cómo se implementa esa operación. La clase `Sistema` puede invocar `GuardarTurno()` sobre una referencia de tipo `IPersistencia` o ejecutar su operación de consolidación `GuardarCambios()`, aunque en tiempo de ejecución se esté usando la implementación concreta `PersistenciaService`. Esto permite ocultar reglas complejas, reducir el acoplamiento y facilitar la extensión del sistema. En términos de diseño, este enfoque mejora la mantenibilidad porque nuevos mecanismos de persistencia pueden agregarse sin modificar el comportamiento central del sistema, alineándose con DIP y con el espíritu de los patrones Repository y Strategy.
 
 ---
 
@@ -53,9 +53,9 @@ public class Sistema
         _persistencia = persistencia;
     }
 
-    public void GuardarCambio(Turno turno)
+    public void GuardarCambios()
     {
-        _persistencia.GuardarTurno(turno);
+        _persistencia.GuardarTurno(new Turno());
     }
 }
 ```

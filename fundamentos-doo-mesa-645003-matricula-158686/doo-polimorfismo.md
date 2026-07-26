@@ -54,7 +54,7 @@ public class Doctor : Usuario
 
 public class Sistema
 {
-    public bool Autenticar(Usuario usuario, string nombreUsuario, string contrasena)
+    public bool IniciarSesion(Usuario usuario, string nombreUsuario, string contrasena)
     {
         return usuario.Login(nombreUsuario, contrasena);
     }
