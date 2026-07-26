@@ -1,14 +1,10 @@
 # Changelog
 
-## [Unreleased]
-
-### Added
-- [feature/anexo-fundamentos-doo] Elaboración del anexo técnico individual en `fundamentos-doo-mesa-645003-matricula-158686/` (los 4 pilares POO alineados al diagrama final), generación de recortes PNG (`poo-*-examen.png`), vinculación del índice `fundamentos-doo.md` y actualización de accesos en `anexos.md` y `README.md`. PR: [#135](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/135) - @carolabenvenuto-uces (Desarrollador / Alumno)
-
 ## [Examen Final] - 2026-07-27
 
 ### Added
 - [feature/anexo-fundamentos-doo] Anexo Fundamentos del Diseño Orientado a Objetos - Mesa N° 645000 - Guiraldes Facundo (Matrícula 114797). Se creó la carpeta `anexos/fundamentos-doo-mesa-645000-matricula-114797/` con el índice `fundamentos-doo.md` y los anexos `doo-abstraccion.md` (Sistema, ITurnoRepository y PersistenciaService - DIP), `doo-encapsulamiento.md` (SalaEspera e ISalaEsperaService), `doo-herencia.md` (jerarquía Usuario → Paciente/Doctor/Secretaria - LSP) y `doo-polimorfismo.md` (IObserverTurno y observadores concretos - OCP), cada uno con su diagrama PlantUML/PNG y fragmento de código Java justificado. Se actualizó el índice `anexos/anexos.md`. PR: [#149](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/149) - @FacundoGuiraldes
+- [feature/anexo-fundamentos-doo] Anexo Fundamentos del Diseño Orientado a Objetos - Mesa N° 645003 - Carola Benvenuto (Matrícula 158686). Se creó la carpeta `fundamentos-doo-mesa-645003-matricula-158686/` con el índice `fundamentos-doo.md` y los 4 pilares POO (`doo-abstraccion.md`, `doo-encapsulamiento.md`, `doo-herencia.md` y `doo-polimorfismo.md`) alineados al diagrama UML final (`06-clases-diagrama-final.puml`), junto con sus recortes PNG (`poo-*-examen.png`) en `diagramas/01-diagrama-clases/capturas-pilares/`. Se actualizaron los índices en `anexos/anexos.md` y `README.md`. PR: [#](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/) - @carolabenvenuto-uces 
 
 ### Fixed
 - [feature/anexo-fundamentos-doo] RC1: encabezado changelog corregido a `[Unreleased]` / RC2: eliminado atributo `id` de `SalaEspera` en diagrama de encapsulamiento / RC3: eliminado atributo `id` de `Usuario` en diagrama de herencia — ambos PNG regenerados. PR: [#149](https://github.com/FacundoGuiraldes/SistemaTurnosMedicos/pull/149) - @FacundoGuiraldes
