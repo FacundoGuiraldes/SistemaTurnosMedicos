@@ -43,7 +43,7 @@ Esta Pull Request representa la **entrega final de la Actividad Obligatoria N°1
 
 Una vez creada esta Pull Request, notificamos en el canal:
 
-[Actividad Obligatoria N°1][GRUPO X](enlace a esta Pull Request)
+[Actividad Obligatoria N°1][GRUPO X](https://github.com/ORGANIZACION/REPOSITORIO/pull/NUMERO)
 
 
 Posteriormente iniciamos un hilo mencionando a @Matias Velasquez, indicando el contenido general de la entrega.  
