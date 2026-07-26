@@ -1,7 +1,5 @@
 # Polimorfismo
 
-## Explicación
-
 El polimorfismo es el principio de la Programación Orientada a Objetos (POO) que permite a objetos de distintas clases responder de manera diferente y única a un mismo mensaje o llamada a un método común. Esto se logra mediante ligadura tardía (*Late Binding*), donde el comportamiento concreto a ejecutar se determina en tiempo de ejecución según la instancia real del objeto.
 
 Este principio se vincula estrechamente con los principios SOLID:
@@ -17,8 +15,6 @@ En arquitectura de software, el polimorfismo es el motor fundamental para patron
 > **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
 Se presenta la invocación del método abstracto/virtual `Login()` desde la clase de alto nivel `Sistema` hacia la abstracción base `Usuario`, la cual es resuelta polimórficamente por las subclases `Paciente`, `Doctor` y `Secretaria`.
-
-### Descripción y Justificación Técnica
 
 El diagrama refleja el principio de polimorfismo al mostrar que la clase `Sistema` invoca el mensaje `Login()` sobre una referencia de tipo abstracto `Usuario`, sin conocer qué clase concreta ejecutará la acción en tiempo de ejecución.
 

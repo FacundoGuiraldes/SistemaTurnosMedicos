@@ -1,7 +1,5 @@
 # Encapsulamiento
 
-## Explicación
-
 El encapsulamiento es el pilar del Diseño Orientado a Objetos (DOO) que consiste en empaquetar datos (atributos) y métodos dentro de una misma entidad o clase, ocultando el estado interno del objeto frente al exterior y exponiendo únicamente una interfaz controlada mediante modificadores de visibilidad (privado, protegido, público).
 
 Este principio garantiza la integridad de los datos y se relaciona con los principios SOLID:
@@ -17,8 +15,6 @@ En términos de arquitectura de software, el encapsulamiento facilita la aplicac
 > **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
 Se presenta la estructura interna de clases del dominio como `Turno`, `Paciente` y `Agenda`, enfocándose en el uso de visibilidad privada para proteger sus atributos esenciales.
-
-### Descripción y Justificación Técnica
 
 El diagrama refleja el principio de encapsulamiento mediante el uso de simbología UML de visibilidad privada (`-`) en atributos sensibles (como `_estado`, `_dni`, `_fecha`, `_turnos`) y pública (`+`) para métodos y propiedades expuestos.
 

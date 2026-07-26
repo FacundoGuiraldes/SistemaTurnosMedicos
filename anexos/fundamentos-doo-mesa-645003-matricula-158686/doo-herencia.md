@@ -1,7 +1,5 @@
 # Herencia
 
-## Explicación
-
 La herencia es un mecanismo fundamental de la Programación Orientada a Objetos (POO) mediante el cual una clase derivada (subclase) adquiere propiedades (atributos) y comportamientos (métodos) de una clase base (superclase), facilitando la reutilización de código y la creación de jerarquías de tipos con una relación de "es un".
 
 Este principio está íntimamente ligado al principio SOLID:
@@ -16,8 +14,6 @@ En términos de arquitectura de software, la herencia sienta las bases para patr
 > **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
 Se presenta la jerarquía de actores del sistema encabezada por la clase abstracta o base `Usuario`, de la cual derivan las subclases especializadas `Paciente`, `Doctor` y `Secretaria`.
-
-### Descripción y Justificación Técnica
 
 El diagrama refleja el principio de herencia mediante el uso del conector de generalización (flecha con triángulo hueco) que apunta desde las subclases hacia la superclase `Usuario`.
 

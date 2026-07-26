@@ -1,7 +1,5 @@
 # Abstracción
 
-## Explicación
-
 La abstracción es un principio fundamental de la Programación Orientada a Objetos (POO) que consiste en identificar y modelar únicamente los aspectos esenciales de una entidad para el problema en cuestión, ignorando los detalles de implementación o irrelevantes. En el diseño de software, la abstracción permite definir contratos claros e interfaces para interactuar con los componentes del sistema sin depender de sus detalles concretos.
 
 Este principio se relaciona directamente con los principios SOLID:
@@ -17,8 +15,6 @@ Asimismo, se conecta con patrones de diseño como **Strategy**, **Repository** y
 > **Ver detalles del diagrama:** [06-clases-diagrama-final.puml](../../diagramas/01-diagrama-clases/06-clases-diagrama-final.puml)
 
 Se presenta la abstracción del servicio de persistencia, representada por la interfaz `IPersistencia` y su implementación concreta `PersistenciaService`, relacionada de forma acotada con la clase `Sistema`.
-
-### Descripción y Justificación Técnica
 
 El diagrama refleja el principio de abstracción al mostrar que la clase `Sistema` interactúa exclusivamente con el contrato esencial `IPersistencia` para la gestión del almacenamiento de turnos, sin depender ni conocer la implementación concreta (`PersistenciaService`).
 
