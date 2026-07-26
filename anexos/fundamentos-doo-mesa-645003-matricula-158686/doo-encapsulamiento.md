@@ -70,5 +70,6 @@ public class Turno
         _estado = EstadoTurno.Atendido;
     }
 }
+```
 
 Este fragmento demuestra el encapsulamiento al mantener los campos de estado en ámbito privado (private), restringiendo su modificación externa. Los datos se exponen únicamente mediante propiedades de lectura (get) y los cambios de estado se delegan a métodos con lógica de validación explícita (Confirmar(), Cancelar(), MarcarAtendido()), preservando la invariante del objeto y evitando inconsistencias en el dominio.

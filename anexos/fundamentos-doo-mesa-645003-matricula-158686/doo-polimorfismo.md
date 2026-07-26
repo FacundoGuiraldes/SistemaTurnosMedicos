@@ -51,5 +51,6 @@ public class Sistema
         return usuario.Login(nombreUsuario, contrasena);
     }
 }
+```
 
 Este fragmento demuestra el polimorfismo al invocar usuario.Login(...) dentro de Sistema.IniciarSesion(...). La llamada al método depende exclusivamente del contrato abstracto Usuario. En tiempo de ejecución, C# resuelve dinámicamente si debe ejecutar la implementación de Paciente o Doctor, respondiendo de forma especializada según el objeto recibido sin requerir condicionales (if/switch) por tipo de clase.

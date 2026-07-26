@@ -73,5 +73,6 @@ public class Secretaria : Usuario
                Departamento == "Administración";
     }
 }
+```
 
 Este fragmento demuestra la herencia al usar la sintaxis : Usuario para derivar Paciente, Doctor y Secretaria. Las subclases reutilizan la estructura base definida en Usuario y especializan la lógica del método Login() mediante la palabra clave override, respetando la firma y la relación de tipo de la superclase.

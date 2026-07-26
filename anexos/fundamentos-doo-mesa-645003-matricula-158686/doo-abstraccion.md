@@ -50,5 +50,6 @@ public class Sistema
         _persistencia.GuardarTurno(new Turno());
     }
 }
+```
 
 Este fragmento demuestra la implementación de la abstracción al definir el contrato IPersistencia con la operación esencial GuardarTurno. La clase cliente Sistema recibe la abstracción por inyección de dependencias y solo conoce el qué hace el servicio, mientras que PersistenciaService define el cómo. De esta forma, el código oculta los detalles de implementación, disminuye el acoplamiento y facilita la extensibilidad del sistema.
